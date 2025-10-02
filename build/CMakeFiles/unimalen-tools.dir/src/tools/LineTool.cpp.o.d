@@ -1,8 +1,8 @@
 CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o: \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/tools/LineTool.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/LineTool.cpp \
  /usr/include/stdc-predef.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/tools/LineTool.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/tools/Tool.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/LineTool.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/Tool.h \
  /usr/include/qt6/QtCore/QPoint /usr/include/qt6/QtCore/qpoint.h \
  /usr/include/qt6/QtCore/qcompare.h /usr/include/qt6/QtCore/qglobal.h \
  /usr/include/c++/15/type_traits \
@@ -289,7 +289,7 @@ CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o: \
  /usr/include/c++/15/cassert /usr/include/qt6/QtCore/q20iterator.h \
  /usr/include/qt6/QtCore/qline.h /usr/include/qt6/QtGui/QColor \
  /usr/include/qt6/QtGui/qcolor.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/tools/../core/Layer.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/../core/Layer.h \
  /usr/include/qt6/QtGui/QPainter /usr/include/qt6/QtGui/qpainter.h \
  /usr/include/qt6/QtGui/qpixmap.h /usr/include/qt6/QtGui/qtextoption.h \
  /usr/include/qt6/QtCore/qmetatype.h /usr/include/qt6/QtCore/qfloat16.h \

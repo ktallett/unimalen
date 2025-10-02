@@ -98,6 +98,8 @@ Canvas::Canvas(QWidget *parent)
     , m_currentPattern(PatternBar::Solid)
     , m_currentColor(Qt::black)
     , m_undoStack(new QUndoStack(this))
+    , m_isModified(false)
+    , m_filePath("")
 {
     setAttribute(Qt::WA_StaticContents);
     setMouseTracking(true);
@@ -112,6 +114,13 @@ Canvas::Canvas(QWidget *parent)
     QStringList fontFamilies;
     fontFamilies << "Open Sans" << "Noto Sans" << "Noto Sans CJK" << "DejaVu Sans" << "Liberation Sans";
     m_textFont.setFamilies(fontFamilies);
+
+    // Connect undo stack to mark document as modified
+    connect(m_undoStack, &QUndoStack::indexChanged, this, [this]() {
+        if (!m_isModified) {
+            setModified(true);
+        }
+    });
 
     newCanvas();
 }
@@ -153,6 +162,8 @@ bool Canvas::loadCanvas(const QString &fileName)
     }
 
     if (success) {
+        m_filePath = fileName;
+        setModified(false);
         compositeAllLayers();
         emit layersChanged();
         emit currentLayerChanged(m_document->currentLayerIndex());
@@ -167,11 +178,19 @@ bool Canvas::saveCanvas(const QString &fileName)
     QFileInfo fileInfo(fileName);
     QString extension = fileInfo.suffix().toLower();
 
+    bool success = false;
     if (extension == "ora") {
-        return m_document->saveAsORA(fileName);
+        success = m_document->saveAsORA(fileName);
     } else {
-        return m_document->saveAsPNG(fileName);
+        success = m_document->saveAsPNG(fileName);
     }
+
+    if (success) {
+        m_filePath = fileName;
+        setModified(false);
+    }
+
+    return success;
 }
 
 bool Canvas::saveAsORA(const QString &fileName)
@@ -2523,4 +2542,12 @@ void Canvas::performScissorsCut(const QPolygon &cutLine)
     m_hasScissorsPieces = true;
     compositeAllLayers();
     update();
+}
+
+void Canvas::setModified(bool modified)
+{
+    if (m_isModified != modified) {
+        m_isModified = modified;
+        emit documentModified();
+    }
 }

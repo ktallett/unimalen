@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/malen
+CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/malen/build
+CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/unimalen-ui.dir/depend.make
@@ -72,9 +72,9 @@ include CMakeFiles/unimalen-ui.dir/flags.make
 unimalen-ui_autogen/timestamp: /usr/lib64/qt6/libexec/moc
 unimalen-ui_autogen/timestamp: /usr/lib64/qt6/libexec/uic
 unimalen-ui_autogen/timestamp: CMakeFiles/unimalen-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target unimalen-ui"
-	/usr/bin/cmake -E cmake_autogen /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles/unimalen-ui_autogen.dir/AutogenInfo.json ""
-	/usr/bin/cmake -E touch /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/timestamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target unimalen-ui"
+	/usr/bin/cmake -E cmake_autogen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen-ui_autogen.dir/AutogenInfo.json ""
+	/usr/bin/cmake -E touch /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/timestamp
 
 CMakeFiles/unimalen-ui.dir/codegen:
 .PHONY : CMakeFiles/unimalen-ui.dir/codegen
@@ -82,128 +82,128 @@ CMakeFiles/unimalen-ui.dir/codegen:
 CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: CMakeFiles/unimalen-ui.dir/flags.make
 CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: unimalen-ui_autogen/mocs_compilation.cpp
 CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: CMakeFiles/unimalen-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o -MF CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o -MF CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/mocs_compilation.cpp
 
 CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/mocs_compilation.cpp > CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/mocs_compilation.cpp > CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.i
 
 CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/mocs_compilation.cpp -o CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/mocs_compilation.cpp -o CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.s
 
 CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: CMakeFiles/unimalen-ui.dir/flags.make
-CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/mainwindow.cpp
+CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/mainwindow.cpp
 CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: CMakeFiles/unimalen-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/mainwindow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/mainwindow.cpp
 
 CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/mainwindow.cpp > CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/mainwindow.cpp > CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.i
 
 CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/mainwindow.cpp -o CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/mainwindow.cpp -o CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.s
 
 CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o: CMakeFiles/unimalen-ui.dir/flags.make
-CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/canvas.cpp
+CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/canvas.cpp
 CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o: CMakeFiles/unimalen-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/canvas.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/canvas.cpp
 
 CMakeFiles/unimalen-ui.dir/src/canvas.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-ui.dir/src/canvas.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/canvas.cpp > CMakeFiles/unimalen-ui.dir/src/canvas.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/canvas.cpp > CMakeFiles/unimalen-ui.dir/src/canvas.cpp.i
 
 CMakeFiles/unimalen-ui.dir/src/canvas.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-ui.dir/src/canvas.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/canvas.cpp -o CMakeFiles/unimalen-ui.dir/src/canvas.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/canvas.cpp -o CMakeFiles/unimalen-ui.dir/src/canvas.cpp.s
 
 CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o: CMakeFiles/unimalen-ui.dir/flags.make
-CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/tabwidget.cpp
+CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tabwidget.cpp
 CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o: CMakeFiles/unimalen-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/tabwidget.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tabwidget.cpp
 
 CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/tabwidget.cpp > CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tabwidget.cpp > CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.i
 
 CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/tabwidget.cpp -o CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tabwidget.cpp -o CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.s
 
 CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o: CMakeFiles/unimalen-ui.dir/flags.make
-CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/toolbar.cpp
+CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/toolbar.cpp
 CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o: CMakeFiles/unimalen-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/toolbar.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/toolbar.cpp
 
 CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/toolbar.cpp > CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/toolbar.cpp > CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.i
 
 CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/toolbar.cpp -o CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/toolbar.cpp -o CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.s
 
 CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.o: CMakeFiles/unimalen-ui.dir/flags.make
-CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/patternbar.cpp
+CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/patternbar.cpp
 CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.o: CMakeFiles/unimalen-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/patternbar.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/patternbar.cpp
 
 CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/patternbar.cpp > CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/patternbar.cpp > CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.i
 
 CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/patternbar.cpp -o CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/patternbar.cpp -o CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.s
 
 CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.o: CMakeFiles/unimalen-ui.dir/flags.make
-CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/thicknessbar.cpp
+CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/thicknessbar.cpp
 CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.o: CMakeFiles/unimalen-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/thicknessbar.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/thicknessbar.cpp
 
 CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/thicknessbar.cpp > CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/thicknessbar.cpp > CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.i
 
 CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/thicknessbar.cpp -o CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/thicknessbar.cpp -o CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.s
 
 CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o: CMakeFiles/unimalen-ui.dir/flags.make
-CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/layerpanel.cpp
+CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/layerpanel.cpp
 CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o: CMakeFiles/unimalen-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/layerpanel.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/layerpanel.cpp
 
 CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/layerpanel.cpp > CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/layerpanel.cpp > CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.i
 
 CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/layerpanel.cpp -o CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/layerpanel.cpp -o CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.s
 
 CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.o: CMakeFiles/unimalen-ui.dir/flags.make
-CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/colorbar.cpp
+CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/colorbar.cpp
 CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.o: CMakeFiles/unimalen-ui.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/colorbar.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.o -MF CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.o.d -o CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/colorbar.cpp
 
 CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/colorbar.cpp > CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/colorbar.cpp > CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.i
 
 CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/colorbar.cpp -o CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/colorbar.cpp -o CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.s
 
 # Object files for target unimalen-ui
 unimalen__ui_OBJECTS = \
@@ -231,7 +231,7 @@ libunimalen-ui.a: CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o
 libunimalen-ui.a: CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.o
 libunimalen-ui.a: CMakeFiles/unimalen-ui.dir/build.make
 libunimalen-ui.a: CMakeFiles/unimalen-ui.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX static library libunimalen-ui.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX static library libunimalen-ui.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/unimalen-ui.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/unimalen-ui.dir/link.txt --verbose=$(VERBOSE)
 
@@ -244,6 +244,6 @@ CMakeFiles/unimalen-ui.dir/clean:
 .PHONY : CMakeFiles/unimalen-ui.dir/clean
 
 CMakeFiles/unimalen-ui.dir/depend: unimalen-ui_autogen/timestamp
-	cd /home/kerntallett/Dropbox/mnt_reform/projects/malen/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kerntallett/Dropbox/mnt_reform/projects/malen /home/kerntallett/Dropbox/mnt_reform/projects/malen /home/kerntallett/Dropbox/mnt_reform/projects/malen/build /home/kerntallett/Dropbox/mnt_reform/projects/malen/build /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles/unimalen-ui.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen-ui.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/unimalen-ui.dir/depend
 

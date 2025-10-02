@@ -1,6 +1,6 @@
-/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/moc_layerpanel.cpp: /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/layerpanel.h \
-  /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/moc_predefs.h \
-  /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Layer.h \
+/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_layerpanel.cpp: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/layerpanel.h \
+  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/moc_predefs.h \
+  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Layer.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \

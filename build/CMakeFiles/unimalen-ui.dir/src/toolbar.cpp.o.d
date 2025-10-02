@@ -1,7 +1,7 @@
 CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o: \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/toolbar.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/toolbar.cpp \
  /usr/include/stdc-predef.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/toolbar.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/toolbar.h \
  /usr/include/qt6/QtWidgets/QWidget /usr/include/qt6/QtWidgets/qwidget.h \
  /usr/include/qt6/QtWidgets/qtwidgetsglobal.h \
  /usr/include/qt6/QtGui/qtguiglobal.h /usr/include/qt6/QtCore/qglobal.h \

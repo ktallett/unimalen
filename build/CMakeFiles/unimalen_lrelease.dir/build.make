@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/malen
+CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/malen/build
+CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
 
 # Utility rule file for unimalen_lrelease.
 
@@ -72,28 +72,28 @@ CMakeFiles/unimalen_lrelease: unimalen_fr.qm
 CMakeFiles/unimalen_lrelease: unimalen_de.qm
 
 unimalen_de.qm: /usr/lib64/qt6/bin/lrelease
-unimalen_de.qm: /home/kerntallett/Dropbox/mnt_reform/projects/malen/translations/unimalen_de.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating unimalen_de.qm"
-	/usr/bin/cmake -E make_directory /home/kerntallett/Dropbox/mnt_reform/projects/malen/build
-	/usr/lib64/qt6/bin/lrelease /home/kerntallett/Dropbox/mnt_reform/projects/malen/translations/unimalen_de.ts -qm /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen_de.qm
+unimalen_de.qm: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_de.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating unimalen_de.qm"
+	/usr/bin/cmake -E make_directory /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
+	/usr/lib64/qt6/bin/lrelease /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_de.ts -qm /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_de.qm
 
 unimalen_en.qm: /usr/lib64/qt6/bin/lrelease
-unimalen_en.qm: /home/kerntallett/Dropbox/mnt_reform/projects/malen/translations/unimalen_en.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating unimalen_en.qm"
-	/usr/bin/cmake -E make_directory /home/kerntallett/Dropbox/mnt_reform/projects/malen/build
-	/usr/lib64/qt6/bin/lrelease /home/kerntallett/Dropbox/mnt_reform/projects/malen/translations/unimalen_en.ts -qm /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen_en.qm
+unimalen_en.qm: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_en.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating unimalen_en.qm"
+	/usr/bin/cmake -E make_directory /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
+	/usr/lib64/qt6/bin/lrelease /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_en.ts -qm /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_en.qm
 
 unimalen_es.qm: /usr/lib64/qt6/bin/lrelease
-unimalen_es.qm: /home/kerntallett/Dropbox/mnt_reform/projects/malen/translations/unimalen_es.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating unimalen_es.qm"
-	/usr/bin/cmake -E make_directory /home/kerntallett/Dropbox/mnt_reform/projects/malen/build
-	/usr/lib64/qt6/bin/lrelease /home/kerntallett/Dropbox/mnt_reform/projects/malen/translations/unimalen_es.ts -qm /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen_es.qm
+unimalen_es.qm: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_es.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating unimalen_es.qm"
+	/usr/bin/cmake -E make_directory /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
+	/usr/lib64/qt6/bin/lrelease /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_es.ts -qm /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_es.qm
 
 unimalen_fr.qm: /usr/lib64/qt6/bin/lrelease
-unimalen_fr.qm: /home/kerntallett/Dropbox/mnt_reform/projects/malen/translations/unimalen_fr.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating unimalen_fr.qm"
-	/usr/bin/cmake -E make_directory /home/kerntallett/Dropbox/mnt_reform/projects/malen/build
-	/usr/lib64/qt6/bin/lrelease /home/kerntallett/Dropbox/mnt_reform/projects/malen/translations/unimalen_fr.ts -qm /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen_fr.qm
+unimalen_fr.qm: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_fr.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating unimalen_fr.qm"
+	/usr/bin/cmake -E make_directory /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
+	/usr/lib64/qt6/bin/lrelease /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_fr.ts -qm /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_fr.qm
 
 CMakeFiles/unimalen_lrelease.dir/codegen:
 .PHONY : CMakeFiles/unimalen_lrelease.dir/codegen
@@ -115,6 +115,6 @@ CMakeFiles/unimalen_lrelease.dir/clean:
 .PHONY : CMakeFiles/unimalen_lrelease.dir/clean
 
 CMakeFiles/unimalen_lrelease.dir/depend:
-	cd /home/kerntallett/Dropbox/mnt_reform/projects/malen/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kerntallett/Dropbox/mnt_reform/projects/malen /home/kerntallett/Dropbox/mnt_reform/projects/malen /home/kerntallett/Dropbox/mnt_reform/projects/malen/build /home/kerntallett/Dropbox/mnt_reform/projects/malen/build /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles/unimalen_lrelease.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen_lrelease.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/unimalen_lrelease.dir/depend
 

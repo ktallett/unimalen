@@ -1,8 +1,8 @@
 CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o: \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/tools/ToolManager.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/ToolManager.cpp \
  /usr/include/stdc-predef.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/tools/ToolManager.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/tools/Tool.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/ToolManager.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/Tool.h \
  /usr/include/qt6/QtCore/QPoint /usr/include/qt6/QtCore/qpoint.h \
  /usr/include/qt6/QtCore/qcompare.h /usr/include/qt6/QtCore/qglobal.h \
  /usr/include/c++/15/type_traits \

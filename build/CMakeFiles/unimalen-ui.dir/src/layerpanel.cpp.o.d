@@ -1,7 +1,7 @@
 CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o: \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/layerpanel.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/layerpanel.cpp \
  /usr/include/stdc-predef.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/layerpanel.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/layerpanel.h \
  /usr/include/qt6/QtWidgets/QWidget /usr/include/qt6/QtWidgets/qwidget.h \
  /usr/include/qt6/QtWidgets/qtwidgetsglobal.h \
  /usr/include/qt6/QtGui/qtguiglobal.h /usr/include/qt6/QtCore/qglobal.h \
@@ -379,7 +379,7 @@ CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o: \
  /usr/include/qt6/QtCore/qcoreapplication_platform.h \
  /usr/include/qt6/QtGui/qinputmethod.h \
  /usr/include/qt6/QtGui/qguiapplication_platform.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Layer.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Layer.h \
  /usr/include/qt6/QtGui/QPixmap /usr/include/qt6/QtGui/qpixmap.h \
  /usr/include/qt6/QtCore/QString /usr/include/qt6/QtCore/qstring.h \
  /usr/include/qt6/QtGui/QPainter /usr/include/qt6/QtGui/qpainter.h \

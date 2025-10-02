@@ -1,5 +1,5 @@
-/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/moc_thicknessbar.cpp: /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/thicknessbar.h \
-  /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/moc_predefs.h \
+/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_thicknessbar.cpp: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/thicknessbar.h \
+  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/moc_predefs.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \

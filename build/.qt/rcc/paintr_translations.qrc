@@ -1,9 +1,0 @@
-<RCC>
-  <qresource prefix="/i18n">
-    <file alias="paintr_en.qm">/home/kerntallett/Dropbox/mnt_reform/projects/paintr/build/paintr_en.qm</file>
-    <file alias="paintr_es.qm">/home/kerntallett/Dropbox/mnt_reform/projects/paintr/build/paintr_es.qm</file>
-    <file alias="paintr_fr.qm">/home/kerntallett/Dropbox/mnt_reform/projects/paintr/build/paintr_fr.qm</file>
-    <file alias="paintr_de.qm">/home/kerntallett/Dropbox/mnt_reform/projects/paintr/build/paintr_de.qm</file>
-  </qresource>
-</RCC>
-

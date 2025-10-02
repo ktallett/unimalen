@@ -1,8 +1,8 @@
 CMakeFiles/unimalen-core.dir/src/core/Page.cpp.o: \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Page.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Page.cpp \
  /usr/include/stdc-predef.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Page.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Layer.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Page.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Layer.h \
  /usr/include/qt6/QtGui/QPixmap /usr/include/qt6/QtGui/qpixmap.h \
  /usr/include/qt6/QtGui/qtguiglobal.h /usr/include/qt6/QtCore/qglobal.h \
  /usr/include/c++/15/type_traits \

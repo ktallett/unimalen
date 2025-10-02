@@ -1,5 +1,5 @@
 CMakeFiles/unimalen.dir/src/main.cpp.o: \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/main.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/main.cpp \
  /usr/include/stdc-predef.h /usr/include/qt6/QtWidgets/QApplication \
  /usr/include/qt6/QtWidgets/qapplication.h \
  /usr/include/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -327,7 +327,7 @@ CMakeFiles/unimalen.dir/src/main.cpp.o: \
  /usr/include/qt6/QtCore/qset.h /usr/include/qt6/QtCore/qhash.h \
  /usr/include/qt6/QtCore/qvarlengtharray.h \
  /usr/include/qt6/QtGui/qguiapplication_platform.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/mainwindow.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/mainwindow.h \
  /usr/include/qt6/QtWidgets/QMainWindow \
  /usr/include/qt6/QtWidgets/qmainwindow.h \
  /usr/include/qt6/QtWidgets/qwidget.h /usr/include/qt6/QtGui/qaction.h \
@@ -367,6 +367,6 @@ CMakeFiles/unimalen.dir/src/main.cpp.o: \
  /usr/include/qt6/QtGui/QResizeEvent /usr/include/qt6/QtGui/QMoveEvent \
  /usr/include/qt6/QtWidgets/QLabel /usr/include/qt6/QtWidgets/qlabel.h \
  /usr/include/qt6/QtGui/qpicture.h /usr/include/qt6/QtGui/qtextdocument.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Types.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Types.h \
  /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/QString \
  /usr/include/qt6/QtCore/qstring.h

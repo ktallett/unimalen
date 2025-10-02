@@ -1,6 +1,6 @@
-/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-tools_autogen/MR466ZQLAD/moc_ToolManager.cpp: /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/tools/ToolManager.h \
-  /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-tools_autogen/moc_predefs.h \
-  /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/tools/Tool.h \
+/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/MR466ZQLAD/moc_ToolManager.cpp: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/ToolManager.h \
+  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/moc_predefs.h \
+  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/Tool.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \

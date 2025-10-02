@@ -1,9 +1,0 @@
-<RCC>
-  <qresource prefix="/i18n">
-    <file alias="malen_en.qm">/home/kerntallett/Dropbox/mnt_reform/projects/paintr/build/malen_en.qm</file>
-    <file alias="malen_es.qm">/home/kerntallett/Dropbox/mnt_reform/projects/paintr/build/malen_es.qm</file>
-    <file alias="malen_fr.qm">/home/kerntallett/Dropbox/mnt_reform/projects/paintr/build/malen_fr.qm</file>
-    <file alias="malen_de.qm">/home/kerntallett/Dropbox/mnt_reform/projects/paintr/build/malen_de.qm</file>
-  </qresource>
-</RCC>
-

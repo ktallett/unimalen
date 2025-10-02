@@ -1,8 +1,8 @@
 CMakeFiles/unimalen-core.dir/src/core/Document.cpp.o: \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Document.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Document.cpp \
  /usr/include/stdc-predef.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Document.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Layer.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Document.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Layer.h \
  /usr/include/qt6/QtGui/QPixmap /usr/include/qt6/QtGui/qpixmap.h \
  /usr/include/qt6/QtGui/qtguiglobal.h /usr/include/qt6/QtCore/qglobal.h \
  /usr/include/c++/15/type_traits \
@@ -300,9 +300,9 @@ CMakeFiles/unimalen-core.dir/src/core/Document.cpp.o: \
  /usr/include/qt6/QtGui/qfont.h /usr/include/qt6/QtCore/qendian.h \
  /usr/include/qt6/QtGui/qfontvariableaxis.h \
  /usr/include/qt6/QtGui/qfontmetrics.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Page.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Page.h \
  /usr/include/qt6/QtCore/QList /usr/include/qt6/QtCore/qlist.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Types.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Types.h \
  /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/qsize.h \
  /usr/include/qt6/QtCore/QDir /usr/include/qt6/QtCore/qdir.h \
  /usr/include/qt6/QtCore/qdirlisting.h \

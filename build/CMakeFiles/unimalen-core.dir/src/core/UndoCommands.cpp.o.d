@@ -1,7 +1,7 @@
 CMakeFiles/unimalen-core.dir/src/core/UndoCommands.cpp.o: \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/UndoCommands.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/UndoCommands.cpp \
  /usr/include/stdc-predef.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/UndoCommands.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/UndoCommands.h \
  /usr/include/qt6/QtGui/QUndoCommand /usr/include/qt6/QtGui/qundostack.h \
  /usr/include/qt6/QtGui/qtguiglobal.h /usr/include/qt6/QtCore/qglobal.h \
  /usr/include/c++/15/type_traits \
@@ -298,7 +298,7 @@ CMakeFiles/unimalen-core.dir/src/core/UndoCommands.cpp.o: \
  /usr/include/qt6/QtGui/qregion.h /usr/include/qt6/QtCore/qspan.h \
  /usr/include/c++/15/cassert /usr/include/qt6/QtCore/q20iterator.h \
  /usr/include/qt6/QtCore/qline.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Layer.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Layer.h \
  /usr/include/qt6/QtCore/QString /usr/include/qt6/QtCore/qstring.h \
  /usr/include/qt6/QtGui/QPainter /usr/include/qt6/QtGui/qpainter.h \
  /usr/include/qt6/QtGui/qpixmap.h /usr/include/qt6/QtGui/qtextoption.h \

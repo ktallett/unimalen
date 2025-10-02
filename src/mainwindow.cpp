@@ -904,6 +904,16 @@ void MainWindow::connectCanvasSignals(Canvas *canvas)
     connect(canvas, &Canvas::layersChanged, this, &MainWindow::onLayersChanged);
     connect(canvas, &Canvas::currentLayerChanged, this, &MainWindow::onCurrentLayerChanged);
 
+    // Connect document modified signal to update window title
+    connect(canvas, &Canvas::documentModified, this, [this]() {
+        Canvas *canvas = getCurrentCanvas();
+        if (canvas) {
+            QString currentTabName = m_tabWidget->tabName(m_tabWidget->currentIndex());
+            QString title = QString("unimalen - %1%2").arg(currentTabName).arg(canvas->isModified() ? " *" : "");
+            setWindowTitle(title);
+        }
+    });
+
     // Connect layer panel signals to canvas operations
     connect(m_layerPanel, &LayerPanel::layerSelected, this, &MainWindow::onLayerSelected);
     connect(m_layerPanel, &LayerPanel::layerAdded, this, &MainWindow::onLayerAdded);
@@ -1004,23 +1014,36 @@ void MainWindow::moveEvent(QMoveEvent *event)
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    QMessageBox::StandardButton reply = QMessageBox::question(
-        this,
-        tr("Quit unimalen"),
-        tr("Are you sure you want to quit?"),
-        QMessageBox::Yes | QMessageBox::No,
-        QMessageBox::No  // Default to No
-    );
-
-    if (reply == QMessageBox::Yes) {
-        // Close all floating toolbars before quitting
-        m_toolBar->close();
-        m_patternBar->close();
-        m_thicknessBar->close();
-        event->accept();
-    } else {
-        event->ignore();
+    // Check for unsaved changes in all tabs
+    bool hasUnsavedChanges = false;
+    for (int i = 0; i < m_tabWidget->count(); ++i) {
+        Canvas *canvas = m_tabWidget->canvasAt(i);
+        if (canvas && canvas->isModified()) {
+            hasUnsavedChanges = true;
+            break;
+        }
     }
+
+    if (hasUnsavedChanges) {
+        QMessageBox::StandardButton reply = QMessageBox::question(
+            this,
+            tr("Quit unimalen"),
+            tr("You have unsaved changes. Are you sure you want to quit?"),
+            QMessageBox::Yes | QMessageBox::No,
+            QMessageBox::No  // Default to No
+        );
+
+        if (reply != QMessageBox::Yes) {
+            event->ignore();
+            return;
+        }
+    }
+
+    // Close all floating toolbars before quitting
+    m_toolBar->close();
+    m_patternBar->close();
+    m_thicknessBar->close();
+    event->accept();
 }
 
 void MainWindow::setPageSize(Unimalen::PageSize size)

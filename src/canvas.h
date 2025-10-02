@@ -28,6 +28,7 @@ class Canvas : public QWidget
 signals:
     void layersChanged();
     void currentLayerChanged(int index);
+    void documentModified();
 
 public:
     explicit Canvas(QWidget *parent = nullptr);
@@ -142,6 +143,11 @@ public:
 
     // Multi-page support
     void updateCanvasSize();
+
+    // Document state
+    bool isModified() const { return m_isModified; }
+    void setModified(bool modified);
+    QString filePath() const { return m_filePath; }
 
 protected:
     void paintEvent(QPaintEvent *event) override;
@@ -269,4 +275,8 @@ private:
     QUndoStack *m_undoStack;
     QPixmap m_canvasBeforeEdit;
     void saveCanvasState();
+
+    // Document state
+    bool m_isModified;
+    QString m_filePath;
 };

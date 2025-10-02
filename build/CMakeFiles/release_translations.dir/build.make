@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/malen
+CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/malen/build
+CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
 
 # Utility rule file for release_translations.
 
@@ -81,6 +81,6 @@ CMakeFiles/release_translations.dir/clean:
 .PHONY : CMakeFiles/release_translations.dir/clean
 
 CMakeFiles/release_translations.dir/depend:
-	cd /home/kerntallett/Dropbox/mnt_reform/projects/malen/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kerntallett/Dropbox/mnt_reform/projects/malen /home/kerntallett/Dropbox/mnt_reform/projects/malen /home/kerntallett/Dropbox/mnt_reform/projects/malen/build /home/kerntallett/Dropbox/mnt_reform/projects/malen/build /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles/release_translations.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/release_translations.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/release_translations.dir/depend
 

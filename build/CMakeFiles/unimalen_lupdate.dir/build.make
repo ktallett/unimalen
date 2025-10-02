@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/malen
+CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/malen/build
+CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
 
 # Utility rule file for unimalen_lupdate.
 
@@ -67,8 +67,8 @@ include CMakeFiles/unimalen_lupdate.dir/compiler_depend.make
 include CMakeFiles/unimalen_lupdate.dir/progress.make
 
 CMakeFiles/unimalen_lupdate: /usr/lib64/qt6/bin/lupdate
-	/usr/bin/cmake -DIN_FILE=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/.lupdate/unimalen_lupdate_project.cmake -DOUT_FILE=/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/.lupdate/unimalen_lupdate_project.json -P /usr/lib64/cmake/Qt6LinguistTools/GenerateLUpdateProject.cmake
-	/usr/lib64/qt6/bin/lupdate -project /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/.lupdate/unimalen_lupdate_project.json
+	/usr/bin/cmake -DIN_FILE=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/.lupdate/unimalen_lupdate_project.cmake -DOUT_FILE=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/.lupdate/unimalen_lupdate_project.json -P /usr/lib64/cmake/Qt6LinguistTools/GenerateLUpdateProject.cmake
+	/usr/lib64/qt6/bin/lupdate -project /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/.lupdate/unimalen_lupdate_project.json
 
 CMakeFiles/unimalen_lupdate.dir/codegen:
 .PHONY : CMakeFiles/unimalen_lupdate.dir/codegen
@@ -86,6 +86,6 @@ CMakeFiles/unimalen_lupdate.dir/clean:
 .PHONY : CMakeFiles/unimalen_lupdate.dir/clean
 
 CMakeFiles/unimalen_lupdate.dir/depend:
-	cd /home/kerntallett/Dropbox/mnt_reform/projects/malen/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kerntallett/Dropbox/mnt_reform/projects/malen /home/kerntallett/Dropbox/mnt_reform/projects/malen /home/kerntallett/Dropbox/mnt_reform/projects/malen/build /home/kerntallett/Dropbox/mnt_reform/projects/malen/build /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/CMakeFiles/unimalen_lupdate.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen_lupdate.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/unimalen_lupdate.dir/depend
 

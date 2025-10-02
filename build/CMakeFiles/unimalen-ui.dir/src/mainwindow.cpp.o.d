@@ -1,7 +1,7 @@
 CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/mainwindow.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/mainwindow.cpp \
  /usr/include/stdc-predef.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/mainwindow.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/mainwindow.h \
  /usr/include/qt6/QtWidgets/QMainWindow \
  /usr/include/qt6/QtWidgets/qmainwindow.h \
  /usr/include/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -364,10 +364,10 @@ CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: \
  /usr/include/qt6/QtGui/QResizeEvent /usr/include/qt6/QtGui/QMoveEvent \
  /usr/include/qt6/QtWidgets/QLabel /usr/include/qt6/QtWidgets/qlabel.h \
  /usr/include/qt6/QtGui/qpicture.h /usr/include/qt6/QtGui/qtextdocument.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Types.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Types.h \
  /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/QString \
  /usr/include/qt6/QtCore/qstring.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/canvas.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/canvas.h \
  /usr/include/qt6/QtWidgets/QWidget /usr/include/qt6/QtWidgets/qwidget.h \
  /usr/include/qt6/QtGui/QPixmap /usr/include/qt6/QtGui/qpixmap.h \
  /usr/include/qt6/QtGui/QPainter /usr/include/qt6/QtGui/qpainter.h \
@@ -385,22 +385,22 @@ CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: \
  /usr/include/qt6/QtGui/QPainterPathStroker \
  /usr/include/qt6/QtGui/QUndoStack /usr/include/qt6/QtGui/qundostack.h \
  /usr/include/qt6/QtGui/QUndoCommand \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/patternbar.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/patternbar.h \
  /usr/include/qt6/QtWidgets/QGridLayout \
  /usr/include/qt6/QtWidgets/qgridlayout.h \
  /usr/include/qt6/QtWidgets/QToolButton \
  /usr/include/qt6/QtWidgets/qtoolbutton.h \
  /usr/include/qt6/QtWidgets/qabstractbutton.h \
  /usr/include/qt6/QtGui/QBrush /usr/include/qt6/QtGui/qbrush.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Layer.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Document.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Page.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Layer.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Document.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Page.h \
  /usr/include/qt6/QtCore/QList \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/tabwidget.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tabwidget.h \
  /usr/include/qt6/QtWidgets/QTabWidget \
  /usr/include/qt6/QtWidgets/qtabwidget.h \
  /usr/include/qt6/QtWidgets/QVBoxLayout \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/toolbar.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/toolbar.h \
  /usr/include/qt6/QtWidgets/QMenu /usr/include/qt6/QtWidgets/qmenu.h \
  /usr/include/qt6/QtGui/QAction /usr/include/qt6/QtGui/qaction.h \
  /usr/include/qt6/QtWidgets/QComboBox \
@@ -415,8 +415,8 @@ CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: \
  /usr/include/qt6/QtWidgets/qstyle.h /usr/include/qt6/QtWidgets/qtabbar.h \
  /usr/include/qt6/QtWidgets/qrubberband.h \
  /usr/include/qt6/QtCore/qabstractitemmodel.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/thicknessbar.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/layerpanel.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/thicknessbar.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/layerpanel.h \
  /usr/include/qt6/QtWidgets/QListWidget \
  /usr/include/qt6/QtWidgets/qlistwidget.h \
  /usr/include/qt6/QtWidgets/qlistview.h \
@@ -426,7 +426,7 @@ CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: \
  /usr/include/qt6/QtWidgets/qpushbutton.h \
  /usr/include/qt6/QtWidgets/QSlider /usr/include/qt6/QtWidgets/qslider.h \
  /usr/include/qt6/QtWidgets/QListWidgetItem \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/colorbar.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/colorbar.h \
  /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtGui/qcolor.h \
  /usr/include/qt6/QtWidgets/QApplication \
  /usr/include/qt6/QtWidgets/qapplication.h \

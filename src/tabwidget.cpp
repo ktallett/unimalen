@@ -4,6 +4,9 @@
 #include <QVBoxLayout>
 #include <QScrollArea>
 #include <QFileInfo>
+#include <QMessageBox>
+#include <QFileDialog>
+#include <QStandardPaths>
 
 TabWidget::TabWidget(QWidget *parent)
     : QWidget(parent)
@@ -183,6 +186,38 @@ void TabWidget::onCurrentChanged(int index)
 
 void TabWidget::onTabCloseRequested(int index)
 {
+    Canvas *canvas = canvasAt(index);
+    if (canvas && canvas->isModified()) {
+        QString tabName = m_tabWidget->tabText(index);
+        QMessageBox::StandardButton reply = QMessageBox::question(
+            this,
+            tr("Save Document"),
+            tr("Do you want to save changes to \"%1\"?").arg(tabName),
+            QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel,
+            QMessageBox::Save
+        );
+
+        if (reply == QMessageBox::Save) {
+            QString fileName = canvas->filePath();
+            if (fileName.isEmpty()) {
+                fileName = QFileDialog::getSaveFileName(this,
+                    tr("Save Document"),
+                    QStandardPaths::writableLocation(QStandardPaths::PicturesLocation) + "/" + tabName + ".ora",
+                    tr("OpenRaster Files (*.ora);;PNG Files (*.png)"));
+                if (fileName.isEmpty()) {
+                    return; // User cancelled save dialog
+                }
+            }
+            if (!canvas->saveCanvas(fileName)) {
+                QMessageBox::warning(this, tr("Save Error"), tr("Failed to save document"));
+                return;
+            }
+        } else if (reply == QMessageBox::Cancel) {
+            return; // Don't close the tab
+        }
+        // If Discard, continue to close the tab
+    }
+
     closeTab(index);
     emit tabCloseRequested(index);
 }

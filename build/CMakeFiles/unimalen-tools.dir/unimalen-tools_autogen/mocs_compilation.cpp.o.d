@@ -1,9 +1,9 @@
 CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.o: \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-tools_autogen/mocs_compilation.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/mocs_compilation.cpp \
  /usr/include/stdc-predef.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-tools_autogen/MR466ZQLAD/moc_ToolManager.cpp \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-tools_autogen/MR466ZQLAD/../../../src/tools/ToolManager.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-tools_autogen/MR466ZQLAD/../../../src/tools/Tool.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/MR466ZQLAD/moc_ToolManager.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/MR466ZQLAD/../../../src/tools/ToolManager.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/MR466ZQLAD/../../../src/tools/Tool.h \
  /usr/include/qt6/QtCore/QPoint /usr/include/qt6/QtCore/qpoint.h \
  /usr/include/qt6/QtCore/qcompare.h /usr/include/qt6/QtCore/qglobal.h \
  /usr/include/c++/15/type_traits \

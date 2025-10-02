@@ -1,8 +1,8 @@
 CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/mocs_compilation.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/mocs_compilation.cpp \
  /usr/include/stdc-predef.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/moc_canvas.cpp \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/canvas.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_canvas.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/canvas.h \
  /usr/include/qt6/QtWidgets/QWidget /usr/include/qt6/QtWidgets/qwidget.h \
  /usr/include/qt6/QtWidgets/qtwidgetsglobal.h \
  /usr/include/qt6/QtGui/qtguiglobal.h /usr/include/qt6/QtCore/qglobal.h \
@@ -364,7 +364,7 @@ CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt6/QtGui/QPainterPathStroker \
  /usr/include/qt6/QtGui/QUndoStack /usr/include/qt6/QtGui/qundostack.h \
  /usr/include/qt6/QtGui/QUndoCommand \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/patternbar.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/patternbar.h \
  /usr/include/qt6/QtWidgets/QGridLayout \
  /usr/include/qt6/QtWidgets/qgridlayout.h \
  /usr/include/qt6/QtWidgets/qlayout.h \
@@ -376,23 +376,23 @@ CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt6/QtWidgets/qabstractbutton.h \
  /usr/include/qt6/QtGui/QBrush /usr/include/qt6/QtGui/qbrush.h \
  /usr/include/qt6/QtGui/QCloseEvent \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/core/Layer.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/core/Layer.h \
  /usr/include/qt6/QtCore/QString /usr/include/qt6/QtCore/qstring.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/core/Document.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/core/Page.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/core/Document.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/core/Page.h \
  /usr/include/qt6/QtCore/QList \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/core/Types.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/core/Types.h \
  /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/qtmochelpers.h \
  /usr/include/qt6/QtCore/qtmocconstants.h \
  /usr/include/qt6/QtCore/q20algorithm.h \
  /usr/include/qt6/QtCore/q23type_traits.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/moc_colorbar.cpp \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/colorbar.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_colorbar.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/colorbar.h \
  /usr/include/qt6/QtWidgets/QPushButton \
  /usr/include/qt6/QtWidgets/qpushbutton.h /usr/include/qt6/QtGui/QColor \
  /usr/include/qt6/QtGui/qcolor.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/moc_layerpanel.cpp \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/layerpanel.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_layerpanel.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/layerpanel.h \
  /usr/include/qt6/QtWidgets/QVBoxLayout \
  /usr/include/qt6/QtWidgets/qboxlayout.h \
  /usr/include/qt6/QtWidgets/QListWidget \
@@ -417,8 +417,8 @@ CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt6/QtWidgets/qcombobox.h /usr/include/qt6/QtWidgets/QLabel \
  /usr/include/qt6/QtWidgets/qlabel.h /usr/include/qt6/QtGui/qpicture.h \
  /usr/include/qt6/QtWidgets/QListWidgetItem \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/moc_mainwindow.cpp \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/mainwindow.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_mainwindow.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/mainwindow.h \
  /usr/include/qt6/QtWidgets/QMainWindow \
  /usr/include/qt6/QtWidgets/qmainwindow.h \
  /usr/include/qt6/QtWidgets/QMenuBar \
@@ -429,14 +429,14 @@ CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt6/QtGui/QActionGroup \
  /usr/include/qt6/QtGui/qactiongroup.h \
  /usr/include/qt6/QtGui/QResizeEvent /usr/include/qt6/QtGui/QMoveEvent \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/moc_patternbar.cpp \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/moc_tabwidget.cpp \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/tabwidget.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_patternbar.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_tabwidget.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/tabwidget.h \
  /usr/include/qt6/QtWidgets/QTabWidget \
  /usr/include/qt6/QtWidgets/qtabwidget.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/moc_thicknessbar.cpp \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/thicknessbar.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/moc_toolbar.cpp \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/toolbar.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_thicknessbar.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/thicknessbar.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_toolbar.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/toolbar.h \
  /usr/include/qt6/QtWidgets/QMenu /usr/include/qt6/QtWidgets/qmenu.h \
  /usr/include/qt6/QtGui/QAction /usr/include/qt6/QtGui/qaction.h

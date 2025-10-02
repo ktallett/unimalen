@@ -4,7 +4,7 @@
 # compile CXX with /usr/lib64/ccache/c++
 CXX_DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB
 
-CXX_INCLUDES = -I/home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen_autogen/include -I/home/kerntallett/Dropbox/mnt_reform/projects/malen/src -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6/QtWidgets
+CXX_INCLUDES = -I/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_autogen/include -I/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib64/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -isystem /usr/include/qt6/QtWidgets
 
 CXX_FLAGS = -std=gnu++17
 

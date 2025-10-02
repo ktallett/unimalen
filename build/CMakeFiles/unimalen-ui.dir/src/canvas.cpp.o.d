@@ -1,7 +1,7 @@
 CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o: \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/canvas.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/canvas.cpp \
  /usr/include/stdc-predef.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/canvas.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/canvas.h \
  /usr/include/qt6/QtWidgets/QWidget /usr/include/qt6/QtWidgets/qwidget.h \
  /usr/include/qt6/QtWidgets/qtwidgetsglobal.h \
  /usr/include/qt6/QtGui/qtguiglobal.h /usr/include/qt6/QtCore/qglobal.h \
@@ -363,7 +363,7 @@ CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o: \
  /usr/include/qt6/QtGui/QPainterPathStroker \
  /usr/include/qt6/QtGui/QUndoStack /usr/include/qt6/QtGui/qundostack.h \
  /usr/include/qt6/QtGui/QUndoCommand \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/patternbar.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/patternbar.h \
  /usr/include/qt6/QtWidgets/QGridLayout \
  /usr/include/qt6/QtWidgets/qgridlayout.h \
  /usr/include/qt6/QtWidgets/qlayout.h \
@@ -375,12 +375,12 @@ CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o: \
  /usr/include/qt6/QtWidgets/qabstractbutton.h \
  /usr/include/qt6/QtGui/QBrush /usr/include/qt6/QtGui/qbrush.h \
  /usr/include/qt6/QtGui/QCloseEvent \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Layer.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Layer.h \
  /usr/include/qt6/QtCore/QString /usr/include/qt6/QtCore/qstring.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Document.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Page.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Document.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Page.h \
  /usr/include/qt6/QtCore/QList \
- /home/kerntallett/Dropbox/mnt_reform/projects/malen/src/core/Types.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Types.h \
  /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtGui/QPaintEvent \
  /usr/include/qt6/QtWidgets/QFileDialog \
  /usr/include/qt6/QtWidgets/qfiledialog.h /usr/include/qt6/QtCore/qdir.h \
