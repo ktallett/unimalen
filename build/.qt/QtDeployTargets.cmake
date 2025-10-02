@@ -1,0 +1,8 @@
+set(__QT_DEPLOY_TARGET_unimalen-core_FILE /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/libunimalen-core.a)
+set(__QT_DEPLOY_TARGET_unimalen-core_TYPE STATIC_LIBRARY)
+set(__QT_DEPLOY_TARGET_unimalen-tools_FILE /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/libunimalen-tools.a)
+set(__QT_DEPLOY_TARGET_unimalen-tools_TYPE STATIC_LIBRARY)
+set(__QT_DEPLOY_TARGET_unimalen-ui_FILE /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/libunimalen-ui.a)
+set(__QT_DEPLOY_TARGET_unimalen-ui_TYPE STATIC_LIBRARY)
+set(__QT_DEPLOY_TARGET_unimalen_FILE /home/kerntallett/Dropbox/mnt_reform/projects/malen/build/unimalen)
+set(__QT_DEPLOY_TARGET_unimalen_TYPE EXECUTABLE)

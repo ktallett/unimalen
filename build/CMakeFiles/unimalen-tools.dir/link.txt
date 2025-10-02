@@ -1,0 +1,2 @@
+/usr/bin/ar qc libunimalen-tools.a "CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.o" "CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o" "CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o" "CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o" "CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o" "CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o"
+/usr/bin/ranlib libunimalen-tools.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libunimalen-core.a "CMakeFiles/unimalen-core.dir/unimalen-core_autogen/mocs_compilation.cpp.o" "CMakeFiles/unimalen-core.dir/src/core/Layer.cpp.o" "CMakeFiles/unimalen-core.dir/src/core/Page.cpp.o" "CMakeFiles/unimalen-core.dir/src/core/Document.cpp.o" "CMakeFiles/unimalen-core.dir/src/core/UndoCommands.cpp.o"
+/usr/bin/ranlib libunimalen-core.a
