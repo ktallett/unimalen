@@ -147,6 +147,19 @@ private:
     QAction *m_notoSansFontAction;
     QAction *m_notoSansCJKFontAction;
     QAction *m_dejavuSansFontAction;
+
+    // Zine font actions
+    QAction *m_specialEliteFontAction;      // Typewriter
+    QAction *m_permanentMarkerFontAction;   // Hand marker
+    QAction *m_bangersFontAction;           // Comic
+    QAction *m_creepsterFontAction;         // Horror
+    QAction *m_pressStart2PFontAction;      // Pixel/retro
+    QAction *m_caveatFontAction;            // Handwriting
+    QAction *m_indieFlowerFontAction;       // Handwriting
+    QAction *m_vt323FontAction;             // Terminal/VT
+    QAction *m_robotoMonoFontAction;        // Modern mono
+    QAction *m_amaticFontAction;            // Casual handwriting
+    QAction *m_satisfyFontAction;           // Script/cursive
     QActionGroup *m_fontGroup;
 
     // Font size menu actions

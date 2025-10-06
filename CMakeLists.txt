@@ -92,3 +92,9 @@ set_target_properties(unimalen PROPERTIES
     WIN32_EXECUTABLE TRUE
     MACOSX_BUNDLE TRUE
 )
+
+# Install fonts
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/fonts/
+    DESTINATION share/unimalen/fonts
+    FILES_MATCHING PATTERN "*.ttf"
+)

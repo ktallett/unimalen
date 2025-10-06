@@ -243,6 +243,51 @@ void MainWindow::createActions()
     m_dejavuSansFontAction->setCheckable(true);
     connect(m_dejavuSansFontAction, &QAction::triggered, this, [this]() { onFontChanged("DejaVu Sans"); });
 
+    // Zine font actions
+    m_specialEliteFontAction = new QAction("Special Elite (Typewriter)", this);
+    m_specialEliteFontAction->setCheckable(true);
+    connect(m_specialEliteFontAction, &QAction::triggered, this, [this]() { onFontChanged("Special Elite"); });
+
+    m_permanentMarkerFontAction = new QAction("Permanent Marker", this);
+    m_permanentMarkerFontAction->setCheckable(true);
+    connect(m_permanentMarkerFontAction, &QAction::triggered, this, [this]() { onFontChanged("Permanent Marker"); });
+
+    m_bangersFontAction = new QAction("Bangers (Comic)", this);
+    m_bangersFontAction->setCheckable(true);
+    connect(m_bangersFontAction, &QAction::triggered, this, [this]() { onFontChanged("Bangers"); });
+
+    m_creepsterFontAction = new QAction("Creepster (Horror)", this);
+    m_creepsterFontAction->setCheckable(true);
+    connect(m_creepsterFontAction, &QAction::triggered, this, [this]() { onFontChanged("Creepster"); });
+
+    m_pressStart2PFontAction = new QAction("Press Start 2P (Pixel)", this);
+    m_pressStart2PFontAction->setCheckable(true);
+    connect(m_pressStart2PFontAction, &QAction::triggered, this, [this]() { onFontChanged("Press Start 2P"); });
+
+    m_caveatFontAction = new QAction("Caveat (Handwriting)", this);
+    m_caveatFontAction->setCheckable(true);
+    connect(m_caveatFontAction, &QAction::triggered, this, [this]() { onFontChanged("Caveat"); });
+
+    m_indieFlowerFontAction = new QAction("Indie Flower (Handwriting)", this);
+    m_indieFlowerFontAction->setCheckable(true);
+    connect(m_indieFlowerFontAction, &QAction::triggered, this, [this]() { onFontChanged("Indie Flower"); });
+
+    m_vt323FontAction = new QAction("VT323 (Terminal)", this);
+    m_vt323FontAction->setCheckable(true);
+    connect(m_vt323FontAction, &QAction::triggered, this, [this]() { onFontChanged("VT323"); });
+
+    m_robotoMonoFontAction = new QAction("Roboto Mono", this);
+    m_robotoMonoFontAction->setCheckable(true);
+    connect(m_robotoMonoFontAction, &QAction::triggered, this, [this]() { onFontChanged("Roboto Mono"); });
+
+    m_amaticFontAction = new QAction("Amatic SC (Casual)", this);
+    m_amaticFontAction->setCheckable(true);
+    connect(m_amaticFontAction, &QAction::triggered, this, [this]() { onFontChanged("Amatic SC"); });
+
+    m_satisfyFontAction = new QAction("Satisfy (Script)", this);
+    m_satisfyFontAction->setCheckable(true);
+    connect(m_satisfyFontAction, &QAction::triggered, this, [this]() { onFontChanged("Satisfy"); });
+
     m_fontGroup = new QActionGroup(this);
     m_fontGroup->addAction(m_courierFontAction);
     m_fontGroup->addAction(m_openSansFontAction);
@@ -250,6 +295,17 @@ void MainWindow::createActions()
     m_fontGroup->addAction(m_notoSansFontAction);
     m_fontGroup->addAction(m_notoSansCJKFontAction);
     m_fontGroup->addAction(m_dejavuSansFontAction);
+    m_fontGroup->addAction(m_specialEliteFontAction);
+    m_fontGroup->addAction(m_permanentMarkerFontAction);
+    m_fontGroup->addAction(m_bangersFontAction);
+    m_fontGroup->addAction(m_creepsterFontAction);
+    m_fontGroup->addAction(m_pressStart2PFontAction);
+    m_fontGroup->addAction(m_caveatFontAction);
+    m_fontGroup->addAction(m_indieFlowerFontAction);
+    m_fontGroup->addAction(m_vt323FontAction);
+    m_fontGroup->addAction(m_robotoMonoFontAction);
+    m_fontGroup->addAction(m_amaticFontAction);
+    m_fontGroup->addAction(m_satisfyFontAction);
 
     // Font size actions
     m_fontSize8Action = new QAction("8", this);
@@ -425,6 +481,23 @@ void MainWindow::createMenus()
     fontMenu->addAction(m_notoSansFontAction);
     fontMenu->addAction(m_notoSansCJKFontAction);
     fontMenu->addAction(m_dejavuSansFontAction);
+    fontMenu->addSeparator();
+
+    // Zine fonts submenu
+    QMenu *zineFontsMenu = fontMenu->addMenu(tr("&Zine Fonts"));
+    zineFontsMenu->addAction(m_specialEliteFontAction);
+    zineFontsMenu->addAction(m_permanentMarkerFontAction);
+    zineFontsMenu->addAction(m_bangersFontAction);
+    zineFontsMenu->addAction(m_creepsterFontAction);
+    zineFontsMenu->addAction(m_pressStart2PFontAction);
+    zineFontsMenu->addSeparator();
+    zineFontsMenu->addAction(m_caveatFontAction);
+    zineFontsMenu->addAction(m_indieFlowerFontAction);
+    zineFontsMenu->addAction(m_satisfyFontAction);
+    zineFontsMenu->addAction(m_amaticFontAction);
+    zineFontsMenu->addSeparator();
+    zineFontsMenu->addAction(m_vt323FontAction);
+    zineFontsMenu->addAction(m_robotoMonoFontAction);
 
     QMenu *fontSizeMenu = menuBar()->addMenu(tr("Font &Size"));
     fontSizeMenu->addAction(m_fontSize8Action);

@@ -8,6 +8,10 @@
 /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/release_translations.dir
 /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/edit_cache.dir
 /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/rebuild_cache.dir
+/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/list_install_components.dir
+/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/install.dir
+/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/install/local.dir
+/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/install/strip.dir
 /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen-core_autogen_timestamp_deps.dir
 /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen-core_autogen.dir
 /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen-tools_autogen_timestamp_deps.dir
