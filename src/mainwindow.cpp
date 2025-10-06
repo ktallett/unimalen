@@ -1055,6 +1055,45 @@ void MainWindow::insertImage()
     }
 }
 
+void MainWindow::convertToBlackAndWhite()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    // Get the current layer
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    // Convert to QImage for pixel manipulation
+    QImage image = layerPixmap.toImage();
+    if (image.isNull()) return;
+
+    // Convert to grayscale first
+    image = image.convertToFormat(QImage::Format_Grayscale8);
+
+    // Apply threshold to create pure black and white (no grays)
+    int threshold = 128;  // Middle gray value
+    for (int y = 0; y < image.height(); ++y) {
+        for (int x = 0; x < image.width(); ++x) {
+            QColor pixel = image.pixelColor(x, y);
+            int gray = pixel.red();  // In grayscale, R=G=B
+            if (gray < threshold) {
+                image.setPixelColor(x, y, Qt::black);
+            } else {
+                image.setPixelColor(x, y, Qt::white);
+            }
+        }
+    }
+
+    // Apply the converted image back to the layer
+    currentLayer.pixmap() = QPixmap::fromImage(image);
+
+    // Update the canvas
+    canvas->compositeAllLayers();
+    canvas->update();
+    canvas->setModified(true);
+}
+
 // Page management
 void MainWindow::onPageAdded()
 {
