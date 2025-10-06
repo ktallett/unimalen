@@ -429,6 +429,8 @@ CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt6/QtGui/QActionGroup \
  /usr/include/qt6/QtGui/qactiongroup.h \
  /usr/include/qt6/QtGui/QResizeEvent /usr/include/qt6/QtGui/QMoveEvent \
+ /usr/include/qt6/QtWidgets/QDockWidget \
+ /usr/include/qt6/QtWidgets/qdockwidget.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_patternbar.cpp \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_tabwidget.cpp \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/tabwidget.h \

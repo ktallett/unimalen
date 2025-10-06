@@ -13,7 +13,7 @@ ColorBar::ColorBar(QWidget *parent, PaletteType palette)
     mainLayout->setContentsMargins(5, 5, 5, 5);
     mainLayout->setSpacing(5);
 
-    QLabel *title = new QLabel("Pastel Colors", this);
+    QLabel *title = new QLabel("Colors", this);
     title->setAlignment(Qt::AlignCenter);
     QFont titleFont = title->font();
     titleFont.setBold(true);

@@ -17,6 +17,7 @@
 #include <QActionGroup>
 #include <QStandardPaths>
 #include <QTimer>
+#include <QDockWidget>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -41,10 +42,43 @@ MainWindow::MainWindow(QWidget *parent)
     statusBar()->addPermanentWidget(m_pageIndicator);
     updatePageIndicator();
 
-    // Show toolbars as separate floating windows after main window is shown
-    QTimer::singleShot(200, this, [this]() {
-        positionToolbarsAroundCanvas();
-    });
+    // Create dock widgets for all toolbars
+    m_toolBarDock = new QDockWidget(tr("Tools"), this);
+    m_toolBarDock->setWidget(m_toolBar);
+    m_toolBarDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    m_toolBarDock->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
+    addDockWidget(Qt::LeftDockWidgetArea, m_toolBarDock);
+
+    m_patternBarDock = new QDockWidget(tr("Patterns"), this);
+    m_patternBarDock->setWidget(m_patternBar);
+    m_patternBarDock->setAllowedAreas(Qt::BottomDockWidgetArea | Qt::TopDockWidgetArea);
+    m_patternBarDock->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
+    addDockWidget(Qt::BottomDockWidgetArea, m_patternBarDock);
+
+    m_thicknessBarDock = new QDockWidget(tr("Line Thickness"), this);
+    m_thicknessBarDock->setWidget(m_thicknessBar);
+    m_thicknessBarDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    m_thicknessBarDock->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
+    addDockWidget(Qt::RightDockWidgetArea, m_thicknessBarDock);
+
+    m_colorBarDock = new QDockWidget(tr("Colors"), this);
+    m_colorBarDock->setWidget(m_colorBar);
+    m_colorBarDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    m_colorBarDock->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
+    addDockWidget(Qt::LeftDockWidgetArea, m_colorBarDock);
+
+    m_layerPanelDock = new QDockWidget(tr("Layers"), this);
+    m_layerPanelDock->setWidget(m_layerPanel);
+    m_layerPanelDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    m_layerPanelDock->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
+    addDockWidget(Qt::RightDockWidgetArea, m_layerPanelDock);
+
+    // Connect dock widget visibility to menu actions
+    connect(m_toolBarDock, &QDockWidget::visibilityChanged, m_showToolBarAction, &QAction::setChecked);
+    connect(m_patternBarDock, &QDockWidget::visibilityChanged, m_showPatternBarAction, &QAction::setChecked);
+    connect(m_thicknessBarDock, &QDockWidget::visibilityChanged, m_showThicknessBarAction, &QAction::setChecked);
+    connect(m_colorBarDock, &QDockWidget::visibilityChanged, m_showColorBarAction, &QAction::setChecked);
+    connect(m_layerPanelDock, &QDockWidget::visibilityChanged, m_showLayerPanelAction, &QAction::setChecked);
 
     connect(m_toolBar, &ToolBar::pencilToolSelected, this, &MainWindow::onPencilSelected);
     connect(m_toolBar, &ToolBar::textToolSelected, this, &MainWindow::onTextSelected);
@@ -77,20 +111,6 @@ MainWindow::MainWindow(QWidget *parent)
                 Canvas *canvas = getCurrentCanvas();
                 if (canvas) canvas->setCurrentColor(color);
             });
-
-    // Connect toolbar close events to uncheck menu items
-    connect(m_toolBar, &ToolBar::toolBarClosed, this, [this]() {
-        m_showToolBarAction->setChecked(false);
-    });
-    connect(m_patternBar, &PatternBar::patternBarClosed, this, [this]() {
-        m_showPatternBarAction->setChecked(false);
-    });
-    connect(m_thicknessBar, &ThicknessBar::thicknessBarClosed, this, [this]() {
-        m_showThicknessBarAction->setChecked(false);
-    });
-    connect(m_layerPanel, &LayerPanel::layerPanelClosed, this, [this]() {
-        m_showLayerPanelAction->setChecked(false);
-    });
 
     connect(m_tabWidget, &TabWidget::currentChanged, this, &MainWindow::onTabChanged);
 
@@ -758,78 +778,27 @@ void MainWindow::setCurrentFile(const QString &fileName)
 
 void MainWindow::toggleToolBar(bool visible)
 {
-    if (visible) {
-        // Position and show the toolbar
-        QRect mainRect = geometry();
-        int spacing = 10;
-        m_toolBar->setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint);
-        m_toolBar->setWindowTitle(tr("Tools"));
-        m_toolBar->show();
-        m_toolBar->move(mainRect.left() - m_toolBar->width() - spacing, mainRect.top() + 50);
-        m_toolBar->raise();
-    } else {
-        m_toolBar->hide();
-    }
+    m_toolBarDock->setVisible(visible);
 }
 
 void MainWindow::togglePatternBar(bool visible)
 {
-    if (visible) {
-        // Position and show the toolbar
-        QRect mainRect = geometry();
-        int spacing = 10;
-        m_patternBar->setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint);
-        m_patternBar->setWindowTitle(tr("Patterns"));
-        m_patternBar->show();
-        int patternX = mainRect.left() + (mainRect.width() - m_patternBar->width()) / 2;
-        int patternY = mainRect.bottom() + spacing;
-        m_patternBar->move(patternX, patternY);
-        m_patternBar->raise();
-    } else {
-        m_patternBar->hide();
-    }
+    m_patternBarDock->setVisible(visible);
 }
 
 void MainWindow::toggleThicknessBar(bool visible)
 {
-    if (visible) {
-        // Position and show the toolbar
-        QRect mainRect = geometry();
-        int spacing = 10;
-        m_thicknessBar->setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint);
-        m_thicknessBar->setWindowTitle(tr("Line Thickness"));
-        m_thicknessBar->show();
-        m_thicknessBar->move(mainRect.right() + spacing, mainRect.top() + 50);
-        m_thicknessBar->raise();
-    } else {
-        m_thicknessBar->hide();
-    }
+    m_thicknessBarDock->setVisible(visible);
 }
 
 void MainWindow::toggleLayerPanel(bool visible)
 {
-    if (visible) {
-        // Position and show the layer panel
-        QRect mainRect = geometry();
-        int spacing = 10;
-        m_layerPanel->setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint);
-        m_layerPanel->setWindowTitle(tr("Layers"));
-        m_layerPanel->show();
-        m_layerPanel->move(mainRect.right() + spacing, mainRect.top() + 200);
-        m_layerPanel->raise();
-    } else {
-        m_layerPanel->hide();
-    }
+    m_layerPanelDock->setVisible(visible);
 }
 
 void MainWindow::toggleColorBar(bool visible)
 {
-    if (visible) {
-        m_colorBar->show();
-        positionToolbarsAroundCanvas();
-    } else {
-        m_colorBar->hide();
-    }
+    m_colorBarDock->setVisible(visible);
 }
 
 void MainWindow::newTab()
@@ -1004,85 +973,15 @@ void MainWindow::connectCanvasSignals(Canvas *canvas)
     }
 }
 
-void MainWindow::positionToolbarsAroundCanvas()
-{
-    // Get main window position and size
-    QRect mainRect = geometry();
-    int spacing = 10;
-
-    // Position ToolBar to the left of the main window (only if it should be visible)
-    if (m_showToolBarAction->isChecked()) {
-        m_toolBar->setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint);
-        m_toolBar->setWindowTitle(tr("Tools"));
-        m_toolBar->show();
-        m_toolBar->move(mainRect.left() - m_toolBar->width() - spacing, mainRect.top() + 50);
-        m_toolBar->raise();
-    }
-
-    // Position PatternBar below the main window (only if it should be visible)
-    if (m_showPatternBarAction->isChecked()) {
-        m_patternBar->setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint);
-        m_patternBar->setWindowTitle(tr("Patterns"));
-        m_patternBar->show();
-        int patternX = mainRect.left() + (mainRect.width() - m_patternBar->width()) / 2;
-        int patternY = mainRect.bottom() + spacing;
-        m_patternBar->move(patternX, patternY);
-        m_patternBar->raise();
-    }
-
-    // Position ThicknessBar to the right of the main window (only if it should be visible)
-    if (m_showThicknessBarAction->isChecked()) {
-        m_thicknessBar->setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint);
-        m_thicknessBar->setWindowTitle(tr("Line Thickness"));
-        m_thicknessBar->show();
-        m_thicknessBar->move(mainRect.right() + spacing, mainRect.top() + 50);
-        m_thicknessBar->raise();
-    }
-
-    // Position ColorBar to the left of the main window, below the toolbar
-    m_colorBar->setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint);
-    m_colorBar->setWindowTitle(tr("Pastel Colors"));
-    m_colorBar->show();
-    int colorY = mainRect.top() + 50;
-    if (m_showToolBarAction->isChecked()) {
-        colorY = mainRect.top() + 350; // Below toolbar
-    }
-    m_colorBar->move(mainRect.left() - m_colorBar->width() - spacing, colorY);
-    m_colorBar->raise();
-
-    // Position LayerPanel to the right of the main window, below the thickness bar (only if it should be visible)
-    if (m_showLayerPanelAction->isChecked()) {
-        m_layerPanel->setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint);
-        m_layerPanel->setWindowTitle(tr("Layers"));
-        m_layerPanel->show();
-        int layerY = mainRect.top() + 200; // Below thickness bar
-        if (m_showThicknessBarAction->isChecked()) {
-            layerY = mainRect.top() + 100; // Adjust if thickness bar is visible
-        }
-        m_layerPanel->move(mainRect.right() + spacing, layerY);
-        m_layerPanel->raise();
-
-        // Initialize with current canvas layers if available
-        Canvas *currentCanvas = getCurrentCanvas();
-        if (currentCanvas) {
-            m_layerPanel->setLayers(currentCanvas->layers());
-            m_layerPanel->setCurrentLayerIndex(currentCanvas->currentLayerIndex());
-        }
-    }
-}
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
     QMainWindow::resizeEvent(event);
-    // Delay repositioning slightly to allow window to finish resizing
-    QTimer::singleShot(50, this, &MainWindow::positionToolbarsAroundCanvas);
 }
 
 void MainWindow::moveEvent(QMoveEvent *event)
 {
     QMainWindow::moveEvent(event);
-    // Delay repositioning slightly to allow window to finish moving
-    QTimer::singleShot(50, this, &MainWindow::positionToolbarsAroundCanvas);
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -1128,7 +1027,6 @@ void MainWindow::setPageSize(Unimalen::PageSize size)
                             canvas->document()->height() * canvas->getScaleFactor());
         canvas->compositeAllLayers();
         canvas->update();
-        positionToolbarsAroundCanvas();
     }
 }
 

@@ -9,6 +9,7 @@
 #include <QResizeEvent>
 #include <QMoveEvent>
 #include <QLabel>
+#include <QDockWidget>
 #include "core/Types.h"
 
 class Canvas;
@@ -101,7 +102,6 @@ private:
     void setCurrentFile(const QString &fileName);
     void connectCanvasSignals(Canvas *canvas);
     Canvas* getCurrentCanvas();
-    void positionToolbarsAroundCanvas();
 
     TabWidget *m_tabWidget;
     ToolBar *m_toolBar;
@@ -109,6 +109,13 @@ private:
     ThicknessBar *m_thicknessBar;
     LayerPanel *m_layerPanel;
     ColorBar *m_colorBar;
+
+    // Dock widgets
+    QDockWidget *m_toolBarDock;
+    QDockWidget *m_patternBarDock;
+    QDockWidget *m_thicknessBarDock;
+    QDockWidget *m_colorBarDock;
+    QDockWidget *m_layerPanelDock;
 
     QAction *m_newAction;
     QAction *m_openAction;
