@@ -146,6 +146,10 @@ void MainWindow::createActions()
     m_insertImageAction->setShortcut(QKeySequence("Ctrl+I"));
     connect(m_insertImageAction, &QAction::triggered, this, &MainWindow::insertImage);
 
+    m_convertToBlackAndWhiteAction = new QAction(tr("Convert to &Black and White"), this);
+    m_convertToBlackAndWhiteAction->setShortcut(QKeySequence("Ctrl+B"));
+    connect(m_convertToBlackAndWhiteAction, &QAction::triggered, this, &MainWindow::convertToBlackAndWhite);
+
     m_exitAction = new QAction(tr("E&xit"), this);
     m_exitAction->setShortcut(QKeySequence::Quit);
     connect(m_exitAction, &QAction::triggered, this, &QWidget::close);
@@ -448,7 +452,6 @@ void MainWindow::createMenus()
 
     fileMenu->addSeparator();
     fileMenu->addAction(m_openAction);
-    fileMenu->addAction(m_insertImageAction);
     fileMenu->addSeparator();
     fileMenu->addAction(m_saveAction);
     fileMenu->addAction(m_saveAsAction);
@@ -464,6 +467,11 @@ void MainWindow::createMenus()
     editMenu->addAction(m_cutAction);
     editMenu->addAction(m_copyAction);
     editMenu->addAction(m_pasteAction);
+
+    QMenu *imageMenu = menuBar()->addMenu(tr("&Image"));
+    imageMenu->addAction(m_insertImageAction);
+    imageMenu->addSeparator();
+    imageMenu->addAction(m_convertToBlackAndWhiteAction);
 
     QMenu *viewMenu = menuBar()->addMenu(tr("&View"));
     viewMenu->addAction(m_scale1xAction);
@@ -502,22 +510,17 @@ void MainWindow::createMenus()
     fontMenu->addAction(m_notoSansCJKFontAction);
     fontMenu->addAction(m_dejavuSansFontAction);
     fontMenu->addSeparator();
-
-    // Zine fonts submenu
-    QMenu *zineFontsMenu = fontMenu->addMenu(tr("&Zine Fonts"));
-    zineFontsMenu->addAction(m_specialEliteFontAction);
-    zineFontsMenu->addAction(m_permanentMarkerFontAction);
-    zineFontsMenu->addAction(m_bangersFontAction);
-    zineFontsMenu->addAction(m_creepsterFontAction);
-    zineFontsMenu->addAction(m_pressStart2PFontAction);
-    zineFontsMenu->addSeparator();
-    zineFontsMenu->addAction(m_caveatFontAction);
-    zineFontsMenu->addAction(m_indieFlowerFontAction);
-    zineFontsMenu->addAction(m_satisfyFontAction);
-    zineFontsMenu->addAction(m_amaticFontAction);
-    zineFontsMenu->addSeparator();
-    zineFontsMenu->addAction(m_vt323FontAction);
-    zineFontsMenu->addAction(m_robotoMonoFontAction);
+    fontMenu->addAction(m_specialEliteFontAction);
+    fontMenu->addAction(m_permanentMarkerFontAction);
+    fontMenu->addAction(m_bangersFontAction);
+    fontMenu->addAction(m_creepsterFontAction);
+    fontMenu->addAction(m_pressStart2PFontAction);
+    fontMenu->addAction(m_caveatFontAction);
+    fontMenu->addAction(m_indieFlowerFontAction);
+    fontMenu->addAction(m_satisfyFontAction);
+    fontMenu->addAction(m_amaticFontAction);
+    fontMenu->addAction(m_vt323FontAction);
+    fontMenu->addAction(m_robotoMonoFontAction);
 
     QMenu *fontSizeMenu = menuBar()->addMenu(tr("Font &Size"));
     fontSizeMenu->addAction(m_fontSize8Action);

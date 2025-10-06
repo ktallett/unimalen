@@ -33,6 +33,7 @@ private slots:
     void saveFile();
     void saveAsFile();
     void insertImage();
+    void convertToBlackAndWhite();
     void newTab();
     void closeTab();
     void setPageSize(Unimalen::PageSize size);
@@ -122,6 +123,7 @@ private:
     QAction *m_saveAction;
     QAction *m_saveAsAction;
     QAction *m_insertImageAction;
+    QAction *m_convertToBlackAndWhiteAction;
     QAction *m_exitAction;
     QAction *m_newTabAction;
     QAction *m_closeTabAction;

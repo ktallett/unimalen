@@ -838,6 +838,7 @@ CMakeFiles/unimalen.dir/src/main.cpp.o: /home/kerntallett/Dropbox/mnt_reform/pro
   /usr/include/qt6/QtGui/qvectornd.h \
   /usr/include/qt6/QtGui/qwindowdefs.h \
   /usr/include/qt6/QtWidgets/QApplication \
+  /usr/include/qt6/QtWidgets/QDockWidget \
   /usr/include/qt6/QtWidgets/QHBoxLayout \
   /usr/include/qt6/QtWidgets/QLabel \
   /usr/include/qt6/QtWidgets/QMainWindow \
@@ -846,6 +847,7 @@ CMakeFiles/unimalen.dir/src/main.cpp.o: /home/kerntallett/Dropbox/mnt_reform/pro
   /usr/include/qt6/QtWidgets/qabstractscrollarea.h \
   /usr/include/qt6/QtWidgets/qapplication.h \
   /usr/include/qt6/QtWidgets/qboxlayout.h \
+  /usr/include/qt6/QtWidgets/qdockwidget.h \
   /usr/include/qt6/QtWidgets/qframe.h \
   /usr/include/qt6/QtWidgets/qgridlayout.h \
   /usr/include/qt6/QtWidgets/qlabel.h \
@@ -1034,6 +1036,8 @@ CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.o:
 /usr/include/qt6/QtWidgets/qlabel.h:
 
 /usr/include/qt6/QtWidgets/qgridlayout.h:
+
+/usr/include/qt6/QtWidgets/qdockwidget.h:
 
 /usr/include/qt6/QtWidgets/qboxlayout.h:
 
@@ -2746,6 +2750,8 @@ CMakeFiles/3.31.6/CMakeCCompiler.cmake:
 /usr/include/c++/15/bits/stl_iterator.h:
 
 /usr/include/c++/15/bits/stl_iterator_base_types.h:
+
+/usr/include/qt6/QtWidgets/QDockWidget:
 
 /usr/share/cmake/Modules/CheckCXXCompilerFlag.cmake:
 
