@@ -18,6 +18,14 @@
 #include <QStandardPaths>
 #include <QTimer>
 #include <QDockWidget>
+#include <QDialog>
+#include <QSpinBox>
+#include <QCheckBox>
+#include <QLabel>
+#include <QDialogButtonBox>
+#include <QFormLayout>
+#include <QPushButton>
+#include <QComboBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -143,12 +151,67 @@ void MainWindow::createActions()
     connect(m_saveAsAction, &QAction::triggered, this, &MainWindow::saveAsFile);
 
     m_insertImageAction = new QAction(tr("&Insert Image..."), this);
-    m_insertImageAction->setShortcut(QKeySequence("Ctrl+I"));
+    m_insertImageAction->setShortcut(QKeySequence("Ctrl+Shift+I"));
     connect(m_insertImageAction, &QAction::triggered, this, &MainWindow::insertImage);
 
     m_convertToBlackAndWhiteAction = new QAction(tr("Convert to &Black and White"), this);
     m_convertToBlackAndWhiteAction->setShortcut(QKeySequence("Ctrl+B"));
     connect(m_convertToBlackAndWhiteAction, &QAction::triggered, this, &MainWindow::convertToBlackAndWhite);
+
+    m_adjustBrightnessContrastAction = new QAction(tr("Adjust &Brightness/Contrast..."), this);
+    connect(m_adjustBrightnessContrastAction, &QAction::triggered, this, &MainWindow::adjustBrightnessContrast);
+
+    m_posterizeAction = new QAction(tr("&Posterize..."), this);
+    connect(m_posterizeAction, &QAction::triggered, this, &MainWindow::posterize);
+
+    m_halftoneAction = new QAction(tr("&Halftone/Dither..."), this);
+    connect(m_halftoneAction, &QAction::triggered, this, &MainWindow::halftone);
+
+    m_edgeDetectAction = new QAction(tr("&Edge Detect"), this);
+    connect(m_edgeDetectAction, &QAction::triggered, this, &MainWindow::edgeDetect);
+
+    m_invertColorsAction = new QAction(tr("&Invert Colors"), this);
+    m_invertColorsAction->setShortcut(QKeySequence("Ctrl+I"));
+    connect(m_invertColorsAction, &QAction::triggered, this, &MainWindow::invertColors);
+
+    m_despeckleAction = new QAction(tr("&Despeckle/Cleanup..."), this);
+    connect(m_despeckleAction, &QAction::triggered, this, &MainWindow::despeckle);
+
+    m_autoLevelsAction = new QAction(tr("Auto &Levels"), this);
+    connect(m_autoLevelsAction, &QAction::triggered, this, &MainWindow::autoLevels);
+
+    m_rotateClockwiseAction = new QAction(tr("Rotate &Clockwise"), this);
+    m_rotateClockwiseAction->setShortcut(QKeySequence("Ctrl+R"));
+    connect(m_rotateClockwiseAction, &QAction::triggered, this, &MainWindow::rotateClockwise);
+
+    m_rotateCounterClockwiseAction = new QAction(tr("Rotate &Counter-Clockwise"), this);
+    m_rotateCounterClockwiseAction->setShortcut(QKeySequence("Ctrl+Shift+R"));
+    connect(m_rotateCounterClockwiseAction, &QAction::triggered, this, &MainWindow::rotateCounterClockwise);
+
+    m_rotate180Action = new QAction(tr("Rotate 1&80°"), this);
+    connect(m_rotate180Action, &QAction::triggered, this, &MainWindow::rotate180);
+
+    m_flipHorizontalAction = new QAction(tr("Flip &Horizontal"), this);
+    m_flipHorizontalAction->setShortcut(QKeySequence("Ctrl+H"));
+    connect(m_flipHorizontalAction, &QAction::triggered, this, &MainWindow::flipHorizontal);
+
+    m_flipVerticalAction = new QAction(tr("Flip &Vertical"), this);
+    m_flipVerticalAction->setShortcut(QKeySequence("Ctrl+Shift+H"));
+    connect(m_flipVerticalAction, &QAction::triggered, this, &MainWindow::flipVertical);
+
+    m_scaleImageAction = new QAction(tr("&Scale/Resize..."), this);
+    m_scaleImageAction->setShortcut(QKeySequence("Ctrl+E"));
+    connect(m_scaleImageAction, &QAction::triggered, this, &MainWindow::scaleImage);
+
+    m_cropImageAction = new QAction(tr("C&rop..."), this);
+    m_cropImageAction->setShortcut(QKeySequence("Ctrl+Shift+X"));
+    connect(m_cropImageAction, &QAction::triggered, this, &MainWindow::cropImage);
+
+    m_addDropShadowAction = new QAction(tr("Add &Drop Shadow..."), this);
+    connect(m_addDropShadowAction, &QAction::triggered, this, &MainWindow::addDropShadow);
+
+    m_addBorderAction = new QAction(tr("Add B&order..."), this);
+    connect(m_addBorderAction, &QAction::triggered, this, &MainWindow::addBorder);
 
     m_exitAction = new QAction(tr("E&xit"), this);
     m_exitAction->setShortcut(QKeySequence::Quit);
@@ -472,6 +535,26 @@ void MainWindow::createMenus()
     imageMenu->addAction(m_insertImageAction);
     imageMenu->addSeparator();
     imageMenu->addAction(m_convertToBlackAndWhiteAction);
+    imageMenu->addAction(m_adjustBrightnessContrastAction);
+    imageMenu->addAction(m_posterizeAction);
+    imageMenu->addAction(m_halftoneAction);
+    imageMenu->addAction(m_edgeDetectAction);
+    imageMenu->addAction(m_invertColorsAction);
+    imageMenu->addAction(m_despeckleAction);
+    imageMenu->addAction(m_autoLevelsAction);
+    imageMenu->addSeparator();
+    imageMenu->addAction(m_rotateClockwiseAction);
+    imageMenu->addAction(m_rotateCounterClockwiseAction);
+    imageMenu->addAction(m_rotate180Action);
+    imageMenu->addSeparator();
+    imageMenu->addAction(m_flipHorizontalAction);
+    imageMenu->addAction(m_flipVerticalAction);
+    imageMenu->addSeparator();
+    imageMenu->addAction(m_scaleImageAction);
+    imageMenu->addAction(m_cropImageAction);
+    imageMenu->addSeparator();
+    imageMenu->addAction(m_addDropShadowAction);
+    imageMenu->addAction(m_addBorderAction);
 
     QMenu *viewMenu = menuBar()->addMenu(tr("&View"));
     viewMenu->addAction(m_scale1xAction);
@@ -1068,24 +1151,1036 @@ void MainWindow::convertToBlackAndWhite()
     QImage image = layerPixmap.toImage();
     if (image.isNull()) return;
 
+    // Create dialog for threshold adjustment
+    QDialog dialog(this);
+    dialog.setWindowTitle(tr("Convert to Black and White"));
+
+    QFormLayout *formLayout = new QFormLayout;
+
+    // Threshold slider
+    QSpinBox *thresholdSpinBox = new QSpinBox(&dialog);
+    thresholdSpinBox->setRange(0, 255);
+    thresholdSpinBox->setValue(128);
+    formLayout->addRow(tr("Threshold:"), thresholdSpinBox);
+
+    QLabel *helpLabel = new QLabel(tr("Lower = more black, Higher = more white"), &dialog);
+    helpLabel->setWordWrap(true);
+    formLayout->addRow(helpLabel);
+
+    // Buttons
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+    connect(buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(&dialog);
+    mainLayout->addLayout(formLayout);
+    mainLayout->addWidget(buttonBox);
+
+    dialog.setLayout(mainLayout);
+
+    // Show dialog and process
+    if (dialog.exec() == QDialog::Accepted) {
+        int threshold = thresholdSpinBox->value();
+
+        // Convert to grayscale first
+        image = image.convertToFormat(QImage::Format_Grayscale8);
+
+        // Apply threshold to create pure black and white (no grays)
+        for (int y = 0; y < image.height(); ++y) {
+            for (int x = 0; x < image.width(); ++x) {
+                QColor pixel = image.pixelColor(x, y);
+                int gray = pixel.red();  // In grayscale, R=G=B
+                if (gray < threshold) {
+                    image.setPixelColor(x, y, Qt::black);
+                } else {
+                    image.setPixelColor(x, y, Qt::white);
+                }
+            }
+        }
+
+        // Apply the converted image back to the layer
+        currentLayer.pixmap() = QPixmap::fromImage(image);
+
+        // Update the canvas
+        canvas->compositeAllLayers();
+        canvas->update();
+        canvas->setModified(true);
+    }
+}
+
+void MainWindow::rotateClockwise()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    // Get the current layer
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    // Rotate the pixmap 90 degrees clockwise
+    QTransform transform;
+    transform.rotate(90);
+    currentLayer.pixmap() = layerPixmap.transformed(transform);
+
+    // Update the canvas
+    canvas->compositeAllLayers();
+    canvas->update();
+    canvas->setModified(true);
+}
+
+void MainWindow::rotateCounterClockwise()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    // Get the current layer
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    // Rotate the pixmap 90 degrees counter-clockwise
+    QTransform transform;
+    transform.rotate(-90);
+    currentLayer.pixmap() = layerPixmap.transformed(transform);
+
+    // Update the canvas
+    canvas->compositeAllLayers();
+    canvas->update();
+    canvas->setModified(true);
+}
+
+void MainWindow::rotate180()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    // Get the current layer
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    // Rotate the pixmap 180 degrees
+    QTransform transform;
+    transform.rotate(180);
+    currentLayer.pixmap() = layerPixmap.transformed(transform);
+
+    // Update the canvas
+    canvas->compositeAllLayers();
+    canvas->update();
+    canvas->setModified(true);
+}
+
+void MainWindow::flipHorizontal()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    // Get the current layer
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    // Flip the pixmap horizontally
+    QTransform transform;
+    transform.scale(-1, 1);
+    currentLayer.pixmap() = layerPixmap.transformed(transform);
+
+    // Update the canvas
+    canvas->compositeAllLayers();
+    canvas->update();
+    canvas->setModified(true);
+}
+
+void MainWindow::flipVertical()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    // Get the current layer
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    // Flip the pixmap vertically
+    QTransform transform;
+    transform.scale(1, -1);
+    currentLayer.pixmap() = layerPixmap.transformed(transform);
+
+    // Update the canvas
+    canvas->compositeAllLayers();
+    canvas->update();
+    canvas->setModified(true);
+}
+
+void MainWindow::scaleImage()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    if (layerPixmap.isNull()) {
+        QMessageBox::warning(this, tr("Scale Image"), tr("No image to scale on current layer."));
+        return;
+    }
+
+    // Create dialog
+    QDialog dialog(this);
+    dialog.setWindowTitle(tr("Scale/Resize Image"));
+
+    QFormLayout *formLayout = new QFormLayout;
+
+    // Width spinner
+    QSpinBox *widthSpinBox = new QSpinBox(&dialog);
+    widthSpinBox->setRange(1, 10000);
+    widthSpinBox->setValue(layerPixmap.width());
+    widthSpinBox->setSuffix(tr(" px"));
+    formLayout->addRow(tr("Width:"), widthSpinBox);
+
+    // Height spinner
+    QSpinBox *heightSpinBox = new QSpinBox(&dialog);
+    heightSpinBox->setRange(1, 10000);
+    heightSpinBox->setValue(layerPixmap.height());
+    heightSpinBox->setSuffix(tr(" px"));
+    formLayout->addRow(tr("Height:"), heightSpinBox);
+
+    // Maintain aspect ratio checkbox
+    QCheckBox *aspectRatioCheckBox = new QCheckBox(tr("Maintain aspect ratio"), &dialog);
+    aspectRatioCheckBox->setChecked(true);
+    formLayout->addRow(aspectRatioCheckBox);
+
+    // Smooth scaling checkbox
+    QCheckBox *smoothCheckBox = new QCheckBox(tr("Smooth scaling"), &dialog);
+    smoothCheckBox->setChecked(true);
+    formLayout->addRow(smoothCheckBox);
+
+    // Current size label
+    QLabel *currentSizeLabel = new QLabel(tr("Current size: %1 x %2 px").arg(layerPixmap.width()).arg(layerPixmap.height()), &dialog);
+    formLayout->addRow(currentSizeLabel);
+
+    // Store original aspect ratio
+    double aspectRatio = static_cast<double>(layerPixmap.width()) / layerPixmap.height();
+
+    // Connect width change to height when aspect ratio is locked
+    connect(widthSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), [&](int value) {
+        if (aspectRatioCheckBox->isChecked()) {
+            heightSpinBox->blockSignals(true);
+            heightSpinBox->setValue(static_cast<int>(value / aspectRatio));
+            heightSpinBox->blockSignals(false);
+        }
+    });
+
+    // Connect height change to width when aspect ratio is locked
+    connect(heightSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), [&](int value) {
+        if (aspectRatioCheckBox->isChecked()) {
+            widthSpinBox->blockSignals(true);
+            widthSpinBox->setValue(static_cast<int>(value * aspectRatio));
+            widthSpinBox->blockSignals(false);
+        }
+    });
+
+    // Buttons
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+    connect(buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(&dialog);
+    mainLayout->addLayout(formLayout);
+    mainLayout->addWidget(buttonBox);
+
+    dialog.setLayout(mainLayout);
+
+    // Show dialog and process
+    if (dialog.exec() == QDialog::Accepted) {
+        int newWidth = widthSpinBox->value();
+        int newHeight = heightSpinBox->value();
+
+        Qt::TransformationMode mode = smoothCheckBox->isChecked() ?
+            Qt::SmoothTransformation : Qt::FastTransformation;
+
+        currentLayer.pixmap() = layerPixmap.scaled(newWidth, newHeight, Qt::IgnoreAspectRatio, mode);
+
+        // Update the canvas
+        canvas->compositeAllLayers();
+        canvas->update();
+        canvas->setModified(true);
+    }
+}
+
+void MainWindow::cropImage()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    if (layerPixmap.isNull()) {
+        QMessageBox::warning(this, tr("Crop Image"), tr("No image to crop on current layer."));
+        return;
+    }
+
+    // Create dialog
+    QDialog dialog(this);
+    dialog.setWindowTitle(tr("Crop Image"));
+
+    QFormLayout *formLayout = new QFormLayout;
+
+    // X position spinner
+    QSpinBox *xSpinBox = new QSpinBox(&dialog);
+    xSpinBox->setRange(0, layerPixmap.width() - 1);
+    xSpinBox->setValue(0);
+    xSpinBox->setSuffix(tr(" px"));
+    formLayout->addRow(tr("X:"), xSpinBox);
+
+    // Y position spinner
+    QSpinBox *ySpinBox = new QSpinBox(&dialog);
+    ySpinBox->setRange(0, layerPixmap.height() - 1);
+    ySpinBox->setValue(0);
+    ySpinBox->setSuffix(tr(" px"));
+    formLayout->addRow(tr("Y:"), ySpinBox);
+
+    // Width spinner
+    QSpinBox *widthSpinBox = new QSpinBox(&dialog);
+    widthSpinBox->setRange(1, layerPixmap.width());
+    widthSpinBox->setValue(layerPixmap.width());
+    widthSpinBox->setSuffix(tr(" px"));
+    formLayout->addRow(tr("Width:"), widthSpinBox);
+
+    // Height spinner
+    QSpinBox *heightSpinBox = new QSpinBox(&dialog);
+    heightSpinBox->setRange(1, layerPixmap.height());
+    heightSpinBox->setValue(layerPixmap.height());
+    heightSpinBox->setSuffix(tr(" px"));
+    formLayout->addRow(tr("Height:"), heightSpinBox);
+
+    // Current size label
+    QLabel *currentSizeLabel = new QLabel(tr("Original size: %1 x %2 px").arg(layerPixmap.width()).arg(layerPixmap.height()), &dialog);
+    formLayout->addRow(currentSizeLabel);
+
+    // Update max values when x/y change
+    connect(xSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), [&](int value) {
+        widthSpinBox->setMaximum(layerPixmap.width() - value);
+        if (widthSpinBox->value() > widthSpinBox->maximum()) {
+            widthSpinBox->setValue(widthSpinBox->maximum());
+        }
+    });
+
+    connect(ySpinBox, QOverload<int>::of(&QSpinBox::valueChanged), [&](int value) {
+        heightSpinBox->setMaximum(layerPixmap.height() - value);
+        if (heightSpinBox->value() > heightSpinBox->maximum()) {
+            heightSpinBox->setValue(heightSpinBox->maximum());
+        }
+    });
+
+    // Buttons
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+    connect(buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(&dialog);
+    mainLayout->addLayout(formLayout);
+    mainLayout->addWidget(buttonBox);
+
+    dialog.setLayout(mainLayout);
+
+    // Show dialog and process
+    if (dialog.exec() == QDialog::Accepted) {
+        int x = xSpinBox->value();
+        int y = ySpinBox->value();
+        int width = widthSpinBox->value();
+        int height = heightSpinBox->value();
+
+        // Validate crop region
+        if (width > 0 && height > 0) {
+            QRect cropRect(x, y, width, height);
+            currentLayer.pixmap() = layerPixmap.copy(cropRect);
+
+            // Update the canvas
+            canvas->compositeAllLayers();
+            canvas->update();
+            canvas->setModified(true);
+        }
+    }
+}
+
+void MainWindow::addDropShadow()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    if (layerPixmap.isNull()) {
+        QMessageBox::warning(this, tr("Add Drop Shadow"), tr("No image on current layer."));
+        return;
+    }
+
+    // Create dialog
+    QDialog dialog(this);
+    dialog.setWindowTitle(tr("Add Drop Shadow"));
+
+    QFormLayout *formLayout = new QFormLayout;
+
+    // Offset X spinner
+    QSpinBox *offsetXSpinBox = new QSpinBox(&dialog);
+    offsetXSpinBox->setRange(-100, 100);
+    offsetXSpinBox->setValue(5);
+    offsetXSpinBox->setSuffix(tr(" px"));
+    formLayout->addRow(tr("Offset X:"), offsetXSpinBox);
+
+    // Offset Y spinner
+    QSpinBox *offsetYSpinBox = new QSpinBox(&dialog);
+    offsetYSpinBox->setRange(-100, 100);
+    offsetYSpinBox->setValue(5);
+    offsetYSpinBox->setSuffix(tr(" px"));
+    formLayout->addRow(tr("Offset Y:"), offsetYSpinBox);
+
+    // Blur radius spinner
+    QSpinBox *blurSpinBox = new QSpinBox(&dialog);
+    blurSpinBox->setRange(0, 50);
+    blurSpinBox->setValue(8);
+    blurSpinBox->setSuffix(tr(" px"));
+    formLayout->addRow(tr("Blur:"), blurSpinBox);
+
+    // Opacity spinner
+    QSpinBox *opacitySpinBox = new QSpinBox(&dialog);
+    opacitySpinBox->setRange(0, 100);
+    opacitySpinBox->setValue(70);
+    opacitySpinBox->setSuffix(tr(" %"));
+    formLayout->addRow(tr("Opacity:"), opacitySpinBox);
+
+    // Buttons
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+    connect(buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(&dialog);
+    mainLayout->addLayout(formLayout);
+    mainLayout->addWidget(buttonBox);
+
+    dialog.setLayout(mainLayout);
+
+    // Show dialog and process
+    if (dialog.exec() == QDialog::Accepted) {
+        int offsetX = offsetXSpinBox->value();
+        int offsetY = offsetYSpinBox->value();
+        int blur = blurSpinBox->value();
+        qreal opacity = opacitySpinBox->value() / 100.0;
+
+        // Calculate new size to accommodate shadow
+        int newWidth = layerPixmap.width() + qAbs(offsetX) + blur * 2;
+        int newHeight = layerPixmap.height() + qAbs(offsetY) + blur * 2;
+
+        // Create new pixmap with space for shadow
+        QPixmap resultPixmap(newWidth, newHeight);
+        resultPixmap.fill(Qt::transparent);
+
+        QPainter painter(&resultPixmap);
+        painter.setRenderHint(QPainter::Antialiasing);
+        painter.setRenderHint(QPainter::SmoothPixmapTransform);
+
+        // Calculate shadow position
+        int shadowX = qMax(0, offsetX) + blur;
+        int shadowY = qMax(0, offsetY) + blur;
+
+        // Draw shadow (simple version - just a semi-transparent black copy)
+        painter.setOpacity(opacity);
+        painter.drawPixmap(shadowX, shadowY, layerPixmap);
+
+        // Draw original image on top
+        int imageX = qMax(0, -offsetX) + blur;
+        int imageY = qMax(0, -offsetY) + blur;
+        painter.setOpacity(1.0);
+        painter.drawPixmap(imageX, imageY, layerPixmap);
+
+        painter.end();
+
+        currentLayer.pixmap() = resultPixmap;
+
+        // Update the canvas
+        canvas->compositeAllLayers();
+        canvas->update();
+        canvas->setModified(true);
+    }
+}
+
+void MainWindow::addBorder()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    if (layerPixmap.isNull()) {
+        QMessageBox::warning(this, tr("Add Border"), tr("No image on current layer."));
+        return;
+    }
+
+    // Create dialog
+    QDialog dialog(this);
+    dialog.setWindowTitle(tr("Add Border"));
+
+    QFormLayout *formLayout = new QFormLayout;
+
+    // Width spinner
+    QSpinBox *widthSpinBox = new QSpinBox(&dialog);
+    widthSpinBox->setRange(1, 100);
+    widthSpinBox->setValue(5);
+    widthSpinBox->setSuffix(tr(" px"));
+    formLayout->addRow(tr("Width:"), widthSpinBox);
+
+    // Color selection (simplified - black or white)
+    QComboBox *colorCombo = new QComboBox(&dialog);
+    colorCombo->addItem(tr("Black"), QColor(Qt::black));
+    colorCombo->addItem(tr("White"), QColor(Qt::white));
+    colorCombo->addItem(tr("Gray"), QColor(Qt::gray));
+    formLayout->addRow(tr("Color:"), colorCombo);
+
+    // Buttons
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+    connect(buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(&dialog);
+    mainLayout->addLayout(formLayout);
+    mainLayout->addWidget(buttonBox);
+
+    dialog.setLayout(mainLayout);
+
+    // Show dialog and process
+    if (dialog.exec() == QDialog::Accepted) {
+        int borderWidth = widthSpinBox->value();
+        QColor borderColor = colorCombo->currentData().value<QColor>();
+
+        // Calculate new size
+        int newWidth = layerPixmap.width() + borderWidth * 2;
+        int newHeight = layerPixmap.height() + borderWidth * 2;
+
+        // Create new pixmap with border
+        QPixmap resultPixmap(newWidth, newHeight);
+        resultPixmap.fill(Qt::transparent);
+
+        QPainter painter(&resultPixmap);
+        painter.setRenderHint(QPainter::Antialiasing);
+
+        // Draw border
+        painter.setPen(Qt::NoPen);
+        painter.setBrush(borderColor);
+        painter.drawRect(0, 0, newWidth, newHeight);
+
+        // Draw original image centered
+        painter.drawPixmap(borderWidth, borderWidth, layerPixmap);
+
+        painter.end();
+
+        currentLayer.pixmap() = resultPixmap;
+
+        // Update the canvas
+        canvas->compositeAllLayers();
+        canvas->update();
+        canvas->setModified(true);
+    }
+}
+
+void MainWindow::adjustBrightnessContrast()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    if (layerPixmap.isNull()) {
+        QMessageBox::warning(this, tr("Adjust Brightness/Contrast"), tr("No image on current layer."));
+        return;
+    }
+
+    // Create dialog
+    QDialog dialog(this);
+    dialog.setWindowTitle(tr("Adjust Brightness/Contrast"));
+
+    QFormLayout *formLayout = new QFormLayout;
+
+    // Brightness slider
+    QSpinBox *brightnessSpinBox = new QSpinBox(&dialog);
+    brightnessSpinBox->setRange(-100, 100);
+    brightnessSpinBox->setValue(0);
+    formLayout->addRow(tr("Brightness:"), brightnessSpinBox);
+
+    // Contrast slider
+    QSpinBox *contrastSpinBox = new QSpinBox(&dialog);
+    contrastSpinBox->setRange(-100, 100);
+    contrastSpinBox->setValue(0);
+    formLayout->addRow(tr("Contrast:"), contrastSpinBox);
+
+    // Buttons
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+    connect(buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(&dialog);
+    mainLayout->addLayout(formLayout);
+    mainLayout->addWidget(buttonBox);
+
+    dialog.setLayout(mainLayout);
+
+    // Show dialog and process
+    if (dialog.exec() == QDialog::Accepted) {
+        int brightness = brightnessSpinBox->value();
+        int contrast = contrastSpinBox->value();
+
+        QImage image = layerPixmap.toImage();
+        if (image.isNull()) return;
+
+        // Apply brightness and contrast adjustments
+        for (int y = 0; y < image.height(); ++y) {
+            for (int x = 0; x < image.width(); ++x) {
+                QColor pixel = image.pixelColor(x, y);
+
+                // Adjust brightness
+                int r = pixel.red() + brightness;
+                int g = pixel.green() + brightness;
+                int b = pixel.blue() + brightness;
+
+                // Apply contrast
+                double factor = (259.0 * (contrast + 255.0)) / (255.0 * (259.0 - contrast));
+                r = qBound(0, (int)(factor * (r - 128) + 128), 255);
+                g = qBound(0, (int)(factor * (g - 128) + 128), 255);
+                b = qBound(0, (int)(factor * (b - 128) + 128), 255);
+
+                image.setPixelColor(x, y, QColor(r, g, b, pixel.alpha()));
+            }
+        }
+
+        currentLayer.pixmap() = QPixmap::fromImage(image);
+
+        // Update the canvas
+        canvas->compositeAllLayers();
+        canvas->update();
+        canvas->setModified(true);
+    }
+}
+
+void MainWindow::posterize()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    if (layerPixmap.isNull()) {
+        QMessageBox::warning(this, tr("Posterize"), tr("No image on current layer."));
+        return;
+    }
+
+    // Create dialog
+    QDialog dialog(this);
+    dialog.setWindowTitle(tr("Posterize"));
+
+    QFormLayout *formLayout = new QFormLayout;
+
+    // Levels spinner
+    QSpinBox *levelsSpinBox = new QSpinBox(&dialog);
+    levelsSpinBox->setRange(2, 16);
+    levelsSpinBox->setValue(4);
+    formLayout->addRow(tr("Levels:"), levelsSpinBox);
+
+    QLabel *helpLabel = new QLabel(tr("Reduces colors to create a bold graphic look"), &dialog);
+    helpLabel->setWordWrap(true);
+    formLayout->addRow(helpLabel);
+
+    // Buttons
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+    connect(buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(&dialog);
+    mainLayout->addLayout(formLayout);
+    mainLayout->addWidget(buttonBox);
+
+    dialog.setLayout(mainLayout);
+
+    // Show dialog and process
+    if (dialog.exec() == QDialog::Accepted) {
+        int levels = levelsSpinBox->value();
+
+        QImage image = layerPixmap.toImage();
+        if (image.isNull()) return;
+
+        // Posterize the image
+        for (int y = 0; y < image.height(); ++y) {
+            for (int x = 0; x < image.width(); ++x) {
+                QColor pixel = image.pixelColor(x, y);
+
+                // Reduce each channel to the specified number of levels
+                int r = (pixel.red() * levels / 256) * (255 / (levels - 1));
+                int g = (pixel.green() * levels / 256) * (255 / (levels - 1));
+                int b = (pixel.blue() * levels / 256) * (255 / (levels - 1));
+
+                r = qBound(0, r, 255);
+                g = qBound(0, g, 255);
+                b = qBound(0, b, 255);
+
+                image.setPixelColor(x, y, QColor(r, g, b, pixel.alpha()));
+            }
+        }
+
+        currentLayer.pixmap() = QPixmap::fromImage(image);
+
+        // Update the canvas
+        canvas->compositeAllLayers();
+        canvas->update();
+        canvas->setModified(true);
+    }
+}
+
+void MainWindow::halftone()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    if (layerPixmap.isNull()) {
+        QMessageBox::warning(this, tr("Halftone"), tr("No image on current layer."));
+        return;
+    }
+
+    // Create dialog
+    QDialog dialog(this);
+    dialog.setWindowTitle(tr("Halftone/Dither"));
+
+    QFormLayout *formLayout = new QFormLayout;
+
+    // Pattern type
+    QComboBox *patternCombo = new QComboBox(&dialog);
+    patternCombo->addItem(tr("Dots (Halftone)"), 0);
+    patternCombo->addItem(tr("Dither (Floyd-Steinberg)"), 1);
+    formLayout->addRow(tr("Pattern:"), patternCombo);
+
+    // Dot size (for halftone)
+    QSpinBox *dotSizeSpinBox = new QSpinBox(&dialog);
+    dotSizeSpinBox->setRange(2, 20);
+    dotSizeSpinBox->setValue(4);
+    dotSizeSpinBox->setSuffix(tr(" px"));
+    formLayout->addRow(tr("Dot Size:"), dotSizeSpinBox);
+
+    // Buttons
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+    connect(buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(&dialog);
+    mainLayout->addLayout(formLayout);
+    mainLayout->addWidget(buttonBox);
+
+    dialog.setLayout(mainLayout);
+
+    // Show dialog and process
+    if (dialog.exec() == QDialog::Accepted) {
+        int patternType = patternCombo->currentData().toInt();
+        int dotSize = dotSizeSpinBox->value();
+
+        QImage image = layerPixmap.toImage();
+        if (image.isNull()) return;
+
+        if (patternType == 0) {
+            // Halftone dots effect
+            QImage result(image.width(), image.height(), QImage::Format_ARGB32);
+            result.fill(Qt::white);
+
+            for (int y = 0; y < image.height(); y += dotSize) {
+                for (int x = 0; x < image.width(); x += dotSize) {
+                    // Sample the center pixel of this cell
+                    int sampleX = qMin(x + dotSize / 2, image.width() - 1);
+                    int sampleY = qMin(y + dotSize / 2, image.height() - 1);
+                    QColor pixel = image.pixelColor(sampleX, sampleY);
+
+                    // Convert to grayscale
+                    int gray = qGray(pixel.red(), pixel.green(), pixel.blue());
+
+                    // Calculate dot radius based on darkness
+                    double radius = (dotSize / 2.0) * (1.0 - gray / 255.0);
+
+                    // Draw the dot
+                    QPainter painter(&result);
+                    painter.setRenderHint(QPainter::Antialiasing);
+                    painter.setBrush(Qt::black);
+                    painter.setPen(Qt::NoPen);
+                    painter.drawEllipse(QPointF(x + dotSize / 2.0, y + dotSize / 2.0), radius, radius);
+                }
+            }
+
+            currentLayer.pixmap() = QPixmap::fromImage(result);
+        } else {
+            // Floyd-Steinberg dithering
+            image = image.convertToFormat(QImage::Format_RGB32);
+
+            for (int y = 0; y < image.height(); ++y) {
+                for (int x = 0; x < image.width(); ++x) {
+                    QColor oldPixel = image.pixelColor(x, y);
+                    int oldGray = qGray(oldPixel.red(), oldPixel.green(), oldPixel.blue());
+                    int newGray = oldGray < 128 ? 0 : 255;
+
+                    image.setPixelColor(x, y, QColor(newGray, newGray, newGray));
+
+                    int error = oldGray - newGray;
+
+                    // Distribute error to neighboring pixels
+                    if (x + 1 < image.width()) {
+                        QColor pixel = image.pixelColor(x + 1, y);
+                        int gray = qGray(pixel.red(), pixel.green(), pixel.blue());
+                        gray = qBound(0, gray + error * 7 / 16, 255);
+                        image.setPixelColor(x + 1, y, QColor(gray, gray, gray));
+                    }
+                    if (y + 1 < image.height()) {
+                        if (x > 0) {
+                            QColor pixel = image.pixelColor(x - 1, y + 1);
+                            int gray = qGray(pixel.red(), pixel.green(), pixel.blue());
+                            gray = qBound(0, gray + error * 3 / 16, 255);
+                            image.setPixelColor(x - 1, y + 1, QColor(gray, gray, gray));
+                        }
+                        QColor pixel = image.pixelColor(x, y + 1);
+                        int gray = qGray(pixel.red(), pixel.green(), pixel.blue());
+                        gray = qBound(0, gray + error * 5 / 16, 255);
+                        image.setPixelColor(x, y + 1, QColor(gray, gray, gray));
+
+                        if (x + 1 < image.width()) {
+                            QColor pixel = image.pixelColor(x + 1, y + 1);
+                            int gray = qGray(pixel.red(), pixel.green(), pixel.blue());
+                            gray = qBound(0, gray + error * 1 / 16, 255);
+                            image.setPixelColor(x + 1, y + 1, QColor(gray, gray, gray));
+                        }
+                    }
+                }
+            }
+
+            currentLayer.pixmap() = QPixmap::fromImage(image);
+        }
+
+        // Update the canvas
+        canvas->compositeAllLayers();
+        canvas->update();
+        canvas->setModified(true);
+    }
+}
+
+void MainWindow::edgeDetect()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    if (layerPixmap.isNull()) {
+        QMessageBox::warning(this, tr("Edge Detect"), tr("No image on current layer."));
+        return;
+    }
+
+    QImage image = layerPixmap.toImage();
+    if (image.isNull()) return;
+
     // Convert to grayscale first
     image = image.convertToFormat(QImage::Format_Grayscale8);
 
-    // Apply threshold to create pure black and white (no grays)
-    int threshold = 128;  // Middle gray value
-    for (int y = 0; y < image.height(); ++y) {
-        for (int x = 0; x < image.width(); ++x) {
-            QColor pixel = image.pixelColor(x, y);
-            int gray = pixel.red();  // In grayscale, R=G=B
-            if (gray < threshold) {
-                image.setPixelColor(x, y, Qt::black);
-            } else {
-                image.setPixelColor(x, y, Qt::white);
+    QImage result(image.width(), image.height(), QImage::Format_Grayscale8);
+    result.fill(Qt::white);
+
+    // Sobel edge detection
+    int sobelX[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
+    int sobelY[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
+
+    for (int y = 1; y < image.height() - 1; ++y) {
+        for (int x = 1; x < image.width() - 1; ++x) {
+            int gx = 0;
+            int gy = 0;
+
+            for (int ky = -1; ky <= 1; ++ky) {
+                for (int kx = -1; kx <= 1; ++kx) {
+                    int pixel = qGray(image.pixelColor(x + kx, y + ky).rgb());
+                    gx += pixel * sobelX[ky + 1][kx + 1];
+                    gy += pixel * sobelY[ky + 1][kx + 1];
+                }
             }
+
+            int magnitude = qMin(255, (int)sqrt(gx * gx + gy * gy));
+            result.setPixelColor(x, y, QColor(255 - magnitude, 255 - magnitude, 255 - magnitude));
         }
     }
 
-    // Apply the converted image back to the layer
+    currentLayer.pixmap() = QPixmap::fromImage(result);
+
+    // Update the canvas
+    canvas->compositeAllLayers();
+    canvas->update();
+    canvas->setModified(true);
+}
+
+void MainWindow::invertColors()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    if (layerPixmap.isNull()) {
+        QMessageBox::warning(this, tr("Invert Colors"), tr("No image on current layer."));
+        return;
+    }
+
+    QImage image = layerPixmap.toImage();
+    if (image.isNull()) return;
+
+    // Invert all colors
+    image.invertPixels();
+
+    currentLayer.pixmap() = QPixmap::fromImage(image);
+
+    // Update the canvas
+    canvas->compositeAllLayers();
+    canvas->update();
+    canvas->setModified(true);
+}
+
+void MainWindow::despeckle()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    if (layerPixmap.isNull()) {
+        QMessageBox::warning(this, tr("Despeckle"), tr("No image on current layer."));
+        return;
+    }
+
+    // Create dialog
+    QDialog dialog(this);
+    dialog.setWindowTitle(tr("Despeckle/Cleanup"));
+
+    QFormLayout *formLayout = new QFormLayout;
+
+    // Radius spinner
+    QSpinBox *radiusSpinBox = new QSpinBox(&dialog);
+    radiusSpinBox->setRange(1, 5);
+    radiusSpinBox->setValue(1);
+    radiusSpinBox->setSuffix(tr(" px"));
+    formLayout->addRow(tr("Radius:"), radiusSpinBox);
+
+    QLabel *helpLabel = new QLabel(tr("Removes small specks and artifacts from scanned images"), &dialog);
+    helpLabel->setWordWrap(true);
+    formLayout->addRow(helpLabel);
+
+    // Buttons
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+    connect(buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(&dialog);
+    mainLayout->addLayout(formLayout);
+    mainLayout->addWidget(buttonBox);
+
+    dialog.setLayout(mainLayout);
+
+    // Show dialog and process
+    if (dialog.exec() == QDialog::Accepted) {
+        int radius = radiusSpinBox->value();
+
+        QImage image = layerPixmap.toImage();
+        if (image.isNull()) return;
+
+        QImage result = image.copy();
+
+        // Apply median filter to remove noise
+        for (int y = radius; y < image.height() - radius; ++y) {
+            for (int x = radius; x < image.width() - radius; ++x) {
+                QVector<int> reds, greens, blues;
+
+                // Collect neighboring pixels
+                for (int ky = -radius; ky <= radius; ++ky) {
+                    for (int kx = -radius; kx <= radius; ++kx) {
+                        QColor pixel = image.pixelColor(x + kx, y + ky);
+                        reds.append(pixel.red());
+                        greens.append(pixel.green());
+                        blues.append(pixel.blue());
+                    }
+                }
+
+                // Sort and take median
+                std::sort(reds.begin(), reds.end());
+                std::sort(greens.begin(), greens.end());
+                std::sort(blues.begin(), blues.end());
+
+                int medianIndex = reds.size() / 2;
+                QColor originalPixel = image.pixelColor(x, y);
+                result.setPixelColor(x, y, QColor(reds[medianIndex], greens[medianIndex], blues[medianIndex], originalPixel.alpha()));
+            }
+        }
+
+        currentLayer.pixmap() = QPixmap::fromImage(result);
+
+        // Update the canvas
+        canvas->compositeAllLayers();
+        canvas->update();
+        canvas->setModified(true);
+    }
+}
+
+void MainWindow::autoLevels()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (!canvas) return;
+
+    Layer &currentLayer = canvas->currentLayer();
+    QPixmap layerPixmap = currentLayer.pixmap();
+
+    if (layerPixmap.isNull()) {
+        QMessageBox::warning(this, tr("Auto Levels"), tr("No image on current layer."));
+        return;
+    }
+
+    QImage image = layerPixmap.toImage();
+    if (image.isNull()) return;
+
+    // Find min and max values for each channel
+    int minR = 255, maxR = 0;
+    int minG = 255, maxG = 0;
+    int minB = 255, maxB = 0;
+
+    for (int y = 0; y < image.height(); ++y) {
+        for (int x = 0; x < image.width(); ++x) {
+            QColor pixel = image.pixelColor(x, y);
+            minR = qMin(minR, pixel.red());
+            maxR = qMax(maxR, pixel.red());
+            minG = qMin(minG, pixel.green());
+            maxG = qMax(maxG, pixel.green());
+            minB = qMin(minB, pixel.blue());
+            maxB = qMax(maxB, pixel.blue());
+        }
+    }
+
+    // Stretch levels to full range
+    for (int y = 0; y < image.height(); ++y) {
+        for (int x = 0; x < image.width(); ++x) {
+            QColor pixel = image.pixelColor(x, y);
+
+            int r = maxR > minR ? (pixel.red() - minR) * 255 / (maxR - minR) : pixel.red();
+            int g = maxG > minG ? (pixel.green() - minG) * 255 / (maxG - minG) : pixel.green();
+            int b = maxB > minB ? (pixel.blue() - minB) * 255 / (maxB - minB) : pixel.blue();
+
+            r = qBound(0, r, 255);
+            g = qBound(0, g, 255);
+            b = qBound(0, b, 255);
+
+            image.setPixelColor(x, y, QColor(r, g, b, pixel.alpha()));
+        }
+    }
+
     currentLayer.pixmap() = QPixmap::fromImage(image);
 
     // Update the canvas
