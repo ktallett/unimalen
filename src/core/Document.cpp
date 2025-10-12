@@ -12,10 +12,11 @@ Document::Document(int width, int height)
     : m_width(width)
     , m_height(height)
     , m_pageSize(PageSize::Custom)
+    , m_paperColor(PaperColor::White)
     , m_currentPageIndex(0)
 {
     // Create initial page
-    m_pages.append(Page(width, height));
+    m_pages.append(Page(width, height, m_paperColor));
 }
 
 // Page management
@@ -29,7 +30,7 @@ void Document::setCurrentPageIndex(int index)
 Page& Document::currentPage()
 {
     if (m_pages.isEmpty()) {
-        m_pages.append(Page(m_width, m_height));
+        m_pages.append(Page(m_width, m_height, m_paperColor));
     }
     if (m_currentPageIndex < 0 || m_currentPageIndex >= m_pages.size()) {
         m_currentPageIndex = 0;
@@ -63,7 +64,7 @@ void Document::addPage()
     if (m_pages.size() >= MAX_PAGES) {
         return;
     }
-    m_pages.append(Page(m_width, m_height));
+    m_pages.append(Page(m_width, m_height, m_paperColor));
 }
 
 void Document::deletePage(int index)
@@ -83,7 +84,7 @@ void Document::duplicatePage(int index)
     }
     if (index >= 0 && index < m_pages.size()) {
         // Create a new page and copy all layers
-        Page newPage(m_width, m_height);
+        Page newPage(m_width, m_height, m_paperColor);
         newPage.clear();
 
         const Page& source = m_pages[index];
@@ -346,7 +347,7 @@ void Document::clear()
 {
     m_pages.clear();
     m_currentPageIndex = 0;
-    m_pages.append(Page(m_width, m_height));
+    m_pages.append(Page(m_width, m_height, m_paperColor));
 }
 
 void Document::resize(int width, int height)
@@ -364,6 +365,15 @@ void Document::setPageSize(PageSize size)
     m_pageSize = size;
     const PageSizeInfo& info = getPageSizeInfo(size);
     resize(info.width, info.height);
+}
+
+void Document::setPaperColor(PaperColor color)
+{
+    m_paperColor = color;
+    // Update all existing pages with the new paper color
+    for (Page& page : m_pages) {
+        page.setPaperColor(color);
+    }
 }
 
 // Multi-page zine file I/O
@@ -506,7 +516,7 @@ bool Document::loadFromZine(const QString &folderPath)
         QString pageFileName = dir.filePath(QString("page_%1.ora").arg(i + 1, 2, 10, QChar('0')));
 
         // For now, create empty pages - full ORA loading would go here
-        m_pages.append(Page(m_width, m_height));
+        m_pages.append(Page(m_width, m_height, m_paperColor));
     }
 
     return true;

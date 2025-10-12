@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Layer.h"
+#include "Types.h"
 #include <QPixmap>
 #include <QList>
 #include <QString>
@@ -12,7 +13,7 @@ constexpr int MAX_LAYERS_PER_PAGE = 3;
 class Page
 {
 public:
-    explicit Page(int width, int height);
+    explicit Page(int width, int height, PaperColor paperColor = PaperColor::White);
     ~Page() = default;
 
     // Layer management
@@ -45,9 +46,14 @@ public:
     int width() const { return m_width; }
     int height() const { return m_height; }
 
+    // Paper color
+    PaperColor paperColor() const { return m_paperColor; }
+    void setPaperColor(PaperColor color) { m_paperColor = color; }
+
 private:
     int m_width;
     int m_height;
+    PaperColor m_paperColor;
     QList<Layer> m_layers;
     int m_currentLayerIndex;
 };

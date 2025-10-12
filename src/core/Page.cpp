@@ -3,9 +3,10 @@
 
 namespace Unimalen {
 
-Page::Page(int width, int height)
+Page::Page(int width, int height, PaperColor paperColor)
     : m_width(width)
     , m_height(height)
+    , m_paperColor(paperColor)
     , m_currentLayerIndex(0)
 {
     // Create initial layer
@@ -121,7 +122,7 @@ QPixmap Page::composite() const
 void Page::compositeToPixmap(QPixmap &target) const
 {
     target = QPixmap(m_width, m_height);
-    target.fill(Qt::transparent);
+    target.fill(getPaperColorValue(m_paperColor));
 
     QPainter painter(&target);
     painter.setRenderHint(QPainter::Antialiasing, false);

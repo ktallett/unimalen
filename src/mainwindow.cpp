@@ -486,6 +486,35 @@ void MainWindow::createActions()
         }
     }
 
+    // Paper color actions
+    m_paperColorGroup = new QActionGroup(this);
+    using Unimalen::PaperColor;
+
+    QAction *whiteAction = new QAction(tr("White"), this);
+    whiteAction->setCheckable(true);
+    whiteAction->setActionGroup(m_paperColorGroup);
+    whiteAction->setChecked(true); // Default to white
+    connect(whiteAction, &QAction::triggered, this, [this]() {
+        setPaperColor(PaperColor::White);
+    });
+    m_paperColorActions.append(whiteAction);
+
+    QAction *greyAction = new QAction(tr("Grey"), this);
+    greyAction->setCheckable(true);
+    greyAction->setActionGroup(m_paperColorGroup);
+    connect(greyAction, &QAction::triggered, this, [this]() {
+        setPaperColor(PaperColor::Grey);
+    });
+    m_paperColorActions.append(greyAction);
+
+    QAction *blackAction = new QAction(tr("Black"), this);
+    blackAction->setCheckable(true);
+    blackAction->setActionGroup(m_paperColorGroup);
+    connect(blackAction, &QAction::triggered, this, [this]() {
+        setPaperColor(PaperColor::Black);
+    });
+    m_paperColorActions.append(blackAction);
+
     // Create tab shortcuts for numbers 1-9
     for (int i = 1; i <= 9; ++i) {
         QAction *tabAction = new QAction(this);
@@ -507,6 +536,12 @@ void MainWindow::createMenus()
     QMenu *pageSizeMenu = fileMenu->addMenu(tr("Page &Size"));
     for (QAction *action : m_pageSizeActions) {
         pageSizeMenu->addAction(action);
+    }
+
+    // Add paper color submenu
+    QMenu *paperColorMenu = fileMenu->addMenu(tr("Paper &Color"));
+    for (QAction *action : m_paperColorActions) {
+        paperColorMenu->addAction(action);
     }
 
     fileMenu->addSeparator();
@@ -1081,8 +1116,17 @@ void MainWindow::setPageSize(Unimalen::PageSize size)
     Canvas *canvas = getCurrentCanvas();
     if (canvas && canvas->document()) {
         canvas->document()->setPageSize(size);
-        canvas->setFixedSize(canvas->document()->width() * canvas->getScaleFactor(),
-                            canvas->document()->height() * canvas->getScaleFactor());
+        canvas->updateCanvasSize();
+        canvas->compositeAllLayers();
+        canvas->update();
+    }
+}
+
+void MainWindow::setPaperColor(Unimalen::PaperColor color)
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas && canvas->document()) {
+        canvas->document()->setPaperColor(color);
         canvas->compositeAllLayers();
         canvas->update();
     }

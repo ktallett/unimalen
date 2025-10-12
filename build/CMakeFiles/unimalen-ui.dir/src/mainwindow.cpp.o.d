@@ -368,7 +368,8 @@ CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: \
  /usr/include/qt6/QtWidgets/qdockwidget.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Types.h \
  /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/QString \
- /usr/include/qt6/QtCore/qstring.h \
+ /usr/include/qt6/QtCore/qstring.h /usr/include/qt6/QtGui/QColor \
+ /usr/include/qt6/QtGui/qcolor.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/canvas.h \
  /usr/include/qt6/QtWidgets/QWidget /usr/include/qt6/QtWidgets/qwidget.h \
  /usr/include/qt6/QtGui/QPixmap /usr/include/qt6/QtGui/qpixmap.h \
@@ -429,7 +430,6 @@ CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: \
  /usr/include/qt6/QtWidgets/QSlider /usr/include/qt6/QtWidgets/qslider.h \
  /usr/include/qt6/QtWidgets/QListWidgetItem \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/colorbar.h \
- /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtGui/qcolor.h \
  /usr/include/qt6/QtWidgets/QApplication \
  /usr/include/qt6/QtWidgets/qapplication.h \
  /usr/include/qt6/QtWidgets/QStatusBar \

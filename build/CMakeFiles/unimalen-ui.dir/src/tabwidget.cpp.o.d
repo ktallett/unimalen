@@ -388,7 +388,8 @@ CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o: \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Document.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Page.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Types.h \
- /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/QFileInfo \
+ /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtGui/QColor \
+ /usr/include/qt6/QtGui/qcolor.h /usr/include/qt6/QtCore/QFileInfo \
  /usr/include/qt6/QtCore/qfileinfo.h /usr/include/qt6/QtCore/qfile.h \
  /usr/include/qt6/QtCore/qfiledevice.h /usr/include/c++/15/filesystem \
  /usr/include/c++/15/bits/fs_fwd.h /usr/include/c++/15/bits/fs_path.h \

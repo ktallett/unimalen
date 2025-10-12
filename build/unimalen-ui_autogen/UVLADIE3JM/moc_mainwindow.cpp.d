@@ -412,6 +412,7 @@
   /usr/include/qt6/QtCore/qyieldcpu.h \
   /usr/include/qt6/QtGui/QActionGroup \
   /usr/include/qt6/QtGui/QCloseEvent \
+  /usr/include/qt6/QtGui/QColor \
   /usr/include/qt6/QtGui/QMoveEvent \
   /usr/include/qt6/QtGui/QResizeEvent \
   /usr/include/qt6/QtGui/QTransform \

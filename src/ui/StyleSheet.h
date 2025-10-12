@@ -93,9 +93,9 @@ QToolButton:hover {
 }
 
 QToolButton:pressed, QToolButton:checked {
-    background-color: %6;
-    color: white;
-    border-color: %6;
+    background-color: transparent;
+    color: %2;
+    border: 3px solid %6;
 }
 
 /* ===== Input Fields ===== */

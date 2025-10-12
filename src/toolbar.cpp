@@ -32,7 +32,8 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_layout = new QGridLayout(contentWidget);
     m_layout->setContentsMargins(12, 12, 12, 12);
-    m_layout->setSpacing(6);
+    m_layout->setHorizontalSpacing(24);  // Extra horizontal spacing between columns
+    m_layout->setVerticalSpacing(12);    // Vertical spacing between rows
     m_layout->setAlignment(Qt::AlignTop);
 
     m_pencilButton = new QToolButton(contentWidget);

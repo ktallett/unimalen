@@ -26,7 +26,8 @@ PatternBar::PatternBar(QWidget *parent)
     QWidget *contentWidget = new QWidget();
     m_layout = new QGridLayout(contentWidget);
     m_layout->setContentsMargins(12, 12, 12, 12);
-    m_layout->setSpacing(6);
+    m_layout->setHorizontalSpacing(12);  // Horizontal spacing between columns
+    m_layout->setVerticalSpacing(24);    // Extra vertical spacing between rows
     m_layout->setAlignment(Qt::AlignLeft);
 
     // Create pattern buttons in 2x13 grid

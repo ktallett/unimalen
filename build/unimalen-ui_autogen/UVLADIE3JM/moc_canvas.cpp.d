@@ -416,6 +416,7 @@
   /usr/include/qt6/QtCore/qyieldcpu.h \
   /usr/include/qt6/QtGui/QBrush \
   /usr/include/qt6/QtGui/QClipboard \
+  /usr/include/qt6/QtGui/QColor \
   /usr/include/qt6/QtGui/QContextMenuEvent \
   /usr/include/qt6/QtGui/QFont \
   /usr/include/qt6/QtGui/QKeyEvent \

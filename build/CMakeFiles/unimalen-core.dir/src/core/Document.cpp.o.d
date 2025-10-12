@@ -301,9 +301,10 @@ CMakeFiles/unimalen-core.dir/src/core/Document.cpp.o: \
  /usr/include/qt6/QtGui/qfontvariableaxis.h \
  /usr/include/qt6/QtGui/qfontmetrics.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Page.h \
- /usr/include/qt6/QtCore/QList /usr/include/qt6/QtCore/qlist.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Types.h \
  /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/qsize.h \
+ /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtGui/qcolor.h \
+ /usr/include/qt6/QtCore/QList /usr/include/qt6/QtCore/qlist.h \
  /usr/include/qt6/QtCore/QDir /usr/include/qt6/QtCore/qdir.h \
  /usr/include/qt6/QtCore/qdirlisting.h \
  /usr/include/qt6/QtCore/qfiledevice.h \

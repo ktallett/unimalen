@@ -24,6 +24,8 @@ public:
     QSize size() const { return QSize(m_width, m_height); }
     PageSize pageSize() const { return m_pageSize; }
     void setPageSize(PageSize size);
+    PaperColor paperColor() const { return m_paperColor; }
+    void setPaperColor(PaperColor color);
 
     // Page management
     int pageCount() const { return m_pages.size(); }
@@ -82,6 +84,7 @@ private:
     int m_width;
     int m_height;
     PageSize m_pageSize;
+    PaperColor m_paperColor;
     QList<Page> m_pages;
     int m_currentPageIndex;
 };

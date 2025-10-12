@@ -105,6 +105,9 @@ Canvas::Canvas(QWidget *parent)
     setMouseTracking(true);
     setFocusPolicy(Qt::StrongFocus);
 
+    // Set size policy to allow canvas to expand with window size
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
     // Enable input method support for international text input
     setAttribute(Qt::WA_InputMethodEnabled, true);
 
@@ -2419,7 +2422,8 @@ void Canvas::compositeAllLayers()
 void Canvas::updateCanvasSize()
 {
     // Show only one page at a time
-    setFixedSize(m_document->width() * m_scaleFactor, m_document->height() * m_scaleFactor);
+    // Use setMinimumSize to allow the canvas to expand with window size
+    setMinimumSize(m_document->width() * m_scaleFactor, m_document->height() * m_scaleFactor);
 }
 
 void Canvas::performScissorsCut(const QPolygon &cutLine)

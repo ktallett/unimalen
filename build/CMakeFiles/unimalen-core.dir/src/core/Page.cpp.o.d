@@ -299,5 +299,8 @@ CMakeFiles/unimalen-core.dir/src/core/Page.cpp.o: \
  /usr/include/qt6/QtGui/qbrush.h /usr/include/qt6/QtGui/qfontinfo.h \
  /usr/include/qt6/QtGui/qfont.h /usr/include/qt6/QtCore/qendian.h \
  /usr/include/qt6/QtGui/qfontvariableaxis.h \
- /usr/include/qt6/QtGui/qfontmetrics.h /usr/include/qt6/QtCore/QList \
- /usr/include/qt6/QtCore/qlist.h
+ /usr/include/qt6/QtGui/qfontmetrics.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Types.h \
+ /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/qsize.h \
+ /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtGui/qcolor.h \
+ /usr/include/qt6/QtCore/QList /usr/include/qt6/QtCore/qlist.h

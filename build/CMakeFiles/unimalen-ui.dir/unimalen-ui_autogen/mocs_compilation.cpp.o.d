@@ -382,17 +382,17 @@ CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt6/QtCore/QString /usr/include/qt6/QtCore/qstring.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/core/Document.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/core/Page.h \
- /usr/include/qt6/QtCore/QList \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/core/Types.h \
- /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/qtmochelpers.h \
+ /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtGui/QColor \
+ /usr/include/qt6/QtGui/qcolor.h /usr/include/qt6/QtCore/QList \
+ /usr/include/qt6/QtCore/qtmochelpers.h \
  /usr/include/qt6/QtCore/qtmocconstants.h \
  /usr/include/qt6/QtCore/q20algorithm.h \
  /usr/include/qt6/QtCore/q23type_traits.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_colorbar.cpp \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/colorbar.h \
  /usr/include/qt6/QtWidgets/QPushButton \
- /usr/include/qt6/QtWidgets/qpushbutton.h /usr/include/qt6/QtGui/QColor \
- /usr/include/qt6/QtGui/qcolor.h \
+ /usr/include/qt6/QtWidgets/qpushbutton.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_layerpanel.cpp \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/layerpanel.h \
  /usr/include/qt6/QtWidgets/QVBoxLayout \

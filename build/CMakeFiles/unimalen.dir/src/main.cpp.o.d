@@ -400,7 +400,7 @@ CMakeFiles/unimalen.dir/src/main.cpp.o: \
  /usr/include/qt6/QtWidgets/qdockwidget.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Types.h \
  /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/QString \
- /usr/include/qt6/QtCore/qstring.h \
+ /usr/include/qt6/QtCore/qstring.h /usr/include/qt6/QtGui/QColor \
+ /usr/include/qt6/QtGui/qcolor.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/ui/StyleSheet.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/ui/DesignTokens.h \
- /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtGui/qcolor.h
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/ui/DesignTokens.h

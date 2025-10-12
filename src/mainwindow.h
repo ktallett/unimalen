@@ -53,6 +53,7 @@ private slots:
     void newTab();
     void closeTab();
     void setPageSize(Unimalen::PageSize size);
+    void setPaperColor(Unimalen::PaperColor color);
     void setScale1x();
     void setScale2x();
     void setScale4x();
@@ -222,6 +223,10 @@ private:
     // Page size menu actions
     QActionGroup *m_pageSizeGroup;
     QList<QAction*> m_pageSizeActions;
+
+    // Paper color menu actions
+    QActionGroup *m_paperColorGroup;
+    QList<QAction*> m_paperColorActions;
 
     // Page indicator label
     QLabel *m_pageIndicator;

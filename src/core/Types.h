@@ -2,6 +2,7 @@
 
 #include <QSize>
 #include <QString>
+#include <QColor>
 
 namespace Unimalen {
 
@@ -9,6 +10,13 @@ namespace Unimalen {
 constexpr int DEFAULT_CANVAS_WIDTH = 576;
 constexpr int DEFAULT_CANVAS_HEIGHT = 720;
 constexpr int DEFAULT_DPI = 72;
+
+// Paper color enumeration
+enum class PaperColor {
+    White,
+    Grey,
+    Black
+};
 
 // Page size enumeration
 enum class PageSize {
@@ -51,6 +59,20 @@ inline const PageSizeInfo& getPageSizeInfo(PageSize size) {
         }
     }
     return PAGE_SIZES[6]; // Custom
+}
+
+// Helper function to get QColor from PaperColor
+inline QColor getPaperColorValue(PaperColor color) {
+    switch (color) {
+        case PaperColor::White:
+            return QColor(255, 255, 255);
+        case PaperColor::Grey:
+            return QColor(180, 180, 180);
+        case PaperColor::Black:
+            return QColor(0, 0, 0);
+        default:
+            return QColor(255, 255, 255);
+    }
 }
 
 } // namespace Unimalen
