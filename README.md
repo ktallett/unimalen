@@ -1,11 +1,13 @@
-# Unimalen
+# Unimalen - Drawing and Painting Application
 
-A lightweight drawing and painting application designed for creating zines and digital artwork.
+A lightweight drawing and painting application built with C++ and Qt 6 for creating zines and digital artwork.
+
+Designed for artists creating zines, comics, and illustrations with a focus on simplicity and essential drawing tools.
 
 ## Features
 
 - **Multi-page support** - Create zines with up to 24 pages
-- **Layer system** - Up to 3 layers per page for organized artwork
+- **Layer system** - Multiple layers per page for organized artwork
 - **Drawing tools** - Pencil, brush, spray, eraser, and more
 - **Shape tools** - Lines, squares, rounded rectangles, ovals (filled and outlined)
 - **Advanced tools** - Bezier curves, fill bucket, lasso selection
@@ -13,39 +15,56 @@ A lightweight drawing and painting application designed for creating zines and d
 - **Text support** - Movable text with multiple fonts
 - **Color palette** - Copic pastel color selection
 - **Pattern fills** - Various fill patterns for creative effects
-- **Page navigation** - Easy navigation between pages with keyboard shortcuts
 - **File formats** - Save as PNG or OpenRaster (ORA) format
-- **Zine export** - Export multi-page documents as zine folders
 
 ## Installation
 
 ### Prerequisites
 
-- CMake 3.16 or higher
-- Qt6 (Core, Widgets, Gui, LinguistTools)
+- Qt 6.2+ development libraries
+- CMake 3.16+
 - C++17 compatible compiler
 
-### Build Instructions
+### Linux (Ubuntu/Debian)
 
 ```bash
+sudo apt update
+sudo apt install qt6-base-dev qt6-tools-dev cmake build-essential
+
 cd build
 cmake ..
 make -j4
+./unimalen
 ```
 
-The compiled executable will be `./unimalen`
-
-### Dependencies (Debian/Ubuntu)
+### Linux (Fedora/CentOS)
 
 ```bash
-sudo apt install cmake qt6-base-dev qt6-tools-dev qt6-tools-dev-tools
+sudo dnf install qt6-qtbase-devel qt6-qttools-devel cmake gcc-c++
+
+cd build
+cmake ..
+make -j4
+./unimalen
 ```
 
-### Dependencies (Fedora)
+### macOS
 
 ```bash
-sudo dnf install cmake qt6-qtbase-devel qt6-qttools-devel
+brew install qt@6 cmake
+
+cd build
+cmake -DCMAKE_PREFIX_PATH=/opt/homebrew/opt/qt@6 ..
+make -j4
+./unimalen
 ```
+
+### Windows
+
+1. Install [Qt 6](https://www.qt.io/download)
+2. Install [CMake](https://cmake.org/download/)
+3. Open Qt Creator and import the CMakeLists.txt file
+4. Build and run
 
 ## Usage
 
@@ -66,14 +85,20 @@ sudo dnf install cmake qt6-qtbase-devel qt6-qttools-devel
 
 ### Tools
 
-Select tools from the toolbar on the left side of the window. The scissors tool allows you to cut through artwork and move the pieces independently.
+Select tools from the toolbar on the left side of the window:
+- **Pencil** - Freehand drawing
+- **Brush** - Soft brush strokes
+- **Spray** - Spray paint effect
+- **Eraser** - Remove artwork
+- **Line** - Draw straight lines
+- **Bezier** - Create curved paths
+- **Scissors** - Cut through artwork and move pieces independently
+- **Fill** - Fill enclosed areas with color
+- **Lasso** - Select irregular areas
+- **Shapes** - Rectangles, rounded rectangles, and ovals
 
 ## License
 
-This project is licensed under the **GNU General Public License v3.0** (GPL-3.0).
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
 
-You are free to use, modify, and distribute this software under the terms of the GPL-3.0 license. See the [LICENSE](LICENSE) file for details, or visit [https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.html).
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit issues or pull requests.
+---
