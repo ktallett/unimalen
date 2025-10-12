@@ -8,6 +8,7 @@
 #include <QComboBox>
 #include <QLabel>
 #include <QCloseEvent>
+#include <QScrollArea>
 
 class ToolBar : public QWidget
 {

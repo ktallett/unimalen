@@ -1,6 +1,8 @@
 #include "toolbar.h"
 #include <QToolButton>
 #include <QGridLayout>
+#include <QVBoxLayout>
+#include <QScrollArea>
 #include <QIcon>
 #include <QPainter>
 #include <QPixmap>
@@ -12,29 +14,31 @@ ToolBar::ToolBar(QWidget *parent)
     , m_currentBrushSize(15)
     , m_currentEraserSize(12)
 {
-    setFixedWidth(120);
-    setStyleSheet("QWidget { background-color: #f0f0f0; border-right: 1px solid #ccc; }");
+    // Create main layout for this widget
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    mainLayout->setContentsMargins(0, 0, 0, 0);
+    mainLayout->setSpacing(0);
 
-    m_layout = new QGridLayout(this);
-    m_layout->setContentsMargins(5, 5, 5, 5);
-    m_layout->setSpacing(5);
+    // Create scroll area
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    scrollArea->setMinimumWidth(160);  // Account for scrollbar width
+
+    // Create content widget for the buttons
+    QWidget *contentWidget = new QWidget();
+    contentWidget->setMinimumWidth(140);
+
+    m_layout = new QGridLayout(contentWidget);
+    m_layout->setContentsMargins(12, 12, 12, 12);
+    m_layout->setSpacing(6);
     m_layout->setAlignment(Qt::AlignTop);
 
-    m_pencilButton = new QToolButton(this);
-    m_pencilButton->setFixedSize(42, 42);
+    m_pencilButton = new QToolButton(contentWidget);
+    m_pencilButton->setFixedSize(44, 44);
     m_pencilButton->setCheckable(true);
     m_pencilButton->setChecked(true);
-    m_pencilButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     QPixmap pencilIcon(50, 50);
     pencilIcon.fill(Qt::transparent);
@@ -52,20 +56,9 @@ ToolBar::ToolBar(QWidget *parent)
 
     connect(m_pencilButton, &QToolButton::clicked, this, &ToolBar::onPencilClicked);
 
-    m_textButton = new QToolButton(this);
-    m_textButton->setFixedSize(42, 42);
+    m_textButton = new QToolButton(contentWidget);
+    m_textButton->setFixedSize(44, 44);
     m_textButton->setCheckable(true);
-    m_textButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     QPixmap textIcon(50, 50);
     textIcon.fill(Qt::transparent);
@@ -82,20 +75,9 @@ ToolBar::ToolBar(QWidget *parent)
     connect(m_textButton, &QToolButton::clicked, this, &ToolBar::onTextClicked);
 
     // Create spray paint tool with menu
-    m_sprayButton = new QToolButton(this);
-    m_sprayButton->setFixedSize(42, 42);
+    m_sprayButton = new QToolButton(contentWidget);
+    m_sprayButton->setFixedSize(44, 44);
     m_sprayButton->setCheckable(true);
-    m_sprayButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     // Create spray can icon
     QPixmap sprayCanIcon(50, 50);
@@ -132,20 +114,9 @@ ToolBar::ToolBar(QWidget *parent)
     connect(m_sprayButton, &QToolButton::clicked, this, &ToolBar::onSprayClicked);
 
     // Create paintbrush tool with menu
-    m_brushButton = new QToolButton(this);
-    m_brushButton->setFixedSize(42, 42);
+    m_brushButton = new QToolButton(contentWidget);
+    m_brushButton->setFixedSize(44, 44);
     m_brushButton->setCheckable(true);
-    m_brushButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     // Create paintbrush icon
     QPixmap brushIcon(50, 50);
@@ -181,20 +152,9 @@ ToolBar::ToolBar(QWidget *parent)
     connect(m_brushButton, &QToolButton::clicked, this, &ToolBar::onBrushClicked);
 
     // Create eraser tool with menu
-    m_eraserButton = new QToolButton(this);
-    m_eraserButton->setFixedSize(42, 42);
+    m_eraserButton = new QToolButton(contentWidget);
+    m_eraserButton->setFixedSize(44, 44);
     m_eraserButton->setCheckable(true);
-    m_eraserButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     // Create eraser icon
     QPixmap eraserIcon(50, 50);
@@ -223,20 +183,9 @@ ToolBar::ToolBar(QWidget *parent)
     connect(m_eraserButton, &QToolButton::clicked, this, &ToolBar::onEraserClicked);
 
     // Create line tool
-    m_lineButton = new QToolButton(this);
-    m_lineButton->setFixedSize(42, 42);
+    m_lineButton = new QToolButton(contentWidget);
+    m_lineButton->setFixedSize(44, 44);
     m_lineButton->setCheckable(true);
-    m_lineButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     // Create line icon
     QPixmap lineIcon(50, 50);
@@ -260,20 +209,9 @@ ToolBar::ToolBar(QWidget *parent)
     connect(m_lineButton, &QToolButton::clicked, this, &ToolBar::onLineClicked);
 
     // Create bezier curve tool
-    m_bezierButton = new QToolButton(this);
-    m_bezierButton->setFixedSize(42, 42);
+    m_bezierButton = new QToolButton(contentWidget);
+    m_bezierButton->setFixedSize(44, 44);
     m_bezierButton->setCheckable(true);
-    m_bezierButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     // Create bezier curve icon
     QPixmap bezierIcon(50, 50);
@@ -306,23 +244,9 @@ ToolBar::ToolBar(QWidget *parent)
     connect(m_bezierButton, &QToolButton::clicked, this, &ToolBar::onBezierClicked);
 
     // Create scissors tool
-    m_scissorsButton = new QToolButton(this);
-    m_scissorsButton->setFixedSize(42, 42);
+    m_scissorsButton = new QToolButton(contentWidget);
+    m_scissorsButton->setFixedSize(44, 44);
     m_scissorsButton->setCheckable(true);
-    m_scissorsButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 1px solid #666; "
-        "} "
-        "QToolButton:hover { "
-        "background-color: #e8e8e8; "
-        "}"
-    );
 
     // Create scissors icon
     QPixmap scissorsIcon(50, 50);
@@ -356,20 +280,9 @@ ToolBar::ToolBar(QWidget *parent)
     connect(m_scissorsButton, &QToolButton::clicked, this, &ToolBar::onScissorsClicked);
 
     // Create fill tool
-    m_fillButton = new QToolButton(this);
-    m_fillButton->setFixedSize(42, 42);
+    m_fillButton = new QToolButton(contentWidget);
+    m_fillButton->setFixedSize(44, 44);
     m_fillButton->setCheckable(true);
-    m_fillButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     // Create paint bucket icon - improved design
     QPixmap fillIcon(50, 50);
@@ -437,20 +350,9 @@ ToolBar::ToolBar(QWidget *parent)
     connect(m_fillButton, &QToolButton::clicked, this, &ToolBar::onFillClicked);
 
     // Create lasso tool
-    m_lassoButton = new QToolButton(this);
-    m_lassoButton->setFixedSize(42, 42);
+    m_lassoButton = new QToolButton(contentWidget);
+    m_lassoButton->setFixedSize(44, 44);
     m_lassoButton->setCheckable(true);
-    m_lassoButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     // Create lasso icon
     QPixmap lassoIcon(50, 50);
@@ -484,20 +386,9 @@ ToolBar::ToolBar(QWidget *parent)
     connect(m_lassoButton, &QToolButton::clicked, this, &ToolBar::onLassoClicked);
 
     // Create square outline tool
-    m_squareButton = new QToolButton(this);
-    m_squareButton->setFixedSize(42, 42);
+    m_squareButton = new QToolButton(contentWidget);
+    m_squareButton->setFixedSize(44, 44);
     m_squareButton->setCheckable(true);
-    m_squareButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     // Create square outline icon
     QPixmap squareIcon(50, 50);
@@ -516,20 +407,9 @@ ToolBar::ToolBar(QWidget *parent)
     connect(m_squareButton, &QToolButton::clicked, this, &ToolBar::onSquareClicked);
 
     // Create filled square tool
-    m_filledSquareButton = new QToolButton(this);
-    m_filledSquareButton->setFixedSize(42, 42);
+    m_filledSquareButton = new QToolButton(contentWidget);
+    m_filledSquareButton->setFixedSize(44, 44);
     m_filledSquareButton->setCheckable(true);
-    m_filledSquareButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     // Create filled square icon
     QPixmap filledSquareIcon(50, 50);
@@ -548,20 +428,9 @@ ToolBar::ToolBar(QWidget *parent)
     connect(m_filledSquareButton, &QToolButton::clicked, this, &ToolBar::onFilledSquareClicked);
 
     // Create rounded square tool
-    m_roundedSquareButton = new QToolButton(this);
-    m_roundedSquareButton->setFixedSize(42, 42);
+    m_roundedSquareButton = new QToolButton(contentWidget);
+    m_roundedSquareButton->setFixedSize(44, 44);
     m_roundedSquareButton->setCheckable(true);
-    m_roundedSquareButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     // Create rounded square outline icon
     QPixmap roundedSquareIcon(50, 50);
@@ -580,20 +449,9 @@ ToolBar::ToolBar(QWidget *parent)
     connect(m_roundedSquareButton, &QToolButton::clicked, this, &ToolBar::onRoundedSquareClicked);
 
     // Create filled rounded square tool
-    m_filledRoundedSquareButton = new QToolButton(this);
-    m_filledRoundedSquareButton->setFixedSize(42, 42);
+    m_filledRoundedSquareButton = new QToolButton(contentWidget);
+    m_filledRoundedSquareButton->setFixedSize(44, 44);
     m_filledRoundedSquareButton->setCheckable(true);
-    m_filledRoundedSquareButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     // Create filled rounded square icon
     QPixmap filledRoundedSquareIcon(50, 50);
@@ -612,20 +470,9 @@ ToolBar::ToolBar(QWidget *parent)
     connect(m_filledRoundedSquareButton, &QToolButton::clicked, this, &ToolBar::onFilledRoundedSquareClicked);
 
     // Create oval tool
-    m_ovalButton = new QToolButton(this);
-    m_ovalButton->setFixedSize(42, 42);
+    m_ovalButton = new QToolButton(contentWidget);
+    m_ovalButton->setFixedSize(44, 44);
     m_ovalButton->setCheckable(true);
-    m_ovalButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     // Create oval outline icon
     QPixmap ovalIcon(50, 50);
@@ -644,20 +491,9 @@ ToolBar::ToolBar(QWidget *parent)
     connect(m_ovalButton, &QToolButton::clicked, this, &ToolBar::onOvalClicked);
 
     // Create filled oval tool
-    m_filledOvalButton = new QToolButton(this);
-    m_filledOvalButton->setFixedSize(42, 42);
+    m_filledOvalButton = new QToolButton(contentWidget);
+    m_filledOvalButton->setFixedSize(44, 44);
     m_filledOvalButton->setCheckable(true);
-    m_filledOvalButton->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     // Create filled oval icon
     QPixmap filledOvalIcon(50, 50);
@@ -675,7 +511,7 @@ ToolBar::ToolBar(QWidget *parent)
 
     connect(m_filledOvalButton, &QToolButton::clicked, this, &ToolBar::onFilledOvalClicked);
 
-    // Arrange tools in grid - now 7 rows for 14 tools
+    // Arrange tools in grid - now 8 rows for 16 tools
     m_layout->addWidget(m_pencilButton, 0, 0);
     m_layout->addWidget(m_textButton, 0, 1);
     m_layout->addWidget(m_sprayButton, 1, 0);
@@ -692,6 +528,10 @@ ToolBar::ToolBar(QWidget *parent)
     m_layout->addWidget(m_filledOvalButton, 6, 1);
     m_layout->addWidget(m_bezierButton, 7, 0);
     m_layout->addWidget(m_scissorsButton, 7, 1);
+
+    // Wire up scroll area
+    scrollArea->setWidget(contentWidget);
+    mainLayout->addWidget(scrollArea);
 }
 
 void ToolBar::onPencilClicked()

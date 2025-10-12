@@ -58,7 +58,6 @@ template <> constexpr inline auto LayerPanel::qt_create_metaobjectdata<qt_meta_t
         "mode",
         "layerRenamed",
         "name",
-        "layerPanelClosed",
         "onCurrentItemChanged",
         "QListWidgetItem*",
         "current",
@@ -108,29 +107,27 @@ template <> constexpr inline auto LayerPanel::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SignalData<void(int, const QString &)>(17, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 3 }, { QMetaType::QString, 18 },
         }}),
-        // Signal 'layerPanelClosed'
-        QtMocHelpers::SignalData<void()>(19, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'onCurrentItemChanged'
-        QtMocHelpers::SlotData<void(QListWidgetItem *, QListWidgetItem *)>(20, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 21, 22 }, { 0x80000000 | 21, 23 },
+        QtMocHelpers::SlotData<void(QListWidgetItem *, QListWidgetItem *)>(19, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 20, 21 }, { 0x80000000 | 20, 22 },
         }}),
         // Slot 'onAddLayerClicked'
-        QtMocHelpers::SlotData<void()>(24, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(23, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onDeleteLayerClicked'
-        QtMocHelpers::SlotData<void()>(25, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(24, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onDuplicateLayerClicked'
-        QtMocHelpers::SlotData<void()>(26, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(25, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onOpacityChanged'
-        QtMocHelpers::SlotData<void(int)>(27, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 28 },
+        QtMocHelpers::SlotData<void(int)>(26, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 27 },
         }}),
         // Slot 'onBlendModeChanged'
-        QtMocHelpers::SlotData<void(int)>(29, 2, QMC::AccessPrivate, QMetaType::Void, {{
+        QtMocHelpers::SlotData<void(int)>(28, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::Int, 3 },
         }}),
         // Slot 'onItemChanged'
-        QtMocHelpers::SlotData<void(QListWidgetItem *)>(30, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 21, 31 },
+        QtMocHelpers::SlotData<void(QListWidgetItem *)>(29, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 20, 30 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -164,14 +161,13 @@ void LayerPanel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 6: _t->layerOpacityChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<qreal>>(_a[2]))); break;
         case 7: _t->layerBlendModeChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<Layer::BlendMode>>(_a[2]))); break;
         case 8: _t->layerRenamed((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 9: _t->layerPanelClosed(); break;
-        case 10: _t->onCurrentItemChanged((*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[2]))); break;
-        case 11: _t->onAddLayerClicked(); break;
-        case 12: _t->onDeleteLayerClicked(); break;
-        case 13: _t->onDuplicateLayerClicked(); break;
-        case 14: _t->onOpacityChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 15: _t->onBlendModeChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 16: _t->onItemChanged((*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[1]))); break;
+        case 9: _t->onCurrentItemChanged((*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[2]))); break;
+        case 10: _t->onAddLayerClicked(); break;
+        case 11: _t->onDeleteLayerClicked(); break;
+        case 12: _t->onDuplicateLayerClicked(); break;
+        case 13: _t->onOpacityChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 14: _t->onBlendModeChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 15: _t->onItemChanged((*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[1]))); break;
         default: ;
         }
     }
@@ -193,8 +189,6 @@ void LayerPanel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         if (QtMocHelpers::indexOfMethod<void (LayerPanel::*)(int , Layer::BlendMode )>(_a, &LayerPanel::layerBlendModeChanged, 7))
             return;
         if (QtMocHelpers::indexOfMethod<void (LayerPanel::*)(int , const QString & )>(_a, &LayerPanel::layerRenamed, 8))
-            return;
-        if (QtMocHelpers::indexOfMethod<void (LayerPanel::*)()>(_a, &LayerPanel::layerPanelClosed, 9))
             return;
     }
 }
@@ -218,14 +212,14 @@ int LayerPanel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 17)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 17;
+        _id -= 16;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 17)
+        if (_id < 16)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 17;
+        _id -= 16;
     }
     return _id;
 }
@@ -282,11 +276,5 @@ void LayerPanel::layerBlendModeChanged(int _t1, Layer::BlendMode _t2)
 void LayerPanel::layerRenamed(int _t1, const QString & _t2)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 8, nullptr, _t1, _t2);
-}
-
-// SIGNAL 9
-void LayerPanel::layerPanelClosed()
-{
-    QMetaObject::activate(this, &staticMetaObject, 9, nullptr);
 }
 QT_WARNING_POP

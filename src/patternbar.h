@@ -4,7 +4,7 @@
 #include <QGridLayout>
 #include <QToolButton>
 #include <QBrush>
-#include <QCloseEvent>
+#include <QScrollArea>
 
 class PatternBar : public QWidget
 {
@@ -12,7 +12,6 @@ class PatternBar : public QWidget
 
 public:
     explicit PatternBar(QWidget *parent = nullptr);
-    void showAsFloatingWindow();
 
     enum PatternType {
         Solid = 0,
@@ -46,7 +45,6 @@ public:
 
 signals:
     void patternSelected(PatternType pattern);
-    void patternBarClosed();
 
 private slots:
     void onSolidClicked();
@@ -75,9 +73,6 @@ private slots:
     void onCheckerboardClicked();
     void onTrianglesClicked();
     void onNoiseClicked();
-
-protected:
-    void closeEvent(QCloseEvent *event) override;
 
 private:
     void createPatternButton(PatternType type, Qt::BrushStyle style, const QString &tooltip, int row, int col);

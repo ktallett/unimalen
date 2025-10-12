@@ -8,7 +8,7 @@
 #include <QComboBox>
 #include <QLabel>
 #include <QListWidgetItem>
-#include <QCloseEvent>
+#include <QScrollArea>
 #include "core/Layer.h"
 
 using Unimalen::Layer;
@@ -21,7 +21,6 @@ class LayerPanel : public QWidget
 
 public:
     explicit LayerPanel(QWidget *parent = nullptr);
-    void showAsFloatingWindow();
 
     // Layer management
     void setLayers(const QList<Layer> &layers);
@@ -42,7 +41,6 @@ signals:
     void layerOpacityChanged(int index, qreal opacity);
     void layerBlendModeChanged(int index, Layer::BlendMode mode);
     void layerRenamed(int index, const QString &name);
-    void layerPanelClosed();
 
 private slots:
     void onCurrentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
@@ -52,9 +50,6 @@ private slots:
     void onOpacityChanged(int value);
     void onBlendModeChanged(int index);
     void onItemChanged(QListWidgetItem *item);
-
-protected:
-    void closeEvent(QCloseEvent *event) override;
 
 private:
     void createUI();

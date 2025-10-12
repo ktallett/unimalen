@@ -383,7 +383,6 @@ CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o: \
  /usr/include/qt6/QtWidgets/qtoolbutton.h \
  /usr/include/qt6/QtWidgets/qabstractbutton.h \
  /usr/include/qt6/QtGui/QBrush /usr/include/qt6/QtGui/qbrush.h \
- /usr/include/qt6/QtGui/QCloseEvent \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Layer.h \
  /usr/include/qt6/QtCore/QString /usr/include/qt6/QtCore/qstring.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Document.h \

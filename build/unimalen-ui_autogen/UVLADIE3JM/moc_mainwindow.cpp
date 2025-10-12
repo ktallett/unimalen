@@ -100,12 +100,6 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "fontSize",
         "onThicknessSelected",
         "thickness",
-        "toggleToolBar",
-        "visible",
-        "togglePatternBar",
-        "toggleThicknessBar",
-        "toggleLayerPanel",
-        "toggleColorBar",
         "onTabChanged",
         "index",
         "switchToTab",
@@ -115,6 +109,7 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "onLayerDuplicated",
         "onLayerSelected",
         "onLayerVisibilityChanged",
+        "visible",
         "onLayerOpacityChanged",
         "opacity",
         "onLayerBlendModeChanged",
@@ -254,82 +249,62 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void(int)>(59, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::Int, 60 },
         }}),
-        // Slot 'toggleToolBar'
-        QtMocHelpers::SlotData<void(bool)>(61, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Bool, 62 },
-        }}),
-        // Slot 'togglePatternBar'
-        QtMocHelpers::SlotData<void(bool)>(63, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Bool, 62 },
-        }}),
-        // Slot 'toggleThicknessBar'
-        QtMocHelpers::SlotData<void(bool)>(64, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Bool, 62 },
-        }}),
-        // Slot 'toggleLayerPanel'
-        QtMocHelpers::SlotData<void(bool)>(65, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Bool, 62 },
-        }}),
-        // Slot 'toggleColorBar'
-        QtMocHelpers::SlotData<void(bool)>(66, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Bool, 62 },
-        }}),
         // Slot 'onTabChanged'
-        QtMocHelpers::SlotData<void(int)>(67, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 68 },
+        QtMocHelpers::SlotData<void(int)>(61, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 62 },
         }}),
         // Slot 'switchToTab'
-        QtMocHelpers::SlotData<void(int)>(69, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 70 },
+        QtMocHelpers::SlotData<void(int)>(63, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 64 },
         }}),
         // Slot 'onLayerAdded'
-        QtMocHelpers::SlotData<void()>(71, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(65, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onLayerDeleted'
-        QtMocHelpers::SlotData<void(int)>(72, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 68 },
+        QtMocHelpers::SlotData<void(int)>(66, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 62 },
         }}),
         // Slot 'onLayerDuplicated'
-        QtMocHelpers::SlotData<void(int)>(73, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 68 },
+        QtMocHelpers::SlotData<void(int)>(67, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 62 },
         }}),
         // Slot 'onLayerSelected'
-        QtMocHelpers::SlotData<void(int)>(74, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 68 },
+        QtMocHelpers::SlotData<void(int)>(68, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 62 },
         }}),
         // Slot 'onLayerVisibilityChanged'
-        QtMocHelpers::SlotData<void(int, bool)>(75, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 68 }, { QMetaType::Bool, 62 },
+        QtMocHelpers::SlotData<void(int, bool)>(69, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 62 }, { QMetaType::Bool, 70 },
         }}),
         // Slot 'onLayerOpacityChanged'
-        QtMocHelpers::SlotData<void(int, qreal)>(76, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 68 }, { QMetaType::QReal, 77 },
+        QtMocHelpers::SlotData<void(int, qreal)>(71, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 62 }, { QMetaType::QReal, 72 },
         }}),
         // Slot 'onLayerBlendModeChanged'
-        QtMocHelpers::SlotData<void(int, int)>(78, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 68 }, { QMetaType::Int, 79 },
+        QtMocHelpers::SlotData<void(int, int)>(73, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 62 }, { QMetaType::Int, 74 },
         }}),
         // Slot 'onLayerRenamed'
-        QtMocHelpers::SlotData<void(int, const QString &)>(80, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 68 }, { QMetaType::QString, 81 },
+        QtMocHelpers::SlotData<void(int, const QString &)>(75, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 62 }, { QMetaType::QString, 76 },
         }}),
         // Slot 'onLayersChanged'
-        QtMocHelpers::SlotData<void()>(82, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(77, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onCurrentLayerChanged'
-        QtMocHelpers::SlotData<void(int)>(83, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 68 },
+        QtMocHelpers::SlotData<void(int)>(78, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 62 },
         }}),
         // Slot 'onPageAdded'
-        QtMocHelpers::SlotData<void()>(84, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(79, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onPageDeleted'
-        QtMocHelpers::SlotData<void()>(85, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(80, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onPageDuplicated'
-        QtMocHelpers::SlotData<void()>(86, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(81, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'nextPage'
-        QtMocHelpers::SlotData<void()>(87, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(82, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'previousPage'
-        QtMocHelpers::SlotData<void()>(88, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(83, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'updatePageIndicator'
-        QtMocHelpers::SlotData<void()>(89, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(84, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -405,29 +380,24 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 49: _t->onFontChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 50: _t->onFontSizeChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 51: _t->onThicknessSelected((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 52: _t->toggleToolBar((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
-        case 53: _t->togglePatternBar((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
-        case 54: _t->toggleThicknessBar((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
-        case 55: _t->toggleLayerPanel((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
-        case 56: _t->toggleColorBar((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
-        case 57: _t->onTabChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 58: _t->switchToTab((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 59: _t->onLayerAdded(); break;
-        case 60: _t->onLayerDeleted((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 61: _t->onLayerDuplicated((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 62: _t->onLayerSelected((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 63: _t->onLayerVisibilityChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[2]))); break;
-        case 64: _t->onLayerOpacityChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<qreal>>(_a[2]))); break;
-        case 65: _t->onLayerBlendModeChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
-        case 66: _t->onLayerRenamed((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 67: _t->onLayersChanged(); break;
-        case 68: _t->onCurrentLayerChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 69: _t->onPageAdded(); break;
-        case 70: _t->onPageDeleted(); break;
-        case 71: _t->onPageDuplicated(); break;
-        case 72: _t->nextPage(); break;
-        case 73: _t->previousPage(); break;
-        case 74: _t->updatePageIndicator(); break;
+        case 52: _t->onTabChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 53: _t->switchToTab((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 54: _t->onLayerAdded(); break;
+        case 55: _t->onLayerDeleted((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 56: _t->onLayerDuplicated((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 57: _t->onLayerSelected((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 58: _t->onLayerVisibilityChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[2]))); break;
+        case 59: _t->onLayerOpacityChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<qreal>>(_a[2]))); break;
+        case 60: _t->onLayerBlendModeChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 61: _t->onLayerRenamed((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 62: _t->onLayersChanged(); break;
+        case 63: _t->onCurrentLayerChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 64: _t->onPageAdded(); break;
+        case 65: _t->onPageDeleted(); break;
+        case 66: _t->onPageDuplicated(); break;
+        case 67: _t->nextPage(); break;
+        case 68: _t->previousPage(); break;
+        case 69: _t->updatePageIndicator(); break;
         default: ;
         }
     }
@@ -452,14 +422,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 75)
+        if (_id < 70)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 75;
+        _id -= 70;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 75)
+        if (_id < 70)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 75;
+        _id -= 70;
     }
     return _id;
 }

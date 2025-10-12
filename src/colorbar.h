@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QColor>
 #include <QList>
+#include <QScrollArea>
 
 class ColorBar : public QWidget
 {

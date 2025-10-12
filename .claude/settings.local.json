@@ -11,7 +11,9 @@
       "Bash(wget:*)",
       "Bash(fc-list:*)",
       "Bash(curl:*)",
-      "Bash(./unimalen)"
+      "Bash(./unimalen)",
+      "Read(//home/kerntallett/Dropbox/mnt_reform/projects/**)",
+      "Bash(pkill:*)"
     ],
     "deny": [],
     "ask": []

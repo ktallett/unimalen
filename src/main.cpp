@@ -3,6 +3,7 @@
 #include <QDir>
 #include <QDebug>
 #include "mainwindow.h"
+#include "ui/StyleSheet.h"
 
 int main(int argc, char *argv[])
 {
@@ -36,7 +37,12 @@ int main(int argc, char *argv[])
         }
     }
 
+    // Apply design system stylesheet
+    app.setStyleSheet(StyleSheet::getApplicationStyleSheet());
+
     MainWindow window;
+    window.setMinimumSize(DesignTokens::Layout::WindowMinWidth,
+                          DesignTokens::Layout::WindowMinHeight);
     window.show();
 
     return app.exec();

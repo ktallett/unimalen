@@ -9,12 +9,12 @@ ThicknessBar::ThicknessBar(QWidget *parent)
     : QWidget(parent)
     , m_currentThickness(Medium)
 {
-    setFixedHeight(50);
-    setStyleSheet("ThicknessBar { background-color: #f0f0f0; border: 1px solid #ccc; }");
+    setMinimumHeight(60);
+    setMinimumWidth(280);
 
     m_layout = new QHBoxLayout(this);
-    m_layout->setContentsMargins(5, 5, 5, 5);
-    m_layout->setSpacing(3);
+    m_layout->setContentsMargins(12, 12, 12, 12);
+    m_layout->setSpacing(6);
 
     // Create thickness buttons
     createThicknessButton(&m_dottedButton, "Dotted Line", Dotted);
@@ -40,20 +40,6 @@ void ThicknessBar::createThicknessButton(QToolButton **button, const QString &to
     (*button)->setFixedSize(38, 38);
     (*button)->setCheckable(true);
     (*button)->setToolTip(tooltip);
-    (*button)->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "} "
-        "QToolButton:hover { "
-        "background-color: #f5f5f5; "
-        "}"
-    );
 
     QPixmap icon = createThicknessIcon(type);
     (*button)->setIcon(QIcon(icon));

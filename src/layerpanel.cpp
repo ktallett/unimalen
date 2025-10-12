@@ -1,8 +1,5 @@
 #include "layerpanel.h"
-#include <QApplication>
-#include <QScreen>
 #include <QHBoxLayout>
-#include <QCheckBox>
 #include <QPixmap>
 #include <QPainter>
 
@@ -11,22 +8,36 @@ LayerPanel::LayerPanel(QWidget *parent)
     , m_currentLayerIndex(0)
     , m_updatingUI(false)
 {
-    setFixedSize(250, 400);
-    setStyleSheet("QWidget { background-color: #f0f0f0; border: 1px solid #ccc; }");
+    setMinimumWidth(240);  // Increased to account for scrollbar
+    setMinimumHeight(300);
 
     createUI();
 }
 
 void LayerPanel::createUI()
 {
-    m_mainLayout = new QVBoxLayout(this);
-    m_mainLayout->setContentsMargins(5, 5, 5, 5);
-    m_mainLayout->setSpacing(5);
+    // Create main layout for the widget
+    QVBoxLayout *outerLayout = new QVBoxLayout(this);
+    outerLayout->setContentsMargins(0, 0, 0, 0);
+    outerLayout->setSpacing(0);
+
+    // Create scroll area
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+
+    // Create content widget
+    QWidget *contentWidget = new QWidget();
+    m_mainLayout = new QVBoxLayout(contentWidget);
+    m_mainLayout->setContentsMargins(12, 12, 12, 12);
+    m_mainLayout->setSpacing(12);
 
     // Layer list
-    m_layerList = new QListWidget(this);
+    m_layerList = new QListWidget();
     m_layerList->setDragDropMode(QAbstractItemView::InternalMove);
     m_layerList->setDefaultDropAction(Qt::MoveAction);
+    m_layerList->setMinimumHeight(150);  // Ensure list has some minimum height
     m_mainLayout->addWidget(m_layerList);
 
     connect(m_layerList, &QListWidget::currentItemChanged, this, &LayerPanel::onCurrentItemChanged);
@@ -35,21 +46,64 @@ void LayerPanel::createUI()
     // Button layout
     QHBoxLayout *buttonLayout = new QHBoxLayout();
 
-    m_addButton = new QPushButton("+", this);
+    // Create Add button with icon
+    m_addButton = new QPushButton();
     m_addButton->setFixedSize(30, 30);
     m_addButton->setToolTip("Add Layer");
+    m_addButton->setStyleSheet(
+        "QPushButton { background-color: transparent; border: 2px solid transparent; border-radius: 4px; padding: 2px; }"
+        "QPushButton:hover { border: 2px solid #4482B4; }"
+        "QPushButton:pressed { background-color: rgba(68, 130, 180, 0.1); }"
+    );
+    QPixmap addIcon(24, 24);
+    addIcon.fill(Qt::transparent);
+    QPainter addPainter(&addIcon);
+    addPainter.setPen(QPen(Qt::black, 2));
+    addPainter.drawLine(12, 6, 12, 18);  // Vertical line
+    addPainter.drawLine(6, 12, 18, 12);  // Horizontal line
+    m_addButton->setIcon(QIcon(addIcon));
+    m_addButton->setIconSize(QSize(24, 24));
     connect(m_addButton, &QPushButton::clicked, this, &LayerPanel::onAddLayerClicked);
     buttonLayout->addWidget(m_addButton);
 
-    m_duplicateButton = new QPushButton("⧉", this);
+    // Create Duplicate button with icon
+    m_duplicateButton = new QPushButton();
     m_duplicateButton->setFixedSize(30, 30);
     m_duplicateButton->setToolTip("Duplicate Layer");
+    m_duplicateButton->setStyleSheet(
+        "QPushButton { background-color: transparent; border: 2px solid transparent; border-radius: 4px; padding: 2px; }"
+        "QPushButton:hover { border: 2px solid #4482B4; }"
+        "QPushButton:pressed { background-color: rgba(68, 130, 180, 0.1); }"
+    );
+    QPixmap dupIcon(24, 24);
+    dupIcon.fill(Qt::transparent);
+    QPainter dupPainter(&dupIcon);
+    dupPainter.setPen(QPen(Qt::black, 2));
+    dupPainter.setBrush(Qt::NoBrush);
+    dupPainter.drawRect(4, 4, 12, 12);   // Back rectangle
+    dupPainter.drawRect(8, 8, 12, 12);   // Front rectangle
+    m_duplicateButton->setIcon(QIcon(dupIcon));
+    m_duplicateButton->setIconSize(QSize(24, 24));
     connect(m_duplicateButton, &QPushButton::clicked, this, &LayerPanel::onDuplicateLayerClicked);
     buttonLayout->addWidget(m_duplicateButton);
 
-    m_deleteButton = new QPushButton("×", this);
+    // Create Delete button with icon
+    m_deleteButton = new QPushButton();
     m_deleteButton->setFixedSize(30, 30);
     m_deleteButton->setToolTip("Delete Layer");
+    m_deleteButton->setStyleSheet(
+        "QPushButton { background-color: transparent; border: 2px solid transparent; border-radius: 4px; padding: 2px; }"
+        "QPushButton:hover { border: 2px solid #4482B4; }"
+        "QPushButton:pressed { background-color: rgba(68, 130, 180, 0.1); }"
+    );
+    QPixmap delIcon(24, 24);
+    delIcon.fill(Qt::transparent);
+    QPainter delPainter(&delIcon);
+    delPainter.setPen(QPen(Qt::black, 2));
+    delPainter.drawLine(6, 6, 18, 18);   // Diagonal \
+    delPainter.drawLine(18, 6, 6, 18);   // Diagonal /
+    m_deleteButton->setIcon(QIcon(delIcon));
+    m_deleteButton->setIconSize(QSize(24, 24));
     connect(m_deleteButton, &QPushButton::clicked, this, &LayerPanel::onDeleteLayerClicked);
     buttonLayout->addWidget(m_deleteButton);
 
@@ -57,20 +111,20 @@ void LayerPanel::createUI()
     m_mainLayout->addLayout(buttonLayout);
 
     // Opacity controls
-    m_opacityLabel = new QLabel("Opacity: 100%", this);
+    m_opacityLabel = new QLabel("Opacity: 100%");
     m_mainLayout->addWidget(m_opacityLabel);
 
-    m_opacitySlider = new QSlider(Qt::Horizontal, this);
+    m_opacitySlider = new QSlider(Qt::Horizontal);
     m_opacitySlider->setRange(0, 100);
     m_opacitySlider->setValue(100);
     connect(m_opacitySlider, &QSlider::valueChanged, this, &LayerPanel::onOpacityChanged);
     m_mainLayout->addWidget(m_opacitySlider);
 
     // Blend mode controls
-    m_blendModeLabel = new QLabel("Blend Mode:", this);
+    m_blendModeLabel = new QLabel("Blend Mode:");
     m_mainLayout->addWidget(m_blendModeLabel);
 
-    m_blendModeCombo = new QComboBox(this);
+    m_blendModeCombo = new QComboBox();
     m_blendModeCombo->addItem("Normal", static_cast<int>(Layer::Normal));
     m_blendModeCombo->addItem("Multiply", static_cast<int>(Layer::Multiply));
     m_blendModeCombo->addItem("Screen", static_cast<int>(Layer::Screen));
@@ -78,35 +132,10 @@ void LayerPanel::createUI()
     connect(m_blendModeCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &LayerPanel::onBlendModeChanged);
     m_mainLayout->addWidget(m_blendModeCombo);
-}
 
-void LayerPanel::showAsFloatingWindow()
-{
-    setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint);
-    setWindowTitle(tr("Layers"));
-    show();
-
-    // Position relative to parent window if it exists
-    if (parentWidget()) {
-        QRect parentRect = parentWidget()->geometry();
-        int spacing = 10;
-        int x = parentRect.right() + spacing;
-        int y = parentRect.top() + 200;
-        move(x, y);
-    } else {
-        // Fallback positioning
-        QScreen *screen = QApplication::primaryScreen();
-        if (screen) {
-            QRect screenGeometry = screen->availableGeometry();
-            int x = screenGeometry.width() - width() - 60;
-            int y = 200;
-            move(x, y);
-        } else {
-            move(800, 200);
-        }
-    }
-    raise();
-    activateWindow();
+    // Wire up scroll area
+    scrollArea->setWidget(contentWidget);
+    outerLayout->addWidget(scrollArea);
 }
 
 void LayerPanel::setLayers(const QList<Layer> &layers)
@@ -291,8 +320,3 @@ void LayerItem::updateFromLayer(const Layer &layer)
     }
 }
 
-void LayerPanel::closeEvent(QCloseEvent *event)
-{
-    emit layerPanelClosed();
-    QWidget::closeEvent(event);
-}

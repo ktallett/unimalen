@@ -9,28 +9,31 @@ ColorBar::ColorBar(QWidget *parent, PaletteType palette)
 {
     setWindowTitle("Colors");
 
+    // Create main layout
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
-    mainLayout->setContentsMargins(5, 5, 5, 5);
-    mainLayout->setSpacing(5);
+    mainLayout->setContentsMargins(0, 0, 0, 0);
+    mainLayout->setSpacing(0);
 
-    QLabel *title = new QLabel("Colors", this);
-    title->setAlignment(Qt::AlignCenter);
-    QFont titleFont = title->font();
-    titleFont.setBold(true);
-    title->setFont(titleFont);
-    mainLayout->addWidget(title);
+    // Create scroll area
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
-    QWidget *paletteWidget = new QWidget(this);
+    // Create palette widget
+    QWidget *paletteWidget = new QWidget();
     m_layout = new QGridLayout(paletteWidget);
-    m_layout->setSpacing(4);
-    m_layout->setContentsMargins(0, 0, 0, 0);
+    m_layout->setSpacing(6);
+    m_layout->setContentsMargins(12, 12, 12, 12);
 
     createPalette(palette);
 
-    mainLayout->addWidget(paletteWidget);
-    mainLayout->addStretch();
+    // Wire up scroll area
+    scrollArea->setWidget(paletteWidget);
+    mainLayout->addWidget(scrollArea);
 
-    setMinimumWidth(200);
+    setMinimumWidth(200);  // Account for scrollbar
+    setMinimumHeight(200);
 }
 
 void ColorBar::createPalette(PaletteType palette)
@@ -66,25 +69,12 @@ void ColorBar::createPalette(PaletteType palette)
 void ColorBar::addColorButton(const QColor &color, const QString &name)
 {
     QPushButton *button = new QPushButton(this);
-    button->setFixedSize(50, 50);
+    button->setFixedSize(44, 44);
     button->setToolTip(name);
     button->setProperty("color", color);
 
-    // Style the button with the color
-    QString styleSheet = QString(
-        "QPushButton {"
-        "  background-color: %1;"
-        "  border: 2px solid #888;"
-        "  border-radius: 4px;"
-        "}"
-        "QPushButton:hover {"
-        "  border: 2px solid #444;"
-        "}"
-        "QPushButton:pressed {"
-        "  border: 3px solid #000;"
-        "}"
-    ).arg(color.name());
-
+    // Just set the background color using a property; border styling handled by global stylesheet
+    QString styleSheet = QString("background-color: %1;").arg(color.name());
     button->setStyleSheet(styleSheet);
 
     connect(button, &QPushButton::clicked, this, &ColorBar::onColorButtonClicked);
@@ -112,30 +102,17 @@ void ColorBar::setCurrentColor(const QColor &color)
 {
     m_currentColor = color;
 
-    // Update button borders to show selection
+    // Update button appearance to show selection
     for (QPushButton *btn : m_colorButtons) {
         QColor btnColor = btn->property("color").value<QColor>();
         if (btnColor == color) {
-            QString styleSheet = QString(
-                "QPushButton {"
-                "  background-color: %1;"
-                "  border: 3px solid #000;"
-                "  border-radius: 4px;"
-                "}"
-            ).arg(btnColor.name());
+            // Selected button gets thicker border (handled by setting property)
+            QString styleSheet = QString("background-color: %1; border: 3px solid #4482B4;").arg(btnColor.name());
             btn->setStyleSheet(styleSheet);
             m_selectedButton = btn;
         } else {
-            QString styleSheet = QString(
-                "QPushButton {"
-                "  background-color: %1;"
-                "  border: 2px solid #888;"
-                "  border-radius: 4px;"
-                "}"
-                "QPushButton:hover {"
-                "  border: 2px solid #444;"
-                "}"
-            ).arg(btnColor.name());
+            // Normal buttons just get background color
+            QString styleSheet = QString("background-color: %1;").arg(btnColor.name());
             btn->setStyleSheet(styleSheet);
         }
     }

@@ -80,11 +80,6 @@ private slots:
     void onFontChanged(const QString &fontFamily);
     void onFontSizeChanged(int fontSize);
     void onThicknessSelected(int thickness);
-    void toggleToolBar(bool visible);
-    void togglePatternBar(bool visible);
-    void toggleThicknessBar(bool visible);
-    void toggleLayerPanel(bool visible);
-    void toggleColorBar(bool visible);
     void onTabChanged(int index);
     void switchToTab(int tabNumber);
 

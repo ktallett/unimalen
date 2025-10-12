@@ -43,7 +43,6 @@ template <> constexpr inline auto PatternBar::qt_create_metaobjectdata<qt_meta_t
         "",
         "PatternType",
         "pattern",
-        "patternBarClosed",
         "onSolidClicked",
         "onDense1Clicked",
         "onDense2Clicked",
@@ -77,60 +76,58 @@ template <> constexpr inline auto PatternBar::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SignalData<void(enum PatternType)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { 0x80000000 | 3, 4 },
         }}),
-        // Signal 'patternBarClosed'
-        QtMocHelpers::SignalData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'onSolidClicked'
-        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onDense1Clicked'
-        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onDense2Clicked'
-        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onDense3Clicked'
-        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onDense4Clicked'
-        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onDense5Clicked'
-        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onDense6Clicked'
-        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onDense7Clicked'
-        QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onHorizontalClicked'
-        QtMocHelpers::SlotData<void()>(14, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onVerticalClicked'
-        QtMocHelpers::SlotData<void()>(15, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(14, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onCrossClicked'
-        QtMocHelpers::SlotData<void()>(16, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(15, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onBDiagClicked'
-        QtMocHelpers::SlotData<void()>(17, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(16, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onFDiagClicked'
-        QtMocHelpers::SlotData<void()>(18, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(17, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onDiagCrossClicked'
-        QtMocHelpers::SlotData<void()>(19, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(18, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onDotsClicked'
-        QtMocHelpers::SlotData<void()>(20, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(19, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onGridClicked'
-        QtMocHelpers::SlotData<void()>(21, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(20, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onCirclesClicked'
-        QtMocHelpers::SlotData<void()>(22, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(21, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onWavesClicked'
-        QtMocHelpers::SlotData<void()>(23, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(22, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onStarsClicked'
-        QtMocHelpers::SlotData<void()>(24, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(23, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onBrickClicked'
-        QtMocHelpers::SlotData<void()>(25, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(24, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onHexagonsClicked'
-        QtMocHelpers::SlotData<void()>(26, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(25, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onScalesClicked'
-        QtMocHelpers::SlotData<void()>(27, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(26, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onZigzagClicked'
-        QtMocHelpers::SlotData<void()>(28, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(27, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onCheckerboardClicked'
-        QtMocHelpers::SlotData<void()>(29, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(28, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onTrianglesClicked'
-        QtMocHelpers::SlotData<void()>(30, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(29, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onNoiseClicked'
-        QtMocHelpers::SlotData<void()>(31, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(30, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -155,40 +152,37 @@ void PatternBar::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->patternSelected((*reinterpret_cast< std::add_pointer_t<enum PatternType>>(_a[1]))); break;
-        case 1: _t->patternBarClosed(); break;
-        case 2: _t->onSolidClicked(); break;
-        case 3: _t->onDense1Clicked(); break;
-        case 4: _t->onDense2Clicked(); break;
-        case 5: _t->onDense3Clicked(); break;
-        case 6: _t->onDense4Clicked(); break;
-        case 7: _t->onDense5Clicked(); break;
-        case 8: _t->onDense6Clicked(); break;
-        case 9: _t->onDense7Clicked(); break;
-        case 10: _t->onHorizontalClicked(); break;
-        case 11: _t->onVerticalClicked(); break;
-        case 12: _t->onCrossClicked(); break;
-        case 13: _t->onBDiagClicked(); break;
-        case 14: _t->onFDiagClicked(); break;
-        case 15: _t->onDiagCrossClicked(); break;
-        case 16: _t->onDotsClicked(); break;
-        case 17: _t->onGridClicked(); break;
-        case 18: _t->onCirclesClicked(); break;
-        case 19: _t->onWavesClicked(); break;
-        case 20: _t->onStarsClicked(); break;
-        case 21: _t->onBrickClicked(); break;
-        case 22: _t->onHexagonsClicked(); break;
-        case 23: _t->onScalesClicked(); break;
-        case 24: _t->onZigzagClicked(); break;
-        case 25: _t->onCheckerboardClicked(); break;
-        case 26: _t->onTrianglesClicked(); break;
-        case 27: _t->onNoiseClicked(); break;
+        case 1: _t->onSolidClicked(); break;
+        case 2: _t->onDense1Clicked(); break;
+        case 3: _t->onDense2Clicked(); break;
+        case 4: _t->onDense3Clicked(); break;
+        case 5: _t->onDense4Clicked(); break;
+        case 6: _t->onDense5Clicked(); break;
+        case 7: _t->onDense6Clicked(); break;
+        case 8: _t->onDense7Clicked(); break;
+        case 9: _t->onHorizontalClicked(); break;
+        case 10: _t->onVerticalClicked(); break;
+        case 11: _t->onCrossClicked(); break;
+        case 12: _t->onBDiagClicked(); break;
+        case 13: _t->onFDiagClicked(); break;
+        case 14: _t->onDiagCrossClicked(); break;
+        case 15: _t->onDotsClicked(); break;
+        case 16: _t->onGridClicked(); break;
+        case 17: _t->onCirclesClicked(); break;
+        case 18: _t->onWavesClicked(); break;
+        case 19: _t->onStarsClicked(); break;
+        case 20: _t->onBrickClicked(); break;
+        case 21: _t->onHexagonsClicked(); break;
+        case 22: _t->onScalesClicked(); break;
+        case 23: _t->onZigzagClicked(); break;
+        case 24: _t->onCheckerboardClicked(); break;
+        case 25: _t->onTrianglesClicked(); break;
+        case 26: _t->onNoiseClicked(); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (PatternBar::*)(PatternType )>(_a, &PatternBar::patternSelected, 0))
-            return;
-        if (QtMocHelpers::indexOfMethod<void (PatternBar::*)()>(_a, &PatternBar::patternBarClosed, 1))
             return;
     }
 }
@@ -212,14 +206,14 @@ int PatternBar::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 28)
+        if (_id < 27)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 28;
+        _id -= 27;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 28)
+        if (_id < 27)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 28;
+        _id -= 27;
     }
     return _id;
 }
@@ -228,11 +222,5 @@ int PatternBar::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void PatternBar::patternSelected(PatternType _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
-}
-
-// SIGNAL 1
-void PatternBar::patternBarClosed()
-{
-    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 QT_WARNING_POP

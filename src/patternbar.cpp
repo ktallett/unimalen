@@ -1,23 +1,32 @@
 #include "patternbar.h"
 #include <QToolButton>
 #include <QGridLayout>
+#include <QVBoxLayout>
 #include <QIcon>
 #include <QPainter>
 #include <QPixmap>
 #include <QPainterPath>
-#include <QScreen>
-#include <QApplication>
 
 PatternBar::PatternBar(QWidget *parent)
     : QWidget(parent)
     , m_currentPattern(Solid)
 {
-    setFixedHeight(110); // Height for two rows
-    setStyleSheet("QWidget { background-color: #f0f0f0; border-top: 1px solid #ccc; }");
+    // Create main layout
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    mainLayout->setContentsMargins(0, 0, 0, 0);
+    mainLayout->setSpacing(0);
 
-    m_layout = new QGridLayout(this);
-    m_layout->setContentsMargins(5, 5, 5, 5);
-    m_layout->setSpacing(5);
+    // Create scroll area
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    // Create content widget
+    QWidget *contentWidget = new QWidget();
+    m_layout = new QGridLayout(contentWidget);
+    m_layout->setContentsMargins(12, 12, 12, 12);
+    m_layout->setSpacing(6);
     m_layout->setAlignment(Qt::AlignLeft);
 
     // Create pattern buttons in 2x13 grid
@@ -53,25 +62,20 @@ PatternBar::PatternBar(QWidget *parent)
 
     // Set solid as default selected
     m_solidButton->setChecked(true);
+
+    // Wire up scroll area
+    scrollArea->setWidget(contentWidget);
+    mainLayout->addWidget(scrollArea);
+
+    setMinimumHeight(140);  // Account for scrollbar
 }
 
 void PatternBar::createPatternButton(PatternType type, Qt::BrushStyle style, const QString &tooltip, int row, int col)
 {
-    QToolButton *button = new QToolButton(this);
+    QToolButton *button = new QToolButton();
     button->setFixedSize(48, 48);
     button->setCheckable(true);
     button->setToolTip(tooltip);
-    button->setStyleSheet(
-        "QToolButton { "
-        "border: 1px solid #ccc; "
-        "border-radius: 3px; "
-        "background-color: white; "
-        "} "
-        "QToolButton:checked { "
-        "background-color: #d0d0d0; "
-        "border: 2px solid #666; "
-        "}"
-    );
 
     // Create pattern icon
     QPixmap patternIcon(40, 40);
@@ -1242,40 +1246,4 @@ void PatternBar::onNoiseClicked()
     m_noiseButton->setChecked(true);
     m_currentPattern = Noise;
     emit patternSelected(Noise);
-}
-
-void PatternBar::showAsFloatingWindow()
-{
-    setWindowFlags(Qt::Tool | Qt::WindowStaysOnTopHint);
-    setWindowTitle(tr("Patterns"));
-    show();
-
-    // Position relative to parent window if it exists
-    if (parentWidget()) {
-        QRect parentRect = parentWidget()->geometry();
-        int spacing = 10;
-        int x = parentRect.left() + (parentRect.width() - width()) / 2;  // Center horizontally
-        int y = parentRect.bottom() + spacing;  // Below parent with margin
-        move(x, y);
-    } else {
-        // Fallback to old positioning
-        QScreen *screen = QApplication::primaryScreen();
-        if (screen) {
-            QRect screenGeometry = screen->availableGeometry();
-            int x = (screenGeometry.width() - width()) / 2;  // Center horizontally
-            int y = screenGeometry.height() - height() - 50;  // Bottom edge with margin
-            move(x, y);
-        } else {
-            move(300, 600);  // Fallback position
-        }
-    }
-
-    raise();
-    activateWindow();
-}
-
-void PatternBar::closeEvent(QCloseEvent *event)
-{
-    emit patternBarClosed();
-    QWidget::closeEvent(event);
 }

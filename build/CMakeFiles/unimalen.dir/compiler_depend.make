@@ -325,6 +325,8 @@ CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.o: .qt/rcc/q
 CMakeFiles/unimalen.dir/src/main.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/main.cpp \
   /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Types.h \
   /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/mainwindow.h \
+  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/ui/DesignTokens.h \
+  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/ui/StyleSheet.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -793,6 +795,7 @@ CMakeFiles/unimalen.dir/src/main.cpp.o: /home/kerntallett/Dropbox/mnt_reform/pro
   /usr/include/qt6/QtCore/qyieldcpu.h \
   /usr/include/qt6/QtGui/QActionGroup \
   /usr/include/qt6/QtGui/QCloseEvent \
+  /usr/include/qt6/QtGui/QColor \
   /usr/include/qt6/QtGui/QFontDatabase \
   /usr/include/qt6/QtGui/QMoveEvent \
   /usr/include/qt6/QtGui/QResizeEvent \
@@ -1431,6 +1434,10 @@ CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o:
 
 /usr/include/c++/15/debug/debug.h:
 
+/usr/include/c++/15/debug/assertions.h:
+
+/usr/include/c++/15/cwctype:
+
 /usr/lib64/cmake/Qt6WidgetsPrivate/Qt6WidgetsPrivateAdditionalTargetInfo.cmake:
 
 /usr/lib64/cmake/Qt6Widgets/Qt6WidgetsPlugins.cmake:
@@ -1642,6 +1649,8 @@ unimalen_autogen/mocs_compilation.cpp:
 /usr/lib64/cmake/Qt6Gui/Qt6QTuioTouchPluginAdditionalTargetInfo.cmake:
 
 /usr/lib64/cmake/Qt6Gui/Qt6QEvdevTouchScreenPluginConfig.cmake:
+
+/usr/include/qt6/QtGui/QColor:
 
 /usr/include/c++/15/ostream:
 
@@ -2255,8 +2264,6 @@ CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 
 /usr/lib64/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfig.cmake:
 
-/usr/include/c++/15/cwctype:
-
 /usr/lib64/cmake/Qt6Gui/Qt6QMinimalEglIntegrationPluginAdditionalTargetInfo.cmake:
 
 /usr/lib64/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets-relwithdebinfo.cmake:
@@ -2363,6 +2370,20 @@ CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 
 /usr/include/bits/endianness.h:
 
+/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/ui/DesignTokens.h:
+
+/usr/include/bits/posix1_lim.h:
+
+/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/ui/StyleSheet.h:
+
+/usr/include/qt6/QtWidgets/qapplication.h:
+
+/usr/lib64/cmake/Qt6WidgetsPrivate/Qt6WidgetsPrivateConfigVersion.cmake:
+
+/usr/include/c++/15/bits/move.h:
+
+/usr/include/c++/15/bits/unique_ptr.h:
+
 /usr/include/alloca.h:
 
 /usr/lib64/cmake/Qt6Gui/Qt6QComposePlatformInputContextPluginConfig.cmake:
@@ -2468,8 +2489,6 @@ CMakeFiles/3.31.6/CMakeCCompiler.cmake:
 /usr/include/bits/mathcalls-narrow.h:
 
 /usr/include/bits/mathcalls.h:
-
-/usr/include/bits/posix1_lim.h:
 
 /usr/include/bits/pthread_stack_min-dynamic.h:
 
@@ -2767,14 +2786,6 @@ CMakeFiles/3.31.6/CMakeCCompiler.cmake:
 
 /usr/include/c++/15/bits/uniform_int_dist.h:
 
-/usr/include/qt6/QtWidgets/qapplication.h:
-
-/usr/lib64/cmake/Qt6WidgetsPrivate/Qt6WidgetsPrivateConfigVersion.cmake:
-
-/usr/include/c++/15/bits/move.h:
-
-/usr/include/c++/15/bits/unique_ptr.h:
-
 /usr/include/c++/15/bits/unordered_set.h:
 
 /usr/include/c++/15/bits/chrono.h:
@@ -2824,5 +2835,3 @@ libunimalen-tools.a:
 /usr/include/c++/15/ctime:
 
 /usr/include/c++/15/cwchar:
-
-/usr/include/c++/15/debug/assertions.h:

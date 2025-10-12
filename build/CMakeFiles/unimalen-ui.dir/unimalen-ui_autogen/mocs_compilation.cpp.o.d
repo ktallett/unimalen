@@ -375,7 +375,9 @@ CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt6/QtWidgets/qtoolbutton.h \
  /usr/include/qt6/QtWidgets/qabstractbutton.h \
  /usr/include/qt6/QtGui/QBrush /usr/include/qt6/QtGui/qbrush.h \
- /usr/include/qt6/QtGui/QCloseEvent \
+ /usr/include/qt6/QtWidgets/QScrollArea \
+ /usr/include/qt6/QtWidgets/qscrollarea.h \
+ /usr/include/qt6/QtWidgets/qabstractscrollarea.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/core/Layer.h \
  /usr/include/qt6/QtCore/QString /usr/include/qt6/QtCore/qstring.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/core/Document.h \
@@ -399,7 +401,6 @@ CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt6/QtWidgets/qlistwidget.h \
  /usr/include/qt6/QtWidgets/qlistview.h \
  /usr/include/qt6/QtWidgets/qabstractitemview.h \
- /usr/include/qt6/QtWidgets/qabstractscrollarea.h \
  /usr/include/qt6/QtCore/qabstractitemmodel.h \
  /usr/include/qt6/QtCore/qitemselectionmodel.h \
  /usr/include/qt6/QtWidgets/qabstractitemdelegate.h \
@@ -423,11 +424,9 @@ CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt6/QtWidgets/qmainwindow.h \
  /usr/include/qt6/QtWidgets/QMenuBar \
  /usr/include/qt6/QtWidgets/qmenubar.h /usr/include/qt6/QtWidgets/qmenu.h \
- /usr/include/qt6/QtWidgets/QScrollArea \
- /usr/include/qt6/QtWidgets/qscrollarea.h \
  /usr/include/qt6/QtWidgets/QHBoxLayout \
  /usr/include/qt6/QtGui/QActionGroup \
- /usr/include/qt6/QtGui/qactiongroup.h \
+ /usr/include/qt6/QtGui/qactiongroup.h /usr/include/qt6/QtGui/QCloseEvent \
  /usr/include/qt6/QtGui/QResizeEvent /usr/include/qt6/QtGui/QMoveEvent \
  /usr/include/qt6/QtWidgets/QDockWidget \
  /usr/include/qt6/QtWidgets/qdockwidget.h \

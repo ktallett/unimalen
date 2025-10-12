@@ -328,6 +328,8 @@ CMakeFiles/unimalen.dir/src/main.cpp.o
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/main.cpp
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Types.h
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/mainwindow.h
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/ui/DesignTokens.h
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/ui/StyleSheet.h
  /usr/include/alloca.h
  /usr/include/asm-generic/bitsperlong.h
  /usr/include/asm-generic/errno-base.h
@@ -796,6 +798,7 @@ CMakeFiles/unimalen.dir/src/main.cpp.o
  /usr/include/qt6/QtCore/qyieldcpu.h
  /usr/include/qt6/QtGui/QActionGroup
  /usr/include/qt6/QtGui/QCloseEvent
+ /usr/include/qt6/QtGui/QColor
  /usr/include/qt6/QtGui/QFontDatabase
  /usr/include/qt6/QtGui/QMoveEvent
  /usr/include/qt6/QtGui/QResizeEvent

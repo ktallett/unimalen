@@ -40,6 +40,63 @@ MainWindow::MainWindow(QWidget *parent)
 
     setCentralWidget(m_tabWidget);
 
+    // Create dock widgets for all toolbars BEFORE createMenus() so toggleViewAction() is available
+    // Left side: Tools at top, Colors below
+    m_toolBarDock = new QDockWidget(tr("Tools"), this);
+    m_toolBarDock->setWidget(m_toolBar);
+    m_toolBarDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    m_toolBarDock->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable);
+    addDockWidget(Qt::LeftDockWidgetArea, m_toolBarDock);
+
+    m_colorBarDock = new QDockWidget(tr("Colors"), this);
+    m_colorBarDock->setWidget(m_colorBar);
+    m_colorBarDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    m_colorBarDock->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable);
+    addDockWidget(Qt::LeftDockWidgetArea, m_colorBarDock);
+
+    // Split the left area vertically so both can show
+    splitDockWidget(m_toolBarDock, m_colorBarDock, Qt::Vertical);
+
+    // Right side: Thickness at top, Layers below
+    m_thicknessBarDock = new QDockWidget(tr("Line Thickness"), this);
+    m_thicknessBarDock->setWidget(m_thicknessBar);
+    m_thicknessBarDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    m_thicknessBarDock->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable);
+    addDockWidget(Qt::RightDockWidgetArea, m_thicknessBarDock);
+
+    m_layerPanelDock = new QDockWidget(tr("Layers"), this);
+    m_layerPanelDock->setWidget(m_layerPanel);
+    m_layerPanelDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    m_layerPanelDock->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable);
+    addDockWidget(Qt::RightDockWidgetArea, m_layerPanelDock);
+
+    // Split the right area vertically
+    splitDockWidget(m_thicknessBarDock, m_layerPanelDock, Qt::Vertical);
+
+    // Bottom: Patterns
+    m_patternBarDock = new QDockWidget(tr("Patterns"), this);
+    m_patternBarDock->setWidget(m_patternBar);
+    m_patternBarDock->setAllowedAreas(Qt::BottomDockWidgetArea | Qt::TopDockWidgetArea);
+    m_patternBarDock->setFeatures(QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable);
+    addDockWidget(Qt::BottomDockWidgetArea, m_patternBarDock);
+
+    // Use dock widget's built-in toggle view actions for proper visibility management
+    m_showToolBarAction = m_toolBarDock->toggleViewAction();
+    m_showToolBarAction->setText(tr("Show &Tools"));
+
+    m_showColorBarAction = m_colorBarDock->toggleViewAction();
+    m_showColorBarAction->setText(tr("Show &Colors"));
+
+    m_showThicknessBarAction = m_thicknessBarDock->toggleViewAction();
+    m_showThicknessBarAction->setText(tr("Show &Line Thickness"));
+
+    m_showLayerPanelAction = m_layerPanelDock->toggleViewAction();
+    m_showLayerPanelAction->setText(tr("Show &Layers"));
+
+    m_showPatternBarAction = m_patternBarDock->toggleViewAction();
+    m_showPatternBarAction->setText(tr("Show &Patterns"));
+
+    // Now create actions and menus (after dock widgets so toggleViewActions are available)
     createActions();
     createMenus();
 
@@ -50,44 +107,7 @@ MainWindow::MainWindow(QWidget *parent)
     statusBar()->addPermanentWidget(m_pageIndicator);
     updatePageIndicator();
 
-    // Create dock widgets for all toolbars
-    m_toolBarDock = new QDockWidget(tr("Tools"), this);
-    m_toolBarDock->setWidget(m_toolBar);
-    m_toolBarDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-    m_toolBarDock->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
-    addDockWidget(Qt::LeftDockWidgetArea, m_toolBarDock);
-
-    m_patternBarDock = new QDockWidget(tr("Patterns"), this);
-    m_patternBarDock->setWidget(m_patternBar);
-    m_patternBarDock->setAllowedAreas(Qt::BottomDockWidgetArea | Qt::TopDockWidgetArea);
-    m_patternBarDock->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
-    addDockWidget(Qt::BottomDockWidgetArea, m_patternBarDock);
-
-    m_thicknessBarDock = new QDockWidget(tr("Line Thickness"), this);
-    m_thicknessBarDock->setWidget(m_thicknessBar);
-    m_thicknessBarDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-    m_thicknessBarDock->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
-    addDockWidget(Qt::RightDockWidgetArea, m_thicknessBarDock);
-
-    m_colorBarDock = new QDockWidget(tr("Colors"), this);
-    m_colorBarDock->setWidget(m_colorBar);
-    m_colorBarDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-    m_colorBarDock->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
-    addDockWidget(Qt::LeftDockWidgetArea, m_colorBarDock);
-
-    m_layerPanelDock = new QDockWidget(tr("Layers"), this);
-    m_layerPanelDock->setWidget(m_layerPanel);
-    m_layerPanelDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-    m_layerPanelDock->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetClosable);
-    addDockWidget(Qt::RightDockWidgetArea, m_layerPanelDock);
-
-    // Connect dock widget visibility to menu actions
-    connect(m_toolBarDock, &QDockWidget::visibilityChanged, m_showToolBarAction, &QAction::setChecked);
-    connect(m_patternBarDock, &QDockWidget::visibilityChanged, m_showPatternBarAction, &QAction::setChecked);
-    connect(m_thicknessBarDock, &QDockWidget::visibilityChanged, m_showThicknessBarAction, &QAction::setChecked);
-    connect(m_colorBarDock, &QDockWidget::visibilityChanged, m_showColorBarAction, &QAction::setChecked);
-    connect(m_layerPanelDock, &QDockWidget::visibilityChanged, m_showLayerPanelAction, &QAction::setChecked);
-
+    // Connect toolbar signals
     connect(m_toolBar, &ToolBar::pencilToolSelected, this, &MainWindow::onPencilSelected);
     connect(m_toolBar, &ToolBar::textToolSelected, this, &MainWindow::onTextSelected);
     connect(m_toolBar, &ToolBar::sprayToolSelected, this, &MainWindow::onSpraySelected);
@@ -278,31 +298,7 @@ void MainWindow::createActions()
     m_scaleGroup->addAction(m_scale2xAction);
     m_scaleGroup->addAction(m_scale4xAction);
 
-    // Toolbar visibility actions
-    m_showToolBarAction = new QAction(tr("Show &Tools"), this);
-    m_showToolBarAction->setCheckable(true);
-    m_showToolBarAction->setChecked(true); // Default visible
-    connect(m_showToolBarAction, &QAction::toggled, this, &MainWindow::toggleToolBar);
-
-    m_showPatternBarAction = new QAction(tr("Show &Patterns"), this);
-    m_showPatternBarAction->setCheckable(true);
-    m_showPatternBarAction->setChecked(true); // Default visible
-    connect(m_showPatternBarAction, &QAction::toggled, this, &MainWindow::togglePatternBar);
-
-    m_showThicknessBarAction = new QAction(tr("Show &Line Thickness"), this);
-    m_showThicknessBarAction->setCheckable(true);
-    m_showThicknessBarAction->setChecked(true); // Default visible
-    connect(m_showThicknessBarAction, &QAction::toggled, this, &MainWindow::toggleThicknessBar);
-
-    m_showLayerPanelAction = new QAction(tr("Show &Layers"), this);
-    m_showLayerPanelAction->setCheckable(true);
-    m_showLayerPanelAction->setChecked(true); // Default visible
-    connect(m_showLayerPanelAction, &QAction::toggled, this, &MainWindow::toggleLayerPanel);
-
-    m_showColorBarAction = new QAction(tr("Show &Colors"), this);
-    m_showColorBarAction->setCheckable(true);
-    m_showColorBarAction->setChecked(true); // Default visible
-    connect(m_showColorBarAction, &QAction::toggled, this, &MainWindow::toggleColorBar);
+    // Toolbar visibility actions - these will be set up in constructor after dock widgets are created
 
     // Font selection actions
     m_courierFontAction = new QAction("Courier New", this);
@@ -862,30 +858,6 @@ void MainWindow::setCurrentFile(const QString &fileName)
     setWindowTitle(title);
 }
 
-void MainWindow::toggleToolBar(bool visible)
-{
-    m_toolBarDock->setVisible(visible);
-}
-
-void MainWindow::togglePatternBar(bool visible)
-{
-    m_patternBarDock->setVisible(visible);
-}
-
-void MainWindow::toggleThicknessBar(bool visible)
-{
-    m_thicknessBarDock->setVisible(visible);
-}
-
-void MainWindow::toggleLayerPanel(bool visible)
-{
-    m_layerPanelDock->setVisible(visible);
-}
-
-void MainWindow::toggleColorBar(bool visible)
-{
-    m_colorBarDock->setVisible(visible);
-}
 
 void MainWindow::newTab()
 {
