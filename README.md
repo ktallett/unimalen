@@ -31,6 +31,7 @@ Designed for artists creating zines, comics, and illustrations with a focus on s
 sudo apt update
 sudo apt install qt6-base-dev qt6-tools-dev cmake build-essential
 
+mkdir -p build
 cd build
 cmake ..
 make -j4
@@ -42,6 +43,7 @@ make -j4
 ```bash
 sudo dnf install qt6-qtbase-devel qt6-qttools-devel cmake gcc-c++
 
+mkdir -p build
 cd build
 cmake ..
 make -j4
@@ -53,6 +55,7 @@ make -j4
 ```bash
 brew install qt@6 cmake
 
+mkdir -p build
 cd build
 cmake -DCMAKE_PREFIX_PATH=/opt/homebrew/opt/qt@6 ..
 make -j4
