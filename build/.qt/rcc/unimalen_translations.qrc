@@ -1,9 +1,0 @@
-<RCC>
-  <qresource prefix="/i18n">
-    <file alias="unimalen_en.qm">/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_en.qm</file>
-    <file alias="unimalen_es.qm">/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_es.qm</file>
-    <file alias="unimalen_fr.qm">/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_fr.qm</file>
-    <file alias="unimalen_de.qm">/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_de.qm</file>
-  </qresource>
-</RCC>
-

@@ -57,18 +57,18 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen
+CMAKE_SOURCE_DIR = "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
+CMAKE_BINARY_DIR = "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -132,9 +132,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -212,58 +212,6 @@ unimalen: cmake_check_build_system
 unimalen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen.dir/build.make CMakeFiles/unimalen.dir/build
 .PHONY : unimalen/fast
-
-#=============================================================================
-# Target rules for targets named unimalen_lupdate
-
-# Build rule for target.
-unimalen_lupdate: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unimalen_lupdate
-.PHONY : unimalen_lupdate
-
-# fast build rule for target.
-unimalen_lupdate/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen_lupdate.dir/build.make CMakeFiles/unimalen_lupdate.dir/build
-.PHONY : unimalen_lupdate/fast
-
-#=============================================================================
-# Target rules for targets named update_translations
-
-# Build rule for target.
-update_translations: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 update_translations
-.PHONY : update_translations
-
-# fast build rule for target.
-update_translations/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/update_translations.dir/build.make CMakeFiles/update_translations.dir/build
-.PHONY : update_translations/fast
-
-#=============================================================================
-# Target rules for targets named unimalen_lrelease
-
-# Build rule for target.
-unimalen_lrelease: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unimalen_lrelease
-.PHONY : unimalen_lrelease
-
-# fast build rule for target.
-unimalen_lrelease/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen_lrelease.dir/build.make CMakeFiles/unimalen_lrelease.dir/build
-.PHONY : unimalen_lrelease/fast
-
-#=============================================================================
-# Target rules for targets named release_translations
-
-# Build rule for target.
-release_translations: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 release_translations
-.PHONY : release_translations
-
-# fast build rule for target.
-release_translations/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_translations.dir/build.make CMakeFiles/release_translations.dir/build
-.PHONY : release_translations/fast
 
 #=============================================================================
 # Target rules for targets named unimalen-core_autogen_timestamp_deps
@@ -368,30 +316,6 @@ unimalen_autogen: cmake_check_build_system
 unimalen_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen_autogen.dir/build.make CMakeFiles/unimalen_autogen.dir/build
 .PHONY : unimalen_autogen/fast
-
-build/.qt/rcc/qrc_unimalen_translations.o: build/.qt/rcc/qrc_unimalen_translations.cpp.o
-.PHONY : build/.qt/rcc/qrc_unimalen_translations.o
-
-# target to build an object file
-build/.qt/rcc/qrc_unimalen_translations.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen.dir/build.make CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.o
-.PHONY : build/.qt/rcc/qrc_unimalen_translations.cpp.o
-
-build/.qt/rcc/qrc_unimalen_translations.i: build/.qt/rcc/qrc_unimalen_translations.cpp.i
-.PHONY : build/.qt/rcc/qrc_unimalen_translations.i
-
-# target to preprocess a source file
-build/.qt/rcc/qrc_unimalen_translations.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen.dir/build.make CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.i
-.PHONY : build/.qt/rcc/qrc_unimalen_translations.cpp.i
-
-build/.qt/rcc/qrc_unimalen_translations.s: build/.qt/rcc/qrc_unimalen_translations.cpp.s
-.PHONY : build/.qt/rcc/qrc_unimalen_translations.s
-
-# target to generate assembly for a file
-build/.qt/rcc/qrc_unimalen_translations.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen.dir/build.make CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.s
-.PHONY : build/.qt/rcc/qrc_unimalen_translations.cpp.s
 
 src/canvas.o: src/canvas.cpp.o
 .PHONY : src/canvas.o
@@ -825,6 +749,30 @@ src/tools/ToolManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.s
 .PHONY : src/tools/ToolManager.cpp.s
 
+src/ui/UpdateDialog.o: src/ui/UpdateDialog.cpp.o
+.PHONY : src/ui/UpdateDialog.o
+
+# target to build an object file
+src/ui/UpdateDialog.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/ui/UpdateDialog.cpp.o
+.PHONY : src/ui/UpdateDialog.cpp.o
+
+src/ui/UpdateDialog.i: src/ui/UpdateDialog.cpp.i
+.PHONY : src/ui/UpdateDialog.i
+
+# target to preprocess a source file
+src/ui/UpdateDialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/ui/UpdateDialog.cpp.i
+.PHONY : src/ui/UpdateDialog.cpp.i
+
+src/ui/UpdateDialog.s: src/ui/UpdateDialog.cpp.s
+.PHONY : src/ui/UpdateDialog.s
+
+# target to generate assembly for a file
+src/ui/UpdateDialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/ui/UpdateDialog.cpp.s
+.PHONY : src/ui/UpdateDialog.cpp.s
+
 unimalen-core_autogen/mocs_compilation.o: unimalen-core_autogen/mocs_compilation.cpp.o
 .PHONY : unimalen-core_autogen/mocs_compilation.o
 
@@ -933,7 +881,6 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... release_translations"
 	@echo "... unimalen-core_autogen"
 	@echo "... unimalen-core_autogen_timestamp_deps"
 	@echo "... unimalen-tools_autogen"
@@ -942,16 +889,10 @@ help:
 	@echo "... unimalen-ui_autogen_timestamp_deps"
 	@echo "... unimalen_autogen"
 	@echo "... unimalen_autogen_timestamp_deps"
-	@echo "... unimalen_lrelease"
-	@echo "... unimalen_lupdate"
-	@echo "... update_translations"
 	@echo "... unimalen"
 	@echo "... unimalen-core"
 	@echo "... unimalen-tools"
 	@echo "... unimalen-ui"
-	@echo "... build/.qt/rcc/qrc_unimalen_translations.o"
-	@echo "... build/.qt/rcc/qrc_unimalen_translations.i"
-	@echo "... build/.qt/rcc/qrc_unimalen_translations.s"
 	@echo "... src/canvas.o"
 	@echo "... src/canvas.i"
 	@echo "... src/canvas.s"
@@ -1006,6 +947,9 @@ help:
 	@echo "... src/tools/ToolManager.o"
 	@echo "... src/tools/ToolManager.i"
 	@echo "... src/tools/ToolManager.s"
+	@echo "... src/ui/UpdateDialog.o"
+	@echo "... src/ui/UpdateDialog.i"
+	@echo "... src/ui/UpdateDialog.s"
 	@echo "... unimalen-core_autogen/mocs_compilation.o"
 	@echo "... unimalen-core_autogen/mocs_compilation.i"
 	@echo "... unimalen-core_autogen/mocs_compilation.s"

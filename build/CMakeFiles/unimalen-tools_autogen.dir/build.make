@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen
+CMAKE_SOURCE_DIR = "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
+CMAKE_BINARY_DIR = "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build"
 
 # Utility rule file for unimalen-tools_autogen.
 
@@ -68,12 +68,12 @@ include CMakeFiles/unimalen-tools_autogen.dir/progress.make
 
 CMakeFiles/unimalen-tools_autogen: unimalen-tools_autogen/timestamp
 
-unimalen-tools_autogen/timestamp: /usr/lib64/qt6/libexec/moc
-unimalen-tools_autogen/timestamp: /usr/lib64/qt6/libexec/uic
+unimalen-tools_autogen/timestamp: /usr/lib/qt6/libexec/moc
+unimalen-tools_autogen/timestamp: /usr/lib/qt6/libexec/uic
 unimalen-tools_autogen/timestamp: CMakeFiles/unimalen-tools_autogen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target unimalen-tools"
-	/usr/bin/cmake -E cmake_autogen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen-tools_autogen.dir/AutogenInfo.json ""
-	/usr/bin/cmake -E touch /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/timestamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir="/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target unimalen-tools"
+	/usr/bin/cmake -E cmake_autogen "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen-tools_autogen.dir/AutogenInfo.json" ""
+	/usr/bin/cmake -E touch "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/timestamp"
 
 CMakeFiles/unimalen-tools_autogen.dir/codegen:
 .PHONY : CMakeFiles/unimalen-tools_autogen.dir/codegen
@@ -92,6 +92,6 @@ CMakeFiles/unimalen-tools_autogen.dir/clean:
 .PHONY : CMakeFiles/unimalen-tools_autogen.dir/clean
 
 CMakeFiles/unimalen-tools_autogen.dir/depend:
-	cd /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen-tools_autogen.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen-tools_autogen.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : CMakeFiles/unimalen-tools_autogen.dir/depend
 

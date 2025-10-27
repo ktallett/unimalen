@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen
+CMAKE_SOURCE_DIR = "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
+CMAKE_BINARY_DIR = "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build"
 
 # Utility rule file for unimalen_autogen_timestamp_deps.
 
@@ -81,6 +81,6 @@ CMakeFiles/unimalen_autogen_timestamp_deps.dir/clean:
 .PHONY : CMakeFiles/unimalen_autogen_timestamp_deps.dir/clean
 
 CMakeFiles/unimalen_autogen_timestamp_deps.dir/depend:
-	cd /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen_autogen_timestamp_deps.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen_autogen_timestamp_deps.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : CMakeFiles/unimalen_autogen_timestamp_deps.dir/depend
 

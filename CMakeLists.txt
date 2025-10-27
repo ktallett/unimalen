@@ -53,6 +53,7 @@ set(UI_SOURCES
     src/thicknessbar.cpp
     src/layerpanel.cpp
     src/colorbar.cpp
+    src/ui/UpdateDialog.cpp
 )
 
 set(UI_HEADERS
@@ -64,6 +65,7 @@ set(UI_HEADERS
     src/thicknessbar.h
     src/layerpanel.h
     src/colorbar.h
+    src/ui/UpdateDialog.h
 )
 
 add_library(unimalen-ui STATIC ${UI_SOURCES} ${UI_HEADERS})
@@ -78,14 +80,15 @@ qt6_add_executable(unimalen
 target_link_libraries(unimalen PRIVATE unimalen-ui unimalen-tools unimalen-core Qt6::Core Qt6::Widgets Qt6::Gui)
 
 # Add translation files
-set(TRANSLATION_FILES
-    translations/unimalen_en.ts
-    translations/unimalen_es.ts
-    translations/unimalen_fr.ts
-    translations/unimalen_de.ts
-)
-
-qt6_add_translations(unimalen TS_FILES ${TRANSLATION_FILES})
+# Temporarily commented out due to path issues
+# set(TRANSLATION_FILES
+#     translations/unimalen_en.ts
+#     translations/unimalen_es.ts
+#     translations/unimalen_fr.ts
+#     translations/unimalen_de.ts
+# )
+#
+# qt6_add_translations(unimalen TS_FILES ${TRANSLATION_FILES})
 
 # Set application properties
 set_target_properties(unimalen PROPERTIES

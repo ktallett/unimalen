@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen
+CMAKE_SOURCE_DIR = "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
+CMAKE_BINARY_DIR = "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/unimalen.dir/depend.make
@@ -69,45 +69,12 @@ include CMakeFiles/unimalen.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/unimalen.dir/flags.make
 
-unimalen_en.qm: /usr/lib64/qt6/bin/lrelease
-unimalen_en.qm: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_en.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating unimalen_en.qm"
-	/usr/bin/cmake -E make_directory /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
-	/usr/lib64/qt6/bin/lrelease /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_en.ts -qm /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_en.qm
-
-unimalen_es.qm: /usr/lib64/qt6/bin/lrelease
-unimalen_es.qm: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_es.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating unimalen_es.qm"
-	/usr/bin/cmake -E make_directory /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
-	/usr/lib64/qt6/bin/lrelease /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_es.ts -qm /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_es.qm
-
-unimalen_fr.qm: /usr/lib64/qt6/bin/lrelease
-unimalen_fr.qm: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_fr.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating unimalen_fr.qm"
-	/usr/bin/cmake -E make_directory /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
-	/usr/lib64/qt6/bin/lrelease /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_fr.ts -qm /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_fr.qm
-
-unimalen_de.qm: /usr/lib64/qt6/bin/lrelease
-unimalen_de.qm: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_de.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating unimalen_de.qm"
-	/usr/bin/cmake -E make_directory /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
-	/usr/lib64/qt6/bin/lrelease /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/translations/unimalen_de.ts -qm /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_de.qm
-
-.qt/rcc/qrc_unimalen_translations.cpp: unimalen_en.qm
-.qt/rcc/qrc_unimalen_translations.cpp: unimalen_es.qm
-.qt/rcc/qrc_unimalen_translations.cpp: unimalen_fr.qm
-.qt/rcc/qrc_unimalen_translations.cpp: unimalen_de.qm
-.qt/rcc/qrc_unimalen_translations.cpp: .qt/rcc/unimalen_translations.qrc
-.qt/rcc/qrc_unimalen_translations.cpp: /usr/lib64/qt6/libexec/rcc
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Running rcc for resource unimalen_translations"
-	/usr/lib64/qt6/libexec/rcc --output /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/.qt/rcc/qrc_unimalen_translations.cpp --name unimalen_translations /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/.qt/rcc/unimalen_translations.qrc
-
-unimalen_autogen/timestamp: /usr/lib64/qt6/libexec/moc
-unimalen_autogen/timestamp: /usr/lib64/qt6/libexec/uic
+unimalen_autogen/timestamp: /usr/lib/qt6/libexec/moc
+unimalen_autogen/timestamp: /usr/lib/qt6/libexec/uic
 unimalen_autogen/timestamp: CMakeFiles/unimalen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Automatic MOC and UIC for target unimalen"
-	/usr/bin/cmake -E cmake_autogen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen_autogen.dir/AutogenInfo.json ""
-	/usr/bin/cmake -E touch /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_autogen/timestamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir="/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target unimalen"
+	/usr/bin/cmake -E cmake_autogen "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen_autogen.dir/AutogenInfo.json" ""
+	/usr/bin/cmake -E touch "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/unimalen_autogen/timestamp"
 
 CMakeFiles/unimalen.dir/codegen:
 .PHONY : CMakeFiles/unimalen.dir/codegen
@@ -115,69 +82,53 @@ CMakeFiles/unimalen.dir/codegen:
 CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o: CMakeFiles/unimalen.dir/flags.make
 CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o: unimalen_autogen/mocs_compilation.cpp
 CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o: CMakeFiles/unimalen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o -MF CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o -MF CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o -c "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/unimalen_autogen/mocs_compilation.cpp"
 
 CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_autogen/mocs_compilation.cpp > CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/unimalen_autogen/mocs_compilation.cpp" > CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.i
 
 CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen_autogen/mocs_compilation.cpp -o CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/unimalen_autogen/mocs_compilation.cpp" -o CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.s
 
 CMakeFiles/unimalen.dir/src/main.cpp.o: CMakeFiles/unimalen.dir/flags.make
-CMakeFiles/unimalen.dir/src/main.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/main.cpp
+CMakeFiles/unimalen.dir/src/main.cpp.o: /home/kern/Dropbox\ (Maestral)/mnt_reform/projects/unimalen/src/main.cpp
 CMakeFiles/unimalen.dir/src/main.cpp.o: CMakeFiles/unimalen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/unimalen.dir/src/main.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen.dir/src/main.cpp.o -MF CMakeFiles/unimalen.dir/src/main.cpp.o.d -o CMakeFiles/unimalen.dir/src/main.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/unimalen.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen.dir/src/main.cpp.o -MF CMakeFiles/unimalen.dir/src/main.cpp.o.d -o CMakeFiles/unimalen.dir/src/main.cpp.o -c "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/main.cpp"
 
 CMakeFiles/unimalen.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen.dir/src/main.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/main.cpp > CMakeFiles/unimalen.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/main.cpp" > CMakeFiles/unimalen.dir/src/main.cpp.i
 
 CMakeFiles/unimalen.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen.dir/src/main.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/main.cpp -o CMakeFiles/unimalen.dir/src/main.cpp.s
-
-CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.o: CMakeFiles/unimalen.dir/flags.make
-CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.o: .qt/rcc/qrc_unimalen_translations.cpp
-CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.o: CMakeFiles/unimalen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.o -MF CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.o.d -o CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/.qt/rcc/qrc_unimalen_translations.cpp
-
-CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/.qt/rcc/qrc_unimalen_translations.cpp > CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.i
-
-CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/.qt/rcc/qrc_unimalen_translations.cpp -o CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/main.cpp" -o CMakeFiles/unimalen.dir/src/main.cpp.s
 
 # Object files for target unimalen
 unimalen_OBJECTS = \
 "CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o" \
-"CMakeFiles/unimalen.dir/src/main.cpp.o" \
-"CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.o"
+"CMakeFiles/unimalen.dir/src/main.cpp.o"
 
 # External object files for target unimalen
 unimalen_EXTERNAL_OBJECTS =
 
 unimalen: CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o
 unimalen: CMakeFiles/unimalen.dir/src/main.cpp.o
-unimalen: CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.o
 unimalen: CMakeFiles/unimalen.dir/build.make
 unimalen: CMakeFiles/unimalen.dir/compiler_depend.ts
 unimalen: libunimalen-ui.a
 unimalen: libunimalen-tools.a
 unimalen: libunimalen-core.a
-unimalen: /usr/lib64/libQt6Widgets.so.6.9.2
-unimalen: /usr/lib64/libQt6Gui.so.6.9.2
-unimalen: /usr/lib64/libGLX.so
-unimalen: /usr/lib64/libOpenGL.so
-unimalen: /usr/lib64/libQt6Core.so.6.9.2
+unimalen: /usr/lib/aarch64-linux-gnu/libQt6Widgets.so.6.9.2
+unimalen: /usr/lib/aarch64-linux-gnu/libQt6Gui.so.6.9.2
+unimalen: /usr/lib/aarch64-linux-gnu/libGLX.so
+unimalen: /usr/lib/aarch64-linux-gnu/libOpenGL.so
+unimalen: /usr/lib/aarch64-linux-gnu/libQt6Core.so.6.9.2
 unimalen: CMakeFiles/unimalen.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable unimalen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable unimalen"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/unimalen.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -188,12 +139,7 @@ CMakeFiles/unimalen.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/unimalen.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/unimalen.dir/clean
 
-CMakeFiles/unimalen.dir/depend: .qt/rcc/qrc_unimalen_translations.cpp
 CMakeFiles/unimalen.dir/depend: unimalen_autogen/timestamp
-CMakeFiles/unimalen.dir/depend: unimalen_de.qm
-CMakeFiles/unimalen.dir/depend: unimalen_en.qm
-CMakeFiles/unimalen.dir/depend: unimalen_es.qm
-CMakeFiles/unimalen.dir/depend: unimalen_fr.qm
-	cd /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : CMakeFiles/unimalen.dir/depend
 

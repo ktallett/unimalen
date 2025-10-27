@@ -18,6 +18,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.o.d"
   "CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o"
   "CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o.d"
+  "CMakeFiles/unimalen-ui.dir/src/ui/UpdateDialog.cpp.o"
+  "CMakeFiles/unimalen-ui.dir/src/ui/UpdateDialog.cpp.o.d"
   "CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o"
   "CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o.d"
   "libunimalen-ui.a"

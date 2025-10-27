@@ -7,3 +7,4 @@
 #include "UVLADIE3JM/moc_tabwidget.cpp"
 #include "UVLADIE3JM/moc_thicknessbar.cpp"
 #include "UVLADIE3JM/moc_toolbar.cpp"
+#include "YPKJ5OE7LN/moc_UpdateDialog.cpp"

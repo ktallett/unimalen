@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Unimalen
+Comment=A lightweight drawing and painting application for creating zines
+Exec=unimalen
+Icon=unimalen
+Categories=Graphics;2DGraphics;RasterGraphics;
+Terminal=false
+StartupNotify=true
