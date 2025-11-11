@@ -29,12 +29,16 @@ signals:
     void layersChanged();
     void currentLayerChanged(int index);
     void documentModified();
+    void mousePositionChanged(int x, int y); // New: emit mouse position for status bar
+    void colorPicked(const QColor &color); // New: emit when eyedropper picks a color
 
 public:
     explicit Canvas(QWidget *parent = nullptr);
 
     void setScaleFactor(int factor);
+    void setZoomLevel(double zoomPercent); // New: support arbitrary zoom levels
     int getScaleFactor() const { return m_scaleFactor; }
+    double getZoomLevel() const { return m_zoomLevel; } // New: get current zoom percentage
     void setPixelZoomMode(bool enabled);
     bool isPixelZoomMode() const { return m_pixelZoomMode; }
     void movePixelCursor(int dx, int dy);
@@ -46,59 +50,73 @@ public:
     bool loadCanvas(const QString &fileName);
     bool saveCanvas(const QString &fileName);
 
-    void setPencilMode(bool enabled) { m_pencilMode = enabled; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setPencilMode(bool enabled) { m_pencilMode = enabled; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isPencilMode() const { return m_pencilMode; }
 
-    void setTextMode(bool enabled) { m_textMode = enabled; m_pencilMode = false; m_sprayMode = false; m_brushMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setTextMode(bool enabled) { m_textMode = enabled; m_pencilMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isTextMode() const { return m_textMode; }
 
-    void setSprayMode(bool enabled, int diameter) { m_sprayMode = enabled; m_sprayDiameter = diameter; m_pencilMode = false; m_textMode = false; m_brushMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setSprayMode(bool enabled, int diameter) { m_sprayMode = enabled; m_sprayDiameter = diameter; m_pencilMode = false; m_textMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isSprayMode() const { return m_sprayMode; }
 
-    void setBrushMode(bool enabled, int diameter) { m_brushMode = enabled; m_brushDiameter = diameter; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setBrushMode(bool enabled, int diameter) { m_brushMode = enabled; m_brushDiameter = diameter; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isBrushMode() const { return m_brushMode; }
 
-    void setEraserMode(bool enabled, int diameter) { m_eraserMode = enabled; m_eraserDiameter = diameter; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setMarkerMode(bool enabled) { m_markerMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    bool isMarkerMode() const { return m_markerMode; }
+
+    void setEraserMode(bool enabled, int diameter) { m_eraserMode = enabled; m_eraserDiameter = diameter; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isEraserMode() const { return m_eraserMode; }
 
-    void setLineMode(bool enabled) { m_lineMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_eraserMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setLineMode(bool enabled) { m_lineMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isLineMode() const { return m_lineMode; }
 
-    void setFillMode(bool enabled) { m_fillMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_eraserMode = false; m_lineMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setFillMode(bool enabled) { m_fillMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isFillMode() const { return m_fillMode; }
 
-    void setLassoMode(bool enabled) { m_lassoMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setLassoMode(bool enabled) { m_lassoMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isLassoMode() const { return m_lassoMode; }
 
-    void setSquareMode(bool enabled) { m_squareMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setSquareMode(bool enabled) { m_squareMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isSquareMode() const { return m_squareMode; }
 
-    void setFilledSquareMode(bool enabled) { m_filledSquareMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setFilledSquareMode(bool enabled) { m_filledSquareMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isFilledSquareMode() const { return m_filledSquareMode; }
 
-    void setRoundedSquareMode(bool enabled) { m_roundedSquareMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setRoundedSquareMode(bool enabled) { m_roundedSquareMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isRoundedSquareMode() const { return m_roundedSquareMode; }
 
-    void setFilledRoundedSquareMode(bool enabled) { m_filledRoundedSquareMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setFilledRoundedSquareMode(bool enabled) { m_filledRoundedSquareMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isFilledRoundedSquareMode() const { return m_filledRoundedSquareMode; }
 
-    void setOvalMode(bool enabled) { m_ovalMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setOvalMode(bool enabled) { m_ovalMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isOvalMode() const { return m_ovalMode; }
 
-    void setFilledOvalMode(bool enabled) { m_filledOvalMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setFilledOvalMode(bool enabled) { m_filledOvalMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isFilledOvalMode() const { return m_filledOvalMode; }
 
-    void setBezierMode(bool enabled) { m_bezierMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_showLinePreview = false; clearSelection(); }
+    void setBezierMode(bool enabled) { m_bezierMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_showLinePreview = false; clearSelection(); }
     bool isBezierMode() const { return m_bezierMode; }
 
-    void setScissorsMode(bool enabled) { m_scissorsMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    void setScissorsMode(bool enabled) { m_scissorsMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_rectSelectMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
     bool isScissorsMode() const { return m_scissorsMode; }
+
+    void setRectSelectMode(bool enabled) { m_rectSelectMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_scissorsMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    bool isRectSelectMode() const { return m_rectSelectMode; }
+
+    void setEyedropperMode(bool enabled) { m_eyedropperMode = enabled; m_pencilMode = false; m_textMode = false; m_sprayMode = false; m_brushMode = false; m_markerMode = false; m_eraserMode = false; m_lineMode = false; m_fillMode = false; m_lassoMode = false; m_rectSelectMode = false; m_scissorsMode = false; m_squareMode = false; m_filledSquareMode = false; m_roundedSquareMode = false; m_filledRoundedSquareMode = false; m_ovalMode = false; m_filledOvalMode = false; m_bezierMode = false; m_showLinePreview = false; clearSelection(); }
+    bool isEyedropperMode() const { return m_eyedropperMode; }
 
     // Selection operations
     void cutSelection();
     void copySelection();
     void pasteSelection();
     void pasteSelectionAt(const QPoint &position);
+
+    // Transform operations
+    void rotateSelection(int degrees);  // 90, 180, 270, or custom angle
+    void flipSelectionHorizontal();
+    void flipSelectionVertical();
 
     // Image insertion
     void insertImageAt(const QPixmap &image, const QPoint &position);
@@ -108,6 +126,9 @@ public:
     void setCurrentPattern(PatternBar::PatternType pattern);
     void setCurrentColor(const QColor &color);
     QColor currentColor() const { return m_currentColor; }
+
+    void setPanMode(bool enabled) { m_panMode = enabled; }
+    bool isPanMode() const { return m_panMode; }
 
     // Document access
     Document* document() { return m_document; }
@@ -155,6 +176,7 @@ protected:
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;
+    void keyReleaseEvent(QKeyEvent *event) override;
     void contextMenuEvent(QContextMenuEvent *event) override;
 
 private slots:
@@ -173,6 +195,7 @@ private:
     void sprayPaint(const QPoint &position);
     void performScissorsCut(const QPolygon &cutLine);
     void brushPaint(const QPoint &position);
+    void markerPaint(const QPoint &position);
     void eraserPaint(const QPoint &position);
     void floodFill(const QPoint &position, const QColor &fillColor);
     void clearSelection();
@@ -190,6 +213,7 @@ private:
     QPixmap m_canvas;
     Document* m_document;
     int m_scaleFactor;
+    double m_zoomLevel; // New: arbitrary zoom level (percentage, 100.0 = 100%)
     bool m_drawing;
     bool m_pixelZoomMode;
     QPoint m_pixelCursor;
@@ -200,14 +224,20 @@ private:
     bool m_drawingInMagnifier;
     bool m_showCoordinates;
     QPoint m_mousePosition;
+    bool m_panMode;
+    bool m_panning;
+    QPoint m_panStartPos;
     bool m_pencilMode;
     bool m_textMode;
     bool m_sprayMode;
     bool m_brushMode;
+    bool m_markerMode;
     bool m_eraserMode;
     bool m_lineMode;
     bool m_fillMode;
     bool m_lassoMode;
+    bool m_rectSelectMode;
+    bool m_eyedropperMode;
     bool m_squareMode;
     bool m_filledSquareMode;
     bool m_roundedSquareMode;
@@ -253,6 +283,12 @@ private:
     QPolygon m_lassoPolygon;
     bool m_hasSelection;
     bool m_drawingLasso;
+
+    // Rectangle selection
+    QRect m_rectSelection;
+    QPoint m_rectSelectStart;
+    QPoint m_rectSelectCurrent;
+    bool m_drawingRectSelect;
     QPixmap m_clipboard;
 
     // Selection dragging

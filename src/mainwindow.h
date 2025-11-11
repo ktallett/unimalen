@@ -10,7 +10,9 @@
 #include <QMoveEvent>
 #include <QLabel>
 #include <QDockWidget>
+#include <QTimer>
 #include "core/Types.h"
+#include "colorbar.h"
 
 class Canvas;
 class TabWidget;
@@ -18,7 +20,6 @@ class ToolBar;
 class PatternBar;
 class ThicknessBar;
 class LayerPanel;
-class ColorBar;
 
 class MainWindow : public QMainWindow
 {
@@ -29,9 +30,14 @@ public:
 
 private slots:
     void newFile();
+    void newFromClipboard();
     void openFile();
     void saveFile();
     void saveAsFile();
+    void exportFile();
+    void openRecentFile();
+    void clearRecentFiles();
+    void showPreferences();
     void insertImage();
     void convertToBlackAndWhite();
     void adjustBrightnessContrast();
@@ -54,21 +60,32 @@ private slots:
     void closeTab();
     void setPageSize(Unimalen::PageSize size);
     void setPaperColor(Unimalen::PaperColor color);
+    void setColorPalette(ColorBar::PaletteType palette);
     void setScale1x();
     void setScale2x();
     void setScale4x();
+    void setZoom25();
+    void setZoom50();
+    void setZoom200();
+    void setZoomFit();
+    void zoomIn();
+    void zoomOut();
     void togglePixelZoom(bool enabled);
     void toggleCoordinates(bool enabled);
+    void updateStatusBar();
     void onPencilSelected();
     void onTextSelected();
     void onSpraySelected(int diameter);
     void onBrushSelected(int diameter);
+    void onMarkerSelected();
     void onEraserSelected(int diameter);
     void onLineSelected();
     void onBezierSelected();
     void onScissorsSelected();
     void onFillSelected();
     void onLassoSelected();
+    void onRectSelectSelected();
+    void onEyedropperSelected();
     void onSquareSelected();
     void onFilledSquareSelected();
     void onRoundedSquareSelected();
@@ -78,6 +95,11 @@ private slots:
     void onCut();
     void onCopy();
     void onPaste();
+    void onRotateSelection90();
+    void onRotateSelection180();
+    void onRotateSelection270();
+    void onFlipSelectionHorizontal();
+    void onFlipSelectionVertical();
     void onFontChanged(const QString &fontFamily);
     void onFontSizeChanged(int fontSize);
     void onThicknessSelected(int thickness);
@@ -113,6 +135,13 @@ private:
     void createMenus();
     void createActions();
     void setCurrentFile(const QString &fileName);
+    void updateRecentFiles(const QString &fileName);
+    void updateRecentFilesMenu();
+    void loadRecentFiles();
+    void saveRecentFiles();
+    void loadPreferences();
+    void savePreferences();
+    void applyAutoSaveSettings();
     void connectCanvasSignals(Canvas *canvas);
     Canvas* getCurrentCanvas();
 
@@ -131,9 +160,12 @@ private:
     QDockWidget *m_layerPanelDock;
 
     QAction *m_newAction;
+    QAction *m_newFromClipboardAction;
     QAction *m_openAction;
     QAction *m_saveAction;
     QAction *m_saveAsAction;
+    QAction *m_exportAction;
+    QAction *m_preferencesAction;
     QAction *m_insertImageAction;
     QAction *m_convertToBlackAndWhiteAction;
     QAction *m_adjustBrightnessContrastAction;
@@ -156,19 +188,42 @@ private:
     QAction *m_newTabAction;
     QAction *m_closeTabAction;
 
+    // Recent files
+    static const int MaxRecentFiles = 10;
+    QAction *m_recentFileActions[MaxRecentFiles];
+    QAction *m_clearRecentFilesAction;
+    QStringList m_recentFiles;
+
     // Edit menu actions
     QAction *m_undoAction;
     QAction *m_redoAction;
     QAction *m_cutAction;
     QAction *m_copyAction;
     QAction *m_pasteAction;
+    QAction *m_rotateSelection90Action;
+    QAction *m_rotateSelection180Action;
+    QAction *m_rotateSelection270Action;
+    QAction *m_flipSelectionHorizontalAction;
+    QAction *m_flipSelectionVerticalAction;
 
+    QAction *m_zoom25Action;
+    QAction *m_zoom50Action;
     QAction *m_scale1xAction;
     QAction *m_scale2xAction;
+    QAction *m_zoom200Action;
     QAction *m_scale4xAction;
+    QAction *m_zoomFitAction;
+    QAction *m_zoomInAction;
+    QAction *m_zoomOutAction;
     QAction *m_pixelZoomAction;
     QAction *m_showCoordinatesAction;
     QActionGroup *m_scaleGroup;
+
+    // Status bar
+    QLabel *m_statusCursorLabel;
+    QLabel *m_statusZoomLabel;
+    QLabel *m_statusCanvasSizeLabel;
+    QLabel *m_statusMemoryLabel;
 
     // Toolbar visibility actions
     QAction *m_showToolBarAction;
@@ -197,6 +252,15 @@ private:
     QAction *m_robotoMonoFontAction;        // Modern mono
     QAction *m_amaticFontAction;            // Casual handwriting
     QAction *m_satisfyFontAction;           // Script/cursive
+
+    // Letraset-style fonts
+    QAction *m_bebasNeueFontAction;         // Condensed geometric
+    QAction *m_orbitronFontAction;          // Geometric futuristic
+    QAction *m_audiowideFontAction;         // Retro tech
+    QAction *m_russoOneFontAction;          // Bold geometric
+    QAction *m_righteousFontAction;         // 1970s display
+    QAction *m_michromaFontAction;          // Geometric sans
+
     QActionGroup *m_fontGroup;
 
     // Font size menu actions
@@ -228,9 +292,18 @@ private:
     QActionGroup *m_paperColorGroup;
     QList<QAction*> m_paperColorActions;
 
+    // Color palette menu actions
+    QActionGroup *m_colorPaletteGroup;
+    QList<QAction*> m_colorPaletteActions;
+
     // Page indicator label
     QLabel *m_pageIndicator;
 
     QString m_currentFile;
     QList<QAction*> m_tabShortcuts;
+
+    // Auto-save
+    QTimer *m_autoSaveTimer;
+    bool m_autoSaveEnabled;
+    int m_autoSaveInterval; // in minutes
 };

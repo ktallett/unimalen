@@ -428,4 +428,6 @@ CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o: \
  /usr/include/qt6/QtWidgets/qapplication.h /usr/include/qt6/QtGui/QRegion \
  /usr/include/qt6/QtGui/qregion.h /usr/include/qt6/QtWidgets/QMenu \
  /usr/include/qt6/QtWidgets/qmenu.h /usr/include/qt6/QtGui/QAction \
- /usr/include/qt6/QtGui/qaction.h
+ /usr/include/qt6/QtGui/qaction.h /usr/include/qt6/QtWidgets/QScrollBar \
+ /usr/include/qt6/QtWidgets/qscrollbar.h \
+ /usr/include/qt6/QtWidgets/qabstractslider.h

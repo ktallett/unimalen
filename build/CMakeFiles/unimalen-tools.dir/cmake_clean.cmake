@@ -8,6 +8,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o.d"
   "CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o"
   "CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o.d"
+  "CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.o"
+  "CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.o.d"
   "CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o"
   "CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o.d"
   "CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o"

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen"
+CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build"
+CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/unimalen-tools.dir/depend.make
@@ -69,12 +69,12 @@ include CMakeFiles/unimalen-tools.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/unimalen-tools.dir/flags.make
 
-unimalen-tools_autogen/timestamp: /usr/lib/qt6/libexec/moc
-unimalen-tools_autogen/timestamp: /usr/lib/qt6/libexec/uic
+unimalen-tools_autogen/timestamp: /usr/lib64/qt6/libexec/moc
+unimalen-tools_autogen/timestamp: /usr/lib64/qt6/libexec/uic
 unimalen-tools_autogen/timestamp: CMakeFiles/unimalen-tools.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir="/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target unimalen-tools"
-	/usr/bin/cmake -E cmake_autogen "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen-tools_autogen.dir/AutogenInfo.json" ""
-	/usr/bin/cmake -E touch "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/timestamp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target unimalen-tools"
+	/usr/bin/cmake -E cmake_autogen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen-tools_autogen.dir/AutogenInfo.json ""
+	/usr/bin/cmake -E touch /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/timestamp
 
 CMakeFiles/unimalen-tools.dir/codegen:
 .PHONY : CMakeFiles/unimalen-tools.dir/codegen
@@ -82,86 +82,100 @@ CMakeFiles/unimalen-tools.dir/codegen:
 CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.o: CMakeFiles/unimalen-tools.dir/flags.make
 CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.o: unimalen-tools_autogen/mocs_compilation.cpp
 CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.o: CMakeFiles/unimalen-tools.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.o -MF CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.o -c "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/mocs_compilation.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.o -MF CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/mocs_compilation.cpp
 
 CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/mocs_compilation.cpp" > CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/mocs_compilation.cpp > CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.i
 
 CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/mocs_compilation.cpp" -o CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/mocs_compilation.cpp -o CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.s
 
 CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o: CMakeFiles/unimalen-tools.dir/flags.make
-CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o: /home/kern/Dropbox\ (Maestral)/mnt_reform/projects/unimalen/src/tools/ToolManager.cpp
+CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/ToolManager.cpp
 CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o: CMakeFiles/unimalen-tools.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o -MF CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o.d -o CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o -c "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/ToolManager.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o -MF CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o.d -o CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/ToolManager.cpp
 
 CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/ToolManager.cpp" > CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/ToolManager.cpp > CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.i
 
 CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/ToolManager.cpp" -o CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/ToolManager.cpp -o CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.s
 
 CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o: CMakeFiles/unimalen-tools.dir/flags.make
-CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o: /home/kern/Dropbox\ (Maestral)/mnt_reform/projects/unimalen/src/tools/PencilTool.cpp
+CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/PencilTool.cpp
 CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o: CMakeFiles/unimalen-tools.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o -MF CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o.d -o CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o -c "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/PencilTool.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o -MF CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o.d -o CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/PencilTool.cpp
 
 CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/PencilTool.cpp" > CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/PencilTool.cpp > CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.i
 
 CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/PencilTool.cpp" -o CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/PencilTool.cpp -o CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.s
 
 CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o: CMakeFiles/unimalen-tools.dir/flags.make
-CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o: /home/kern/Dropbox\ (Maestral)/mnt_reform/projects/unimalen/src/tools/BrushTool.cpp
+CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/BrushTool.cpp
 CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o: CMakeFiles/unimalen-tools.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o -MF CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o.d -o CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o -c "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/BrushTool.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o -MF CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o.d -o CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/BrushTool.cpp
 
 CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/BrushTool.cpp" > CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/BrushTool.cpp > CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.i
 
 CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/BrushTool.cpp" -o CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/BrushTool.cpp -o CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.s
+
+CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.o: CMakeFiles/unimalen-tools.dir/flags.make
+CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/MarkerTool.cpp
+CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.o: CMakeFiles/unimalen-tools.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.o -MF CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.o.d -o CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/MarkerTool.cpp
+
+CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.i"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/MarkerTool.cpp > CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.i
+
+CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.s"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/MarkerTool.cpp -o CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.s
 
 CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o: CMakeFiles/unimalen-tools.dir/flags.make
-CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o: /home/kern/Dropbox\ (Maestral)/mnt_reform/projects/unimalen/src/tools/EraserTool.cpp
+CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/EraserTool.cpp
 CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o: CMakeFiles/unimalen-tools.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o -MF CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o.d -o CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o -c "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/EraserTool.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o -MF CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o.d -o CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/EraserTool.cpp
 
 CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/EraserTool.cpp" > CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/EraserTool.cpp > CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.i
 
 CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/EraserTool.cpp" -o CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/EraserTool.cpp -o CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.s
 
 CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o: CMakeFiles/unimalen-tools.dir/flags.make
-CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o: /home/kern/Dropbox\ (Maestral)/mnt_reform/projects/unimalen/src/tools/LineTool.cpp
+CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o: /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/LineTool.cpp
 CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o: CMakeFiles/unimalen-tools.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o -MF CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o.d -o CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o -c "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/LineTool.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o -MF CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o.d -o CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o -c /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/LineTool.cpp
 
 CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/LineTool.cpp" > CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/LineTool.cpp > CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.i
 
 CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/src/tools/LineTool.cpp" -o CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tools/LineTool.cpp -o CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.s
 
 # Object files for target unimalen-tools
 unimalen__tools_OBJECTS = \
@@ -169,6 +183,7 @@ unimalen__tools_OBJECTS = \
 "CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o" \
 "CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o" \
 "CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o" \
+"CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.o" \
 "CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o" \
 "CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o"
 
@@ -179,11 +194,12 @@ libunimalen-tools.a: CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_c
 libunimalen-tools.a: CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o
 libunimalen-tools.a: CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o
 libunimalen-tools.a: CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o
+libunimalen-tools.a: CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.o
 libunimalen-tools.a: CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o
 libunimalen-tools.a: CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o
 libunimalen-tools.a: CMakeFiles/unimalen-tools.dir/build.make
 libunimalen-tools.a: CMakeFiles/unimalen-tools.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library libunimalen-tools.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX static library libunimalen-tools.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/unimalen-tools.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/unimalen-tools.dir/link.txt --verbose=$(VERBOSE)
 
@@ -196,6 +212,6 @@ CMakeFiles/unimalen-tools.dir/clean:
 .PHONY : CMakeFiles/unimalen-tools.dir/clean
 
 CMakeFiles/unimalen-tools.dir/depend: unimalen-tools_autogen/timestamp
-	cd "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen-tools.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen-tools.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/unimalen-tools.dir/depend
 

@@ -78,28 +78,29 @@ void PatternBar::createPatternButton(PatternType type, Qt::BrushStyle style, con
     button->setCheckable(true);
     button->setToolTip(tooltip);
 
-    // Create pattern icon
-    QPixmap patternIcon(40, 40);
+    // Create higher resolution pattern icon for better quality
+    QPixmap patternIcon(80, 80);
     patternIcon.fill(Qt::white);
     QPainter painter(&patternIcon);
-    painter.setRenderHint(QPainter::Antialiasing);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
 
     // Draw pattern sample
     if (type >= Dots) {
-        // Custom texture patterns
-        drawCustomPattern(painter, type, 2, 2, 36, 36);
+        // Custom texture patterns - scaled up for better quality
+        drawCustomPattern(painter, type, 4, 4, 72, 72);
     } else {
         // Standard Qt patterns
         QBrush patternBrush(Qt::black, style);
         painter.setBrush(patternBrush);
         painter.setPen(Qt::NoPen);
-        painter.drawRect(2, 2, 36, 36);
+        painter.drawRect(4, 4, 72, 72);
     }
 
     // Add border
     painter.setBrush(Qt::NoBrush);
-    painter.setPen(QPen(Qt::black, 1));
-    painter.drawRect(2, 2, 36, 36);
+    painter.setPen(QPen(Qt::black, 2));
+    painter.drawRect(4, 4, 72, 72);
 
     button->setIcon(QIcon(patternIcon));
     button->setIconSize(QSize(40, 40));
@@ -218,27 +219,27 @@ void PatternBar::createPatternButton(PatternType type, Qt::BrushStyle style, con
 void PatternBar::drawCustomPattern(QPainter &painter, PatternType type, int x, int y, int width, int height)
 {
     painter.setBrush(Qt::NoBrush);
-    painter.setPen(QPen(Qt::black, 1));
+    painter.setPen(QPen(Qt::black, 1.5));
 
     switch (type) {
         case Dots:
             // Draw small dots in a grid pattern
-            for (int i = x + 4; i < x + width - 2; i += 6) {
-                for (int j = y + 4; j < y + height - 2; j += 6) {
+            for (int i = x + 8; i < x + width - 4; i += 12) {
+                for (int j = y + 8; j < y + height - 4; j += 12) {
                     painter.setBrush(Qt::black);
                     painter.setPen(Qt::NoPen);
-                    painter.drawEllipse(i, j, 2, 2);
+                    painter.drawEllipse(i, j, 4, 4);
                 }
             }
             break;
 
         case Grid:
             // Draw grid lines
-            painter.setPen(QPen(Qt::black, 1));
-            for (int i = x; i <= x + width; i += 6) {
+            painter.setPen(QPen(Qt::black, 1.5));
+            for (int i = x; i <= x + width; i += 12) {
                 painter.drawLine(i, y, i, y + height);
             }
-            for (int j = y; j <= y + height; j += 6) {
+            for (int j = y; j <= y + height; j += 12) {
                 painter.drawLine(x, j, x + width, j);
             }
             break;
@@ -246,22 +247,22 @@ void PatternBar::drawCustomPattern(QPainter &painter, PatternType type, int x, i
         case Circles:
             // Draw small circles in a grid pattern
             painter.setBrush(Qt::NoBrush);
-            painter.setPen(QPen(Qt::black, 1));
-            for (int i = x + 3; i < x + width - 3; i += 8) {
-                for (int j = y + 3; j < y + height - 3; j += 8) {
-                    painter.drawEllipse(i, j, 6, 6);
+            painter.setPen(QPen(Qt::black, 1.5));
+            for (int i = x + 6; i < x + width - 6; i += 16) {
+                for (int j = y + 6; j < y + height - 6; j += 16) {
+                    painter.drawEllipse(i, j, 12, 12);
                 }
             }
             break;
 
         case Waves:
             // Draw wavy lines
-            painter.setPen(QPen(Qt::black, 1));
-            for (int j = y + 4; j < y + height; j += 8) {
+            painter.setPen(QPen(Qt::black, 1.5));
+            for (int j = y + 8; j < y + height; j += 16) {
                 QPainterPath wave;
                 wave.moveTo(x, j);
-                for (int i = x; i < x + width; i += 4) {
-                    wave.quadTo(i + 2, j + ((i / 4) % 2 == 0 ? -3 : 3), i + 4, j);
+                for (int i = x; i < x + width; i += 8) {
+                    wave.quadTo(i + 4, j + ((i / 8) % 2 == 0 ? -6 : 6), i + 8, j);
                 }
                 painter.drawPath(wave);
             }
@@ -271,11 +272,11 @@ void PatternBar::drawCustomPattern(QPainter &painter, PatternType type, int x, i
             // Draw small star shapes
             painter.setBrush(Qt::black);
             painter.setPen(Qt::NoPen);
-            for (int i = x + 6; i < x + width - 6; i += 12) {
-                for (int j = y + 6; j < y + height - 6; j += 12) {
+            for (int i = x + 12; i < x + width - 12; i += 24) {
+                for (int j = y + 12; j < y + height - 12; j += 24) {
                     // Draw a simple 4-pointed star
-                    painter.drawRect(i - 1, j - 3, 2, 6);
-                    painter.drawRect(i - 3, j - 1, 6, 2);
+                    painter.drawRect(i - 2, j - 6, 4, 12);
+                    painter.drawRect(i - 6, j - 2, 12, 4);
                 }
             }
             break;
@@ -283,12 +284,12 @@ void PatternBar::drawCustomPattern(QPainter &painter, PatternType type, int x, i
         case Brick:
         {
             // Draw brick pattern
-            painter.setPen(QPen(Qt::black, 1));
+            painter.setPen(QPen(Qt::black, 1.5));
             bool offset = false;
-            for (int j = y; j < y + height; j += 8) {
-                int startX = offset ? x - 6 : x;
-                for (int i = startX; i < x + width; i += 12) {
-                    painter.drawRect(i, j, 12, 8);
+            for (int j = y; j < y + height; j += 16) {
+                int startX = offset ? x - 12 : x;
+                for (int i = startX; i < x + width; i += 24) {
+                    painter.drawRect(i, j, 24, 16);
                 }
                 offset = !offset;
             }
@@ -298,18 +299,18 @@ void PatternBar::drawCustomPattern(QPainter &painter, PatternType type, int x, i
         case Hexagons:
         {
             // Draw hexagon pattern
-            painter.setPen(QPen(Qt::black, 1));
+            painter.setPen(QPen(Qt::black, 1.5));
             painter.setBrush(Qt::NoBrush);
-            for (int j = y + 4; j < y + height - 4; j += 12) {
-                for (int i = x + 6; i < x + width - 6; i += 14) {
-                    int offsetY = ((i - x) / 14) % 2 == 0 ? 0 : 6;
+            for (int j = y + 8; j < y + height - 8; j += 24) {
+                for (int i = x + 12; i < x + width - 12; i += 28) {
+                    int offsetY = ((i - x) / 28) % 2 == 0 ? 0 : 12;
                     QPolygon hexagon;
-                    hexagon << QPoint(i, j + offsetY + 3)
-                            << QPoint(i + 3, j + offsetY)
-                            << QPoint(i + 9, j + offsetY)
-                            << QPoint(i + 12, j + offsetY + 3)
-                            << QPoint(i + 9, j + offsetY + 6)
-                            << QPoint(i + 3, j + offsetY + 6);
+                    hexagon << QPoint(i, j + offsetY + 6)
+                            << QPoint(i + 6, j + offsetY)
+                            << QPoint(i + 18, j + offsetY)
+                            << QPoint(i + 24, j + offsetY + 6)
+                            << QPoint(i + 18, j + offsetY + 12)
+                            << QPoint(i + 6, j + offsetY + 12);
                     painter.drawPolygon(hexagon);
                 }
             }
@@ -319,12 +320,12 @@ void PatternBar::drawCustomPattern(QPainter &painter, PatternType type, int x, i
         case Scales:
         {
             // Draw fish scale pattern
-            painter.setPen(QPen(Qt::black, 1));
+            painter.setPen(QPen(Qt::black, 1.5));
             painter.setBrush(Qt::NoBrush);
-            for (int j = y; j < y + height; j += 6) {
-                for (int i = x; i < x + width; i += 8) {
-                    int offsetX = (j / 6) % 2 == 0 ? 0 : 4;
-                    painter.drawArc(i + offsetX - 4, j - 3, 8, 6, 0, 180 * 16);
+            for (int j = y; j < y + height; j += 12) {
+                for (int i = x; i < x + width; i += 16) {
+                    int offsetX = (j / 12) % 2 == 0 ? 0 : 8;
+                    painter.drawArc(i + offsetX - 8, j - 6, 16, 12, 0, 180 * 16);
                 }
             }
             break;
@@ -333,13 +334,13 @@ void PatternBar::drawCustomPattern(QPainter &painter, PatternType type, int x, i
         case Zigzag:
         {
             // Draw zigzag pattern
-            painter.setPen(QPen(Qt::black, 1));
-            for (int j = y + 6; j < y + height; j += 12) {
+            painter.setPen(QPen(Qt::black, 1.5));
+            for (int j = y + 12; j < y + height; j += 24) {
                 QPainterPath zigzag;
                 zigzag.moveTo(x, j);
-                for (int i = x; i < x + width; i += 6) {
-                    zigzag.lineTo(i + 3, j + ((i / 6) % 2 == 0 ? -3 : 3));
-                    zigzag.lineTo(i + 6, j);
+                for (int i = x; i < x + width; i += 12) {
+                    zigzag.lineTo(i + 6, j + ((i / 12) % 2 == 0 ? -6 : 6));
+                    zigzag.lineTo(i + 12, j);
                 }
                 painter.drawPath(zigzag);
             }
@@ -351,10 +352,10 @@ void PatternBar::drawCustomPattern(QPainter &painter, PatternType type, int x, i
             // Draw checkerboard pattern
             painter.setPen(Qt::NoPen);
             painter.setBrush(Qt::black);
-            for (int j = y; j < y + height; j += 6) {
-                for (int i = x; i < x + width; i += 6) {
-                    if ((i / 6 + j / 6) % 2 == 0) {
-                        painter.drawRect(i, j, 6, 6);
+            for (int j = y; j < y + height; j += 12) {
+                for (int i = x; i < x + width; i += 12) {
+                    if ((i / 12 + j / 12) % 2 == 0) {
+                        painter.drawRect(i, j, 12, 12);
                     }
                 }
             }
@@ -364,14 +365,14 @@ void PatternBar::drawCustomPattern(QPainter &painter, PatternType type, int x, i
         case Triangles:
         {
             // Draw triangle pattern
-            painter.setPen(QPen(Qt::black, 1));
+            painter.setPen(QPen(Qt::black, 1.5));
             painter.setBrush(Qt::NoBrush);
-            for (int j = y + 8; j < y + height; j += 10) {
-                for (int i = x + 5; i < x + width - 5; i += 10) {
+            for (int j = y + 16; j < y + height; j += 20) {
+                for (int i = x + 10; i < x + width - 10; i += 20) {
                     QPolygon triangle;
-                    triangle << QPoint(i, j - 6)
-                             << QPoint(i - 4, j + 2)
-                             << QPoint(i + 4, j + 2);
+                    triangle << QPoint(i, j - 12)
+                             << QPoint(i - 8, j + 4)
+                             << QPoint(i + 8, j + 4);
                     painter.drawPolygon(triangle);
                 }
             }
@@ -384,12 +385,12 @@ void PatternBar::drawCustomPattern(QPainter &painter, PatternType type, int x, i
             painter.setPen(Qt::NoPen);
             painter.setBrush(Qt::black);
             // Simple pseudo-random pattern based on position
-            for (int j = y; j < y + height; j += 2) {
-                for (int i = x; i < x + width; i += 2) {
+            for (int j = y; j < y + height; j += 3) {
+                for (int i = x; i < x + width; i += 3) {
                     // Simple hash-like function for pseudo-random
                     int hash = ((i * 73) + (j * 37)) % 100;
                     if (hash < 25) {
-                        painter.drawRect(i, j, 1, 1);
+                        painter.drawRect(i, j, 2, 2);
                     }
                 }
             }

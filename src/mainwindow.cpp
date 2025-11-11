@@ -17,6 +17,7 @@
 #include <QActionGroup>
 #include <QStandardPaths>
 #include <QTimer>
+#include <QSettings>
 #include <QDockWidget>
 #include <QDialog>
 #include <QSpinBox>
@@ -26,6 +27,10 @@
 #include <QFormLayout>
 #include <QPushButton>
 #include <QComboBox>
+#include <QGroupBox>
+
+// Define static const
+const int MainWindow::MaxRecentFiles;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -36,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_patternBar = new PatternBar(this);
     m_thicknessBar = new ThicknessBar(this);
     m_layerPanel = new LayerPanel(this);
-    m_colorBar = new ColorBar(this, ColorBar::CopicPastels);
+    m_colorBar = new ColorBar(this, ColorBar::Pastels);
 
     setCentralWidget(m_tabWidget);
 
@@ -107,17 +112,41 @@ MainWindow::MainWindow(QWidget *parent)
     statusBar()->addPermanentWidget(m_pageIndicator);
     updatePageIndicator();
 
+    // Create additional status bar labels
+    m_statusCursorLabel = new QLabel("Cursor: (0, 0)", this);
+    m_statusCursorLabel->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+    m_statusCursorLabel->setMinimumWidth(120);
+    statusBar()->addWidget(m_statusCursorLabel);
+
+    m_statusZoomLabel = new QLabel("Zoom: 100%", this);
+    m_statusZoomLabel->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+    m_statusZoomLabel->setMinimumWidth(100);
+    statusBar()->addWidget(m_statusZoomLabel);
+
+    m_statusCanvasSizeLabel = new QLabel("Canvas: 576x720", this);
+    m_statusCanvasSizeLabel->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+    m_statusCanvasSizeLabel->setMinimumWidth(150);
+    statusBar()->addWidget(m_statusCanvasSizeLabel);
+
+    m_statusMemoryLabel = new QLabel("Memory: ~50MB", this);
+    m_statusMemoryLabel->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+    m_statusMemoryLabel->setMinimumWidth(120);
+    statusBar()->addWidget(m_statusMemoryLabel);
+
     // Connect toolbar signals
     connect(m_toolBar, &ToolBar::pencilToolSelected, this, &MainWindow::onPencilSelected);
     connect(m_toolBar, &ToolBar::textToolSelected, this, &MainWindow::onTextSelected);
     connect(m_toolBar, &ToolBar::sprayToolSelected, this, &MainWindow::onSpraySelected);
     connect(m_toolBar, &ToolBar::brushToolSelected, this, &MainWindow::onBrushSelected);
+    connect(m_toolBar, &ToolBar::markerToolSelected, this, &MainWindow::onMarkerSelected);
     connect(m_toolBar, &ToolBar::eraserToolSelected, this, &MainWindow::onEraserSelected);
     connect(m_toolBar, &ToolBar::lineToolSelected, this, &MainWindow::onLineSelected);
     connect(m_toolBar, &ToolBar::bezierToolSelected, this, &MainWindow::onBezierSelected);
     connect(m_toolBar, &ToolBar::scissorsToolSelected, this, &MainWindow::onScissorsSelected);
     connect(m_toolBar, &ToolBar::fillToolSelected, this, &MainWindow::onFillSelected);
     connect(m_toolBar, &ToolBar::lassoToolSelected, this, &MainWindow::onLassoSelected);
+    connect(m_toolBar, &ToolBar::rectSelectToolSelected, this, &MainWindow::onRectSelectSelected);
+    connect(m_toolBar, &ToolBar::eyedropperToolSelected, this, &MainWindow::onEyedropperSelected);
     connect(m_toolBar, &ToolBar::squareToolSelected, this, &MainWindow::onSquareSelected);
     connect(m_toolBar, &ToolBar::filledSquareToolSelected, this, &MainWindow::onFilledSquareSelected);
     connect(m_toolBar, &ToolBar::roundedSquareToolSelected, this, &MainWindow::onRoundedSquareSelected);
@@ -148,6 +177,23 @@ MainWindow::MainWindow(QWidget *parent)
         connectCanvasSignals(initialCanvas);
     }
 
+    // Initialize recent files
+    loadRecentFiles();
+    updateRecentFilesMenu();
+
+    // Initialize preferences and auto-save
+    loadPreferences();
+    m_autoSaveTimer = new QTimer(this);
+    connect(m_autoSaveTimer, &QTimer::timeout, this, [this]() {
+        if (m_autoSaveEnabled) {
+            Canvas *canvas = getCurrentCanvas();
+            if (canvas && canvas->isModified() && !m_currentFile.isEmpty()) {
+                canvas->saveCanvas(m_currentFile + ".autosave");
+            }
+        }
+    });
+    applyAutoSaveSettings();
+
     setWindowTitle(tr("unimalen - Untitled"));
     resize(800, 600);
 }
@@ -157,6 +203,10 @@ void MainWindow::createActions()
     m_newAction = new QAction(tr("&New"), this);
     m_newAction->setShortcut(QKeySequence::New);
     connect(m_newAction, &QAction::triggered, this, &MainWindow::newFile);
+
+    m_newFromClipboardAction = new QAction(tr("New from &Clipboard"), this);
+    m_newFromClipboardAction->setShortcut(QKeySequence("Ctrl+Shift+V"));
+    connect(m_newFromClipboardAction, &QAction::triggered, this, &MainWindow::newFromClipboard);
 
     m_openAction = new QAction(tr("&Open..."), this);
     m_openAction->setShortcut(QKeySequence::Open);
@@ -169,6 +219,14 @@ void MainWindow::createActions()
     m_saveAsAction = new QAction(tr("Save &As..."), this);
     m_saveAsAction->setShortcut(QKeySequence::SaveAs);
     connect(m_saveAsAction, &QAction::triggered, this, &MainWindow::saveAsFile);
+
+    m_exportAction = new QAction(tr("&Export As..."), this);
+    m_exportAction->setShortcut(QKeySequence("Ctrl+Shift+E"));
+    connect(m_exportAction, &QAction::triggered, this, &MainWindow::exportFile);
+
+    m_preferencesAction = new QAction(tr("&Preferences..."), this);
+    m_preferencesAction->setShortcut(QKeySequence::Preferences);
+    connect(m_preferencesAction, &QAction::triggered, this, &MainWindow::showPreferences);
 
     m_insertImageAction = new QAction(tr("&Insert Image..."), this);
     m_insertImageAction->setShortcut(QKeySequence("Ctrl+Shift+I"));
@@ -245,6 +303,16 @@ void MainWindow::createActions()
     m_closeTabAction->setShortcut(QKeySequence("Ctrl+W"));
     connect(m_closeTabAction, &QAction::triggered, this, &MainWindow::closeTab);
 
+    // Recent files actions
+    for (int i = 0; i < MaxRecentFiles; ++i) {
+        m_recentFileActions[i] = new QAction(this);
+        m_recentFileActions[i]->setVisible(false);
+        connect(m_recentFileActions[i], &QAction::triggered, this, &MainWindow::openRecentFile);
+    }
+
+    m_clearRecentFilesAction = new QAction(tr("Clear Recent Files"), this);
+    connect(m_clearRecentFilesAction, &QAction::triggered, this, &MainWindow::clearRecentFiles);
+
     // Edit menu actions
     m_undoAction = new QAction(tr("&Undo"), this);
     m_undoAction->setShortcut(QKeySequence::Undo);
@@ -272,18 +340,67 @@ void MainWindow::createActions()
     m_pasteAction->setShortcut(QKeySequence::Paste);
     connect(m_pasteAction, &QAction::triggered, this, &MainWindow::onPaste);
 
+    // Transform selection actions
+    m_rotateSelection90Action = new QAction(tr("Rotate Selection 90° CW"), this);
+    m_rotateSelection90Action->setShortcut(QKeySequence("Ctrl+Alt+R"));
+    connect(m_rotateSelection90Action, &QAction::triggered, this, &MainWindow::onRotateSelection90);
+
+    m_rotateSelection180Action = new QAction(tr("Rotate Selection 180°"), this);
+    m_rotateSelection180Action->setShortcut(QKeySequence("Ctrl+Alt+Shift+R"));
+    connect(m_rotateSelection180Action, &QAction::triggered, this, &MainWindow::onRotateSelection180);
+
+    m_rotateSelection270Action = new QAction(tr("Rotate Selection 270° CW"), this);
+    m_rotateSelection270Action->setShortcut(QKeySequence("Ctrl+Alt+L"));
+    connect(m_rotateSelection270Action, &QAction::triggered, this, &MainWindow::onRotateSelection270);
+
+    m_flipSelectionHorizontalAction = new QAction(tr("Flip Selection Horizontal"), this);
+    m_flipSelectionHorizontalAction->setShortcut(QKeySequence("Ctrl+Alt+H"));
+    connect(m_flipSelectionHorizontalAction, &QAction::triggered, this, &MainWindow::onFlipSelectionHorizontal);
+
+    m_flipSelectionVerticalAction = new QAction(tr("Flip Selection Vertical"), this);
+    m_flipSelectionVerticalAction->setShortcut(QKeySequence("Ctrl+Alt+V"));
+    connect(m_flipSelectionVerticalAction, &QAction::triggered, this, &MainWindow::onFlipSelectionVertical);
+
+    // Zoom actions
+    m_zoom25Action = new QAction("25%", this);
+    m_zoom25Action->setCheckable(true);
+    connect(m_zoom25Action, &QAction::triggered, this, &MainWindow::setZoom25);
+
+    m_zoom50Action = new QAction("50%", this);
+    m_zoom50Action->setCheckable(true);
+    connect(m_zoom50Action, &QAction::triggered, this, &MainWindow::setZoom50);
+
     m_scale1xAction = new QAction("100%", this);
     m_scale1xAction->setCheckable(true);
     m_scale1xAction->setChecked(true);
+    m_scale1xAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_0)); // Ctrl+0 for 100%
     connect(m_scale1xAction, &QAction::triggered, this, &MainWindow::setScale1x);
 
-    m_scale2xAction = new QAction("200%", this);
+    m_zoom200Action = new QAction("200%", this);
+    m_zoom200Action->setCheckable(true);
+    connect(m_zoom200Action, &QAction::triggered, this, &MainWindow::setZoom200);
+
+    m_scale2xAction = new QAction("Unused 200%", this); // Keep for compatibility
     m_scale2xAction->setCheckable(true);
+    m_scale2xAction->setVisible(false);
     connect(m_scale2xAction, &QAction::triggered, this, &MainWindow::setScale2x);
 
     m_scale4xAction = new QAction("400%", this);
     m_scale4xAction->setCheckable(true);
     connect(m_scale4xAction, &QAction::triggered, this, &MainWindow::setScale4x);
+
+    m_zoomFitAction = new QAction("Fit to Window", this);
+    m_zoomFitAction->setCheckable(true);
+    m_zoomFitAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_F)); // Ctrl+F for fit
+    connect(m_zoomFitAction, &QAction::triggered, this, &MainWindow::setZoomFit);
+
+    m_zoomInAction = new QAction("Zoom In", this);
+    m_zoomInAction->setShortcut(QKeySequence::ZoomIn); // Ctrl+Plus
+    connect(m_zoomInAction, &QAction::triggered, this, &MainWindow::zoomIn);
+
+    m_zoomOutAction = new QAction("Zoom Out", this);
+    m_zoomOutAction->setShortcut(QKeySequence::ZoomOut); // Ctrl+Minus
+    connect(m_zoomOutAction, &QAction::triggered, this, &MainWindow::zoomOut);
 
     m_pixelZoomAction = new QAction(tr("Pixel Zoom"), this);
     m_pixelZoomAction->setCheckable(true);
@@ -294,9 +411,12 @@ void MainWindow::createActions()
     connect(m_showCoordinatesAction, &QAction::toggled, this, &MainWindow::toggleCoordinates);
 
     m_scaleGroup = new QActionGroup(this);
+    m_scaleGroup->addAction(m_zoom25Action);
+    m_scaleGroup->addAction(m_zoom50Action);
     m_scaleGroup->addAction(m_scale1xAction);
-    m_scaleGroup->addAction(m_scale2xAction);
+    m_scaleGroup->addAction(m_zoom200Action);
     m_scaleGroup->addAction(m_scale4xAction);
+    m_scaleGroup->addAction(m_zoomFitAction);
 
     // Toolbar visibility actions - these will be set up in constructor after dock widgets are created
 
@@ -371,6 +491,31 @@ void MainWindow::createActions()
     m_satisfyFontAction->setCheckable(true);
     connect(m_satisfyFontAction, &QAction::triggered, this, [this]() { onFontChanged("Satisfy"); });
 
+    // Letraset-style fonts
+    m_bebasNeueFontAction = new QAction("Bebas Neue (Letraset)", this);
+    m_bebasNeueFontAction->setCheckable(true);
+    connect(m_bebasNeueFontAction, &QAction::triggered, this, [this]() { onFontChanged("Bebas Neue"); });
+
+    m_orbitronFontAction = new QAction("Orbitron (Geometric)", this);
+    m_orbitronFontAction->setCheckable(true);
+    connect(m_orbitronFontAction, &QAction::triggered, this, [this]() { onFontChanged("Orbitron"); });
+
+    m_audiowideFontAction = new QAction("Audiowide (Retro Tech)", this);
+    m_audiowideFontAction->setCheckable(true);
+    connect(m_audiowideFontAction, &QAction::triggered, this, [this]() { onFontChanged("Audiowide"); });
+
+    m_russoOneFontAction = new QAction("Russo One (Bold)", this);
+    m_russoOneFontAction->setCheckable(true);
+    connect(m_russoOneFontAction, &QAction::triggered, this, [this]() { onFontChanged("Russo One"); });
+
+    m_righteousFontAction = new QAction("Righteous (1970s)", this);
+    m_righteousFontAction->setCheckable(true);
+    connect(m_righteousFontAction, &QAction::triggered, this, [this]() { onFontChanged("Righteous"); });
+
+    m_michromaFontAction = new QAction("Michroma (Geometric)", this);
+    m_michromaFontAction->setCheckable(true);
+    connect(m_michromaFontAction, &QAction::triggered, this, [this]() { onFontChanged("Michroma"); });
+
     m_fontGroup = new QActionGroup(this);
     m_fontGroup->addAction(m_courierFontAction);
     m_fontGroup->addAction(m_openSansFontAction);
@@ -389,6 +534,12 @@ void MainWindow::createActions()
     m_fontGroup->addAction(m_robotoMonoFontAction);
     m_fontGroup->addAction(m_amaticFontAction);
     m_fontGroup->addAction(m_satisfyFontAction);
+    m_fontGroup->addAction(m_bebasNeueFontAction);
+    m_fontGroup->addAction(m_orbitronFontAction);
+    m_fontGroup->addAction(m_audiowideFontAction);
+    m_fontGroup->addAction(m_russoOneFontAction);
+    m_fontGroup->addAction(m_righteousFontAction);
+    m_fontGroup->addAction(m_michromaFontAction);
 
     // Font size actions
     m_fontSize8Action = new QAction("8", this);
@@ -515,6 +666,26 @@ void MainWindow::createActions()
     });
     m_paperColorActions.append(blackAction);
 
+    // Color palette actions
+    m_colorPaletteGroup = new QActionGroup(this);
+
+    QAction *pastelsAction = new QAction(tr("Pastels"), this);
+    pastelsAction->setCheckable(true);
+    pastelsAction->setActionGroup(m_colorPaletteGroup);
+    pastelsAction->setChecked(true); // Default
+    connect(pastelsAction, &QAction::triggered, this, [this]() {
+        setColorPalette(ColorBar::Pastels);
+    });
+    m_colorPaletteActions.append(pastelsAction);
+
+    QAction *markersAction = new QAction(tr("Markers"), this);
+    markersAction->setCheckable(true);
+    markersAction->setActionGroup(m_colorPaletteGroup);
+    connect(markersAction, &QAction::triggered, this, [this]() {
+        setColorPalette(ColorBar::Markers);
+    });
+    m_colorPaletteActions.append(markersAction);
+
     // Create tab shortcuts for numbers 1-9
     for (int i = 1; i <= 9; ++i) {
         QAction *tabAction = new QAction(this);
@@ -529,6 +700,7 @@ void MainWindow::createMenus()
 {
     QMenu *fileMenu = menuBar()->addMenu(tr("&File"));
     fileMenu->addAction(m_newAction);
+    fileMenu->addAction(m_newFromClipboardAction);
     fileMenu->addAction(m_newTabAction);
     fileMenu->addSeparator();
 
@@ -546,9 +718,19 @@ void MainWindow::createMenus()
 
     fileMenu->addSeparator();
     fileMenu->addAction(m_openAction);
+
+    // Add recent files submenu
+    QMenu *recentFilesMenu = fileMenu->addMenu(tr("Open &Recent"));
+    for (int i = 0; i < MaxRecentFiles; ++i) {
+        recentFilesMenu->addAction(m_recentFileActions[i]);
+    }
+    recentFilesMenu->addSeparator();
+    recentFilesMenu->addAction(m_clearRecentFilesAction);
+
     fileMenu->addSeparator();
     fileMenu->addAction(m_saveAction);
     fileMenu->addAction(m_saveAsAction);
+    fileMenu->addAction(m_exportAction);
     fileMenu->addSeparator();
     fileMenu->addAction(m_closeTabAction);
     fileMenu->addSeparator();
@@ -561,6 +743,16 @@ void MainWindow::createMenus()
     editMenu->addAction(m_cutAction);
     editMenu->addAction(m_copyAction);
     editMenu->addAction(m_pasteAction);
+    editMenu->addSeparator();
+    QMenu *transformMenu = editMenu->addMenu(tr("&Transform Selection"));
+    transformMenu->addAction(m_rotateSelection90Action);
+    transformMenu->addAction(m_rotateSelection180Action);
+    transformMenu->addAction(m_rotateSelection270Action);
+    transformMenu->addSeparator();
+    transformMenu->addAction(m_flipSelectionHorizontalAction);
+    transformMenu->addAction(m_flipSelectionVerticalAction);
+    editMenu->addSeparator();
+    editMenu->addAction(m_preferencesAction);
 
     QMenu *imageMenu = menuBar()->addMenu(tr("&Image"));
     imageMenu->addAction(m_insertImageAction);
@@ -588,15 +780,28 @@ void MainWindow::createMenus()
     imageMenu->addAction(m_addBorderAction);
 
     QMenu *viewMenu = menuBar()->addMenu(tr("&View"));
+    viewMenu->addAction(m_zoomInAction);
+    viewMenu->addAction(m_zoomOutAction);
+    viewMenu->addSeparator();
+    viewMenu->addAction(m_zoom25Action);
+    viewMenu->addAction(m_zoom50Action);
     viewMenu->addAction(m_scale1xAction);
-    viewMenu->addAction(m_scale2xAction);
+    viewMenu->addAction(m_zoom200Action);
     viewMenu->addAction(m_scale4xAction);
+    viewMenu->addAction(m_zoomFitAction);
     viewMenu->addSeparator();
     viewMenu->addAction(m_showToolBarAction);
     viewMenu->addAction(m_showPatternBarAction);
     viewMenu->addAction(m_showThicknessBarAction);
     viewMenu->addAction(m_showLayerPanelAction);
     viewMenu->addAction(m_showColorBarAction);
+    viewMenu->addSeparator();
+
+    // Add color palette submenu
+    QMenu *colorPaletteMenu = viewMenu->addMenu(tr("Color &Palette"));
+    for (QAction *action : m_colorPaletteActions) {
+        colorPaletteMenu->addAction(action);
+    }
 
     QMenu *goodiesMenu = menuBar()->addMenu(tr("&Goodies"));
     goodiesMenu->addAction(m_pixelZoomAction);
@@ -635,6 +840,13 @@ void MainWindow::createMenus()
     fontMenu->addAction(m_amaticFontAction);
     fontMenu->addAction(m_vt323FontAction);
     fontMenu->addAction(m_robotoMonoFontAction);
+    fontMenu->addSeparator();
+    fontMenu->addAction(m_bebasNeueFontAction);
+    fontMenu->addAction(m_orbitronFontAction);
+    fontMenu->addAction(m_audiowideFontAction);
+    fontMenu->addAction(m_russoOneFontAction);
+    fontMenu->addAction(m_righteousFontAction);
+    fontMenu->addAction(m_michromaFontAction);
 
     QMenu *fontSizeMenu = menuBar()->addMenu(tr("Font &Size"));
     fontSizeMenu->addAction(m_fontSize8Action);
@@ -651,6 +863,31 @@ void MainWindow::newFile()
     if (canvas) {
         canvas->newCanvas();
         setCurrentFile("");
+    }
+}
+
+void MainWindow::newFromClipboard()
+{
+    QClipboard *clipboard = QApplication::clipboard();
+    QPixmap pixmap = clipboard->pixmap();
+
+    if (pixmap.isNull()) {
+        QMessageBox::information(this, "New from Clipboard", "No image data in clipboard.");
+        return;
+    }
+
+    // Create a new tab with canvas sized to clipboard image
+    m_tabWidget->newTab();
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) {
+        // Create a new canvas with the clipboard image size
+        canvas->newCanvas();
+
+        // Insert the clipboard image at position (0,0)
+        canvas->insertImageAt(pixmap, QPoint(0, 0));
+
+        setCurrentFile("");
+        setWindowTitle(tr("unimalen - New from Clipboard"));
     }
 }
 
@@ -684,13 +921,29 @@ void MainWindow::saveAsFile()
 {
     QString fileName = QFileDialog::getSaveFileName(this,
         "Save Image", QStandardPaths::writableLocation(QStandardPaths::PicturesLocation),
-        "OpenRaster Files (*.ora);;PNG Files (*.png)");
+        "OpenRaster Files (*.ora);;PNG Files (*.png);;JPEG Files (*.jpg);;BMP Files (*.bmp);;GIF Files (*.gif)");
 
     if (!fileName.isEmpty()) {
         if (m_tabWidget->saveCurrentDocument(fileName)) {
             setCurrentFile(fileName);
         } else {
             QMessageBox::warning(this, "unimalen", "Cannot save file " + fileName);
+        }
+    }
+}
+
+void MainWindow::exportFile()
+{
+    QString fileName = QFileDialog::getSaveFileName(this,
+        "Export Image", QStandardPaths::writableLocation(QStandardPaths::PicturesLocation),
+        "PNG Files (*.png);;JPEG Files (*.jpg *.jpeg);;BMP Files (*.bmp);;GIF Files (*.gif);;All Files (*)");
+
+    if (!fileName.isEmpty()) {
+        Canvas *canvas = getCurrentCanvas();
+        if (canvas && canvas->saveCanvas(fileName)) {
+            QMessageBox::information(this, "Export Success", "Image exported successfully!");
+        } else {
+            QMessageBox::warning(this, "unimalen", "Cannot export file " + fileName);
         }
     }
 }
@@ -702,6 +955,7 @@ void MainWindow::setScale1x()
         canvas->setScaleFactor(1);
         canvas->setPixelZoomMode(false);
         m_pixelZoomAction->setChecked(false);
+        updateStatusBar();
     }
 }
 
@@ -712,6 +966,7 @@ void MainWindow::setScale2x()
         canvas->setScaleFactor(2);
         canvas->setPixelZoomMode(false);
         m_pixelZoomAction->setChecked(false);
+        updateStatusBar();
     }
 }
 
@@ -722,6 +977,7 @@ void MainWindow::setScale4x()
         canvas->setScaleFactor(4);
         canvas->setPixelZoomMode(false);
         m_pixelZoomAction->setChecked(false);
+        updateStatusBar();
     }
 }
 
@@ -748,6 +1004,114 @@ void MainWindow::toggleCoordinates(bool enabled)
     }
 }
 
+void MainWindow::setZoom25()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) {
+        canvas->setZoomLevel(25.0);
+        canvas->setPixelZoomMode(false);
+        m_pixelZoomAction->setChecked(false);
+        updateStatusBar();
+    }
+}
+
+void MainWindow::setZoom50()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) {
+        canvas->setZoomLevel(50.0);
+        canvas->setPixelZoomMode(false);
+        m_pixelZoomAction->setChecked(false);
+        updateStatusBar();
+    }
+}
+
+void MainWindow::setZoom200()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) {
+        canvas->setZoomLevel(200.0);
+        canvas->setPixelZoomMode(false);
+        m_pixelZoomAction->setChecked(false);
+        updateStatusBar();
+    }
+}
+
+void MainWindow::setZoomFit()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) {
+        // Find the scroll area by traversing up from canvas
+        QWidget *parent = canvas->parentWidget();
+        QScrollArea *scrollArea = nullptr;
+        while (parent && !scrollArea) {
+            scrollArea = qobject_cast<QScrollArea*>(parent);
+            parent = parent->parentWidget();
+        }
+
+        if (scrollArea) {
+            QSize viewportSize = scrollArea->viewport()->size();
+            double scaleX = (double)viewportSize.width() / 576.0; // CANVAS_WIDTH
+            double scaleY = (double)viewportSize.height() / 720.0; // CANVAS_HEIGHT
+            double fitScale = qMin(scaleX, scaleY) * 100.0;
+            canvas->setZoomLevel(fitScale);
+            canvas->setPixelZoomMode(false);
+            m_pixelZoomAction->setChecked(false);
+            updateStatusBar();
+        } else {
+            // Fallback to 100% if we can't find the scroll area
+            canvas->setZoomLevel(100.0);
+            updateStatusBar();
+        }
+    }
+}
+
+void MainWindow::zoomIn()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) {
+        double currentZoom = canvas->getZoomLevel();
+        // Increase by 25% increments
+        double newZoom = currentZoom + 25.0;
+        canvas->setZoomLevel(newZoom);
+        updateStatusBar();
+    }
+}
+
+void MainWindow::zoomOut()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) {
+        double currentZoom = canvas->getZoomLevel();
+        // Decrease by 25% increments
+        double newZoom = currentZoom - 25.0;
+        canvas->setZoomLevel(newZoom);
+        updateStatusBar();
+    }
+}
+
+void MainWindow::updateStatusBar()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas && statusBar()) {
+        // Update zoom level
+        if (m_statusZoomLabel) {
+            m_statusZoomLabel->setText(QString("Zoom: %1%").arg((int)canvas->getZoomLevel()));
+        }
+
+        // Update canvas size
+        if (m_statusCanvasSizeLabel) {
+            m_statusCanvasSizeLabel->setText(QString("Canvas: 576x720"));
+        }
+
+        // Update memory usage (simplified)
+        if (m_statusMemoryLabel) {
+            // In a real implementation, you'd calculate actual memory usage
+            m_statusMemoryLabel->setText(QString("Memory: ~50MB"));
+        }
+    }
+}
+
 void MainWindow::onPencilSelected()
 {
     Canvas *canvas = getCurrentCanvas();
@@ -770,6 +1134,12 @@ void MainWindow::onBrushSelected(int diameter)
 {
     Canvas *canvas = getCurrentCanvas();
     if (canvas) canvas->setBrushMode(true, diameter);
+}
+
+void MainWindow::onMarkerSelected()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) canvas->setMarkerMode(true);
 }
 
 void MainWindow::onEraserSelected(int diameter)
@@ -806,6 +1176,18 @@ void MainWindow::onLassoSelected()
 {
     Canvas *canvas = getCurrentCanvas();
     if (canvas) canvas->setLassoMode(true);
+}
+
+void MainWindow::onRectSelectSelected()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) canvas->setRectSelectMode(true);
+}
+
+void MainWindow::onEyedropperSelected()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) canvas->setEyedropperMode(true);
 }
 
 void MainWindow::onSquareSelected()
@@ -862,6 +1244,36 @@ void MainWindow::onPaste()
     if (canvas) canvas->pasteSelection();
 }
 
+void MainWindow::onRotateSelection90()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) canvas->rotateSelection(90);
+}
+
+void MainWindow::onRotateSelection180()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) canvas->rotateSelection(180);
+}
+
+void MainWindow::onRotateSelection270()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) canvas->rotateSelection(270);
+}
+
+void MainWindow::onFlipSelectionHorizontal()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) canvas->flipSelectionHorizontal();
+}
+
+void MainWindow::onFlipSelectionVertical()
+{
+    Canvas *canvas = getCurrentCanvas();
+    if (canvas) canvas->flipSelectionVertical();
+}
+
 void MainWindow::onFontChanged(const QString &fontFamily)
 {
     Canvas *canvas = getCurrentCanvas();
@@ -891,6 +1303,159 @@ void MainWindow::setCurrentFile(const QString &fileName)
         title += QFileInfo(fileName).baseName();
     }
     setWindowTitle(title);
+
+    // Update recent files
+    if (!fileName.isEmpty()) {
+        updateRecentFiles(fileName);
+    }
+}
+
+void MainWindow::updateRecentFiles(const QString &fileName)
+{
+    // Remove any existing occurrence of this file
+    m_recentFiles.removeAll(fileName);
+
+    // Add to the front
+    m_recentFiles.prepend(fileName);
+
+    // Keep only MaxRecentFiles
+    while (m_recentFiles.size() > MaxRecentFiles) {
+        m_recentFiles.removeLast();
+    }
+
+    // Update menu and save to settings
+    updateRecentFilesMenu();
+    saveRecentFiles();
+}
+
+void MainWindow::updateRecentFilesMenu()
+{
+    int numRecentFiles = qMin(m_recentFiles.size(), MaxRecentFiles);
+
+    for (int i = 0; i < numRecentFiles; ++i) {
+        QString text = QString("&%1 %2").arg(i + 1).arg(QFileInfo(m_recentFiles[i]).fileName());
+        m_recentFileActions[i]->setText(text);
+        m_recentFileActions[i]->setData(m_recentFiles[i]);
+        m_recentFileActions[i]->setVisible(true);
+    }
+
+    for (int i = numRecentFiles; i < MaxRecentFiles; ++i) {
+        m_recentFileActions[i]->setVisible(false);
+    }
+}
+
+void MainWindow::loadRecentFiles()
+{
+    QSettings settings("unimalen", "unimalen");
+    m_recentFiles = settings.value("recentFiles").toStringList();
+}
+
+void MainWindow::saveRecentFiles()
+{
+    QSettings settings("unimalen", "unimalen");
+    settings.setValue("recentFiles", m_recentFiles);
+}
+
+void MainWindow::openRecentFile()
+{
+    QAction *action = qobject_cast<QAction*>(sender());
+    if (action) {
+        QString fileName = action->data().toString();
+        if (QFile::exists(fileName)) {
+            if (m_tabWidget->loadDocument(fileName)) {
+                setCurrentFile(fileName);
+            } else {
+                QMessageBox::warning(this, "unimalen", "Cannot open file " + fileName);
+            }
+        } else {
+            QMessageBox::warning(this, "File Not Found", "The file " + fileName + " no longer exists.");
+            m_recentFiles.removeAll(fileName);
+            updateRecentFilesMenu();
+            saveRecentFiles();
+        }
+    }
+}
+
+void MainWindow::clearRecentFiles()
+{
+    m_recentFiles.clear();
+    updateRecentFilesMenu();
+    saveRecentFiles();
+}
+
+void MainWindow::loadPreferences()
+{
+    QSettings settings("unimalen", "unimalen");
+    m_autoSaveEnabled = settings.value("autoSave/enabled", true).toBool();
+    m_autoSaveInterval = settings.value("autoSave/interval", 5).toInt(); // Default 5 minutes
+}
+
+void MainWindow::savePreferences()
+{
+    QSettings settings("unimalen", "unimalen");
+    settings.setValue("autoSave/enabled", m_autoSaveEnabled);
+    settings.setValue("autoSave/interval", m_autoSaveInterval);
+}
+
+void MainWindow::applyAutoSaveSettings()
+{
+    if (m_autoSaveEnabled && m_autoSaveInterval > 0) {
+        m_autoSaveTimer->start(m_autoSaveInterval * 60 * 1000); // Convert minutes to milliseconds
+    } else {
+        m_autoSaveTimer->stop();
+    }
+}
+
+void MainWindow::showPreferences()
+{
+    QDialog dialog(this);
+    dialog.setWindowTitle(tr("Preferences"));
+    dialog.setMinimumWidth(400);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(&dialog);
+
+    // Auto-save group
+    QGroupBox *autoSaveGroup = new QGroupBox(tr("Auto-Save"), &dialog);
+    QVBoxLayout *autoSaveLayout = new QVBoxLayout(autoSaveGroup);
+
+    QCheckBox *autoSaveCheckBox = new QCheckBox(tr("Enable auto-save"), autoSaveGroup);
+    autoSaveCheckBox->setChecked(m_autoSaveEnabled);
+    autoSaveLayout->addWidget(autoSaveCheckBox);
+
+    QHBoxLayout *intervalLayout = new QHBoxLayout();
+    QLabel *intervalLabel = new QLabel(tr("Save interval:"), autoSaveGroup);
+    QSpinBox *intervalSpinBox = new QSpinBox(autoSaveGroup);
+    intervalSpinBox->setRange(1, 60);
+    intervalSpinBox->setValue(m_autoSaveInterval);
+    intervalSpinBox->setSuffix(tr(" minutes"));
+    intervalLayout->addWidget(intervalLabel);
+    intervalLayout->addWidget(intervalSpinBox);
+    intervalLayout->addStretch();
+    autoSaveLayout->addLayout(intervalLayout);
+
+    QLabel *infoLabel = new QLabel(tr("Auto-save files are saved with .autosave extension"), autoSaveGroup);
+    infoLabel->setStyleSheet("color: gray; font-size: 10px;");
+    autoSaveLayout->addWidget(infoLabel);
+
+    mainLayout->addWidget(autoSaveGroup);
+
+    // Dialog buttons
+    QDialogButtonBox *buttonBox = new QDialogButtonBox(
+        QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+    connect(buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+    mainLayout->addWidget(buttonBox);
+
+    if (dialog.exec() == QDialog::Accepted) {
+        // Save preferences
+        m_autoSaveEnabled = autoSaveCheckBox->isChecked();
+        m_autoSaveInterval = intervalSpinBox->value();
+        savePreferences();
+        applyAutoSaveSettings();
+
+        QMessageBox::information(this, tr("Preferences"),
+            tr("Preferences saved successfully!"));
+    }
 }
 
 
@@ -902,6 +1467,35 @@ void MainWindow::newTab()
 void MainWindow::closeTab()
 {
     int currentIndex = m_tabWidget->currentIndex();
+    Canvas *canvas = m_tabWidget->canvasAt(currentIndex);
+
+    // Check if the tab has unsaved changes
+    if (canvas && canvas->isModified()) {
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle(tr("Unsaved Changes"));
+        msgBox.setText(tr("This document has unsaved changes."));
+        msgBox.setInformativeText(tr("Do you want to save your changes before closing?"));
+        msgBox.setIcon(QMessageBox::Warning);
+
+        QPushButton *saveButton = msgBox.addButton(tr("Save"), QMessageBox::AcceptRole);
+        QPushButton *discardButton = msgBox.addButton(tr("Don't Save"), QMessageBox::DestructiveRole);
+        QPushButton *cancelButton = msgBox.addButton(tr("Cancel"), QMessageBox::RejectRole);
+        msgBox.setDefaultButton(saveButton);
+
+        msgBox.exec();
+
+        if (msgBox.clickedButton() == saveButton) {
+            saveFile();
+            // If still modified, user cancelled the save dialog
+            if (canvas->isModified()) {
+                return;  // Don't close the tab
+            }
+        } else if (msgBox.clickedButton() == cancelButton) {
+            return;  // Don't close the tab
+        }
+        // If discard button clicked, continue with closing
+    }
+
     m_tabWidget->closeTab(currentIndex);
 }
 
@@ -1059,6 +1653,20 @@ void MainWindow::connectCanvasSignals(Canvas *canvas)
     connect(m_layerPanel, &LayerPanel::layerBlendModeChanged, this, &MainWindow::onLayerBlendModeChanged);
     connect(m_layerPanel, &LayerPanel::layerRenamed, this, &MainWindow::onLayerRenamed);
 
+    // Connect mouse position signal for status bar
+    connect(canvas, &Canvas::mousePositionChanged, this, [this](int x, int y) {
+        if (m_statusCursorLabel) {
+            m_statusCursorLabel->setText(QString("Cursor: (%1, %2)").arg(x).arg(y));
+        }
+    });
+
+    // Connect color picked signal from eyedropper
+    connect(canvas, &Canvas::colorPicked, this, [this](const QColor &color) {
+        if (m_colorBar) {
+            m_colorBar->setCurrentColor(color);
+        }
+    });
+
     // Initialize layer panel with current canvas layers
     if (m_layerPanel->isVisible()) {
         m_layerPanel->setLayers(canvas->layers());
@@ -1090,18 +1698,43 @@ void MainWindow::closeEvent(QCloseEvent *event)
     }
 
     if (hasUnsavedChanges) {
-        QMessageBox::StandardButton reply = QMessageBox::question(
-            this,
-            tr("Quit unimalen"),
-            tr("You have unsaved changes. Are you sure you want to quit?"),
-            QMessageBox::Yes | QMessageBox::No,
-            QMessageBox::No  // Default to No
-        );
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle(tr("Unsaved Changes"));
+        msgBox.setText(tr("You have unsaved changes."));
+        msgBox.setInformativeText(tr("Do you want to save your changes before closing?"));
+        msgBox.setIcon(QMessageBox::Warning);
 
-        if (reply != QMessageBox::Yes) {
+        QPushButton *saveButton = msgBox.addButton(tr("Save"), QMessageBox::AcceptRole);
+        QPushButton *discardButton = msgBox.addButton(tr("Don't Save"), QMessageBox::DestructiveRole);
+        QPushButton *cancelButton = msgBox.addButton(tr("Cancel"), QMessageBox::RejectRole);
+        msgBox.setDefaultButton(saveButton);
+
+        msgBox.exec();
+
+        if (msgBox.clickedButton() == saveButton) {
+            // Save all modified documents
+            bool allSaved = true;
+            for (int i = 0; i < m_tabWidget->count(); ++i) {
+                Canvas *canvas = m_tabWidget->canvasAt(i);
+                if (canvas && canvas->isModified()) {
+                    m_tabWidget->setCurrentTab(i);
+                    saveFile();
+                    // Check if still modified (user may have cancelled save dialog)
+                    if (canvas->isModified()) {
+                        allSaved = false;
+                        break;
+                    }
+                }
+            }
+            if (!allSaved) {
+                event->ignore();
+                return;
+            }
+        } else if (msgBox.clickedButton() == cancelButton) {
             event->ignore();
             return;
         }
+        // If discard button clicked, continue with closing
     }
 
     // Close all floating toolbars before quitting
@@ -1130,6 +1763,32 @@ void MainWindow::setPaperColor(Unimalen::PaperColor color)
         canvas->compositeAllLayers();
         canvas->update();
     }
+}
+
+void MainWindow::setColorPalette(ColorBar::PaletteType palette)
+{
+    // Save current color
+    QColor currentColor = m_colorBar->currentColor();
+
+    // Remove old color bar from dock
+    m_colorBarDock->setWidget(nullptr);
+    delete m_colorBar;
+
+    // Create new color bar with selected palette
+    m_colorBar = new ColorBar(this, palette);
+    m_colorBarDock->setWidget(m_colorBar);
+
+    // Restore current color
+    m_colorBar->setCurrentColor(currentColor);
+
+    // Reconnect signals
+    connect(m_colorBar, &ColorBar::colorSelected,
+            this, [this](const QColor &color) {
+        Canvas *canvas = getCurrentCanvas();
+        if (canvas) {
+            canvas->setCurrentColor(color);
+        }
+    });
 }
 
 void MainWindow::insertImage()

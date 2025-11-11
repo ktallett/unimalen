@@ -33,6 +33,8 @@ add_library(unimalen-tools STATIC
     src/tools/PencilTool.cpp
     src/tools/BrushTool.h
     src/tools/BrushTool.cpp
+    src/tools/MarkerTool.h
+    src/tools/MarkerTool.cpp
     src/tools/EraserTool.h
     src/tools/EraserTool.cpp
     src/tools/LineTool.h

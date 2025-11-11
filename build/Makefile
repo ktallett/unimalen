@@ -57,18 +57,18 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen"
+CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build"
+CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -132,9 +132,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/kern/Dropbox (Maestral)/mnt_reform/projects/unimalen/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -701,6 +701,30 @@ src/tools/LineTool.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.s
 .PHONY : src/tools/LineTool.cpp.s
 
+src/tools/MarkerTool.o: src/tools/MarkerTool.cpp.o
+.PHONY : src/tools/MarkerTool.o
+
+# target to build an object file
+src/tools/MarkerTool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.o
+.PHONY : src/tools/MarkerTool.cpp.o
+
+src/tools/MarkerTool.i: src/tools/MarkerTool.cpp.i
+.PHONY : src/tools/MarkerTool.i
+
+# target to preprocess a source file
+src/tools/MarkerTool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.i
+.PHONY : src/tools/MarkerTool.cpp.i
+
+src/tools/MarkerTool.s: src/tools/MarkerTool.cpp.s
+.PHONY : src/tools/MarkerTool.s
+
+# target to generate assembly for a file
+src/tools/MarkerTool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.s
+.PHONY : src/tools/MarkerTool.cpp.s
+
 src/tools/PencilTool.o: src/tools/PencilTool.cpp.o
 .PHONY : src/tools/PencilTool.o
 
@@ -941,6 +965,9 @@ help:
 	@echo "... src/tools/LineTool.o"
 	@echo "... src/tools/LineTool.i"
 	@echo "... src/tools/LineTool.s"
+	@echo "... src/tools/MarkerTool.o"
+	@echo "... src/tools/MarkerTool.i"
+	@echo "... src/tools/MarkerTool.s"
 	@echo "... src/tools/PencilTool.o"
 	@echo "... src/tools/PencilTool.i"
 	@echo "... src/tools/PencilTool.s"

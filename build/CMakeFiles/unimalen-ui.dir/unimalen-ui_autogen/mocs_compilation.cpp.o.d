@@ -429,7 +429,8 @@ CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt6/QtGui/qactiongroup.h /usr/include/qt6/QtGui/QCloseEvent \
  /usr/include/qt6/QtGui/QResizeEvent /usr/include/qt6/QtGui/QMoveEvent \
  /usr/include/qt6/QtWidgets/QDockWidget \
- /usr/include/qt6/QtWidgets/qdockwidget.h \
+ /usr/include/qt6/QtWidgets/qdockwidget.h /usr/include/qt6/QtCore/QTimer \
+ /usr/include/qt6/QtCore/qtimer.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_patternbar.cpp \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_tabwidget.cpp \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/tabwidget.h \
@@ -440,4 +441,10 @@ CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o: \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/moc_toolbar.cpp \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/UVLADIE3JM/../../../src/toolbar.h \
  /usr/include/qt6/QtWidgets/QMenu /usr/include/qt6/QtWidgets/qmenu.h \
- /usr/include/qt6/QtGui/QAction /usr/include/qt6/QtGui/qaction.h
+ /usr/include/qt6/QtGui/QAction /usr/include/qt6/QtGui/qaction.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/YPKJ5OE7LN/moc_UpdateDialog.cpp \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/YPKJ5OE7LN/../../../src/ui/UpdateDialog.h \
+ /usr/include/qt6/QtWidgets/QDialog /usr/include/qt6/QtWidgets/qdialog.h \
+ /usr/include/qt6/QtWidgets/QProgressBar \
+ /usr/include/qt6/QtWidgets/qprogressbar.h \
+ /usr/include/qt6/QtCore/QProcess /usr/include/qt6/QtCore/qprocess.h

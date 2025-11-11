@@ -365,13 +365,21 @@ CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: \
  /usr/include/qt6/QtWidgets/QLabel /usr/include/qt6/QtWidgets/qlabel.h \
  /usr/include/qt6/QtGui/qpicture.h /usr/include/qt6/QtGui/qtextdocument.h \
  /usr/include/qt6/QtWidgets/QDockWidget \
- /usr/include/qt6/QtWidgets/qdockwidget.h \
+ /usr/include/qt6/QtWidgets/qdockwidget.h /usr/include/qt6/QtCore/QTimer \
+ /usr/include/qt6/QtCore/qtimer.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Types.h \
  /usr/include/qt6/QtCore/QSize /usr/include/qt6/QtCore/QString \
  /usr/include/qt6/QtCore/qstring.h /usr/include/qt6/QtGui/QColor \
  /usr/include/qt6/QtGui/qcolor.h \
- /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/canvas.h \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/colorbar.h \
  /usr/include/qt6/QtWidgets/QWidget /usr/include/qt6/QtWidgets/qwidget.h \
+ /usr/include/qt6/QtWidgets/QGridLayout \
+ /usr/include/qt6/QtWidgets/qgridlayout.h \
+ /usr/include/qt6/QtWidgets/QPushButton \
+ /usr/include/qt6/QtWidgets/qpushbutton.h \
+ /usr/include/qt6/QtWidgets/qabstractbutton.h \
+ /usr/include/qt6/QtCore/QList \
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/canvas.h \
  /usr/include/qt6/QtGui/QPixmap /usr/include/qt6/QtGui/qpixmap.h \
  /usr/include/qt6/QtGui/QPainter /usr/include/qt6/QtGui/qpainter.h \
  /usr/include/qt6/QtGui/qtextoption.h /usr/include/qt6/QtGui/qpen.h \
@@ -389,16 +397,12 @@ CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: \
  /usr/include/qt6/QtGui/QUndoStack /usr/include/qt6/QtGui/qundostack.h \
  /usr/include/qt6/QtGui/QUndoCommand \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/patternbar.h \
- /usr/include/qt6/QtWidgets/QGridLayout \
- /usr/include/qt6/QtWidgets/qgridlayout.h \
  /usr/include/qt6/QtWidgets/QToolButton \
- /usr/include/qt6/QtWidgets/qtoolbutton.h \
- /usr/include/qt6/QtWidgets/qabstractbutton.h \
- /usr/include/qt6/QtGui/QBrush /usr/include/qt6/QtGui/qbrush.h \
+ /usr/include/qt6/QtWidgets/qtoolbutton.h /usr/include/qt6/QtGui/QBrush \
+ /usr/include/qt6/QtGui/qbrush.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Layer.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Document.h \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Page.h \
- /usr/include/qt6/QtCore/QList \
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/tabwidget.h \
  /usr/include/qt6/QtWidgets/QTabWidget \
  /usr/include/qt6/QtWidgets/qtabwidget.h \
@@ -425,11 +429,8 @@ CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: \
  /usr/include/qt6/QtWidgets/qlistview.h \
  /usr/include/qt6/QtWidgets/qabstractitemview.h \
  /usr/include/qt6/QtCore/qitemselectionmodel.h \
- /usr/include/qt6/QtWidgets/QPushButton \
- /usr/include/qt6/QtWidgets/qpushbutton.h \
  /usr/include/qt6/QtWidgets/QSlider /usr/include/qt6/QtWidgets/qslider.h \
  /usr/include/qt6/QtWidgets/QListWidgetItem \
- /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/colorbar.h \
  /usr/include/qt6/QtWidgets/QApplication \
  /usr/include/qt6/QtWidgets/qapplication.h \
  /usr/include/qt6/QtWidgets/QStatusBar \
@@ -467,9 +468,10 @@ CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: \
  /usr/include/qt6/QtWidgets/qmessagebox.h \
  /usr/include/qt6/QtWidgets/qdialogbuttonbox.h \
  /usr/include/qt6/QtCore/QStandardPaths \
- /usr/include/qt6/QtCore/qstandardpaths.h /usr/include/qt6/QtCore/QTimer \
- /usr/include/qt6/QtCore/qtimer.h /usr/include/qt6/QtWidgets/QDialog \
- /usr/include/qt6/QtWidgets/qdialog.h /usr/include/qt6/QtWidgets/QSpinBox \
+ /usr/include/qt6/QtCore/qstandardpaths.h \
+ /usr/include/qt6/QtCore/QSettings /usr/include/qt6/QtCore/qsettings.h \
+ /usr/include/qt6/QtWidgets/QDialog /usr/include/qt6/QtWidgets/qdialog.h \
+ /usr/include/qt6/QtWidgets/QSpinBox \
  /usr/include/qt6/QtWidgets/qspinbox.h \
  /usr/include/qt6/QtWidgets/QCheckBox \
  /usr/include/qt6/QtWidgets/qcheckbox.h \
@@ -477,4 +479,6 @@ CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o: \
  /usr/include/qt6/QtWidgets/qdialogbuttonbox.h \
  /usr/include/qt6/QtWidgets/QFormLayout \
  /usr/include/qt6/QtWidgets/qformlayout.h \
- /usr/include/qt6/QtWidgets/QLayout /usr/include/qt6/QtWidgets/qlayout.h
+ /usr/include/qt6/QtWidgets/QLayout /usr/include/qt6/QtWidgets/qlayout.h \
+ /usr/include/qt6/QtWidgets/QGroupBox \
+ /usr/include/qt6/QtWidgets/qgroupbox.h

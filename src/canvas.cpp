@@ -18,6 +18,7 @@
 #include <QRegion>
 #include <QMenu>
 #include <QAction>
+#include <QScrollBar>
 #include <QUndoStack>
 #include <QUndoCommand>
 
@@ -51,6 +52,7 @@ Canvas::Canvas(QWidget *parent)
     : QWidget(parent)
     , m_document(new Document())
     , m_scaleFactor(1)
+    , m_zoomLevel(100.0)
     , m_drawing(false)
     , m_pixelZoomMode(false)
     , m_pixelCursor(288, 360)  // Center of canvas
@@ -61,14 +63,20 @@ Canvas::Canvas(QWidget *parent)
     , m_drawingInMagnifier(false)
     , m_showCoordinates(false)
     , m_mousePosition(0, 0)
+    , m_panMode(false)
+    , m_panning(false)
+    , m_panStartPos(0, 0)
     , m_pencilMode(true)
     , m_textMode(false)
     , m_sprayMode(false)
     , m_brushMode(false)
+    , m_markerMode(false)
     , m_eraserMode(false)
     , m_lineMode(false)
     , m_fillMode(false)
     , m_lassoMode(false)
+    , m_rectSelectMode(false)
+    , m_eyedropperMode(false)
     , m_squareMode(false)
     , m_filledSquareMode(false)
     , m_roundedSquareMode(false)
@@ -91,6 +99,7 @@ Canvas::Canvas(QWidget *parent)
     , m_draggingPiece2(false)
     , m_hasSelection(false)
     , m_drawingLasso(false)
+    , m_drawingRectSelect(false)
     , m_draggingSelection(false)
     , m_textEdit(nullptr)
     , m_textMovable(false)
@@ -147,9 +156,24 @@ void Canvas::setScaleFactor(int factor)
 {
     if (factor == 1 || factor == 2 || factor == 4) {
         m_scaleFactor = factor;
+        m_zoomLevel = factor * 100.0; // Update zoom level to match
         updateCanvasSize();
         update();
     }
+}
+
+void Canvas::setZoomLevel(double zoomPercent)
+{
+    // Clamp zoom level to reasonable range (25% to 800%)
+    m_zoomLevel = qBound(25.0, zoomPercent, 800.0);
+
+    // Convert to scale factor for compatibility with existing code
+    // Round to nearest int for scale factor
+    m_scaleFactor = qRound(m_zoomLevel / 100.0);
+    if (m_scaleFactor < 1) m_scaleFactor = 1;
+
+    updateCanvasSize();
+    update();
 }
 
 bool Canvas::loadCanvas(const QString &fileName)
@@ -184,7 +208,22 @@ bool Canvas::saveCanvas(const QString &fileName)
     bool success = false;
     if (extension == "ora") {
         success = m_document->saveAsORA(fileName);
+    } else if (extension == "png") {
+        success = m_document->saveAsPNG(fileName);
+    } else if (extension == "jpg" || extension == "jpeg") {
+        // Convert to QImage and save as JPEG
+        QImage image = m_canvas.toImage();
+        success = image.save(fileName, "JPEG", 95); // 95% quality
+    } else if (extension == "bmp") {
+        // Save as BMP
+        QImage image = m_canvas.toImage();
+        success = image.save(fileName, "BMP");
+    } else if (extension == "gif") {
+        // Save as GIF
+        QImage image = m_canvas.toImage();
+        success = image.save(fileName, "GIF");
     } else {
+        // Default to PNG for unknown extensions
         success = m_document->saveAsPNG(fileName);
     }
 
@@ -661,11 +700,46 @@ void Canvas::paintEvent(QPaintEvent *event)
             }
         }
     }
+
+    // Draw rectangular selection
+    if (m_drawingRectSelect || (m_hasSelection && m_rectSelectMode)) {
+        QRect drawRect;
+        if (m_drawingRectSelect) {
+            // Show preview while drawing - solid line with blue color
+            drawRect = QRect(m_rectSelectStart, m_rectSelectCurrent).normalized();
+            painter.setPen(QPen(Qt::blue, 2, Qt::SolidLine));
+            painter.setBrush(Qt::NoBrush);
+        } else if (m_hasSelection) {
+            // Show completed selection - dashed line
+            drawRect = m_rectSelection;
+            painter.setPen(QPen(Qt::black, 1, Qt::DashLine));
+            painter.setBrush(Qt::NoBrush);
+
+            // If dragging, show the selected pixels at the current position
+            if (m_draggingSelection && !m_selectedPixmap.isNull()) {
+                QRect scaledRect = QRect(drawRect.topLeft() * m_scaleFactor,
+                                        drawRect.size() * m_scaleFactor);
+                painter.drawPixmap(scaledRect.topLeft(), m_selectedPixmap.scaled(scaledRect.size()));
+            }
+        }
+
+        QRect scaledRect = QRect(drawRect.topLeft() * m_scaleFactor,
+                                 drawRect.bottomRight() * m_scaleFactor);
+        painter.drawRect(scaledRect);
+    }
 }
 
 void Canvas::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
+        // Handle pan mode (spacebar held)
+        if (m_panMode) {
+            m_panning = true;
+            m_panStartPos = event->position().toPoint();
+            setCursor(Qt::ClosedHandCursor);
+            return;
+        }
+
         // Check if clicking on scissors pieces to drag them
         if (m_hasScissorsPieces && !m_scissorsMode) {
             QPoint clickPos = mapToCanvas(event->position().toPoint());
@@ -783,6 +857,11 @@ void Canvas::mousePressEvent(QMouseEvent *event)
             m_lastPoint = mapToCanvas(event->position().toPoint());
             m_drawing = true;
             brushPaint(mapToCanvas(event->position().toPoint()));
+        } else if (m_markerMode) {
+            m_canvasBeforeEdit = m_canvas;
+            m_lastPoint = mapToCanvas(event->position().toPoint());
+            m_drawing = true;
+            markerPaint(mapToCanvas(event->position().toPoint()));
         } else if (m_eraserMode) {
             m_canvasBeforeEdit = m_canvas;
             m_lastPoint = mapToCanvas(event->position().toPoint());
@@ -846,6 +925,48 @@ void Canvas::mousePressEvent(QMouseEvent *event)
                 m_drawing = true;
                 m_draggingSelection = false;
             }
+        } else if (m_rectSelectMode) {
+            QPoint clickPoint = mapToCanvas(event->position().toPoint());
+
+            // Check if clicking inside existing selection to start dragging
+            if (m_hasSelection && !m_drawingRectSelect && m_rectSelection.contains(clickPoint)) {
+                m_draggingSelection = true;
+                m_dragStartPoint = clickPoint;
+                m_drawing = true;
+                setCursor(Qt::ClosedHandCursor);
+
+                // Save canvas state for undo
+                m_canvasBeforeEdit = m_canvas;
+
+                // Extract the selected pixels
+                m_selectedPixmap = m_canvas.copy(m_rectSelection);
+                m_selectionOffset = m_rectSelection.topLeft();
+
+                // Clear the selected area from canvas
+                QPainter painter(&currentLayer().pixmap());
+                painter.setCompositionMode(QPainter::CompositionMode_Clear);
+                painter.fillRect(m_rectSelection, Qt::black);
+                compositeAllLayers();
+                update();
+            } else {
+                // Start new rectangular selection
+                m_rectSelectStart = clickPoint;
+                m_rectSelectCurrent = clickPoint;
+                m_hasSelection = false; // Selection is in progress
+                m_drawingRectSelect = true; // Show preview while drawing
+                m_drawing = true;
+                m_draggingSelection = false;
+            }
+        } else if (m_eyedropperMode) {
+            // Pick color from canvas
+            QPoint clickPoint = mapToCanvas(event->position().toPoint());
+            if (clickPoint.x() >= 0 && clickPoint.x() < m_document->width() &&
+                clickPoint.y() >= 0 && clickPoint.y() < m_document->height()) {
+                QColor pickedColor = m_canvas.toImage().pixelColor(clickPoint);
+                m_currentColor = pickedColor;
+                // Emit signal or call a method to update the color in ColorBar
+                emit colorPicked(pickedColor);
+            }
         } else if (m_squareMode || m_filledSquareMode) {
             m_canvasBeforeEdit = m_canvas;
             m_squareStartPoint = mapToCanvas(event->position().toPoint());
@@ -876,6 +997,36 @@ void Canvas::mousePressEvent(QMouseEvent *event)
 
 void Canvas::mouseMoveEvent(QMouseEvent *event)
 {
+    // Handle panning
+    if (m_panning) {
+        QPoint delta = event->position().toPoint() - m_panStartPos;
+
+        // Find the scroll area parent to pan
+        QWidget *parent = this->parentWidget();
+        QScrollArea *scrollArea = nullptr;
+        while (parent && !scrollArea) {
+            scrollArea = qobject_cast<QScrollArea*>(parent);
+            parent = parent->parentWidget();
+        }
+
+        if (scrollArea) {
+            QScrollBar *hBar = scrollArea->horizontalScrollBar();
+            QScrollBar *vBar = scrollArea->verticalScrollBar();
+            if (hBar) hBar->setValue(hBar->value() - delta.x());
+            if (vBar) vBar->setValue(vBar->value() - delta.y());
+        }
+
+        m_panStartPos = event->position().toPoint();
+        return;
+    }
+
+    // Update mouse position and emit for status bar
+    QPoint currentCanvasPoint = mapToCanvas(event->position().toPoint());
+    if (currentCanvasPoint.x() >= 0 && currentCanvasPoint.x() < m_document->width() &&
+        currentCanvasPoint.y() >= 0 && currentCanvasPoint.y() < m_document->height()) {
+        emit mousePositionChanged(currentCanvasPoint.x(), currentCanvasPoint.y());
+    }
+
     // Handle scissors piece dragging
     if (m_draggingPiece1) {
         QPoint currentPos = mapToCanvas(event->position().toPoint());
@@ -970,6 +1121,10 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
                 brushPaint(interpolated);
             }
             m_lastPoint = currentPoint;
+        } else if (m_markerMode) {
+            QPoint currentPoint = mapToCanvas(event->position().toPoint());
+            markerPaint(currentPoint);
+            m_lastPoint = currentPoint;
         } else if (m_eraserMode) {
             QPoint currentPoint = mapToCanvas(event->position().toPoint());
             // Draw connected eraser strokes for smooth erasing
@@ -988,6 +1143,10 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
             QPoint currentPoint = mapToCanvas(event->position().toPoint());
             m_lassoPolygon << currentPoint;
             update(); // Trigger repaint to show updated lasso
+        } else if (m_rectSelectMode && m_drawingRectSelect) {
+            // Update rectangular selection
+            m_rectSelectCurrent = mapToCanvas(event->position().toPoint());
+            update(); // Trigger repaint to show updated rectangle
         } else if ((m_squareMode || m_filledSquareMode) && m_showSquarePreview) {
             m_squareCurrentPoint = mapToCanvas(event->position().toPoint());
             update(); // Trigger repaint to show updated square preview
@@ -1025,6 +1184,13 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
 void Canvas::mouseReleaseEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
+        // Handle pan mode release
+        if (m_panning) {
+            m_panning = false;
+            setCursor(m_panMode ? Qt::OpenHandCursor : Qt::ArrowCursor);
+            return;
+        }
+
         // Handle scissors piece dragging completion
         if (m_draggingPiece1 || m_draggingPiece2) {
             // Commit the pieces to the layer at their current positions
@@ -1120,6 +1286,41 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event)
                     update(); // Clear any preview
                 }
             }
+        } else if (m_rectSelectMode) {
+            if (m_draggingSelection) {
+                // Complete selection dragging - place the selected pixels at new location
+                QPoint currentPoint = mapToCanvas(event->position().toPoint());
+                QPoint offset = currentPoint - m_dragStartPoint;
+
+                // Update rectangle position
+                m_rectSelection.translate(offset);
+
+                // Draw the selected pixels at the new location
+                QPainter painter(&currentLayer().pixmap());
+                painter.setRenderHint(QPainter::Antialiasing, false);
+                painter.drawPixmap(m_rectSelection.topLeft(), m_selectedPixmap);
+
+                compositeAllLayers();
+
+                // Create undo command for the move operation
+                m_undoStack->push(new CanvasUndoCommand(this, m_canvasBeforeEdit, m_canvas, "Move Selection"));
+
+                m_draggingSelection = false;
+                setCursor(Qt::ArrowCursor);
+                update();
+            } else {
+                // Complete rectangular selection
+                m_drawingRectSelect = false;
+                QRect selectedRect = QRect(m_rectSelectStart, m_rectSelectCurrent).normalized();
+                if (selectedRect.width() > 2 && selectedRect.height() > 2) {
+                    m_rectSelection = selectedRect;
+                    m_hasSelection = true;
+                    update(); // Show completed selection with dashed outline
+                } else {
+                    m_hasSelection = false;
+                    update(); // Clear any preview
+                }
+            }
         } else if (m_squareMode || m_filledSquareMode) {
             drawSquare(m_squareStartPoint, mapToCanvas(event->position().toPoint()), m_filledSquareMode);
             m_showSquarePreview = false; // Hide preview after drawing final square
@@ -1140,8 +1341,8 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event)
         }
 
         // Add undo commands for continuous drawing tools
-        if (m_sprayMode || m_brushMode || m_eraserMode) {
-            QString toolName = m_sprayMode ? "Spray" : (m_brushMode ? "Brush" : "Eraser");
+        if (m_sprayMode || m_brushMode || m_markerMode || m_eraserMode) {
+            QString toolName = m_sprayMode ? "Spray" : (m_brushMode ? "Brush" : (m_markerMode ? "Marker" : "Eraser"));
             m_undoStack->push(new CanvasUndoCommand(this, m_canvasBeforeEdit, m_canvas, toolName));
         }
 
@@ -1286,6 +1487,39 @@ void Canvas::brushPaint(const QPoint &position)
     update(updateRect);
 }
 
+void Canvas::markerPaint(const QPoint &position)
+{
+    QPainter painter(&currentLayer().pixmap());
+    painter.setRenderHint(QPainter::Antialiasing);
+    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+
+    // Create semi-transparent marker color
+    QColor markerColor = m_currentColor;
+    markerColor.setAlpha(180);  // 70% opacity for marker transparency
+
+    // Use a thicker pen with round caps for smooth marker strokes
+    int thickness = 4;  // Default marker thickness
+    QPen markerPen(markerColor, thickness * 1.5, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
+    painter.setPen(markerPen);
+
+    // Draw line from last point to current point
+    if (m_drawing) {
+        painter.drawLine(m_lastPoint, position);
+    }
+
+    compositeAllLayers();
+
+    // Update the affected area
+    int updateRadius = (thickness * 1.5) + 2;
+    QRect updateRect = QRect(qMin(m_lastPoint.x(), position.x()) - updateRadius,
+                            qMin(m_lastPoint.y(), position.y()) - updateRadius,
+                            qAbs(position.x() - m_lastPoint.x()) + updateRadius * 2,
+                            qAbs(position.y() - m_lastPoint.y()) + updateRadius * 2);
+    updateRect = QRect(updateRect.topLeft() * m_scaleFactor,
+                      updateRect.bottomRight() * m_scaleFactor);
+    update(updateRect);
+}
+
 void Canvas::eraserPaint(const QPoint &position)
 {
     QPainter painter(&currentLayer().pixmap());
@@ -1319,6 +1553,14 @@ void Canvas::eraserPaint(const QPoint &position)
 
 void Canvas::keyPressEvent(QKeyEvent *event)
 {
+    // Handle spacebar for pan mode (not in pixel zoom mode)
+    if (event->key() == Qt::Key_Space && !m_pixelZoomMode && !event->isAutoRepeat()) {
+        m_panMode = true;
+        setCursor(Qt::OpenHandCursor);
+        event->accept();
+        return;
+    }
+
     // Handle Escape key for scissors pieces
     if (event->key() == Qt::Key_Escape && m_hasScissorsPieces) {
         // Commit the pieces at their current positions
@@ -1380,13 +1622,27 @@ void Canvas::keyPressEvent(QKeyEvent *event)
     QWidget::keyPressEvent(event);
 }
 
+void Canvas::keyReleaseEvent(QKeyEvent *event)
+{
+    // Handle spacebar release to exit pan mode
+    if (event->key() == Qt::Key_Space && !event->isAutoRepeat()) {
+        m_panMode = false;
+        m_panning = false;
+        setCursor(Qt::ArrowCursor);
+        event->accept();
+        return;
+    }
+
+    QWidget::keyReleaseEvent(event);
+}
+
 void Canvas::startTextInput(const QPoint &position)
 {
     m_textPosition = position;
 
     m_textEdit = new QLineEdit(this);
     m_textEdit->setFont(m_textFont);
-    m_textEdit->setStyleSheet("QLineEdit { border: 1px solid black; background: white; }");
+    m_textEdit->setStyleSheet("QLineEdit { border: 1px solid black; background: white; color: black; }");
 
     // Enable input method support for international characters
     m_textEdit->setAttribute(Qt::WA_InputMethodEnabled, true);
@@ -1416,7 +1672,7 @@ void Canvas::finishTextInput()
         // Make text movable after pressing Enter
         m_textMovable = true;
         m_textEdit->setReadOnly(true);
-        m_textEdit->setStyleSheet("QLineEdit { border: 2px dashed blue; background: rgba(255,255,255,180); }");
+        m_textEdit->setStyleSheet("QLineEdit { border: 2px dashed blue; background: rgba(255,255,255,180); color: black; }");
         return; // Don't commit yet, allow moving
     }
 
@@ -1670,6 +1926,168 @@ void Canvas::pasteSelectionAt(const QPoint &position)
 
     compositeAllLayers();
     update();
+}
+
+void Canvas::rotateSelection(int degrees)
+{
+    // Normalize degrees to 0-360 range
+    degrees = degrees % 360;
+    if (degrees < 0) degrees += 360;
+
+    // Only support 90, 180, 270 degree rotations
+    if (degrees != 90 && degrees != 180 && degrees != 270) {
+        return;
+    }
+
+    // Handle dragging rectangular selection
+    if (m_rectSelectMode && m_draggingSelection && !m_selectedPixmap.isNull()) {
+        QTransform transform;
+        transform.rotate(degrees);
+        m_selectedPixmap = m_selectedPixmap.transformed(transform, Qt::SmoothTransformation);
+
+        // Update selection offset to keep it centered
+        if (degrees == 90 || degrees == 270) {
+            // Swap width/height, adjust position
+            QRect oldRect = QRect(m_selectionOffset, m_selectedPixmap.size());
+            QPoint center = oldRect.center();
+            m_selectionOffset = center - QPoint(m_selectedPixmap.width() / 2, m_selectedPixmap.height() / 2);
+        }
+
+        update();
+        return;
+    }
+
+    // Handle lasso selection
+    if (m_lassoMode && m_hasSelection && !m_lassoPolygon.isEmpty()) {
+        // Get the selection content
+        QRect boundingRect = m_lassoPolygon.boundingRect();
+        QPixmap selectedArea = m_canvas.copy(boundingRect);
+
+        // Create mask from polygon
+        QPixmap mask(boundingRect.size());
+        mask.fill(Qt::black);
+        QPainter maskPainter(&mask);
+        maskPainter.setBrush(Qt::white);
+        maskPainter.setPen(Qt::NoPen);
+
+        QPolygon translatedPolygon;
+        for (const QPoint &point : m_lassoPolygon) {
+            translatedPolygon << (point - boundingRect.topLeft());
+        }
+        maskPainter.drawPolygon(translatedPolygon);
+
+        // Apply mask and rotate
+        selectedArea.setMask(mask.createHeuristicMask());
+        QTransform transform;
+        transform.rotate(degrees);
+        QPixmap rotated = selectedArea.transformed(transform, Qt::SmoothTransformation);
+
+        // Clear original selection area
+        QPainter painter(&currentLayer().pixmap());
+        painter.setCompositionMode(QPainter::CompositionMode_Source);
+        painter.setClipRegion(QRegion(m_lassoPolygon));
+        painter.fillRect(boundingRect, Qt::white);
+
+        // Draw rotated selection back
+        QPoint center = boundingRect.center();
+        QPoint newTopLeft = center - QPoint(rotated.width() / 2, rotated.height() / 2);
+        painter.setClipRegion(QRegion());
+        painter.drawPixmap(newTopLeft, rotated);
+
+        compositeAllLayers();
+        clearSelection();
+        update();
+    }
+}
+
+void Canvas::flipSelectionHorizontal()
+{
+    // Handle dragging rectangular selection
+    if (m_rectSelectMode && m_draggingSelection && !m_selectedPixmap.isNull()) {
+        m_selectedPixmap = m_selectedPixmap.transformed(QTransform().scale(-1, 1), Qt::SmoothTransformation);
+        update();
+        return;
+    }
+
+    // Handle lasso selection
+    if (m_lassoMode && m_hasSelection && !m_lassoPolygon.isEmpty()) {
+        QRect boundingRect = m_lassoPolygon.boundingRect();
+        QPixmap selectedArea = m_canvas.copy(boundingRect);
+
+        // Create and apply mask
+        QPixmap mask(boundingRect.size());
+        mask.fill(Qt::black);
+        QPainter maskPainter(&mask);
+        maskPainter.setBrush(Qt::white);
+        maskPainter.setPen(Qt::NoPen);
+
+        QPolygon translatedPolygon;
+        for (const QPoint &point : m_lassoPolygon) {
+            translatedPolygon << (point - boundingRect.topLeft());
+        }
+        maskPainter.drawPolygon(translatedPolygon);
+        selectedArea.setMask(mask.createHeuristicMask());
+
+        // Flip horizontally
+        QPixmap flipped = selectedArea.transformed(QTransform().scale(-1, 1), Qt::SmoothTransformation);
+
+        // Clear and redraw
+        QPainter painter(&currentLayer().pixmap());
+        painter.setCompositionMode(QPainter::CompositionMode_Source);
+        painter.setClipRegion(QRegion(m_lassoPolygon));
+        painter.fillRect(boundingRect, Qt::white);
+        painter.setClipRegion(QRegion());
+        painter.drawPixmap(boundingRect.topLeft(), flipped);
+
+        compositeAllLayers();
+        clearSelection();
+        update();
+    }
+}
+
+void Canvas::flipSelectionVertical()
+{
+    // Handle dragging rectangular selection
+    if (m_rectSelectMode && m_draggingSelection && !m_selectedPixmap.isNull()) {
+        m_selectedPixmap = m_selectedPixmap.transformed(QTransform().scale(1, -1), Qt::SmoothTransformation);
+        update();
+        return;
+    }
+
+    // Handle lasso selection
+    if (m_lassoMode && m_hasSelection && !m_lassoPolygon.isEmpty()) {
+        QRect boundingRect = m_lassoPolygon.boundingRect();
+        QPixmap selectedArea = m_canvas.copy(boundingRect);
+
+        // Create and apply mask
+        QPixmap mask(boundingRect.size());
+        mask.fill(Qt::black);
+        QPainter maskPainter(&mask);
+        maskPainter.setBrush(Qt::white);
+        maskPainter.setPen(Qt::NoPen);
+
+        QPolygon translatedPolygon;
+        for (const QPoint &point : m_lassoPolygon) {
+            translatedPolygon << (point - boundingRect.topLeft());
+        }
+        maskPainter.drawPolygon(translatedPolygon);
+        selectedArea.setMask(mask.createHeuristicMask());
+
+        // Flip vertically
+        QPixmap flipped = selectedArea.transformed(QTransform().scale(1, -1), Qt::SmoothTransformation);
+
+        // Clear and redraw
+        QPainter painter(&currentLayer().pixmap());
+        painter.setCompositionMode(QPainter::CompositionMode_Source);
+        painter.setClipRegion(QRegion(m_lassoPolygon));
+        painter.fillRect(boundingRect, Qt::white);
+        painter.setClipRegion(QRegion());
+        painter.drawPixmap(boundingRect.topLeft(), flipped);
+
+        compositeAllLayers();
+        clearSelection();
+        update();
+    }
 }
 
 void Canvas::insertImageAt(const QPixmap &image, const QPoint &position)
@@ -2013,13 +2431,15 @@ bool Canvas::isCustomPattern(PatternBar::PatternType pattern)
 
 QBrush Canvas::createCustomPatternBrush(PatternBar::PatternType pattern)
 {
-    // Create a pattern pixmap
-    QPixmap patternPixmap(16, 16);
+    // Create a higher resolution pattern pixmap for better quality
+    QPixmap patternPixmap(64, 64);
     patternPixmap.fill(Qt::white);
 
     QPainter painter(&patternPixmap);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
     painter.setPen(QPen(m_currentColor, 1));
-    drawCustomPattern(painter, pattern, 0, 0, 16, 16);
+    drawCustomPattern(painter, pattern, 0, 0, 64, 64);
 
     return QBrush(patternPixmap);
 }
@@ -2033,11 +2453,11 @@ void Canvas::drawCustomPattern(QPainter &painter, PatternBar::PatternType type, 
         case PatternBar::Dots:
         {
             // Draw small dots in a grid pattern
-            for (int i = x + 2; i < x + width - 1; i += 4) {
-                for (int j = y + 2; j < y + height - 1; j += 4) {
+            for (int i = x + 8; i < x + width - 4; i += 16) {
+                for (int j = y + 8; j < y + height - 4; j += 16) {
                     painter.setBrush(painter.pen().color());
                     painter.setPen(Qt::NoPen);
-                    painter.drawEllipse(i, j, 1, 1);
+                    painter.drawEllipse(i, j, 4, 4);
                 }
             }
             break;
@@ -2047,10 +2467,10 @@ void Canvas::drawCustomPattern(QPainter &painter, PatternBar::PatternType type, 
         {
             // Draw grid lines
             // Use pen color set by caller;
-            for (int i = x; i <= x + width; i += 4) {
+            for (int i = x; i <= x + width; i += 16) {
                 painter.drawLine(i, y, i, y + height);
             }
-            for (int j = y; j <= y + height; j += 4) {
+            for (int j = y; j <= y + height; j += 16) {
                 painter.drawLine(x, j, x + width, j);
             }
             break;
@@ -2061,9 +2481,9 @@ void Canvas::drawCustomPattern(QPainter &painter, PatternBar::PatternType type, 
             // Draw small circles in a grid pattern
             painter.setBrush(Qt::NoBrush);
             // Use pen color set by caller;
-            for (int i = x + 2; i < x + width - 2; i += 6) {
-                for (int j = y + 2; j < y + height - 2; j += 6) {
-                    painter.drawEllipse(i, j, 4, 4);
+            for (int i = x + 8; i < x + width - 8; i += 24) {
+                for (int j = y + 8; j < y + height - 8; j += 24) {
+                    painter.drawEllipse(i, j, 16, 16);
                 }
             }
             break;
@@ -2073,11 +2493,11 @@ void Canvas::drawCustomPattern(QPainter &painter, PatternBar::PatternType type, 
         {
             // Draw wavy lines
             // Use pen color set by caller;
-            for (int j = y + 2; j < y + height; j += 6) {
+            for (int j = y + 8; j < y + height; j += 24) {
                 QPainterPath wave;
                 wave.moveTo(x, j);
-                for (int i = x; i < x + width; i += 2) {
-                    wave.quadTo(i + 1, j + ((i / 2) % 2 == 0 ? -2 : 2), i + 2, j);
+                for (int i = x; i < x + width; i += 8) {
+                    wave.quadTo(i + 4, j + ((i / 8) % 2 == 0 ? -8 : 8), i + 8, j);
                 }
                 painter.drawPath(wave);
             }
@@ -2089,11 +2509,11 @@ void Canvas::drawCustomPattern(QPainter &painter, PatternBar::PatternType type, 
             // Draw small star shapes
             painter.setBrush(painter.pen().color());
             painter.setPen(Qt::NoPen);
-            for (int i = x + 4; i < x + width - 4; i += 8) {
-                for (int j = y + 4; j < y + height - 4; j += 8) {
+            for (int i = x + 16; i < x + width - 16; i += 32) {
+                for (int j = y + 16; j < y + height - 16; j += 32) {
                     // Draw a simple 4-pointed star
-                    painter.drawRect(i - 1, j - 2, 2, 4);
-                    painter.drawRect(i - 2, j - 1, 4, 2);
+                    painter.drawRect(i - 4, j - 8, 8, 16);
+                    painter.drawRect(i - 8, j - 4, 16, 8);
                 }
             }
             break;
@@ -2104,10 +2524,10 @@ void Canvas::drawCustomPattern(QPainter &painter, PatternBar::PatternType type, 
             // Draw brick pattern
             // Use pen color set by caller;
             bool offset = false;
-            for (int j = y; j < y + height; j += 6) {
-                int startX = offset ? x - 4 : x;
-                for (int i = startX; i < x + width; i += 8) {
-                    painter.drawRect(i, j, 8, 6);
+            for (int j = y; j < y + height; j += 24) {
+                int startX = offset ? x - 16 : x;
+                for (int i = startX; i < x + width; i += 32) {
+                    painter.drawRect(i, j, 32, 24);
                 }
                 offset = !offset;
             }
@@ -2119,16 +2539,16 @@ void Canvas::drawCustomPattern(QPainter &painter, PatternBar::PatternType type, 
             // Draw hexagon pattern
             // Use pen color set by caller;
             painter.setBrush(Qt::NoBrush);
-            for (int j = y + 2; j < y + height - 2; j += 8) {
-                for (int i = x + 4; i < x + width - 4; i += 10) {
-                    int offsetY = ((i - x) / 10) % 2 == 0 ? 0 : 4;
+            for (int j = y + 8; j < y + height - 8; j += 32) {
+                for (int i = x + 16; i < x + width - 16; i += 40) {
+                    int offsetY = ((i - x) / 40) % 2 == 0 ? 0 : 16;
                     QPolygon hexagon;
-                    hexagon << QPoint(i, j + offsetY + 2)
-                            << QPoint(i + 2, j + offsetY)
-                            << QPoint(i + 6, j + offsetY)
-                            << QPoint(i + 8, j + offsetY + 2)
-                            << QPoint(i + 6, j + offsetY + 4)
-                            << QPoint(i + 2, j + offsetY + 4);
+                    hexagon << QPoint(i, j + offsetY + 8)
+                            << QPoint(i + 8, j + offsetY)
+                            << QPoint(i + 24, j + offsetY)
+                            << QPoint(i + 32, j + offsetY + 8)
+                            << QPoint(i + 24, j + offsetY + 16)
+                            << QPoint(i + 8, j + offsetY + 16);
                     painter.drawPolygon(hexagon);
                 }
             }
@@ -2140,10 +2560,10 @@ void Canvas::drawCustomPattern(QPainter &painter, PatternBar::PatternType type, 
             // Draw fish scale pattern
             // Use pen color set by caller;
             painter.setBrush(Qt::NoBrush);
-            for (int j = y; j < y + height; j += 4) {
-                for (int i = x; i < x + width; i += 6) {
-                    int offsetX = (j / 4) % 2 == 0 ? 0 : 3;
-                    painter.drawArc(i + offsetX - 3, j - 2, 6, 4, 0, 180 * 16);
+            for (int j = y; j < y + height; j += 16) {
+                for (int i = x; i < x + width; i += 24) {
+                    int offsetX = (j / 16) % 2 == 0 ? 0 : 12;
+                    painter.drawArc(i + offsetX - 12, j - 8, 24, 16, 0, 180 * 16);
                 }
             }
             break;
@@ -2153,12 +2573,12 @@ void Canvas::drawCustomPattern(QPainter &painter, PatternBar::PatternType type, 
         {
             // Draw zigzag pattern
             // Use pen color set by caller;
-            for (int j = y + 4; j < y + height; j += 8) {
+            for (int j = y + 16; j < y + height; j += 32) {
                 QPainterPath zigzag;
                 zigzag.moveTo(x, j);
-                for (int i = x; i < x + width; i += 4) {
-                    zigzag.lineTo(i + 2, j + ((i / 4) % 2 == 0 ? -2 : 2));
-                    zigzag.lineTo(i + 4, j);
+                for (int i = x; i < x + width; i += 16) {
+                    zigzag.lineTo(i + 8, j + ((i / 16) % 2 == 0 ? -8 : 8));
+                    zigzag.lineTo(i + 16, j);
                 }
                 painter.drawPath(zigzag);
             }
@@ -2170,10 +2590,10 @@ void Canvas::drawCustomPattern(QPainter &painter, PatternBar::PatternType type, 
             // Draw checkerboard pattern
             painter.setPen(Qt::NoPen);
             painter.setBrush(painter.pen().color());
-            for (int j = y; j < y + height; j += 4) {
-                for (int i = x; i < x + width; i += 4) {
-                    if ((i / 4 + j / 4) % 2 == 0) {
-                        painter.drawRect(i, j, 4, 4);
+            for (int j = y; j < y + height; j += 16) {
+                for (int i = x; i < x + width; i += 16) {
+                    if ((i / 16 + j / 16) % 2 == 0) {
+                        painter.drawRect(i, j, 16, 16);
                     }
                 }
             }
@@ -2185,12 +2605,12 @@ void Canvas::drawCustomPattern(QPainter &painter, PatternBar::PatternType type, 
             // Draw triangle pattern
             // Use pen color set by caller;
             painter.setBrush(Qt::NoBrush);
-            for (int j = y + 6; j < y + height; j += 8) {
-                for (int i = x + 4; i < x + width - 4; i += 8) {
+            for (int j = y + 24; j < y + height; j += 32) {
+                for (int i = x + 16; i < x + width - 16; i += 32) {
                     QPolygon triangle;
-                    triangle << QPoint(i, j - 4)
-                             << QPoint(i - 3, j + 1)
-                             << QPoint(i + 3, j + 1);
+                    triangle << QPoint(i, j - 16)
+                             << QPoint(i - 12, j + 4)
+                             << QPoint(i + 12, j + 4);
                     painter.drawPolygon(triangle);
                 }
             }
@@ -2203,12 +2623,12 @@ void Canvas::drawCustomPattern(QPainter &painter, PatternBar::PatternType type, 
             painter.setPen(Qt::NoPen);
             painter.setBrush(painter.pen().color());
             // Simple pseudo-random pattern based on position
-            for (int j = y; j < y + height; j += 1) {
-                for (int i = x; i < x + width; i += 1) {
+            for (int j = y; j < y + height; j += 2) {
+                for (int i = x; i < x + width; i += 2) {
                     // Simple hash-like function for pseudo-random
                     int hash = ((i * 73) + (j * 37)) % 100;
                     if (hash < 20) {
-                        painter.drawRect(i, j, 1, 1);
+                        painter.drawRect(i, j, 2, 2);
                     }
                 }
             }

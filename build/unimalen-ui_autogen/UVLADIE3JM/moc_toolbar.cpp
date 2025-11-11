@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'toolbar.h'
 **
-** Created by: The Qt Meta Object Compiler version 69 (Qt 6.9.2)
+** Created by: The Qt Meta Object Compiler version 69 (Qt 6.9.3)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -19,7 +19,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'toolbar.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 69
-#error "This file was generated using the moc from 6.9.2. It"
+#error "This file was generated using the moc from 6.9.3. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -46,12 +46,15 @@ template <> constexpr inline auto ToolBar::qt_create_metaobjectdata<qt_meta_tag_
         "sprayToolSelected",
         "diameter",
         "brushToolSelected",
+        "markerToolSelected",
         "eraserToolSelected",
         "lineToolSelected",
         "bezierToolSelected",
         "scissorsToolSelected",
         "fillToolSelected",
         "lassoToolSelected",
+        "rectSelectToolSelected",
+        "eyedropperToolSelected",
         "squareToolSelected",
         "filledSquareToolSelected",
         "roundedSquareToolSelected",
@@ -63,12 +66,15 @@ template <> constexpr inline auto ToolBar::qt_create_metaobjectdata<qt_meta_tag_
         "onTextClicked",
         "onSprayClicked",
         "onBrushClicked",
+        "onMarkerClicked",
         "onEraserClicked",
         "onLineClicked",
         "onBezierClicked",
         "onScissorsClicked",
         "onFillClicked",
         "onLassoClicked",
+        "onRectSelectClicked",
+        "onEyedropperClicked",
         "onSquareClicked",
         "onFilledSquareClicked",
         "onRoundedSquareClicked",
@@ -90,66 +96,78 @@ template <> constexpr inline auto ToolBar::qt_create_metaobjectdata<qt_meta_tag_
         QtMocHelpers::SignalData<void(int)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 5 },
         }}),
+        // Signal 'markerToolSelected'
+        QtMocHelpers::SignalData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
         // Signal 'eraserToolSelected'
-        QtMocHelpers::SignalData<void(int)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
+        QtMocHelpers::SignalData<void(int)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 5 },
         }}),
         // Signal 'lineToolSelected'
-        QtMocHelpers::SignalData<void()>(8, 2, QMC::AccessPublic, QMetaType::Void),
-        // Signal 'bezierToolSelected'
         QtMocHelpers::SignalData<void()>(9, 2, QMC::AccessPublic, QMetaType::Void),
-        // Signal 'scissorsToolSelected'
+        // Signal 'bezierToolSelected'
         QtMocHelpers::SignalData<void()>(10, 2, QMC::AccessPublic, QMetaType::Void),
-        // Signal 'fillToolSelected'
+        // Signal 'scissorsToolSelected'
         QtMocHelpers::SignalData<void()>(11, 2, QMC::AccessPublic, QMetaType::Void),
-        // Signal 'lassoToolSelected'
+        // Signal 'fillToolSelected'
         QtMocHelpers::SignalData<void()>(12, 2, QMC::AccessPublic, QMetaType::Void),
-        // Signal 'squareToolSelected'
+        // Signal 'lassoToolSelected'
         QtMocHelpers::SignalData<void()>(13, 2, QMC::AccessPublic, QMetaType::Void),
-        // Signal 'filledSquareToolSelected'
+        // Signal 'rectSelectToolSelected'
         QtMocHelpers::SignalData<void()>(14, 2, QMC::AccessPublic, QMetaType::Void),
-        // Signal 'roundedSquareToolSelected'
+        // Signal 'eyedropperToolSelected'
         QtMocHelpers::SignalData<void()>(15, 2, QMC::AccessPublic, QMetaType::Void),
-        // Signal 'filledRoundedSquareToolSelected'
+        // Signal 'squareToolSelected'
         QtMocHelpers::SignalData<void()>(16, 2, QMC::AccessPublic, QMetaType::Void),
-        // Signal 'ovalToolSelected'
+        // Signal 'filledSquareToolSelected'
         QtMocHelpers::SignalData<void()>(17, 2, QMC::AccessPublic, QMetaType::Void),
-        // Signal 'filledOvalToolSelected'
+        // Signal 'roundedSquareToolSelected'
         QtMocHelpers::SignalData<void()>(18, 2, QMC::AccessPublic, QMetaType::Void),
-        // Signal 'toolBarClosed'
+        // Signal 'filledRoundedSquareToolSelected'
         QtMocHelpers::SignalData<void()>(19, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'ovalToolSelected'
+        QtMocHelpers::SignalData<void()>(20, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'filledOvalToolSelected'
+        QtMocHelpers::SignalData<void()>(21, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'toolBarClosed'
+        QtMocHelpers::SignalData<void()>(22, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'onPencilClicked'
-        QtMocHelpers::SlotData<void()>(20, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onTextClicked'
-        QtMocHelpers::SlotData<void()>(21, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onSprayClicked'
-        QtMocHelpers::SlotData<void()>(22, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onBrushClicked'
         QtMocHelpers::SlotData<void()>(23, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onEraserClicked'
+        // Slot 'onTextClicked'
         QtMocHelpers::SlotData<void()>(24, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onLineClicked'
+        // Slot 'onSprayClicked'
         QtMocHelpers::SlotData<void()>(25, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onBezierClicked'
+        // Slot 'onBrushClicked'
         QtMocHelpers::SlotData<void()>(26, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onScissorsClicked'
+        // Slot 'onMarkerClicked'
         QtMocHelpers::SlotData<void()>(27, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onFillClicked'
+        // Slot 'onEraserClicked'
         QtMocHelpers::SlotData<void()>(28, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onLassoClicked'
+        // Slot 'onLineClicked'
         QtMocHelpers::SlotData<void()>(29, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onSquareClicked'
+        // Slot 'onBezierClicked'
         QtMocHelpers::SlotData<void()>(30, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onFilledSquareClicked'
+        // Slot 'onScissorsClicked'
         QtMocHelpers::SlotData<void()>(31, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onRoundedSquareClicked'
+        // Slot 'onFillClicked'
         QtMocHelpers::SlotData<void()>(32, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onFilledRoundedSquareClicked'
+        // Slot 'onLassoClicked'
         QtMocHelpers::SlotData<void()>(33, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onOvalClicked'
+        // Slot 'onRectSelectClicked'
         QtMocHelpers::SlotData<void()>(34, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onFilledOvalClicked'
+        // Slot 'onEyedropperClicked'
         QtMocHelpers::SlotData<void()>(35, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onSquareClicked'
+        QtMocHelpers::SlotData<void()>(36, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onFilledSquareClicked'
+        QtMocHelpers::SlotData<void()>(37, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onRoundedSquareClicked'
+        QtMocHelpers::SlotData<void()>(38, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onFilledRoundedSquareClicked'
+        QtMocHelpers::SlotData<void()>(39, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onOvalClicked'
+        QtMocHelpers::SlotData<void()>(40, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onFilledOvalClicked'
+        QtMocHelpers::SlotData<void()>(41, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -177,35 +195,41 @@ void ToolBar::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 1: _t->textToolSelected(); break;
         case 2: _t->sprayToolSelected((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 3: _t->brushToolSelected((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 4: _t->eraserToolSelected((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 5: _t->lineToolSelected(); break;
-        case 6: _t->bezierToolSelected(); break;
-        case 7: _t->scissorsToolSelected(); break;
-        case 8: _t->fillToolSelected(); break;
-        case 9: _t->lassoToolSelected(); break;
-        case 10: _t->squareToolSelected(); break;
-        case 11: _t->filledSquareToolSelected(); break;
-        case 12: _t->roundedSquareToolSelected(); break;
-        case 13: _t->filledRoundedSquareToolSelected(); break;
-        case 14: _t->ovalToolSelected(); break;
-        case 15: _t->filledOvalToolSelected(); break;
-        case 16: _t->toolBarClosed(); break;
-        case 17: _t->onPencilClicked(); break;
-        case 18: _t->onTextClicked(); break;
-        case 19: _t->onSprayClicked(); break;
-        case 20: _t->onBrushClicked(); break;
-        case 21: _t->onEraserClicked(); break;
-        case 22: _t->onLineClicked(); break;
-        case 23: _t->onBezierClicked(); break;
-        case 24: _t->onScissorsClicked(); break;
-        case 25: _t->onFillClicked(); break;
-        case 26: _t->onLassoClicked(); break;
-        case 27: _t->onSquareClicked(); break;
-        case 28: _t->onFilledSquareClicked(); break;
-        case 29: _t->onRoundedSquareClicked(); break;
-        case 30: _t->onFilledRoundedSquareClicked(); break;
-        case 31: _t->onOvalClicked(); break;
-        case 32: _t->onFilledOvalClicked(); break;
+        case 4: _t->markerToolSelected(); break;
+        case 5: _t->eraserToolSelected((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 6: _t->lineToolSelected(); break;
+        case 7: _t->bezierToolSelected(); break;
+        case 8: _t->scissorsToolSelected(); break;
+        case 9: _t->fillToolSelected(); break;
+        case 10: _t->lassoToolSelected(); break;
+        case 11: _t->rectSelectToolSelected(); break;
+        case 12: _t->eyedropperToolSelected(); break;
+        case 13: _t->squareToolSelected(); break;
+        case 14: _t->filledSquareToolSelected(); break;
+        case 15: _t->roundedSquareToolSelected(); break;
+        case 16: _t->filledRoundedSquareToolSelected(); break;
+        case 17: _t->ovalToolSelected(); break;
+        case 18: _t->filledOvalToolSelected(); break;
+        case 19: _t->toolBarClosed(); break;
+        case 20: _t->onPencilClicked(); break;
+        case 21: _t->onTextClicked(); break;
+        case 22: _t->onSprayClicked(); break;
+        case 23: _t->onBrushClicked(); break;
+        case 24: _t->onMarkerClicked(); break;
+        case 25: _t->onEraserClicked(); break;
+        case 26: _t->onLineClicked(); break;
+        case 27: _t->onBezierClicked(); break;
+        case 28: _t->onScissorsClicked(); break;
+        case 29: _t->onFillClicked(); break;
+        case 30: _t->onLassoClicked(); break;
+        case 31: _t->onRectSelectClicked(); break;
+        case 32: _t->onEyedropperClicked(); break;
+        case 33: _t->onSquareClicked(); break;
+        case 34: _t->onFilledSquareClicked(); break;
+        case 35: _t->onRoundedSquareClicked(); break;
+        case 36: _t->onFilledRoundedSquareClicked(); break;
+        case 37: _t->onOvalClicked(); break;
+        case 38: _t->onFilledOvalClicked(); break;
         default: ;
         }
     }
@@ -218,31 +242,37 @@ void ToolBar::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
             return;
         if (QtMocHelpers::indexOfMethod<void (ToolBar::*)(int )>(_a, &ToolBar::brushToolSelected, 3))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)(int )>(_a, &ToolBar::eraserToolSelected, 4))
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::markerToolSelected, 4))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::lineToolSelected, 5))
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)(int )>(_a, &ToolBar::eraserToolSelected, 5))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::bezierToolSelected, 6))
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::lineToolSelected, 6))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::scissorsToolSelected, 7))
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::bezierToolSelected, 7))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::fillToolSelected, 8))
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::scissorsToolSelected, 8))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::lassoToolSelected, 9))
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::fillToolSelected, 9))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::squareToolSelected, 10))
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::lassoToolSelected, 10))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::filledSquareToolSelected, 11))
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::rectSelectToolSelected, 11))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::roundedSquareToolSelected, 12))
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::eyedropperToolSelected, 12))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::filledRoundedSquareToolSelected, 13))
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::squareToolSelected, 13))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::ovalToolSelected, 14))
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::filledSquareToolSelected, 14))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::filledOvalToolSelected, 15))
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::roundedSquareToolSelected, 15))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::toolBarClosed, 16))
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::filledRoundedSquareToolSelected, 16))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::ovalToolSelected, 17))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::filledOvalToolSelected, 18))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (ToolBar::*)()>(_a, &ToolBar::toolBarClosed, 19))
             return;
     }
 }
@@ -266,14 +296,14 @@ int ToolBar::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 33)
+        if (_id < 39)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 33;
+        _id -= 39;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 33)
+        if (_id < 39)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 33;
+        _id -= 39;
     }
     return _id;
 }
@@ -303,80 +333,98 @@ void ToolBar::brushToolSelected(int _t1)
 }
 
 // SIGNAL 4
-void ToolBar::eraserToolSelected(int _t1)
+void ToolBar::markerToolSelected()
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 4, nullptr, _t1);
+    QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
 }
 
 // SIGNAL 5
-void ToolBar::lineToolSelected()
+void ToolBar::eraserToolSelected(int _t1)
 {
-    QMetaObject::activate(this, &staticMetaObject, 5, nullptr);
+    QMetaObject::activate<void>(this, &staticMetaObject, 5, nullptr, _t1);
 }
 
 // SIGNAL 6
-void ToolBar::bezierToolSelected()
+void ToolBar::lineToolSelected()
 {
     QMetaObject::activate(this, &staticMetaObject, 6, nullptr);
 }
 
 // SIGNAL 7
-void ToolBar::scissorsToolSelected()
+void ToolBar::bezierToolSelected()
 {
     QMetaObject::activate(this, &staticMetaObject, 7, nullptr);
 }
 
 // SIGNAL 8
-void ToolBar::fillToolSelected()
+void ToolBar::scissorsToolSelected()
 {
     QMetaObject::activate(this, &staticMetaObject, 8, nullptr);
 }
 
 // SIGNAL 9
-void ToolBar::lassoToolSelected()
+void ToolBar::fillToolSelected()
 {
     QMetaObject::activate(this, &staticMetaObject, 9, nullptr);
 }
 
 // SIGNAL 10
-void ToolBar::squareToolSelected()
+void ToolBar::lassoToolSelected()
 {
     QMetaObject::activate(this, &staticMetaObject, 10, nullptr);
 }
 
 // SIGNAL 11
-void ToolBar::filledSquareToolSelected()
+void ToolBar::rectSelectToolSelected()
 {
     QMetaObject::activate(this, &staticMetaObject, 11, nullptr);
 }
 
 // SIGNAL 12
-void ToolBar::roundedSquareToolSelected()
+void ToolBar::eyedropperToolSelected()
 {
     QMetaObject::activate(this, &staticMetaObject, 12, nullptr);
 }
 
 // SIGNAL 13
-void ToolBar::filledRoundedSquareToolSelected()
+void ToolBar::squareToolSelected()
 {
     QMetaObject::activate(this, &staticMetaObject, 13, nullptr);
 }
 
 // SIGNAL 14
-void ToolBar::ovalToolSelected()
+void ToolBar::filledSquareToolSelected()
 {
     QMetaObject::activate(this, &staticMetaObject, 14, nullptr);
 }
 
 // SIGNAL 15
-void ToolBar::filledOvalToolSelected()
+void ToolBar::roundedSquareToolSelected()
 {
     QMetaObject::activate(this, &staticMetaObject, 15, nullptr);
 }
 
 // SIGNAL 16
-void ToolBar::toolBarClosed()
+void ToolBar::filledRoundedSquareToolSelected()
 {
     QMetaObject::activate(this, &staticMetaObject, 16, nullptr);
+}
+
+// SIGNAL 17
+void ToolBar::ovalToolSelected()
+{
+    QMetaObject::activate(this, &staticMetaObject, 17, nullptr);
+}
+
+// SIGNAL 18
+void ToolBar::filledOvalToolSelected()
+{
+    QMetaObject::activate(this, &staticMetaObject, 18, nullptr);
+}
+
+// SIGNAL 19
+void ToolBar::toolBarClosed()
+{
+    QMetaObject::activate(this, &staticMetaObject, 19, nullptr);
 }
 QT_WARNING_POP

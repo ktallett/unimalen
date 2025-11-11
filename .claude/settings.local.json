@@ -13,7 +13,10 @@
       "Bash(curl:*)",
       "Bash(./unimalen)",
       "Read(//home/kerntallett/Dropbox/mnt_reform/projects/**)",
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "Bash(./unimalen:*)",
+      "Bash(./build/unimalen:*)",
+      "WebSearch"
     ],
     "deny": [],
     "ask": []

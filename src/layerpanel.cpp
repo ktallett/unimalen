@@ -167,8 +167,7 @@ void LayerPanel::updateLayerList()
 
     // Add layers in reverse order (top layer first in UI)
     for (int i = m_layers.size() - 1; i >= 0; --i) {
-        LayerItem *item = createLayerItem(m_layers[i], i);
-        m_layerList->addItem(item);
+        createLayerItem(m_layers[i], i);  // createLayerItem now adds to list internally
     }
 
     if (m_currentLayerIndex < m_layers.size()) {
@@ -183,12 +182,18 @@ void LayerPanel::updateLayerProperties(int index, const Layer &layer)
     if (index >= 0 && index < m_layers.size()) {
         m_layers[index] = layer;
 
-        // Update the corresponding list item
+        // Update the corresponding list item and widget
         int listIndex = m_layers.size() - 1 - index;
         if (listIndex < m_layerList->count()) {
             LayerItem *item = static_cast<LayerItem*>(m_layerList->item(listIndex));
             if (item) {
                 item->updateFromLayer(layer);
+
+                // Also update the custom widget
+                LayerItemWidget *widget = static_cast<LayerItemWidget*>(m_layerList->itemWidget(item));
+                if (widget) {
+                    widget->updateFromLayer(layer);
+                }
             }
         }
 
@@ -204,6 +209,22 @@ LayerItem* LayerPanel::createLayerItem(const Layer &layer, int index)
 {
     LayerItem *item = new LayerItem(layer, index);
     item->setFlags(item->flags() | Qt::ItemIsEditable);
+    item->setSizeHint(QSize(200, 60)); // Set size for custom widget
+
+    // Create custom widget for the item
+    LayerItemWidget *widget = new LayerItemWidget(layer, index);
+
+    // Connect visibility toggle signal
+    connect(widget, &LayerItemWidget::visibilityToggled, this,
+            [this](int layerIndex, bool visible) {
+                emit layerVisibilityChanged(layerIndex, visible);
+            });
+
+    // Add item to list first
+    m_layerList->addItem(item);
+    // Then set the custom widget
+    m_layerList->setItemWidget(item, widget);
+
     return item;
 }
 
@@ -290,6 +311,138 @@ void LayerPanel::updateBlendModeCombo()
     }
 }
 
+// LayerItemWidget implementation
+LayerItemWidget::LayerItemWidget(const Layer &layer, int index, QWidget *parent)
+    : QWidget(parent)
+    , m_layerIndex(index)
+    , m_isVisible(layer.isVisible())
+{
+    QHBoxLayout *layout = new QHBoxLayout(this);
+    layout->setContentsMargins(4, 4, 4, 4);
+    layout->setSpacing(8);
+
+    // Visibility toggle button with eye icon
+    m_visibilityButton = new QPushButton(this);
+    m_visibilityButton->setFixedSize(24, 24);
+    m_visibilityButton->setFlat(true);
+    m_visibilityButton->setStyleSheet(
+        "QPushButton { background-color: transparent; border: none; }"
+        "QPushButton:hover { background-color: rgba(0, 0, 0, 0.05); border-radius: 4px; }"
+    );
+    updateVisibilityIcon();
+    connect(m_visibilityButton, &QPushButton::clicked, this, &LayerItemWidget::onVisibilityClicked);
+    layout->addWidget(m_visibilityButton);
+
+    // Thumbnail
+    m_thumbnailLabel = new QLabel(this);
+    m_thumbnailLabel->setFixedSize(48, 48);
+    m_thumbnailLabel->setScaledContents(false);
+    m_thumbnailLabel->setAlignment(Qt::AlignCenter);
+    layout->addWidget(m_thumbnailLabel);
+
+    // Name label
+    m_nameLabel = new QLabel(this);
+    m_nameLabel->setWordWrap(false);
+    layout->addWidget(m_nameLabel, 1);
+
+    updateFromLayer(layer);
+}
+
+void LayerItemWidget::updateFromLayer(const Layer &layer)
+{
+    m_isVisible = layer.isVisible();
+    updateVisibilityIcon();
+
+    // Create thumbnail with checkerboard background
+    QPixmap thumbnail(48, 48);
+    thumbnail.fill(Qt::white);
+
+    QPainter bgPainter(&thumbnail);
+    const int checkSize = 4;
+    for (int y = 0; y < 48; y += checkSize) {
+        for (int x = 0; x < 48; x += checkSize) {
+            if ((x / checkSize + y / checkSize) % 2 == 0) {
+                bgPainter.fillRect(x, y, checkSize, checkSize, QColor(200, 200, 200));
+            } else {
+                bgPainter.fillRect(x, y, checkSize, checkSize, Qt::white);
+            }
+        }
+    }
+
+    QPixmap scaledLayer = layer.pixmap().scaled(48, 48, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    bgPainter.drawPixmap((48 - scaledLayer.width()) / 2, (48 - scaledLayer.height()) / 2, scaledLayer);
+
+    bgPainter.setPen(QPen(QColor(128, 128, 128), 1));
+    bgPainter.setBrush(Qt::NoBrush);
+    bgPainter.drawRect(0, 0, 47, 47);
+
+    m_thumbnailLabel->setPixmap(thumbnail);
+
+    // Update name with opacity info
+    QString displayText = layer.name();
+    if (layer.opacity() < 1.0) {
+        displayText += QString(" (%1%)").arg(qRound(layer.opacity() * 100));
+    }
+
+    // Style based on visibility
+    if (!m_isVisible) {
+        m_nameLabel->setText(displayText + " [Hidden]");
+        QFont font = m_nameLabel->font();
+        font.setItalic(true);
+        m_nameLabel->setFont(font);
+        m_nameLabel->setStyleSheet("color: rgb(128, 128, 128);");
+    } else {
+        m_nameLabel->setText(displayText);
+        QFont font = m_nameLabel->font();
+        font.setItalic(false);
+        m_nameLabel->setFont(font);
+        m_nameLabel->setStyleSheet("color: rgb(0, 0, 0);");
+    }
+
+    // Tooltip
+    setToolTip(QString("Layer: %1\nOpacity: %2%\nBlend Mode: %3\nDouble-click to rename\nClick eye to toggle visibility")
+               .arg(layer.name())
+               .arg(qRound(layer.opacity() * 100))
+               .arg(layer.blendMode() == Layer::Normal ? "Normal" :
+                    layer.blendMode() == Layer::Multiply ? "Multiply" :
+                    layer.blendMode() == Layer::Screen ? "Screen" : "Overlay"));
+}
+
+void LayerItemWidget::updateVisibilityIcon()
+{
+    // Create eye icon
+    QPixmap icon(20, 20);
+    icon.fill(Qt::transparent);
+    QPainter painter(&icon);
+    painter.setRenderHint(QPainter::Antialiasing);
+
+    if (m_isVisible) {
+        // Draw open eye
+        painter.setPen(QPen(Qt::black, 1.5));
+        painter.setBrush(Qt::NoBrush);
+        // Eye outline
+        painter.drawEllipse(5, 7, 10, 6);
+        // Pupil
+        painter.setBrush(Qt::black);
+        painter.drawEllipse(8, 8, 4, 4);
+    } else {
+        // Draw closed eye (line through)
+        painter.setPen(QPen(QColor(128, 128, 128), 1.5));
+        painter.drawEllipse(5, 7, 10, 6);
+        painter.drawLine(3, 3, 17, 17);
+    }
+
+    m_visibilityButton->setIcon(QIcon(icon));
+    m_visibilityButton->setIconSize(QSize(20, 20));
+}
+
+void LayerItemWidget::onVisibilityClicked()
+{
+    m_isVisible = !m_isVisible;
+    updateVisibilityIcon();
+    emit visibilityToggled(m_layerIndex, m_isVisible);
+}
+
 // LayerItem implementation
 LayerItem::LayerItem(const Layer &layer, int index)
     : QListWidgetItem()
@@ -302,11 +455,46 @@ void LayerItem::updateFromLayer(const Layer &layer)
 {
     setText(layer.name());
 
-    // Create a thumbnail icon
-    QPixmap thumbnail = layer.pixmap().scaled(32, 32, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-    setIcon(QIcon(thumbnail));
+    // Create a larger, higher quality thumbnail icon with checkerboard background
+    QPixmap thumbnail(48, 48);
+    thumbnail.fill(Qt::white);
 
-    // Set visual state based on visibility
+    // Draw checkerboard pattern for transparency indication
+    QPainter bgPainter(&thumbnail);
+    const int checkSize = 4;
+    for (int y = 0; y < 48; y += checkSize) {
+        for (int x = 0; x < 48; x += checkSize) {
+            if ((x / checkSize + y / checkSize) % 2 == 0) {
+                bgPainter.fillRect(x, y, checkSize, checkSize, QColor(200, 200, 200));
+            } else {
+                bgPainter.fillRect(x, y, checkSize, checkSize, Qt::white);
+            }
+        }
+    }
+
+    // Draw scaled layer content
+    QPixmap scaledLayer = layer.pixmap().scaled(48, 48, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    bgPainter.drawPixmap((48 - scaledLayer.width()) / 2, (48 - scaledLayer.height()) / 2, scaledLayer);
+
+    // Draw border around thumbnail
+    bgPainter.setPen(QPen(QColor(128, 128, 128), 1));
+    bgPainter.setBrush(Qt::NoBrush);
+    bgPainter.drawRect(0, 0, 47, 47);
+
+    setIcon(QIcon(thumbnail));
+    setSizeHint(QSize(200, 56)); // Larger item height for better thumbnails
+
+    // Set visual state based on visibility and opacity
+    QString displayText = layer.name();
+    if (layer.opacity() < 1.0) {
+        displayText += QString(" (%1%)").arg(qRound(layer.opacity() * 100));
+    }
+    if (!layer.isVisible()) {
+        displayText += " [Hidden]";
+    }
+    setText(displayText);
+
+    // Style based on visibility
     if (!layer.isVisible()) {
         QFont font = data(Qt::FontRole).value<QFont>();
         font.setItalic(true);
@@ -318,5 +506,13 @@ void LayerItem::updateFromLayer(const Layer &layer)
         setData(Qt::FontRole, font);
         setForeground(QColor(0, 0, 0));
     }
+
+    // Add tooltip
+    setToolTip(QString("Layer: %1\nOpacity: %2%\nBlend Mode: %3\nDouble-click to rename")
+               .arg(layer.name())
+               .arg(qRound(layer.opacity() * 100))
+               .arg(layer.blendMode() == Layer::Normal ? "Normal" :
+                    layer.blendMode() == Layer::Multiply ? "Multiply" :
+                    layer.blendMode() == Layer::Screen ? "Screen" : "Overlay"));
 }
 

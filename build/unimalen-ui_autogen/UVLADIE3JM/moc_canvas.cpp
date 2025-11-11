@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'canvas.h'
 **
-** Created by: The Qt Meta Object Compiler version 69 (Qt 6.9.2)
+** Created by: The Qt Meta Object Compiler version 69 (Qt 6.9.3)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -19,7 +19,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'canvas.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 69
-#error "This file was generated using the moc from 6.9.2. It"
+#error "This file was generated using the moc from 6.9.3. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -45,6 +45,11 @@ template <> constexpr inline auto Canvas::qt_create_metaobjectdata<qt_meta_tag_Z
         "currentLayerChanged",
         "index",
         "documentModified",
+        "mousePositionChanged",
+        "x",
+        "y",
+        "colorPicked",
+        "color",
         "finishTextInput",
         "commitText"
     };
@@ -58,10 +63,18 @@ template <> constexpr inline auto Canvas::qt_create_metaobjectdata<qt_meta_tag_Z
         }}),
         // Signal 'documentModified'
         QtMocHelpers::SignalData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'mousePositionChanged'
+        QtMocHelpers::SignalData<void(int, int)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 7 }, { QMetaType::Int, 8 },
+        }}),
+        // Signal 'colorPicked'
+        QtMocHelpers::SignalData<void(const QColor &)>(9, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QColor, 10 },
+        }}),
         // Slot 'finishTextInput'
-        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'commitText'
-        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -88,8 +101,10 @@ void Canvas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 0: _t->layersChanged(); break;
         case 1: _t->currentLayerChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 2: _t->documentModified(); break;
-        case 3: _t->finishTextInput(); break;
-        case 4: _t->commitText(); break;
+        case 3: _t->mousePositionChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 4: _t->colorPicked((*reinterpret_cast< std::add_pointer_t<QColor>>(_a[1]))); break;
+        case 5: _t->finishTextInput(); break;
+        case 6: _t->commitText(); break;
         default: ;
         }
     }
@@ -99,6 +114,10 @@ void Canvas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         if (QtMocHelpers::indexOfMethod<void (Canvas::*)(int )>(_a, &Canvas::currentLayerChanged, 1))
             return;
         if (QtMocHelpers::indexOfMethod<void (Canvas::*)()>(_a, &Canvas::documentModified, 2))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (Canvas::*)(int , int )>(_a, &Canvas::mousePositionChanged, 3))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (Canvas::*)(const QColor & )>(_a, &Canvas::colorPicked, 4))
             return;
     }
 }
@@ -122,14 +141,14 @@ int Canvas::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 7;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 5;
+        _id -= 7;
     }
     return _id;
 }
@@ -150,5 +169,17 @@ void Canvas::currentLayerChanged(int _t1)
 void Canvas::documentModified()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+}
+
+// SIGNAL 3
+void Canvas::mousePositionChanged(int _t1, int _t2)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1, _t2);
+}
+
+// SIGNAL 4
+void Canvas::colorPicked(const QColor & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 4, nullptr, _t1);
 }
 QT_WARNING_POP

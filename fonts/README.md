@@ -23,6 +23,14 @@ This directory contains a curated selection of open-source fonts perfect for zin
 ### Modern Monospace
 - **Roboto Mono** - Clean, modern monospace font
 
+### Letraset-Style Geometric
+- **Bebas Neue** - Condensed geometric sans-serif, classic transfer lettering aesthetic
+- **Orbitron** - Geometric futuristic font with 1970s sci-fi influence
+- **Audiowide** - Retro technology styled display font
+- **Russo One** - Bold geometric sans-serif
+- **Righteous** - 1970s inspired display font
+- **Michroma** - Geometric sans-serif with technical feel
+
 ## Font Sources
 
 All fonts are from Google Fonts and are freely available for commercial and personal use:

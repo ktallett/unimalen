@@ -54,6 +54,7 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_pencilButton->setIcon(QIcon(pencilIcon));
     m_pencilButton->setIconSize(QSize(40, 40));
+    m_pencilButton->setToolTip(tr("Pencil - Draw thin freehand lines"));
 
     connect(m_pencilButton, &QToolButton::clicked, this, &ToolBar::onPencilClicked);
 
@@ -72,6 +73,7 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_textButton->setIcon(QIcon(textIcon));
     m_textButton->setIconSize(QSize(40, 40));
+    m_textButton->setToolTip(tr("Text - Add text to your canvas"));
 
     connect(m_textButton, &QToolButton::clicked, this, &ToolBar::onTextClicked);
 
@@ -109,6 +111,7 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_sprayButton->setIcon(QIcon(sprayCanIcon));
     m_sprayButton->setIconSize(QSize(40, 40));
+    m_sprayButton->setToolTip(tr("Spray - Spray paint effect"));
 
     m_currentSpraySize = 20; // Default to medium
 
@@ -149,8 +152,46 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_brushButton->setIcon(QIcon(brushIcon));
     m_brushButton->setIconSize(QSize(40, 40));
+    m_brushButton->setToolTip(tr("Brush - Paint with brush strokes"));
 
     connect(m_brushButton, &QToolButton::clicked, this, &ToolBar::onBrushClicked);
+
+    // Create marker tool
+    m_markerButton = new QToolButton(contentWidget);
+    m_markerButton->setFixedSize(44, 44);
+    m_markerButton->setCheckable(true);
+
+    // Create marker icon
+    QPixmap markerIcon(50, 50);
+    markerIcon.fill(Qt::transparent);
+    QPainter markerPainter(&markerIcon);
+    markerPainter.setRenderHint(QPainter::Antialiasing);
+
+    // Draw marker body (cylindrical shape)
+    markerPainter.setPen(QPen(Qt::black, 2));
+    markerPainter.setBrush(QBrush(QColor(255, 100, 50))); // Orange marker
+    markerPainter.drawRoundedRect(20, 10, 10, 28, 2, 2);
+
+    // Draw marker cap
+    markerPainter.setBrush(QBrush(QColor(200, 80, 40))); // Darker orange cap
+    markerPainter.drawRoundedRect(20, 10, 10, 10, 2, 2);
+
+    // Draw marker tip
+    markerPainter.setPen(QPen(Qt::black, 2));
+    markerPainter.setBrush(QBrush(QColor(100, 100, 100))); // Gray tip
+    QPolygon tipPolygon;
+    tipPolygon << QPoint(23, 38) << QPoint(27, 38) << QPoint(25, 43);
+    markerPainter.drawPolygon(tipPolygon);
+
+    // Draw a marker stroke to show it draws
+    markerPainter.setPen(QPen(QColor(255, 100, 50, 180), 4, Qt::SolidLine, Qt::RoundCap));
+    markerPainter.drawLine(8, 18, 16, 26);
+
+    m_markerButton->setIcon(QIcon(markerIcon));
+    m_markerButton->setIconSize(QSize(40, 40));
+    m_markerButton->setToolTip(tr("Marker - Draw with semi-transparent marker strokes"));
+
+    connect(m_markerButton, &QToolButton::clicked, this, &ToolBar::onMarkerClicked);
 
     // Create eraser tool with menu
     m_eraserButton = new QToolButton(contentWidget);
@@ -180,6 +221,7 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_eraserButton->setIcon(QIcon(eraserIcon));
     m_eraserButton->setIconSize(QSize(40, 40));
+    m_eraserButton->setToolTip(tr("Eraser - Erase parts of your drawing"));
 
     connect(m_eraserButton, &QToolButton::clicked, this, &ToolBar::onEraserClicked);
 
@@ -206,6 +248,7 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_lineButton->setIcon(QIcon(lineIcon));
     m_lineButton->setIconSize(QSize(40, 40));
+    m_lineButton->setToolTip(tr("Line - Draw straight lines"));
 
     connect(m_lineButton, &QToolButton::clicked, this, &ToolBar::onLineClicked);
 
@@ -241,6 +284,7 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_bezierButton->setIcon(QIcon(bezierIcon));
     m_bezierButton->setIconSize(QSize(40, 40));
+    m_bezierButton->setToolTip(tr("Bezier - Draw smooth curves"));
 
     connect(m_bezierButton, &QToolButton::clicked, this, &ToolBar::onBezierClicked);
 
@@ -277,6 +321,7 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_scissorsButton->setIcon(QIcon(scissorsIcon));
     m_scissorsButton->setIconSize(QSize(40, 40));
+    m_scissorsButton->setToolTip(tr("Scissors - Cut out selections"));
 
     connect(m_scissorsButton, &QToolButton::clicked, this, &ToolBar::onScissorsClicked);
 
@@ -347,6 +392,7 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_fillButton->setIcon(QIcon(fillIcon));
     m_fillButton->setIconSize(QSize(40, 40));
+    m_fillButton->setToolTip(tr("Fill - Fill enclosed areas with color"));
 
     connect(m_fillButton, &QToolButton::clicked, this, &ToolBar::onFillClicked);
 
@@ -383,8 +429,80 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_lassoButton->setIcon(QIcon(lassoIcon));
     m_lassoButton->setIconSize(QSize(40, 40));
+    m_lassoButton->setToolTip(tr("Lasso - Select irregular areas"));
 
     connect(m_lassoButton, &QToolButton::clicked, this, &ToolBar::onLassoClicked);
+
+    // Create rectangular selection tool
+    m_rectSelectButton = new QToolButton(contentWidget);
+    m_rectSelectButton->setFixedSize(44, 44);
+    m_rectSelectButton->setCheckable(true);
+
+    // Create rectangular selection icon
+    QPixmap rectSelectIcon(50, 50);
+    rectSelectIcon.fill(Qt::transparent);
+    QPainter rectSelectPainter(&rectSelectIcon);
+    rectSelectPainter.setRenderHint(QPainter::Antialiasing);
+
+    // Draw dashed rectangle for selection
+    rectSelectPainter.setPen(QPen(Qt::black, 2, Qt::DashLine));
+    rectSelectPainter.setBrush(Qt::NoBrush);
+    rectSelectPainter.drawRect(12, 12, 26, 26);
+
+    // Draw small selection handles at corners
+    rectSelectPainter.setPen(QPen(Qt::black, 1));
+    rectSelectPainter.setBrush(QBrush(Qt::white));
+    rectSelectPainter.drawRect(10, 10, 4, 4);  // Top-left
+    rectSelectPainter.drawRect(36, 10, 4, 4);  // Top-right
+    rectSelectPainter.drawRect(10, 36, 4, 4);  // Bottom-left
+    rectSelectPainter.drawRect(36, 36, 4, 4);  // Bottom-right
+
+    m_rectSelectButton->setIcon(QIcon(rectSelectIcon));
+    m_rectSelectButton->setIconSize(QSize(40, 40));
+    m_rectSelectButton->setToolTip(tr("Rectangle Select - Select rectangular areas"));
+
+    connect(m_rectSelectButton, &QToolButton::clicked, this, &ToolBar::onRectSelectClicked);
+
+    // Create eyedropper/color picker tool
+    m_eyedropperButton = new QToolButton(contentWidget);
+    m_eyedropperButton->setFixedSize(44, 44);
+    m_eyedropperButton->setCheckable(true);
+
+    // Create eyedropper icon
+    QPixmap eyedropperIcon(50, 50);
+    eyedropperIcon.fill(Qt::transparent);
+    QPainter eyedropperPainter(&eyedropperIcon);
+    eyedropperPainter.setRenderHint(QPainter::Antialiasing);
+
+    // Draw eyedropper tool
+    eyedropperPainter.setPen(QPen(Qt::black, 2));
+    eyedropperPainter.setBrush(Qt::NoBrush);
+
+    // Dropper bulb
+    eyedropperPainter.drawEllipse(28, 10, 10, 10);
+
+    // Dropper stem
+    QPainterPath dropperPath;
+    dropperPath.moveTo(28, 15);
+    dropperPath.lineTo(15, 28);
+    dropperPath.lineTo(18, 31);
+    dropperPath.lineTo(31, 18);
+    dropperPath.lineTo(28, 15);
+    eyedropperPainter.drawPath(dropperPath);
+
+    // Dropper tip
+    eyedropperPainter.drawLine(15, 28, 10, 33);
+    eyedropperPainter.drawLine(18, 31, 13, 36);
+
+    // Color dot being picked up
+    eyedropperPainter.setBrush(QBrush(Qt::blue));
+    eyedropperPainter.drawEllipse(8, 34, 6, 6);
+
+    m_eyedropperButton->setIcon(QIcon(eyedropperIcon));
+    m_eyedropperButton->setIconSize(QSize(40, 40));
+    m_eyedropperButton->setToolTip(tr("Eyedropper - Pick colors from the canvas"));
+
+    connect(m_eyedropperButton, &QToolButton::clicked, this, &ToolBar::onEyedropperClicked);
 
     // Create square outline tool
     m_squareButton = new QToolButton(contentWidget);
@@ -404,6 +522,7 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_squareButton->setIcon(QIcon(squareIcon));
     m_squareButton->setIconSize(QSize(40, 40));
+    m_squareButton->setToolTip(tr("Rectangle - Draw rectangle outlines"));
 
     connect(m_squareButton, &QToolButton::clicked, this, &ToolBar::onSquareClicked);
 
@@ -425,6 +544,7 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_filledSquareButton->setIcon(QIcon(filledSquareIcon));
     m_filledSquareButton->setIconSize(QSize(40, 40));
+    m_filledSquareButton->setToolTip(tr("Filled Rectangle - Draw filled rectangles"));
 
     connect(m_filledSquareButton, &QToolButton::clicked, this, &ToolBar::onFilledSquareClicked);
 
@@ -446,6 +566,7 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_roundedSquareButton->setIcon(QIcon(roundedSquareIcon));
     m_roundedSquareButton->setIconSize(QSize(40, 40));
+    m_roundedSquareButton->setToolTip(tr("Rounded Rectangle - Draw rounded corner rectangles"));
 
     connect(m_roundedSquareButton, &QToolButton::clicked, this, &ToolBar::onRoundedSquareClicked);
 
@@ -467,6 +588,7 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_filledRoundedSquareButton->setIcon(QIcon(filledRoundedSquareIcon));
     m_filledRoundedSquareButton->setIconSize(QSize(40, 40));
+    m_filledRoundedSquareButton->setToolTip(tr("Filled Rounded Rectangle - Draw filled rounded corner rectangles"));
 
     connect(m_filledRoundedSquareButton, &QToolButton::clicked, this, &ToolBar::onFilledRoundedSquareClicked);
 
@@ -488,6 +610,7 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_ovalButton->setIcon(QIcon(ovalIcon));
     m_ovalButton->setIconSize(QSize(40, 40));
+    m_ovalButton->setToolTip(tr("Ellipse - Draw ellipse outlines"));
 
     connect(m_ovalButton, &QToolButton::clicked, this, &ToolBar::onOvalClicked);
 
@@ -509,26 +632,30 @@ ToolBar::ToolBar(QWidget *parent)
 
     m_filledOvalButton->setIcon(QIcon(filledOvalIcon));
     m_filledOvalButton->setIconSize(QSize(40, 40));
+    m_filledOvalButton->setToolTip(tr("Filled Ellipse - Draw filled ellipses"));
 
     connect(m_filledOvalButton, &QToolButton::clicked, this, &ToolBar::onFilledOvalClicked);
 
-    // Arrange tools in grid - now 8 rows for 16 tools
+    // Arrange tools in grid - now 9 rows for 19 tools
     m_layout->addWidget(m_pencilButton, 0, 0);
     m_layout->addWidget(m_textButton, 0, 1);
     m_layout->addWidget(m_sprayButton, 1, 0);
     m_layout->addWidget(m_brushButton, 1, 1);
-    m_layout->addWidget(m_eraserButton, 2, 0);
-    m_layout->addWidget(m_lineButton, 2, 1);
-    m_layout->addWidget(m_fillButton, 3, 0);
-    m_layout->addWidget(m_lassoButton, 3, 1);
-    m_layout->addWidget(m_squareButton, 4, 0);
-    m_layout->addWidget(m_filledSquareButton, 4, 1);
-    m_layout->addWidget(m_roundedSquareButton, 5, 0);
-    m_layout->addWidget(m_filledRoundedSquareButton, 5, 1);
-    m_layout->addWidget(m_ovalButton, 6, 0);
-    m_layout->addWidget(m_filledOvalButton, 6, 1);
-    m_layout->addWidget(m_bezierButton, 7, 0);
-    m_layout->addWidget(m_scissorsButton, 7, 1);
+    m_layout->addWidget(m_markerButton, 2, 0);
+    m_layout->addWidget(m_eraserButton, 2, 1);
+    m_layout->addWidget(m_lineButton, 3, 0);
+    m_layout->addWidget(m_fillButton, 3, 1);
+    m_layout->addWidget(m_lassoButton, 4, 0);
+    m_layout->addWidget(m_rectSelectButton, 4, 1);
+    m_layout->addWidget(m_eyedropperButton, 5, 0);
+    m_layout->addWidget(m_squareButton, 5, 1);
+    m_layout->addWidget(m_filledSquareButton, 6, 0);
+    m_layout->addWidget(m_roundedSquareButton, 6, 1);
+    m_layout->addWidget(m_filledRoundedSquareButton, 7, 0);
+    m_layout->addWidget(m_ovalButton, 7, 1);
+    m_layout->addWidget(m_filledOvalButton, 8, 0);
+    m_layout->addWidget(m_bezierButton, 8, 1);
+    m_layout->addWidget(m_scissorsButton, 9, 0);
 
     // Wire up scroll area
     scrollArea->setWidget(contentWidget);
@@ -547,6 +674,8 @@ void ToolBar::onPencilClicked()
     m_scissorsButton->setChecked(false);
     m_fillButton->setChecked(false);
     m_lassoButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     m_squareButton->setChecked(false);
     m_filledSquareButton->setChecked(false);
     m_roundedSquareButton->setChecked(false);
@@ -573,6 +702,8 @@ void ToolBar::onTextClicked()
     m_filledRoundedSquareButton->setChecked(false);
     m_ovalButton->setChecked(false);
     m_filledOvalButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit textToolSelected();
 }
 
@@ -593,6 +724,8 @@ void ToolBar::onSprayClicked()
     m_filledRoundedSquareButton->setChecked(false);
     m_ovalButton->setChecked(false);
     m_filledOvalButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit sprayToolSelected(m_currentSpraySize);
 }
 
@@ -603,6 +736,7 @@ void ToolBar::onBrushClicked()
     m_textButton->setChecked(false);
     m_sprayButton->setChecked(false);
     m_brushButton->setChecked(true);
+    m_markerButton->setChecked(false);
     m_eraserButton->setChecked(false);
     m_lineButton->setChecked(false);
     m_bezierButton->setChecked(false);
@@ -614,9 +748,34 @@ void ToolBar::onBrushClicked()
     m_filledRoundedSquareButton->setChecked(false);
     m_ovalButton->setChecked(false);
     m_filledOvalButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit brushToolSelected(m_currentBrushSize);
 }
 
+void ToolBar::onMarkerClicked()
+{
+    m_pencilButton->setChecked(false);
+    m_textButton->setChecked(false);
+    m_sprayButton->setChecked(false);
+    m_brushButton->setChecked(false);
+    m_markerButton->setChecked(true);
+    m_eraserButton->setChecked(false);
+    m_lineButton->setChecked(false);
+    m_bezierButton->setChecked(false);
+    m_scissorsButton->setChecked(false);
+    m_fillButton->setChecked(false);
+    m_lassoButton->setChecked(false);
+    m_squareButton->setChecked(false);
+    m_filledSquareButton->setChecked(false);
+    m_roundedSquareButton->setChecked(false);
+    m_filledRoundedSquareButton->setChecked(false);
+    m_ovalButton->setChecked(false);
+    m_filledOvalButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
+    emit markerToolSelected();
+}
 
 void ToolBar::onEraserClicked()
 {
@@ -635,6 +794,8 @@ void ToolBar::onEraserClicked()
     m_filledRoundedSquareButton->setChecked(false);
     m_ovalButton->setChecked(false);
     m_filledOvalButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit eraserToolSelected(m_currentEraserSize);
 }
 
@@ -656,6 +817,8 @@ void ToolBar::onLineClicked()
     m_filledRoundedSquareButton->setChecked(false);
     m_ovalButton->setChecked(false);
     m_filledOvalButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit lineToolSelected();
 }
 
@@ -677,6 +840,8 @@ void ToolBar::onBezierClicked()
     m_filledRoundedSquareButton->setChecked(false);
     m_ovalButton->setChecked(false);
     m_filledOvalButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit bezierToolSelected();
 }
 
@@ -698,6 +863,8 @@ void ToolBar::onScissorsClicked()
     m_filledRoundedSquareButton->setChecked(false);
     m_ovalButton->setChecked(false);
     m_filledOvalButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit scissorsToolSelected();
 }
 
@@ -717,6 +884,8 @@ void ToolBar::onFillClicked()
     m_filledRoundedSquareButton->setChecked(false);
     m_ovalButton->setChecked(false);
     m_filledOvalButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit fillToolSelected();
 }
 
@@ -737,6 +906,8 @@ void ToolBar::onLassoClicked()
     m_filledRoundedSquareButton->setChecked(false);
     m_ovalButton->setChecked(false);
     m_filledOvalButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit lassoToolSelected();
 }
 
@@ -757,6 +928,8 @@ void ToolBar::onSquareClicked()
     m_filledRoundedSquareButton->setChecked(false);
     m_ovalButton->setChecked(false);
     m_filledOvalButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit squareToolSelected();
 }
 
@@ -775,6 +948,8 @@ void ToolBar::onFilledSquareClicked()
     m_filledSquareButton->setChecked(true);
     m_roundedSquareButton->setChecked(false);
     m_filledRoundedSquareButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit filledSquareToolSelected();
 }
 
@@ -793,6 +968,8 @@ void ToolBar::onRoundedSquareClicked()
     m_filledSquareButton->setChecked(false);
     m_roundedSquareButton->setChecked(true);
     m_filledRoundedSquareButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit roundedSquareToolSelected();
 }
 
@@ -813,6 +990,8 @@ void ToolBar::onFilledRoundedSquareClicked()
     m_filledRoundedSquareButton->setChecked(true);
     m_ovalButton->setChecked(false);
     m_filledOvalButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit filledRoundedSquareToolSelected();
 }
 
@@ -833,6 +1012,8 @@ void ToolBar::onOvalClicked()
     m_filledRoundedSquareButton->setChecked(false);
     m_ovalButton->setChecked(true);
     m_filledOvalButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit ovalToolSelected();
 }
 
@@ -853,7 +1034,53 @@ void ToolBar::onFilledOvalClicked()
     m_filledRoundedSquareButton->setChecked(false);
     m_ovalButton->setChecked(false);
     m_filledOvalButton->setChecked(true);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(false);
     emit filledOvalToolSelected();
+}
+
+void ToolBar::onRectSelectClicked()
+{
+    m_pencilButton->setChecked(false);
+    m_textButton->setChecked(false);
+    m_sprayButton->setChecked(false);
+    m_brushButton->setChecked(false);
+    m_eraserButton->setChecked(false);
+    m_lineButton->setChecked(false);
+    m_bezierButton->setChecked(false);
+    m_fillButton->setChecked(false);
+    m_lassoButton->setChecked(false);
+    m_rectSelectButton->setChecked(true);
+    m_eyedropperButton->setChecked(false);
+    m_squareButton->setChecked(false);
+    m_filledSquareButton->setChecked(false);
+    m_roundedSquareButton->setChecked(false);
+    m_filledRoundedSquareButton->setChecked(false);
+    m_ovalButton->setChecked(false);
+    m_filledOvalButton->setChecked(false);
+    emit rectSelectToolSelected();
+}
+
+void ToolBar::onEyedropperClicked()
+{
+    m_pencilButton->setChecked(false);
+    m_textButton->setChecked(false);
+    m_sprayButton->setChecked(false);
+    m_brushButton->setChecked(false);
+    m_eraserButton->setChecked(false);
+    m_lineButton->setChecked(false);
+    m_bezierButton->setChecked(false);
+    m_fillButton->setChecked(false);
+    m_lassoButton->setChecked(false);
+    m_rectSelectButton->setChecked(false);
+    m_eyedropperButton->setChecked(true);
+    m_squareButton->setChecked(false);
+    m_filledSquareButton->setChecked(false);
+    m_roundedSquareButton->setChecked(false);
+    m_filledRoundedSquareButton->setChecked(false);
+    m_ovalButton->setChecked(false);
+    m_filledOvalButton->setChecked(false);
+    emit eyedropperToolSelected();
 }
 
 void ToolBar::showAsFloatingWindow()

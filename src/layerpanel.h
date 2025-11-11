@@ -72,6 +72,32 @@ private:
     bool m_updatingUI;
 };
 
+// Custom widget for layer item display
+class LayerItemWidget : public QWidget
+{
+    Q_OBJECT
+
+public:
+    LayerItemWidget(const Layer &layer, int index, QWidget *parent = nullptr);
+    void updateFromLayer(const Layer &layer);
+    int layerIndex() const { return m_layerIndex; }
+
+signals:
+    void visibilityToggled(int index, bool visible);
+
+private slots:
+    void onVisibilityClicked();
+
+private:
+    void updateVisibilityIcon();
+
+    int m_layerIndex;
+    QPushButton *m_visibilityButton;
+    QLabel *m_thumbnailLabel;
+    QLabel *m_nameLabel;
+    bool m_isVisible;
+};
+
 // Custom list widget item for layers
 class LayerItem : public QListWidgetItem
 {

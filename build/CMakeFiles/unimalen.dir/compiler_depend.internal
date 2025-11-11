@@ -56,7 +56,6 @@
  /usr/lib64/cmake/Qt6Core/Qt6CoreConfigExtras.cmake
  /usr/lib64/cmake/Qt6Core/Qt6CoreConfigVersion.cmake
  /usr/lib64/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake
- /usr/lib64/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in
  /usr/lib64/cmake/Qt6Core/Qt6CoreDependencies.cmake
  /usr/lib64/cmake/Qt6Core/Qt6CoreMacros.cmake
  /usr/lib64/cmake/Qt6Core/Qt6CoreTargets-relwithdebinfo.cmake
@@ -158,6 +157,10 @@
  /usr/lib64/cmake/Qt6Gui/Qt6QGtk3ThemePluginConfig.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QGtk3ThemePluginTargets-relwithdebinfo.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QGtk3ThemePluginTargets.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QICNSPluginAdditionalTargetInfo.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QICNSPluginConfig.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QICNSPluginTargets-relwithdebinfo.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QICNSPluginTargets.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QICOPluginAdditionalTargetInfo.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QICOPluginConfig.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QICOPluginTargets-relwithdebinfo.cmake
@@ -166,6 +169,10 @@
  /usr/lib64/cmake/Qt6Gui/Qt6QIbusPlatformInputContextPluginConfig.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QIbusPlatformInputContextPluginTargets-relwithdebinfo.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QIbusPlatformInputContextPluginTargets.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QJp2PluginAdditionalTargetInfo.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QJp2PluginConfig.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QJp2PluginTargets-relwithdebinfo.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QJp2PluginTargets.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QJpegPluginAdditionalTargetInfo.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QJpegPluginConfig.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QJpegPluginTargets-relwithdebinfo.cmake
@@ -186,10 +193,22 @@
  /usr/lib64/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginConfig.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargets-relwithdebinfo.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QMinimalIntegrationPluginTargets.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QMngPluginAdditionalTargetInfo.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QMngPluginConfig.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QMngPluginTargets-relwithdebinfo.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QMngPluginTargets.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginAdditionalTargetInfo.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginConfig.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginTargets-relwithdebinfo.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginTargets.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QTgaPluginAdditionalTargetInfo.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QTgaPluginConfig.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QTgaPluginTargets-relwithdebinfo.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QTgaPluginTargets.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QTiffPluginAdditionalTargetInfo.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QTiffPluginConfig.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QTiffPluginTargets-relwithdebinfo.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QTiffPluginTargets.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QTsLibPluginAdditionalTargetInfo.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QTsLibPluginConfig.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QTsLibPluginTargets-relwithdebinfo.cmake
@@ -206,6 +225,14 @@
  /usr/lib64/cmake/Qt6Gui/Qt6QVncIntegrationPluginConfig.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QVncIntegrationPluginTargets-relwithdebinfo.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QVncIntegrationPluginTargets.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QWbmpPluginAdditionalTargetInfo.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QWbmpPluginConfig.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QWbmpPluginTargets-relwithdebinfo.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QWbmpPluginTargets.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QWebpPluginAdditionalTargetInfo.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QWebpPluginConfig.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QWebpPluginTargets-relwithdebinfo.cmake
+ /usr/lib64/cmake/Qt6Gui/Qt6QWebpPluginTargets.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QXcbEglIntegrationPluginAdditionalTargetInfo.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QXcbEglIntegrationPluginConfig.cmake
  /usr/lib64/cmake/Qt6Gui/Qt6QXcbEglIntegrationPluginTargets-relwithdebinfo.cmake
@@ -320,12 +347,9 @@
  /usr/share/cmake/Modules/Platform/Linux.cmake
  /usr/share/cmake/Modules/Platform/UnixPaths.cmake
 
-CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.o
- /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/.qt/rcc/qrc_unimalen_translations.cpp
- /usr/include/stdc-predef.h
-
 CMakeFiles/unimalen.dir/src/main.cpp.o
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/main.cpp
+ /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/colorbar.h
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/core/Types.h
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/mainwindow.h
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/src/ui/DesignTokens.h
@@ -650,6 +674,7 @@ CMakeFiles/unimalen.dir/src/main.cpp.o
  /usr/include/qt6/QtCore/QSize
  /usr/include/qt6/QtCore/QSizeF
  /usr/include/qt6/QtCore/QString
+ /usr/include/qt6/QtCore/QTimer
  /usr/include/qt6/QtCore/q17memory.h
  /usr/include/qt6/QtCore/q20functional.h
  /usr/include/qt6/QtCore/q20iterator.h
@@ -778,6 +803,7 @@ CMakeFiles/unimalen.dir/src/main.cpp.o
  /usr/include/qt6/QtCore/qtenvironmentvariables.h
  /usr/include/qt6/QtCore/qtextstream.h
  /usr/include/qt6/QtCore/qtformat_impl.h
+ /usr/include/qt6/QtCore/qtimer.h
  /usr/include/qt6/QtCore/qtimezone.h
  /usr/include/qt6/QtCore/qtmetamacros.h
  /usr/include/qt6/QtCore/qtnoop.h
@@ -845,11 +871,15 @@ CMakeFiles/unimalen.dir/src/main.cpp.o
  /usr/include/qt6/QtGui/qwindowdefs.h
  /usr/include/qt6/QtWidgets/QApplication
  /usr/include/qt6/QtWidgets/QDockWidget
+ /usr/include/qt6/QtWidgets/QGridLayout
  /usr/include/qt6/QtWidgets/QHBoxLayout
  /usr/include/qt6/QtWidgets/QLabel
  /usr/include/qt6/QtWidgets/QMainWindow
  /usr/include/qt6/QtWidgets/QMenuBar
+ /usr/include/qt6/QtWidgets/QPushButton
  /usr/include/qt6/QtWidgets/QScrollArea
+ /usr/include/qt6/QtWidgets/QWidget
+ /usr/include/qt6/QtWidgets/qabstractbutton.h
  /usr/include/qt6/QtWidgets/qabstractscrollarea.h
  /usr/include/qt6/QtWidgets/qapplication.h
  /usr/include/qt6/QtWidgets/qboxlayout.h
@@ -862,6 +892,7 @@ CMakeFiles/unimalen.dir/src/main.cpp.o
  /usr/include/qt6/QtWidgets/qmainwindow.h
  /usr/include/qt6/QtWidgets/qmenu.h
  /usr/include/qt6/QtWidgets/qmenubar.h
+ /usr/include/qt6/QtWidgets/qpushbutton.h
  /usr/include/qt6/QtWidgets/qscrollarea.h
  /usr/include/qt6/QtWidgets/qsizepolicy.h
  /usr/include/qt6/QtWidgets/qtabwidget.h
@@ -914,10 +945,10 @@ unimalen
  /usr/lib64/libGLX.so
  /usr/lib64/libGLdispatch.so.0
  /usr/lib64/libOpenGL.so
- /usr/lib64/libQt6Core.so.6.9.2
+ /usr/lib64/libQt6Core.so.6.9.3
  /usr/lib64/libQt6DBus.so.6
- /usr/lib64/libQt6Gui.so.6.9.2
- /usr/lib64/libQt6Widgets.so.6.9.2
+ /usr/lib64/libQt6Gui.so.6.9.3
+ /usr/lib64/libQt6Widgets.so.6.9.3
  /usr/lib64/libX11.so.6
  /usr/lib64/libXau.so.6
  /usr/lib64/libXext.so.6
@@ -949,7 +980,6 @@ unimalen
  /usr/lib64/libxml2.so.2
  /usr/lib64/libz.so.1
  /usr/lib64/libzstd.so.1
- /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen.dir/build/.qt/rcc/qrc_unimalen_translations.cpp.o
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen.dir/src/main.cpp.o
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o
  /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/libunimalen-core.a

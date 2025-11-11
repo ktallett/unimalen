@@ -41,14 +41,11 @@ void ColorBar::createPalette(PaletteType palette)
     QList<QPair<QColor, QString>> colors;
 
     switch (palette) {
-        case CopicPastels:
-            colors = getCopicPastelColors();
+        case Pastels:
+            colors = getPastelColors();
             break;
-        case PantonePastels:
-            colors = getPantonePastelColors();
-            break;
-        case CustomPastels:
-            colors = getCustomPastelColors();
+        case Markers:
+            colors = getMarkerColors();
             break;
     }
 
@@ -118,49 +115,7 @@ void ColorBar::setCurrentColor(const QColor &color)
     }
 }
 
-QList<QPair<QColor, QString>> ColorBar::getCopicPastelColors()
-{
-    // Copic marker pastel colors - popular choices for illustration
-    return {
-        // Pinks
-        {QColor("#FFD6E0"), "Light Pink (RV10)"},
-        {QColor("#FFBDD4"), "Baby Pink (RV21)"},
-        {QColor("#FFA8C5"), "Salmon Pink (R20)"},
-
-        // Peaches/Corals
-        {QColor("#FFD4C4"), "Peach (YR20)"},
-        {QColor("#FFCDB8"), "Coral (YR21)"},
-        {QColor("#FFE5D9"), "Light Peach (YR00)"},
-
-        // Yellows
-        {QColor("#FFF4CC"), "Pale Yellow (Y11)"},
-        {QColor("#FFECB3"), "Cream (Y21)"},
-        {QColor("#FFF9E3"), "Egg Shell (YR30)"},
-
-        // Greens
-        {QColor("#D4EDD1"), "Pale Green (G20)"},
-        {QColor("#C8E6C9"), "Mint Green (G21)"},
-        {QColor("#B8DFC8"), "Seafoam (BG10)"},
-
-        // Blues
-        {QColor("#D6E9F5"), "Baby Blue (B21)"},
-        {QColor("#C1DEF1"), "Sky Blue (B23)"},
-        {QColor("#E3F2FD"), "Ice Blue (B00)"},
-
-        // Purples/Lavenders
-        {QColor("#E6D9ED"), "Lavender (V12)"},
-        {QColor("#DFD3E8"), "Lilac (V15)"},
-        {QColor("#F3E5F5"), "Pale Lavender (V04)"},
-
-        // Neutrals
-        {QColor("#F5F5F5"), "Cool Gray 1 (C1)"},
-        {QColor("#FFF8F0"), "Warm Gray 1 (W1)"},
-        {QColor("#FFFFFF"), "White"},
-        {QColor("#000000"), "Black"}
-    };
-}
-
-QList<QPair<QColor, QString>> ColorBar::getPantonePastelColors()
+QList<QPair<QColor, QString>> ColorBar::getPastelColors()
 {
     // Pantone pastel palette
     return {
@@ -202,38 +157,48 @@ QList<QPair<QColor, QString>> ColorBar::getPantonePastelColors()
     };
 }
 
-QList<QPair<QColor, QString>> ColorBar::getCustomPastelColors()
+QList<QPair<QColor, QString>> ColorBar::getMarkerColors()
 {
-    // Custom curated pastel palette
+    // Professional marker colors - vibrant, saturated palette for illustration
     return {
-        // Warm pastels
-        {QColor("#FFD5D5"), "Blush"},
-        {QColor("#FFE4D5"), "Peach Cream"},
-        {QColor("#FFFAD5"), "Butter"},
+        // Reds & Pinks
+        {QColor("#E60012"), "Lipstick Red"},
+        {QColor("#C3272B"), "Cardinal Red"},
+        {QColor("#FF6B9D"), "Hot Pink"},
 
-        // Cool pastels
-        {QColor("#D5FFD5"), "Mint Cream"},
-        {QColor("#D5F0FF"), "Baby Blue"},
-        {QColor("#E5D5FF"), "Mauve"},
+        // Oranges & Corals
+        {QColor("#FF6600"), "Vibrant Orange"},
+        {QColor("#FF9E1B"), "Marigold"},
+        {QColor("#FF7F50"), "Coral"},
 
-        // Vibrant pastels
-        {QColor("#FFB3D9"), "Bubblegum"},
-        {QColor("#FFD9B3"), "Apricot"},
-        {QColor("#FFFFB3"), "Vanilla"},
+        // Yellows & Golds
+        {QColor("#FFD700"), "Golden Yellow"},
+        {QColor("#FFF200"), "Lemon Yellow"},
+        {QColor("#F4C430"), "Saffron"},
 
-        // Nature pastels
-        {QColor("#B3FFB3"), "Pistachio"},
-        {QColor("#B3E5FF"), "Sky"},
-        {QColor("#D9B3FF"), "Wisteria"},
+        // Greens
+        {QColor("#00A86B"), "Jade Green"},
+        {QColor("#7CB342"), "Fresh Green"},
+        {QColor("#009B77"), "Emerald"},
 
-        // Muted pastels
-        {QColor("#E8D5C4"), "Sand"},
-        {QColor("#D5E8E8"), "Mist"},
-        {QColor("#E8D5E8"), "Dusty Rose"},
+        // Blues
+        {QColor("#0066CC"), "Brilliant Blue"},
+        {QColor("#00A8E1"), "Cyan Blue"},
+        {QColor("#003DA5"), "Royal Blue"},
 
-        // Neutrals
-        {QColor("#F0F0F0"), "Pearl"},
-        {QColor("#E0E0E0"), "Silver"},
+        // Purples & Violets
+        {QColor("#9B59B6"), "Amethyst"},
+        {QColor("#6A1B9A"), "Deep Purple"},
+        {QColor("#8E44AD"), "Violet"},
+
+        // Browns & Warm Neutrals
+        {QColor("#8B4513"), "Saddle Brown"},
+        {QColor("#D2691E"), "Burnt Sienna"},
+        {QColor("#CD853F"), "Peru"},
+
+        // Grays & Neutrals
+        {QColor("#5A5A5A"), "Cool Gray 9"},
+        {QColor("#9E9E9E"), "Medium Gray"},
         {QColor("#FFFFFF"), "White"},
         {QColor("#000000"), "Black"}
     };
