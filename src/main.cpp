@@ -9,17 +9,17 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    app.setApplicationName("unimalen");
+    app.setApplicationName("erstelle");
     app.setApplicationVersion("1.0");
-    app.setOrganizationName("unimalen");
+    app.setOrganizationName("erstelle");
 
     // Load custom fonts from fonts directory
     QStringList fontPaths;
     fontPaths << "../fonts";  // Build directory relative path
     fontPaths << "fonts";     // Current directory
-    fontPaths << "../share/unimalen/fonts";  // Install directory relative
-    fontPaths << "/usr/share/unimalen/fonts";  // System install directory
-    fontPaths << "/usr/local/share/unimalen/fonts";  // Local install directory
+    fontPaths << "../share/erstelle/fonts";  // Install directory relative
+    fontPaths << "/usr/share/erstelle/fonts";  // System install directory
+    fontPaths << "/usr/local/share/erstelle/fonts";  // Local install directory
 
     for (const QString &fontPath : fontPaths) {
         QDir fontsDir(fontPath);

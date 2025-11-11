@@ -1,4 +1,4 @@
-# Unimalen - Drawing and Painting Application
+# Erstelle - Drawing and Painting Application
 
 A lightweight drawing and painting application built with C++ and Qt 6 for creating zines and digital artwork.
 
@@ -35,7 +35,7 @@ mkdir -p build
 cd build
 cmake ..
 make -j4
-./unimalen
+./erstelle
 ```
 
 ### Linux (Fedora/CentOS)
@@ -47,7 +47,7 @@ mkdir -p build
 cd build
 cmake ..
 make -j4
-./unimalen
+./erstelle
 ```
 
 ### macOS
@@ -59,7 +59,7 @@ mkdir -p build
 cd build
 cmake -DCMAKE_PREFIX_PATH=/opt/homebrew/opt/qt@6 ..
 make -j4
-./unimalen
+./erstelle
 ```
 
 ### Windows

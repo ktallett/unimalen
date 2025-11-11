@@ -1,6 +1,6 @@
 # Auto-Update Implementation Summary
 
-This document summarizes the auto-update functionality added to Unimalen using AppImage and AppImageUpdate.
+This document summarizes the auto-update functionality added to Erstelle using AppImage and AppImageUpdate.
 
 ## What Was Added
 
@@ -15,16 +15,16 @@ This document summarizes the auto-update functionality added to Unimalen using A
 **Help Menu** (in `src/mainwindow.h` and `src/mainwindow.cpp`)
 - Added "Help" menu to the main window
 - "Check for Updates..." menu item - opens UpdateDialog
-- "About Unimalen" menu item - shows application info
+- "About Erstelle" menu item - shows application info
 
 ### 2. AppImage Infrastructure
 
-**Desktop Entry** (`unimalen.desktop`)
+**Desktop Entry** (`erstelle.desktop`)
 - Required for AppImage integration
 - Defines application name, icon, categories
 - Used by Linux desktop environments
 
-**Application Icon** (`unimalen.svg`)
+**Application Icon** (`erstelle.svg`)
 - Scalable vector icon for the application
 - Shows pencil and paper with colorful strokes
 - Used in AppImage and by desktop environments
@@ -54,9 +54,9 @@ This document summarizes the auto-update functionality added to Unimalen using A
 
 ### For End Users
 
-1. Download `Unimalen-*.AppImage` from GitHub releases
-2. Make it executable: `chmod +x Unimalen-*.AppImage`
-3. Run it: `./Unimalen-*.AppImage`
+1. Download `Erstelle-*.AppImage` from GitHub releases
+2. Make it executable: `chmod +x Erstelle-*.AppImage`
+3. Run it: `./Erstelle-*.AppImage`
 4. To update: Go to **Help → Check for Updates**
 
 ### For Developers/Maintainers
@@ -64,7 +64,7 @@ This document summarizes the auto-update functionality added to Unimalen using A
 1. Build AppImage with update info:
    ```bash
    # Edit build-appimage.sh to set UPDATE_INFORMATION
-   export UPDATE_INFORMATION="gh-releases-zsync|owner|repo|latest|Unimalen-*-x86_64.AppImage.zsync"
+   export UPDATE_INFORMATION="gh-releases-zsync|owner|repo|latest|Erstelle-*-x86_64.AppImage.zsync"
 
    # Build
    ./build-appimage.sh
@@ -94,19 +94,19 @@ gh-releases-zsync|owner|repo|latest|pattern
 
 Example:
 ```
-gh-releases-zsync|johndoe|unimalen|latest|Unimalen-*-x86_64.AppImage.zsync
+gh-releases-zsync|johndoe|erstelle|latest|Erstelle-*-x86_64.AppImage.zsync
 ```
 
 ### File Structure
 
 ```
-unimalen/
+erstelle/
 ├── src/
 │   └── ui/
 │       ├── UpdateDialog.h          # Update dialog header
 │       └── UpdateDialog.cpp        # Update dialog implementation
-├── unimalen.desktop                # Desktop entry file
-├── unimalen.svg                    # Application icon
+├── erstelle.desktop                # Desktop entry file
+├── erstelle.svg                    # Application icon
 ├── build-appimage.sh               # AppImage build script
 ├── APPIMAGE.md                     # AppImage documentation
 └── README.md                       # Updated with AppImage info

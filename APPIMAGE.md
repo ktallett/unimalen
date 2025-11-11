@@ -1,6 +1,6 @@
 # AppImage Build and Auto-Update Guide
 
-This document explains how to build Unimalen as an AppImage with auto-update functionality.
+This document explains how to build Erstelle as an AppImage with auto-update functionality.
 
 ## Building the AppImage
 
@@ -18,14 +18,14 @@ This document explains how to build Unimalen as an AppImage with auto-update fun
 ```
 
 This will:
-- Build the Unimalen binary
+- Build the Erstelle binary
 - Download linuxdeploy and linuxdeploy-plugin-qt (if not already present)
 - Bundle all Qt dependencies
-- Create `Unimalen-*.AppImage`
+- Create `Erstelle-*.AppImage`
 
 2. Run the AppImage:
 ```bash
-./Unimalen-*.AppImage
+./Erstelle-*.AppImage
 ```
 
 ## Enabling Auto-Updates
@@ -34,11 +34,11 @@ Auto-updates allow users to update the application from within the app using **H
 
 ### Setup for GitHub Releases
 
-1. **Create a GitHub repository** for Unimalen (if not already done)
+1. **Create a GitHub repository** for Erstelle (if not already done)
 
 2. **Edit `build-appimage.sh`** and uncomment the UPDATE_INFORMATION line:
 ```bash
-export UPDATE_INFORMATION="gh-releases-zsync|OWNER|REPO|latest|Unimalen-*-$(uname -m).AppImage.zsync"
+export UPDATE_INFORMATION="gh-releases-zsync|OWNER|REPO|latest|Erstelle-*-$(uname -m).AppImage.zsync"
 ```
 
 Replace:
@@ -47,7 +47,7 @@ Replace:
 
 Example:
 ```bash
-export UPDATE_INFORMATION="gh-releases-zsync|johndoe|unimalen|latest|Unimalen-*-x86_64.AppImage.zsync"
+export UPDATE_INFORMATION="gh-releases-zsync|johndoe|erstelle|latest|Erstelle-*-x86_64.AppImage.zsync"
 ```
 
 3. **Rebuild the AppImage** with update information embedded:
@@ -60,8 +60,8 @@ export UPDATE_INFORMATION="gh-releases-zsync|johndoe|unimalen|latest|Unimalen-*-
    - Click "Releases" → "Create a new release"
    - Tag version (e.g., `v1.0.0`)
    - Upload BOTH files:
-     - `Unimalen-*.AppImage`
-     - `Unimalen-*.AppImage.zsync`
+     - `Erstelle-*.AppImage`
+     - `Erstelle-*.AppImage.zsync`
 
 5. **Test auto-update**:
    - Run the AppImage

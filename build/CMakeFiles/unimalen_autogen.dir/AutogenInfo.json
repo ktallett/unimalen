@@ -520,7 +520,6 @@
 	"MOC_SKIP" : 
 	[
 		"/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-core_autogen/mocs_compilation.cpp",
-		"/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/mocs_compilation.cpp",
 		"/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/mocs_compilation.cpp"
 	],
 	"MULTI_CONFIG" : false,
@@ -544,7 +543,6 @@
 	"UIC_SKIP" : 
 	[
 		"/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-core_autogen/mocs_compilation.cpp",
-		"/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/mocs_compilation.cpp",
 		"/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-ui_autogen/mocs_compilation.cpp"
 	],
 	"UIC_UI_FILES" : [],

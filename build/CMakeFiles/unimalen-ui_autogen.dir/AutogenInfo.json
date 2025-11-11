@@ -575,8 +575,7 @@
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : 
 	[
-		"/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-core_autogen/mocs_compilation.cpp",
-		"/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/mocs_compilation.cpp"
+		"/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-core_autogen/mocs_compilation.cpp"
 	],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 6,
@@ -638,8 +637,7 @@
 	"UIC_SEARCH_PATHS" : [],
 	"UIC_SKIP" : 
 	[
-		"/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-core_autogen/mocs_compilation.cpp",
-		"/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-tools_autogen/mocs_compilation.cpp"
+		"/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/unimalen-core_autogen/mocs_compilation.cpp"
 	],
 	"UIC_UI_FILES" : [],
 	"USE_BETTER_GRAPH" : true,

@@ -194,7 +194,7 @@ MainWindow::MainWindow(QWidget *parent)
     });
     applyAutoSaveSettings();
 
-    setWindowTitle(tr("unimalen - Untitled"));
+    setWindowTitle(tr("erstelle - Untitled"));
     resize(800, 600);
 }
 
@@ -887,7 +887,7 @@ void MainWindow::newFromClipboard()
         canvas->insertImageAt(pixmap, QPoint(0, 0));
 
         setCurrentFile("");
-        setWindowTitle(tr("unimalen - New from Clipboard"));
+        setWindowTitle(tr("erstelle - New from Clipboard"));
     }
 }
 
@@ -901,7 +901,7 @@ void MainWindow::openFile()
         if (m_tabWidget->loadDocument(fileName)) {
             setCurrentFile(fileName);
         } else {
-            QMessageBox::warning(this, "unimalen", "Cannot open file " + fileName);
+            QMessageBox::warning(this, "erstelle", "Cannot open file " + fileName);
         }
     }
 }
@@ -912,7 +912,7 @@ void MainWindow::saveFile()
         saveAsFile();
     } else {
         if (!m_tabWidget->saveCurrentDocument(m_currentFile)) {
-            QMessageBox::warning(this, "unimalen", "Cannot save file " + m_currentFile);
+            QMessageBox::warning(this, "erstelle", "Cannot save file " + m_currentFile);
         }
     }
 }
@@ -927,7 +927,7 @@ void MainWindow::saveAsFile()
         if (m_tabWidget->saveCurrentDocument(fileName)) {
             setCurrentFile(fileName);
         } else {
-            QMessageBox::warning(this, "unimalen", "Cannot save file " + fileName);
+            QMessageBox::warning(this, "erstelle", "Cannot save file " + fileName);
         }
     }
 }
@@ -943,7 +943,7 @@ void MainWindow::exportFile()
         if (canvas && canvas->saveCanvas(fileName)) {
             QMessageBox::information(this, "Export Success", "Image exported successfully!");
         } else {
-            QMessageBox::warning(this, "unimalen", "Cannot export file " + fileName);
+            QMessageBox::warning(this, "erstelle", "Cannot export file " + fileName);
         }
     }
 }
@@ -1296,7 +1296,7 @@ void MainWindow::onThicknessSelected(int thickness)
 void MainWindow::setCurrentFile(const QString &fileName)
 {
     m_currentFile = fileName;
-    QString title = "unimalen - ";
+    QString title = "erstelle - ";
     if (fileName.isEmpty()) {
         title += "Untitled";
     } else {
@@ -1346,13 +1346,13 @@ void MainWindow::updateRecentFilesMenu()
 
 void MainWindow::loadRecentFiles()
 {
-    QSettings settings("unimalen", "unimalen");
+    QSettings settings("erstelle", "erstelle");
     m_recentFiles = settings.value("recentFiles").toStringList();
 }
 
 void MainWindow::saveRecentFiles()
 {
-    QSettings settings("unimalen", "unimalen");
+    QSettings settings("erstelle", "erstelle");
     settings.setValue("recentFiles", m_recentFiles);
 }
 
@@ -1365,7 +1365,7 @@ void MainWindow::openRecentFile()
             if (m_tabWidget->loadDocument(fileName)) {
                 setCurrentFile(fileName);
             } else {
-                QMessageBox::warning(this, "unimalen", "Cannot open file " + fileName);
+                QMessageBox::warning(this, "erstelle", "Cannot open file " + fileName);
             }
         } else {
             QMessageBox::warning(this, "File Not Found", "The file " + fileName + " no longer exists.");
@@ -1385,14 +1385,14 @@ void MainWindow::clearRecentFiles()
 
 void MainWindow::loadPreferences()
 {
-    QSettings settings("unimalen", "unimalen");
+    QSettings settings("erstelle", "erstelle");
     m_autoSaveEnabled = settings.value("autoSave/enabled", true).toBool();
     m_autoSaveInterval = settings.value("autoSave/interval", 5).toInt(); // Default 5 minutes
 }
 
 void MainWindow::savePreferences()
 {
-    QSettings settings("unimalen", "unimalen");
+    QSettings settings("erstelle", "erstelle");
     settings.setValue("autoSave/enabled", m_autoSaveEnabled);
     settings.setValue("autoSave/interval", m_autoSaveInterval);
 }
@@ -1511,7 +1511,7 @@ void MainWindow::onTabChanged(int index)
     // Update window title based on current tab
     QString currentTabName = m_tabWidget->tabName(m_tabWidget->currentIndex());
     if (!currentTabName.isEmpty()) {
-        setWindowTitle(QString("unimalen - %1").arg(currentTabName));
+        setWindowTitle(QString("erstelle - %1").arg(currentTabName));
     }
 }
 
@@ -1638,7 +1638,7 @@ void MainWindow::connectCanvasSignals(Canvas *canvas)
         Canvas *canvas = getCurrentCanvas();
         if (canvas) {
             QString currentTabName = m_tabWidget->tabName(m_tabWidget->currentIndex());
-            QString title = QString("unimalen - %1%2").arg(currentTabName).arg(canvas->isModified() ? " *" : "");
+            QString title = QString("erstelle - %1%2").arg(currentTabName).arg(canvas->isModified() ? " *" : "");
             setWindowTitle(title);
         }
     });

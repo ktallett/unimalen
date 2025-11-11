@@ -359,10 +359,9 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "CMakeFiles/unimalen-core_autogen.dir/AutogenInfo.json"
-  "CMakeFiles/unimalen-tools_autogen.dir/AutogenInfo.json"
-  "CMakeFiles/unimalen-ui_autogen.dir/AutogenInfo.json"
-  "CMakeFiles/unimalen_autogen.dir/AutogenInfo.json"
+  "CMakeFiles/erstelle-core_autogen.dir/AutogenInfo.json"
+  "CMakeFiles/erstelle-ui_autogen.dir/AutogenInfo.json"
+  "CMakeFiles/erstelle_autogen.dir/AutogenInfo.json"
   ".qt/QtDeploySupport.cmake"
   ".qt/QtDeployTargets.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
@@ -370,16 +369,13 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/unimalen-core.dir/DependInfo.cmake"
-  "CMakeFiles/unimalen-tools.dir/DependInfo.cmake"
-  "CMakeFiles/unimalen-ui.dir/DependInfo.cmake"
-  "CMakeFiles/unimalen.dir/DependInfo.cmake"
-  "CMakeFiles/unimalen-core_autogen_timestamp_deps.dir/DependInfo.cmake"
-  "CMakeFiles/unimalen-core_autogen.dir/DependInfo.cmake"
-  "CMakeFiles/unimalen-tools_autogen_timestamp_deps.dir/DependInfo.cmake"
-  "CMakeFiles/unimalen-tools_autogen.dir/DependInfo.cmake"
-  "CMakeFiles/unimalen-ui_autogen_timestamp_deps.dir/DependInfo.cmake"
-  "CMakeFiles/unimalen-ui_autogen.dir/DependInfo.cmake"
-  "CMakeFiles/unimalen_autogen_timestamp_deps.dir/DependInfo.cmake"
-  "CMakeFiles/unimalen_autogen.dir/DependInfo.cmake"
+  "CMakeFiles/erstelle-core.dir/DependInfo.cmake"
+  "CMakeFiles/erstelle-ui.dir/DependInfo.cmake"
+  "CMakeFiles/erstelle.dir/DependInfo.cmake"
+  "CMakeFiles/erstelle-core_autogen_timestamp_deps.dir/DependInfo.cmake"
+  "CMakeFiles/erstelle-core_autogen.dir/DependInfo.cmake"
+  "CMakeFiles/erstelle-ui_autogen_timestamp_deps.dir/DependInfo.cmake"
+  "CMakeFiles/erstelle-ui_autogen.dir/DependInfo.cmake"
+  "CMakeFiles/erstelle_autogen_timestamp_deps.dir/DependInfo.cmake"
+  "CMakeFiles/erstelle_autogen.dir/DependInfo.cmake"
   )

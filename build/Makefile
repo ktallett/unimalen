@@ -162,167 +162,200 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named unimalen-core
+# Target rules for targets named erstelle-core
 
 # Build rule for target.
-unimalen-core: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unimalen-core
-.PHONY : unimalen-core
+erstelle-core: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle-core
+.PHONY : erstelle-core
 
 # fast build rule for target.
-unimalen-core/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/build
-.PHONY : unimalen-core/fast
+erstelle-core/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/build
+.PHONY : erstelle-core/fast
 
 #=============================================================================
-# Target rules for targets named unimalen-tools
+# Target rules for targets named erstelle-ui
 
 # Build rule for target.
-unimalen-tools: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unimalen-tools
-.PHONY : unimalen-tools
+erstelle-ui: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle-ui
+.PHONY : erstelle-ui
 
 # fast build rule for target.
-unimalen-tools/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/build
-.PHONY : unimalen-tools/fast
+erstelle-ui/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/build
+.PHONY : erstelle-ui/fast
 
 #=============================================================================
-# Target rules for targets named unimalen-ui
+# Target rules for targets named erstelle
 
 # Build rule for target.
-unimalen-ui: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unimalen-ui
-.PHONY : unimalen-ui
+erstelle: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle
+.PHONY : erstelle
 
 # fast build rule for target.
-unimalen-ui/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/build
-.PHONY : unimalen-ui/fast
+erstelle/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle.dir/build.make CMakeFiles/erstelle.dir/build
+.PHONY : erstelle/fast
 
 #=============================================================================
-# Target rules for targets named unimalen
+# Target rules for targets named erstelle-core_autogen_timestamp_deps
 
 # Build rule for target.
-unimalen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unimalen
-.PHONY : unimalen
+erstelle-core_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle-core_autogen_timestamp_deps
+.PHONY : erstelle-core_autogen_timestamp_deps
 
 # fast build rule for target.
-unimalen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen.dir/build.make CMakeFiles/unimalen.dir/build
-.PHONY : unimalen/fast
+erstelle-core_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core_autogen_timestamp_deps.dir/build.make CMakeFiles/erstelle-core_autogen_timestamp_deps.dir/build
+.PHONY : erstelle-core_autogen_timestamp_deps/fast
 
 #=============================================================================
-# Target rules for targets named unimalen-core_autogen_timestamp_deps
+# Target rules for targets named erstelle-core_autogen
 
 # Build rule for target.
-unimalen-core_autogen_timestamp_deps: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unimalen-core_autogen_timestamp_deps
-.PHONY : unimalen-core_autogen_timestamp_deps
+erstelle-core_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle-core_autogen
+.PHONY : erstelle-core_autogen
 
 # fast build rule for target.
-unimalen-core_autogen_timestamp_deps/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core_autogen_timestamp_deps.dir/build.make CMakeFiles/unimalen-core_autogen_timestamp_deps.dir/build
-.PHONY : unimalen-core_autogen_timestamp_deps/fast
+erstelle-core_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core_autogen.dir/build.make CMakeFiles/erstelle-core_autogen.dir/build
+.PHONY : erstelle-core_autogen/fast
 
 #=============================================================================
-# Target rules for targets named unimalen-core_autogen
+# Target rules for targets named erstelle-ui_autogen_timestamp_deps
 
 # Build rule for target.
-unimalen-core_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unimalen-core_autogen
-.PHONY : unimalen-core_autogen
+erstelle-ui_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle-ui_autogen_timestamp_deps
+.PHONY : erstelle-ui_autogen_timestamp_deps
 
 # fast build rule for target.
-unimalen-core_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core_autogen.dir/build.make CMakeFiles/unimalen-core_autogen.dir/build
-.PHONY : unimalen-core_autogen/fast
+erstelle-ui_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui_autogen_timestamp_deps.dir/build.make CMakeFiles/erstelle-ui_autogen_timestamp_deps.dir/build
+.PHONY : erstelle-ui_autogen_timestamp_deps/fast
 
 #=============================================================================
-# Target rules for targets named unimalen-tools_autogen_timestamp_deps
+# Target rules for targets named erstelle-ui_autogen
 
 # Build rule for target.
-unimalen-tools_autogen_timestamp_deps: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unimalen-tools_autogen_timestamp_deps
-.PHONY : unimalen-tools_autogen_timestamp_deps
+erstelle-ui_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle-ui_autogen
+.PHONY : erstelle-ui_autogen
 
 # fast build rule for target.
-unimalen-tools_autogen_timestamp_deps/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools_autogen_timestamp_deps.dir/build.make CMakeFiles/unimalen-tools_autogen_timestamp_deps.dir/build
-.PHONY : unimalen-tools_autogen_timestamp_deps/fast
+erstelle-ui_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui_autogen.dir/build.make CMakeFiles/erstelle-ui_autogen.dir/build
+.PHONY : erstelle-ui_autogen/fast
 
 #=============================================================================
-# Target rules for targets named unimalen-tools_autogen
+# Target rules for targets named erstelle_autogen_timestamp_deps
 
 # Build rule for target.
-unimalen-tools_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unimalen-tools_autogen
-.PHONY : unimalen-tools_autogen
+erstelle_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle_autogen_timestamp_deps
+.PHONY : erstelle_autogen_timestamp_deps
 
 # fast build rule for target.
-unimalen-tools_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools_autogen.dir/build.make CMakeFiles/unimalen-tools_autogen.dir/build
-.PHONY : unimalen-tools_autogen/fast
+erstelle_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle_autogen_timestamp_deps.dir/build.make CMakeFiles/erstelle_autogen_timestamp_deps.dir/build
+.PHONY : erstelle_autogen_timestamp_deps/fast
 
 #=============================================================================
-# Target rules for targets named unimalen-ui_autogen_timestamp_deps
+# Target rules for targets named erstelle_autogen
 
 # Build rule for target.
-unimalen-ui_autogen_timestamp_deps: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unimalen-ui_autogen_timestamp_deps
-.PHONY : unimalen-ui_autogen_timestamp_deps
+erstelle_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle_autogen
+.PHONY : erstelle_autogen
 
 # fast build rule for target.
-unimalen-ui_autogen_timestamp_deps/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui_autogen_timestamp_deps.dir/build.make CMakeFiles/unimalen-ui_autogen_timestamp_deps.dir/build
-.PHONY : unimalen-ui_autogen_timestamp_deps/fast
+erstelle_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle_autogen.dir/build.make CMakeFiles/erstelle_autogen.dir/build
+.PHONY : erstelle_autogen/fast
 
-#=============================================================================
-# Target rules for targets named unimalen-ui_autogen
+erstelle-core_autogen/mocs_compilation.o: erstelle-core_autogen/mocs_compilation.cpp.o
+.PHONY : erstelle-core_autogen/mocs_compilation.o
 
-# Build rule for target.
-unimalen-ui_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unimalen-ui_autogen
-.PHONY : unimalen-ui_autogen
+# target to build an object file
+erstelle-core_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/erstelle-core_autogen/mocs_compilation.cpp.o
+.PHONY : erstelle-core_autogen/mocs_compilation.cpp.o
 
-# fast build rule for target.
-unimalen-ui_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui_autogen.dir/build.make CMakeFiles/unimalen-ui_autogen.dir/build
-.PHONY : unimalen-ui_autogen/fast
+erstelle-core_autogen/mocs_compilation.i: erstelle-core_autogen/mocs_compilation.cpp.i
+.PHONY : erstelle-core_autogen/mocs_compilation.i
 
-#=============================================================================
-# Target rules for targets named unimalen_autogen_timestamp_deps
+# target to preprocess a source file
+erstelle-core_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/erstelle-core_autogen/mocs_compilation.cpp.i
+.PHONY : erstelle-core_autogen/mocs_compilation.cpp.i
 
-# Build rule for target.
-unimalen_autogen_timestamp_deps: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unimalen_autogen_timestamp_deps
-.PHONY : unimalen_autogen_timestamp_deps
+erstelle-core_autogen/mocs_compilation.s: erstelle-core_autogen/mocs_compilation.cpp.s
+.PHONY : erstelle-core_autogen/mocs_compilation.s
 
-# fast build rule for target.
-unimalen_autogen_timestamp_deps/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen_autogen_timestamp_deps.dir/build.make CMakeFiles/unimalen_autogen_timestamp_deps.dir/build
-.PHONY : unimalen_autogen_timestamp_deps/fast
+# target to generate assembly for a file
+erstelle-core_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/erstelle-core_autogen/mocs_compilation.cpp.s
+.PHONY : erstelle-core_autogen/mocs_compilation.cpp.s
 
-#=============================================================================
-# Target rules for targets named unimalen_autogen
+erstelle-ui_autogen/mocs_compilation.o: erstelle-ui_autogen/mocs_compilation.cpp.o
+.PHONY : erstelle-ui_autogen/mocs_compilation.o
 
-# Build rule for target.
-unimalen_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unimalen_autogen
-.PHONY : unimalen_autogen
+# target to build an object file
+erstelle-ui_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/erstelle-ui_autogen/mocs_compilation.cpp.o
+.PHONY : erstelle-ui_autogen/mocs_compilation.cpp.o
 
-# fast build rule for target.
-unimalen_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen_autogen.dir/build.make CMakeFiles/unimalen_autogen.dir/build
-.PHONY : unimalen_autogen/fast
+erstelle-ui_autogen/mocs_compilation.i: erstelle-ui_autogen/mocs_compilation.cpp.i
+.PHONY : erstelle-ui_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+erstelle-ui_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/erstelle-ui_autogen/mocs_compilation.cpp.i
+.PHONY : erstelle-ui_autogen/mocs_compilation.cpp.i
+
+erstelle-ui_autogen/mocs_compilation.s: erstelle-ui_autogen/mocs_compilation.cpp.s
+.PHONY : erstelle-ui_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+erstelle-ui_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/erstelle-ui_autogen/mocs_compilation.cpp.s
+.PHONY : erstelle-ui_autogen/mocs_compilation.cpp.s
+
+erstelle_autogen/mocs_compilation.o: erstelle_autogen/mocs_compilation.cpp.o
+.PHONY : erstelle_autogen/mocs_compilation.o
+
+# target to build an object file
+erstelle_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle.dir/build.make CMakeFiles/erstelle.dir/erstelle_autogen/mocs_compilation.cpp.o
+.PHONY : erstelle_autogen/mocs_compilation.cpp.o
+
+erstelle_autogen/mocs_compilation.i: erstelle_autogen/mocs_compilation.cpp.i
+.PHONY : erstelle_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+erstelle_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle.dir/build.make CMakeFiles/erstelle.dir/erstelle_autogen/mocs_compilation.cpp.i
+.PHONY : erstelle_autogen/mocs_compilation.cpp.i
+
+erstelle_autogen/mocs_compilation.s: erstelle_autogen/mocs_compilation.cpp.s
+.PHONY : erstelle_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+erstelle_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle.dir/build.make CMakeFiles/erstelle.dir/erstelle_autogen/mocs_compilation.cpp.s
+.PHONY : erstelle_autogen/mocs_compilation.cpp.s
 
 src/canvas.o: src/canvas.cpp.o
 .PHONY : src/canvas.o
 
 # target to build an object file
 src/canvas.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/canvas.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/canvas.cpp.o
 .PHONY : src/canvas.cpp.o
 
 src/canvas.i: src/canvas.cpp.i
@@ -330,7 +363,7 @@ src/canvas.i: src/canvas.cpp.i
 
 # target to preprocess a source file
 src/canvas.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/canvas.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/canvas.cpp.i
 .PHONY : src/canvas.cpp.i
 
 src/canvas.s: src/canvas.cpp.s
@@ -338,7 +371,7 @@ src/canvas.s: src/canvas.cpp.s
 
 # target to generate assembly for a file
 src/canvas.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/canvas.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/canvas.cpp.s
 .PHONY : src/canvas.cpp.s
 
 src/colorbar.o: src/colorbar.cpp.o
@@ -346,7 +379,7 @@ src/colorbar.o: src/colorbar.cpp.o
 
 # target to build an object file
 src/colorbar.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/colorbar.cpp.o
 .PHONY : src/colorbar.cpp.o
 
 src/colorbar.i: src/colorbar.cpp.i
@@ -354,7 +387,7 @@ src/colorbar.i: src/colorbar.cpp.i
 
 # target to preprocess a source file
 src/colorbar.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/colorbar.cpp.i
 .PHONY : src/colorbar.cpp.i
 
 src/colorbar.s: src/colorbar.cpp.s
@@ -362,7 +395,7 @@ src/colorbar.s: src/colorbar.cpp.s
 
 # target to generate assembly for a file
 src/colorbar.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/colorbar.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/colorbar.cpp.s
 .PHONY : src/colorbar.cpp.s
 
 src/core/Document.o: src/core/Document.cpp.o
@@ -370,7 +403,7 @@ src/core/Document.o: src/core/Document.cpp.o
 
 # target to build an object file
 src/core/Document.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/src/core/Document.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Document.cpp.o
 .PHONY : src/core/Document.cpp.o
 
 src/core/Document.i: src/core/Document.cpp.i
@@ -378,7 +411,7 @@ src/core/Document.i: src/core/Document.cpp.i
 
 # target to preprocess a source file
 src/core/Document.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/src/core/Document.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Document.cpp.i
 .PHONY : src/core/Document.cpp.i
 
 src/core/Document.s: src/core/Document.cpp.s
@@ -386,7 +419,7 @@ src/core/Document.s: src/core/Document.cpp.s
 
 # target to generate assembly for a file
 src/core/Document.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/src/core/Document.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Document.cpp.s
 .PHONY : src/core/Document.cpp.s
 
 src/core/Layer.o: src/core/Layer.cpp.o
@@ -394,7 +427,7 @@ src/core/Layer.o: src/core/Layer.cpp.o
 
 # target to build an object file
 src/core/Layer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/src/core/Layer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Layer.cpp.o
 .PHONY : src/core/Layer.cpp.o
 
 src/core/Layer.i: src/core/Layer.cpp.i
@@ -402,7 +435,7 @@ src/core/Layer.i: src/core/Layer.cpp.i
 
 # target to preprocess a source file
 src/core/Layer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/src/core/Layer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Layer.cpp.i
 .PHONY : src/core/Layer.cpp.i
 
 src/core/Layer.s: src/core/Layer.cpp.s
@@ -410,7 +443,7 @@ src/core/Layer.s: src/core/Layer.cpp.s
 
 # target to generate assembly for a file
 src/core/Layer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/src/core/Layer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Layer.cpp.s
 .PHONY : src/core/Layer.cpp.s
 
 src/core/Page.o: src/core/Page.cpp.o
@@ -418,7 +451,7 @@ src/core/Page.o: src/core/Page.cpp.o
 
 # target to build an object file
 src/core/Page.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/src/core/Page.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Page.cpp.o
 .PHONY : src/core/Page.cpp.o
 
 src/core/Page.i: src/core/Page.cpp.i
@@ -426,7 +459,7 @@ src/core/Page.i: src/core/Page.cpp.i
 
 # target to preprocess a source file
 src/core/Page.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/src/core/Page.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Page.cpp.i
 .PHONY : src/core/Page.cpp.i
 
 src/core/Page.s: src/core/Page.cpp.s
@@ -434,7 +467,7 @@ src/core/Page.s: src/core/Page.cpp.s
 
 # target to generate assembly for a file
 src/core/Page.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/src/core/Page.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Page.cpp.s
 .PHONY : src/core/Page.cpp.s
 
 src/core/UndoCommands.o: src/core/UndoCommands.cpp.o
@@ -442,7 +475,7 @@ src/core/UndoCommands.o: src/core/UndoCommands.cpp.o
 
 # target to build an object file
 src/core/UndoCommands.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/src/core/UndoCommands.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/UndoCommands.cpp.o
 .PHONY : src/core/UndoCommands.cpp.o
 
 src/core/UndoCommands.i: src/core/UndoCommands.cpp.i
@@ -450,7 +483,7 @@ src/core/UndoCommands.i: src/core/UndoCommands.cpp.i
 
 # target to preprocess a source file
 src/core/UndoCommands.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/src/core/UndoCommands.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/UndoCommands.cpp.i
 .PHONY : src/core/UndoCommands.cpp.i
 
 src/core/UndoCommands.s: src/core/UndoCommands.cpp.s
@@ -458,7 +491,7 @@ src/core/UndoCommands.s: src/core/UndoCommands.cpp.s
 
 # target to generate assembly for a file
 src/core/UndoCommands.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/src/core/UndoCommands.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/UndoCommands.cpp.s
 .PHONY : src/core/UndoCommands.cpp.s
 
 src/layerpanel.o: src/layerpanel.cpp.o
@@ -466,7 +499,7 @@ src/layerpanel.o: src/layerpanel.cpp.o
 
 # target to build an object file
 src/layerpanel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/layerpanel.cpp.o
 .PHONY : src/layerpanel.cpp.o
 
 src/layerpanel.i: src/layerpanel.cpp.i
@@ -474,7 +507,7 @@ src/layerpanel.i: src/layerpanel.cpp.i
 
 # target to preprocess a source file
 src/layerpanel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/layerpanel.cpp.i
 .PHONY : src/layerpanel.cpp.i
 
 src/layerpanel.s: src/layerpanel.cpp.s
@@ -482,7 +515,7 @@ src/layerpanel.s: src/layerpanel.cpp.s
 
 # target to generate assembly for a file
 src/layerpanel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/layerpanel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/layerpanel.cpp.s
 .PHONY : src/layerpanel.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -490,7 +523,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen.dir/build.make CMakeFiles/unimalen.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle.dir/build.make CMakeFiles/erstelle.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -498,7 +531,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen.dir/build.make CMakeFiles/unimalen.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle.dir/build.make CMakeFiles/erstelle.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -506,7 +539,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen.dir/build.make CMakeFiles/unimalen.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle.dir/build.make CMakeFiles/erstelle.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/mainwindow.o: src/mainwindow.cpp.o
@@ -514,7 +547,7 @@ src/mainwindow.o: src/mainwindow.cpp.o
 
 # target to build an object file
 src/mainwindow.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/mainwindow.cpp.o
 .PHONY : src/mainwindow.cpp.o
 
 src/mainwindow.i: src/mainwindow.cpp.i
@@ -522,7 +555,7 @@ src/mainwindow.i: src/mainwindow.cpp.i
 
 # target to preprocess a source file
 src/mainwindow.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/mainwindow.cpp.i
 .PHONY : src/mainwindow.cpp.i
 
 src/mainwindow.s: src/mainwindow.cpp.s
@@ -530,7 +563,7 @@ src/mainwindow.s: src/mainwindow.cpp.s
 
 # target to generate assembly for a file
 src/mainwindow.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/mainwindow.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/mainwindow.cpp.s
 .PHONY : src/mainwindow.cpp.s
 
 src/patternbar.o: src/patternbar.cpp.o
@@ -538,7 +571,7 @@ src/patternbar.o: src/patternbar.cpp.o
 
 # target to build an object file
 src/patternbar.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/patternbar.cpp.o
 .PHONY : src/patternbar.cpp.o
 
 src/patternbar.i: src/patternbar.cpp.i
@@ -546,7 +579,7 @@ src/patternbar.i: src/patternbar.cpp.i
 
 # target to preprocess a source file
 src/patternbar.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/patternbar.cpp.i
 .PHONY : src/patternbar.cpp.i
 
 src/patternbar.s: src/patternbar.cpp.s
@@ -554,7 +587,7 @@ src/patternbar.s: src/patternbar.cpp.s
 
 # target to generate assembly for a file
 src/patternbar.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/patternbar.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/patternbar.cpp.s
 .PHONY : src/patternbar.cpp.s
 
 src/tabwidget.o: src/tabwidget.cpp.o
@@ -562,7 +595,7 @@ src/tabwidget.o: src/tabwidget.cpp.o
 
 # target to build an object file
 src/tabwidget.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/tabwidget.cpp.o
 .PHONY : src/tabwidget.cpp.o
 
 src/tabwidget.i: src/tabwidget.cpp.i
@@ -570,7 +603,7 @@ src/tabwidget.i: src/tabwidget.cpp.i
 
 # target to preprocess a source file
 src/tabwidget.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/tabwidget.cpp.i
 .PHONY : src/tabwidget.cpp.i
 
 src/tabwidget.s: src/tabwidget.cpp.s
@@ -578,7 +611,7 @@ src/tabwidget.s: src/tabwidget.cpp.s
 
 # target to generate assembly for a file
 src/tabwidget.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/tabwidget.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/tabwidget.cpp.s
 .PHONY : src/tabwidget.cpp.s
 
 src/thicknessbar.o: src/thicknessbar.cpp.o
@@ -586,7 +619,7 @@ src/thicknessbar.o: src/thicknessbar.cpp.o
 
 # target to build an object file
 src/thicknessbar.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/thicknessbar.cpp.o
 .PHONY : src/thicknessbar.cpp.o
 
 src/thicknessbar.i: src/thicknessbar.cpp.i
@@ -594,7 +627,7 @@ src/thicknessbar.i: src/thicknessbar.cpp.i
 
 # target to preprocess a source file
 src/thicknessbar.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/thicknessbar.cpp.i
 .PHONY : src/thicknessbar.cpp.i
 
 src/thicknessbar.s: src/thicknessbar.cpp.s
@@ -602,7 +635,7 @@ src/thicknessbar.s: src/thicknessbar.cpp.s
 
 # target to generate assembly for a file
 src/thicknessbar.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/thicknessbar.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/thicknessbar.cpp.s
 .PHONY : src/thicknessbar.cpp.s
 
 src/toolbar.o: src/toolbar.cpp.o
@@ -610,7 +643,7 @@ src/toolbar.o: src/toolbar.cpp.o
 
 # target to build an object file
 src/toolbar.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/toolbar.cpp.o
 .PHONY : src/toolbar.cpp.o
 
 src/toolbar.i: src/toolbar.cpp.i
@@ -618,7 +651,7 @@ src/toolbar.i: src/toolbar.cpp.i
 
 # target to preprocess a source file
 src/toolbar.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/toolbar.cpp.i
 .PHONY : src/toolbar.cpp.i
 
 src/toolbar.s: src/toolbar.cpp.s
@@ -626,159 +659,15 @@ src/toolbar.s: src/toolbar.cpp.s
 
 # target to generate assembly for a file
 src/toolbar.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/toolbar.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/toolbar.cpp.s
 .PHONY : src/toolbar.cpp.s
-
-src/tools/BrushTool.o: src/tools/BrushTool.cpp.o
-.PHONY : src/tools/BrushTool.o
-
-# target to build an object file
-src/tools/BrushTool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.o
-.PHONY : src/tools/BrushTool.cpp.o
-
-src/tools/BrushTool.i: src/tools/BrushTool.cpp.i
-.PHONY : src/tools/BrushTool.i
-
-# target to preprocess a source file
-src/tools/BrushTool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.i
-.PHONY : src/tools/BrushTool.cpp.i
-
-src/tools/BrushTool.s: src/tools/BrushTool.cpp.s
-.PHONY : src/tools/BrushTool.s
-
-# target to generate assembly for a file
-src/tools/BrushTool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/BrushTool.cpp.s
-.PHONY : src/tools/BrushTool.cpp.s
-
-src/tools/EraserTool.o: src/tools/EraserTool.cpp.o
-.PHONY : src/tools/EraserTool.o
-
-# target to build an object file
-src/tools/EraserTool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.o
-.PHONY : src/tools/EraserTool.cpp.o
-
-src/tools/EraserTool.i: src/tools/EraserTool.cpp.i
-.PHONY : src/tools/EraserTool.i
-
-# target to preprocess a source file
-src/tools/EraserTool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.i
-.PHONY : src/tools/EraserTool.cpp.i
-
-src/tools/EraserTool.s: src/tools/EraserTool.cpp.s
-.PHONY : src/tools/EraserTool.s
-
-# target to generate assembly for a file
-src/tools/EraserTool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/EraserTool.cpp.s
-.PHONY : src/tools/EraserTool.cpp.s
-
-src/tools/LineTool.o: src/tools/LineTool.cpp.o
-.PHONY : src/tools/LineTool.o
-
-# target to build an object file
-src/tools/LineTool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.o
-.PHONY : src/tools/LineTool.cpp.o
-
-src/tools/LineTool.i: src/tools/LineTool.cpp.i
-.PHONY : src/tools/LineTool.i
-
-# target to preprocess a source file
-src/tools/LineTool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.i
-.PHONY : src/tools/LineTool.cpp.i
-
-src/tools/LineTool.s: src/tools/LineTool.cpp.s
-.PHONY : src/tools/LineTool.s
-
-# target to generate assembly for a file
-src/tools/LineTool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/LineTool.cpp.s
-.PHONY : src/tools/LineTool.cpp.s
-
-src/tools/MarkerTool.o: src/tools/MarkerTool.cpp.o
-.PHONY : src/tools/MarkerTool.o
-
-# target to build an object file
-src/tools/MarkerTool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.o
-.PHONY : src/tools/MarkerTool.cpp.o
-
-src/tools/MarkerTool.i: src/tools/MarkerTool.cpp.i
-.PHONY : src/tools/MarkerTool.i
-
-# target to preprocess a source file
-src/tools/MarkerTool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.i
-.PHONY : src/tools/MarkerTool.cpp.i
-
-src/tools/MarkerTool.s: src/tools/MarkerTool.cpp.s
-.PHONY : src/tools/MarkerTool.s
-
-# target to generate assembly for a file
-src/tools/MarkerTool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/MarkerTool.cpp.s
-.PHONY : src/tools/MarkerTool.cpp.s
-
-src/tools/PencilTool.o: src/tools/PencilTool.cpp.o
-.PHONY : src/tools/PencilTool.o
-
-# target to build an object file
-src/tools/PencilTool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.o
-.PHONY : src/tools/PencilTool.cpp.o
-
-src/tools/PencilTool.i: src/tools/PencilTool.cpp.i
-.PHONY : src/tools/PencilTool.i
-
-# target to preprocess a source file
-src/tools/PencilTool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.i
-.PHONY : src/tools/PencilTool.cpp.i
-
-src/tools/PencilTool.s: src/tools/PencilTool.cpp.s
-.PHONY : src/tools/PencilTool.s
-
-# target to generate assembly for a file
-src/tools/PencilTool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/PencilTool.cpp.s
-.PHONY : src/tools/PencilTool.cpp.s
-
-src/tools/ToolManager.o: src/tools/ToolManager.cpp.o
-.PHONY : src/tools/ToolManager.o
-
-# target to build an object file
-src/tools/ToolManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.o
-.PHONY : src/tools/ToolManager.cpp.o
-
-src/tools/ToolManager.i: src/tools/ToolManager.cpp.i
-.PHONY : src/tools/ToolManager.i
-
-# target to preprocess a source file
-src/tools/ToolManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.i
-.PHONY : src/tools/ToolManager.cpp.i
-
-src/tools/ToolManager.s: src/tools/ToolManager.cpp.s
-.PHONY : src/tools/ToolManager.s
-
-# target to generate assembly for a file
-src/tools/ToolManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/src/tools/ToolManager.cpp.s
-.PHONY : src/tools/ToolManager.cpp.s
 
 src/ui/UpdateDialog.o: src/ui/UpdateDialog.cpp.o
 .PHONY : src/ui/UpdateDialog.o
 
 # target to build an object file
 src/ui/UpdateDialog.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/ui/UpdateDialog.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/ui/UpdateDialog.cpp.o
 .PHONY : src/ui/UpdateDialog.cpp.o
 
 src/ui/UpdateDialog.i: src/ui/UpdateDialog.cpp.i
@@ -786,7 +675,7 @@ src/ui/UpdateDialog.i: src/ui/UpdateDialog.cpp.i
 
 # target to preprocess a source file
 src/ui/UpdateDialog.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/ui/UpdateDialog.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/ui/UpdateDialog.cpp.i
 .PHONY : src/ui/UpdateDialog.cpp.i
 
 src/ui/UpdateDialog.s: src/ui/UpdateDialog.cpp.s
@@ -794,104 +683,8 @@ src/ui/UpdateDialog.s: src/ui/UpdateDialog.cpp.s
 
 # target to generate assembly for a file
 src/ui/UpdateDialog.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/src/ui/UpdateDialog.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/ui/UpdateDialog.cpp.s
 .PHONY : src/ui/UpdateDialog.cpp.s
-
-unimalen-core_autogen/mocs_compilation.o: unimalen-core_autogen/mocs_compilation.cpp.o
-.PHONY : unimalen-core_autogen/mocs_compilation.o
-
-# target to build an object file
-unimalen-core_autogen/mocs_compilation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/unimalen-core_autogen/mocs_compilation.cpp.o
-.PHONY : unimalen-core_autogen/mocs_compilation.cpp.o
-
-unimalen-core_autogen/mocs_compilation.i: unimalen-core_autogen/mocs_compilation.cpp.i
-.PHONY : unimalen-core_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-unimalen-core_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/unimalen-core_autogen/mocs_compilation.cpp.i
-.PHONY : unimalen-core_autogen/mocs_compilation.cpp.i
-
-unimalen-core_autogen/mocs_compilation.s: unimalen-core_autogen/mocs_compilation.cpp.s
-.PHONY : unimalen-core_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-unimalen-core_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-core.dir/build.make CMakeFiles/unimalen-core.dir/unimalen-core_autogen/mocs_compilation.cpp.s
-.PHONY : unimalen-core_autogen/mocs_compilation.cpp.s
-
-unimalen-tools_autogen/mocs_compilation.o: unimalen-tools_autogen/mocs_compilation.cpp.o
-.PHONY : unimalen-tools_autogen/mocs_compilation.o
-
-# target to build an object file
-unimalen-tools_autogen/mocs_compilation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.o
-.PHONY : unimalen-tools_autogen/mocs_compilation.cpp.o
-
-unimalen-tools_autogen/mocs_compilation.i: unimalen-tools_autogen/mocs_compilation.cpp.i
-.PHONY : unimalen-tools_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-unimalen-tools_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.i
-.PHONY : unimalen-tools_autogen/mocs_compilation.cpp.i
-
-unimalen-tools_autogen/mocs_compilation.s: unimalen-tools_autogen/mocs_compilation.cpp.s
-.PHONY : unimalen-tools_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-unimalen-tools_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-tools.dir/build.make CMakeFiles/unimalen-tools.dir/unimalen-tools_autogen/mocs_compilation.cpp.s
-.PHONY : unimalen-tools_autogen/mocs_compilation.cpp.s
-
-unimalen-ui_autogen/mocs_compilation.o: unimalen-ui_autogen/mocs_compilation.cpp.o
-.PHONY : unimalen-ui_autogen/mocs_compilation.o
-
-# target to build an object file
-unimalen-ui_autogen/mocs_compilation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.o
-.PHONY : unimalen-ui_autogen/mocs_compilation.cpp.o
-
-unimalen-ui_autogen/mocs_compilation.i: unimalen-ui_autogen/mocs_compilation.cpp.i
-.PHONY : unimalen-ui_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-unimalen-ui_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.i
-.PHONY : unimalen-ui_autogen/mocs_compilation.cpp.i
-
-unimalen-ui_autogen/mocs_compilation.s: unimalen-ui_autogen/mocs_compilation.cpp.s
-.PHONY : unimalen-ui_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-unimalen-ui_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen-ui.dir/build.make CMakeFiles/unimalen-ui.dir/unimalen-ui_autogen/mocs_compilation.cpp.s
-.PHONY : unimalen-ui_autogen/mocs_compilation.cpp.s
-
-unimalen_autogen/mocs_compilation.o: unimalen_autogen/mocs_compilation.cpp.o
-.PHONY : unimalen_autogen/mocs_compilation.o
-
-# target to build an object file
-unimalen_autogen/mocs_compilation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen.dir/build.make CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o
-.PHONY : unimalen_autogen/mocs_compilation.cpp.o
-
-unimalen_autogen/mocs_compilation.i: unimalen_autogen/mocs_compilation.cpp.i
-.PHONY : unimalen_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-unimalen_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen.dir/build.make CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.i
-.PHONY : unimalen_autogen/mocs_compilation.cpp.i
-
-unimalen_autogen/mocs_compilation.s: unimalen_autogen/mocs_compilation.cpp.s
-.PHONY : unimalen_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-unimalen_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unimalen.dir/build.make CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.s
-.PHONY : unimalen_autogen/mocs_compilation.cpp.s
 
 # Help Target
 help:
@@ -905,18 +698,24 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... unimalen-core_autogen"
-	@echo "... unimalen-core_autogen_timestamp_deps"
-	@echo "... unimalen-tools_autogen"
-	@echo "... unimalen-tools_autogen_timestamp_deps"
-	@echo "... unimalen-ui_autogen"
-	@echo "... unimalen-ui_autogen_timestamp_deps"
-	@echo "... unimalen_autogen"
-	@echo "... unimalen_autogen_timestamp_deps"
-	@echo "... unimalen"
-	@echo "... unimalen-core"
-	@echo "... unimalen-tools"
-	@echo "... unimalen-ui"
+	@echo "... erstelle-core_autogen"
+	@echo "... erstelle-core_autogen_timestamp_deps"
+	@echo "... erstelle-ui_autogen"
+	@echo "... erstelle-ui_autogen_timestamp_deps"
+	@echo "... erstelle_autogen"
+	@echo "... erstelle_autogen_timestamp_deps"
+	@echo "... erstelle"
+	@echo "... erstelle-core"
+	@echo "... erstelle-ui"
+	@echo "... erstelle-core_autogen/mocs_compilation.o"
+	@echo "... erstelle-core_autogen/mocs_compilation.i"
+	@echo "... erstelle-core_autogen/mocs_compilation.s"
+	@echo "... erstelle-ui_autogen/mocs_compilation.o"
+	@echo "... erstelle-ui_autogen/mocs_compilation.i"
+	@echo "... erstelle-ui_autogen/mocs_compilation.s"
+	@echo "... erstelle_autogen/mocs_compilation.o"
+	@echo "... erstelle_autogen/mocs_compilation.i"
+	@echo "... erstelle_autogen/mocs_compilation.s"
 	@echo "... src/canvas.o"
 	@echo "... src/canvas.i"
 	@echo "... src/canvas.s"
@@ -956,39 +755,9 @@ help:
 	@echo "... src/toolbar.o"
 	@echo "... src/toolbar.i"
 	@echo "... src/toolbar.s"
-	@echo "... src/tools/BrushTool.o"
-	@echo "... src/tools/BrushTool.i"
-	@echo "... src/tools/BrushTool.s"
-	@echo "... src/tools/EraserTool.o"
-	@echo "... src/tools/EraserTool.i"
-	@echo "... src/tools/EraserTool.s"
-	@echo "... src/tools/LineTool.o"
-	@echo "... src/tools/LineTool.i"
-	@echo "... src/tools/LineTool.s"
-	@echo "... src/tools/MarkerTool.o"
-	@echo "... src/tools/MarkerTool.i"
-	@echo "... src/tools/MarkerTool.s"
-	@echo "... src/tools/PencilTool.o"
-	@echo "... src/tools/PencilTool.i"
-	@echo "... src/tools/PencilTool.s"
-	@echo "... src/tools/ToolManager.o"
-	@echo "... src/tools/ToolManager.i"
-	@echo "... src/tools/ToolManager.s"
 	@echo "... src/ui/UpdateDialog.o"
 	@echo "... src/ui/UpdateDialog.i"
 	@echo "... src/ui/UpdateDialog.s"
-	@echo "... unimalen-core_autogen/mocs_compilation.o"
-	@echo "... unimalen-core_autogen/mocs_compilation.i"
-	@echo "... unimalen-core_autogen/mocs_compilation.s"
-	@echo "... unimalen-tools_autogen/mocs_compilation.o"
-	@echo "... unimalen-tools_autogen/mocs_compilation.i"
-	@echo "... unimalen-tools_autogen/mocs_compilation.s"
-	@echo "... unimalen-ui_autogen/mocs_compilation.o"
-	@echo "... unimalen-ui_autogen/mocs_compilation.i"
-	@echo "... unimalen-ui_autogen/mocs_compilation.s"
-	@echo "... unimalen_autogen/mocs_compilation.o"
-	@echo "... unimalen_autogen/mocs_compilation.i"
-	@echo "... unimalen_autogen/mocs_compilation.s"
 .PHONY : help
 
 

@@ -120,7 +120,6 @@ unimalen: CMakeFiles/unimalen.dir/src/main.cpp.o
 unimalen: CMakeFiles/unimalen.dir/build.make
 unimalen: CMakeFiles/unimalen.dir/compiler_depend.ts
 unimalen: libunimalen-ui.a
-unimalen: libunimalen-tools.a
 unimalen: libunimalen-core.a
 unimalen: /usr/lib64/libQt6Widgets.so.6.9.3
 unimalen: /usr/lib64/libQt6Gui.so.6.9.3

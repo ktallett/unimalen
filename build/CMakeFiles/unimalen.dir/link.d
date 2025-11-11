@@ -5,7 +5,6 @@ unimalen: \
   CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o \
   CMakeFiles/unimalen.dir/src/main.cpp.o \
   libunimalen-ui.a \
-  libunimalen-tools.a \
   libunimalen-core.a \
   /usr/lib64/libQt6Widgets.so.6.9.3 \
   /usr/lib64/libQt6Gui.so.6.9.3 \
@@ -84,8 +83,6 @@ CMakeFiles/unimalen.dir/unimalen_autogen/mocs_compilation.cpp.o:
 CMakeFiles/unimalen.dir/src/main.cpp.o:
 
 libunimalen-ui.a:
-
-libunimalen-tools.a:
 
 libunimalen-core.a:
 

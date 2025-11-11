@@ -43,7 +43,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/unimalen/fonts" TYPE DIRECTORY FILES "/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/fonts/" FILES_MATCHING REGEX "/[^/]*\\.ttf$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/erstelle/fonts" TYPE DIRECTORY FILES "/home/kerntallett/Dropbox/mnt_reform/projects/unimalen/fonts/" FILES_MATCHING REGEX "/[^/]*\\.ttf$")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
