@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(erstelle)
+project(grfx)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -9,7 +9,7 @@ find_package(Qt6 REQUIRED COMPONENTS Core Widgets Gui LinguistTools)
 qt6_standard_project_setup()
 
 # ===== Core Library =====
-add_library(erstelle-core STATIC
+add_library(grfx-core STATIC
     src/core/Types.h
     src/core/Layer.h
     src/core/Layer.cpp
@@ -21,8 +21,8 @@ add_library(erstelle-core STATIC
     src/core/UndoCommands.cpp
 )
 
-target_link_libraries(erstelle-core PUBLIC Qt6::Core Qt6::Gui)
-target_include_directories(erstelle-core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_link_libraries(grfx-core PUBLIC Qt6::Core Qt6::Gui)
+target_include_directories(grfx-core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # ===== UI Library =====
 # For now, keep existing UI components as-is
@@ -50,36 +50,36 @@ set(UI_HEADERS
     src/ui/UpdateDialog.h
 )
 
-add_library(erstelle-ui STATIC ${UI_SOURCES} ${UI_HEADERS})
-target_link_libraries(erstelle-ui PUBLIC erstelle-core Qt6::Core Qt6::Widgets Qt6::Gui)
-target_include_directories(erstelle-ui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+add_library(grfx-ui STATIC ${UI_SOURCES} ${UI_HEADERS})
+target_link_libraries(grfx-ui PUBLIC grfx-core Qt6::Core Qt6::Widgets Qt6::Gui)
+target_include_directories(grfx-ui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # ===== Application =====
-qt6_add_executable(erstelle
+qt6_add_executable(grfx
     src/main.cpp
 )
 
-target_link_libraries(erstelle PRIVATE erstelle-ui erstelle-core Qt6::Core Qt6::Widgets Qt6::Gui)
+target_link_libraries(grfx PRIVATE grfx-ui grfx-core Qt6::Core Qt6::Widgets Qt6::Gui)
 
 # Add translation files
 # Temporarily commented out due to path issues
 # set(TRANSLATION_FILES
-#     translations/erstelle_en.ts
-#     translations/erstelle_es.ts
-#     translations/erstelle_fr.ts
-#     translations/erstelle_de.ts
+#     translations/grfx_en.ts
+#     translations/grfx_es.ts
+#     translations/grfx_fr.ts
+#     translations/grfx_de.ts
 # )
 #
-# qt6_add_translations(erstelle TS_FILES ${TRANSLATION_FILES})
+# qt6_add_translations(grfx TS_FILES ${TRANSLATION_FILES})
 
 # Set application properties
-set_target_properties(erstelle PROPERTIES
+set_target_properties(grfx PROPERTIES
     WIN32_EXECUTABLE TRUE
     MACOSX_BUNDLE TRUE
 )
 
 # Install fonts
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/fonts/
-    DESTINATION share/erstelle/fonts
+    DESTINATION share/grfx/fonts
     FILES_MATCHING PATTERN "*.ttf"
 )

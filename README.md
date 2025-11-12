@@ -1,4 +1,4 @@
-# Erstelle - Drawing and Painting Application
+# grfx - Drawing and Painting Application
 
 A lightweight drawing and painting application built with C++ and Qt 6 for creating zines and digital artwork.
 
@@ -35,7 +35,7 @@ mkdir -p build
 cd build
 cmake ..
 make -j4
-./erstelle
+./grfx
 ```
 
 ### Linux (Fedora/CentOS)
@@ -47,7 +47,7 @@ mkdir -p build
 cd build
 cmake ..
 make -j4
-./erstelle
+./grfx
 ```
 
 ### macOS
@@ -59,7 +59,7 @@ mkdir -p build
 cd build
 cmake -DCMAKE_PREFIX_PATH=/opt/homebrew/opt/qt@6 ..
 make -j4
-./erstelle
+./grfx
 ```
 
 ### Windows

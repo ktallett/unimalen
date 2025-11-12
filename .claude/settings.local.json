@@ -17,7 +17,8 @@
       "Bash(./unimalen:*)",
       "Bash(./build/unimalen:*)",
       "WebSearch",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(mv:*)"
     ],
     "deny": [],
     "ask": []
