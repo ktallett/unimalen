@@ -1,0 +1,1 @@
+/usr/lib64/ccache/c++ -Wl,--dependency-file=CMakeFiles/grfx.dir/link.d CMakeFiles/grfx.dir/grfx_autogen/mocs_compilation.cpp.o CMakeFiles/grfx.dir/src/main.cpp.o -o grfx  libgrfx-ui.a libgrfx-core.a /usr/lib64/libQt6Widgets.so.6.9.3 /usr/lib64/libQt6Gui.so.6.9.3 /usr/lib64/libGLX.so /usr/lib64/libOpenGL.so /usr/lib64/libQt6Core.so.6.9.3

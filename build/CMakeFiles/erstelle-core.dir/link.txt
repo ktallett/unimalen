@@ -1,2 +1,0 @@
-/usr/bin/ar qc liberstelle-core.a "CMakeFiles/erstelle-core.dir/erstelle-core_autogen/mocs_compilation.cpp.o" "CMakeFiles/erstelle-core.dir/src/core/Layer.cpp.o" "CMakeFiles/erstelle-core.dir/src/core/Page.cpp.o" "CMakeFiles/erstelle-core.dir/src/core/Document.cpp.o" "CMakeFiles/erstelle-core.dir/src/core/UndoCommands.cpp.o"
-/usr/bin/ranlib liberstelle-core.a

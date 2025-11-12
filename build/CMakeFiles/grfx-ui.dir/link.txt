@@ -1,0 +1,2 @@
+/usr/bin/ar qc libgrfx-ui.a "CMakeFiles/grfx-ui.dir/grfx-ui_autogen/mocs_compilation.cpp.o" "CMakeFiles/grfx-ui.dir/src/mainwindow.cpp.o" "CMakeFiles/grfx-ui.dir/src/canvas.cpp.o" "CMakeFiles/grfx-ui.dir/src/tabwidget.cpp.o" "CMakeFiles/grfx-ui.dir/src/toolbar.cpp.o" "CMakeFiles/grfx-ui.dir/src/patternbar.cpp.o" "CMakeFiles/grfx-ui.dir/src/thicknessbar.cpp.o" "CMakeFiles/grfx-ui.dir/src/layerpanel.cpp.o" "CMakeFiles/grfx-ui.dir/src/colorbar.cpp.o" "CMakeFiles/grfx-ui.dir/src/ui/UpdateDialog.cpp.o"
+/usr/bin/ranlib libgrfx-ui.a

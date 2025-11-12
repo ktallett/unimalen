@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen
+CMAKE_SOURCE_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/grfx
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build
+CMAKE_BINARY_DIR = /home/kerntallett/Dropbox/mnt_reform/projects/grfx/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,9 +132,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kerntallett/Dropbox/mnt_reform/projects/grfx/build/CMakeFiles /home/kerntallett/Dropbox/mnt_reform/projects/grfx/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kerntallett/Dropbox/mnt_reform/projects/unimalen/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kerntallett/Dropbox/mnt_reform/projects/grfx/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -162,200 +162,200 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named erstelle-core
+# Target rules for targets named grfx-core
 
 # Build rule for target.
-erstelle-core: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle-core
-.PHONY : erstelle-core
+grfx-core: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 grfx-core
+.PHONY : grfx-core
 
 # fast build rule for target.
-erstelle-core/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/build
-.PHONY : erstelle-core/fast
+grfx-core/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/build
+.PHONY : grfx-core/fast
 
 #=============================================================================
-# Target rules for targets named erstelle-ui
+# Target rules for targets named grfx-ui
 
 # Build rule for target.
-erstelle-ui: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle-ui
-.PHONY : erstelle-ui
+grfx-ui: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 grfx-ui
+.PHONY : grfx-ui
 
 # fast build rule for target.
-erstelle-ui/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/build
-.PHONY : erstelle-ui/fast
+grfx-ui/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/build
+.PHONY : grfx-ui/fast
 
 #=============================================================================
-# Target rules for targets named erstelle
+# Target rules for targets named grfx
 
 # Build rule for target.
-erstelle: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle
-.PHONY : erstelle
+grfx: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 grfx
+.PHONY : grfx
 
 # fast build rule for target.
-erstelle/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle.dir/build.make CMakeFiles/erstelle.dir/build
-.PHONY : erstelle/fast
+grfx/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx.dir/build.make CMakeFiles/grfx.dir/build
+.PHONY : grfx/fast
 
 #=============================================================================
-# Target rules for targets named erstelle-core_autogen_timestamp_deps
+# Target rules for targets named grfx-core_autogen_timestamp_deps
 
 # Build rule for target.
-erstelle-core_autogen_timestamp_deps: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle-core_autogen_timestamp_deps
-.PHONY : erstelle-core_autogen_timestamp_deps
+grfx-core_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 grfx-core_autogen_timestamp_deps
+.PHONY : grfx-core_autogen_timestamp_deps
 
 # fast build rule for target.
-erstelle-core_autogen_timestamp_deps/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core_autogen_timestamp_deps.dir/build.make CMakeFiles/erstelle-core_autogen_timestamp_deps.dir/build
-.PHONY : erstelle-core_autogen_timestamp_deps/fast
+grfx-core_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core_autogen_timestamp_deps.dir/build.make CMakeFiles/grfx-core_autogen_timestamp_deps.dir/build
+.PHONY : grfx-core_autogen_timestamp_deps/fast
 
 #=============================================================================
-# Target rules for targets named erstelle-core_autogen
+# Target rules for targets named grfx-core_autogen
 
 # Build rule for target.
-erstelle-core_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle-core_autogen
-.PHONY : erstelle-core_autogen
+grfx-core_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 grfx-core_autogen
+.PHONY : grfx-core_autogen
 
 # fast build rule for target.
-erstelle-core_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core_autogen.dir/build.make CMakeFiles/erstelle-core_autogen.dir/build
-.PHONY : erstelle-core_autogen/fast
+grfx-core_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core_autogen.dir/build.make CMakeFiles/grfx-core_autogen.dir/build
+.PHONY : grfx-core_autogen/fast
 
 #=============================================================================
-# Target rules for targets named erstelle-ui_autogen_timestamp_deps
+# Target rules for targets named grfx-ui_autogen_timestamp_deps
 
 # Build rule for target.
-erstelle-ui_autogen_timestamp_deps: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle-ui_autogen_timestamp_deps
-.PHONY : erstelle-ui_autogen_timestamp_deps
+grfx-ui_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 grfx-ui_autogen_timestamp_deps
+.PHONY : grfx-ui_autogen_timestamp_deps
 
 # fast build rule for target.
-erstelle-ui_autogen_timestamp_deps/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui_autogen_timestamp_deps.dir/build.make CMakeFiles/erstelle-ui_autogen_timestamp_deps.dir/build
-.PHONY : erstelle-ui_autogen_timestamp_deps/fast
+grfx-ui_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui_autogen_timestamp_deps.dir/build.make CMakeFiles/grfx-ui_autogen_timestamp_deps.dir/build
+.PHONY : grfx-ui_autogen_timestamp_deps/fast
 
 #=============================================================================
-# Target rules for targets named erstelle-ui_autogen
+# Target rules for targets named grfx-ui_autogen
 
 # Build rule for target.
-erstelle-ui_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle-ui_autogen
-.PHONY : erstelle-ui_autogen
+grfx-ui_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 grfx-ui_autogen
+.PHONY : grfx-ui_autogen
 
 # fast build rule for target.
-erstelle-ui_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui_autogen.dir/build.make CMakeFiles/erstelle-ui_autogen.dir/build
-.PHONY : erstelle-ui_autogen/fast
+grfx-ui_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui_autogen.dir/build.make CMakeFiles/grfx-ui_autogen.dir/build
+.PHONY : grfx-ui_autogen/fast
 
 #=============================================================================
-# Target rules for targets named erstelle_autogen_timestamp_deps
+# Target rules for targets named grfx_autogen_timestamp_deps
 
 # Build rule for target.
-erstelle_autogen_timestamp_deps: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle_autogen_timestamp_deps
-.PHONY : erstelle_autogen_timestamp_deps
+grfx_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 grfx_autogen_timestamp_deps
+.PHONY : grfx_autogen_timestamp_deps
 
 # fast build rule for target.
-erstelle_autogen_timestamp_deps/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle_autogen_timestamp_deps.dir/build.make CMakeFiles/erstelle_autogen_timestamp_deps.dir/build
-.PHONY : erstelle_autogen_timestamp_deps/fast
+grfx_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx_autogen_timestamp_deps.dir/build.make CMakeFiles/grfx_autogen_timestamp_deps.dir/build
+.PHONY : grfx_autogen_timestamp_deps/fast
 
 #=============================================================================
-# Target rules for targets named erstelle_autogen
+# Target rules for targets named grfx_autogen
 
 # Build rule for target.
-erstelle_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 erstelle_autogen
-.PHONY : erstelle_autogen
+grfx_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 grfx_autogen
+.PHONY : grfx_autogen
 
 # fast build rule for target.
-erstelle_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle_autogen.dir/build.make CMakeFiles/erstelle_autogen.dir/build
-.PHONY : erstelle_autogen/fast
+grfx_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx_autogen.dir/build.make CMakeFiles/grfx_autogen.dir/build
+.PHONY : grfx_autogen/fast
 
-erstelle-core_autogen/mocs_compilation.o: erstelle-core_autogen/mocs_compilation.cpp.o
-.PHONY : erstelle-core_autogen/mocs_compilation.o
+grfx-core_autogen/mocs_compilation.o: grfx-core_autogen/mocs_compilation.cpp.o
+.PHONY : grfx-core_autogen/mocs_compilation.o
 
 # target to build an object file
-erstelle-core_autogen/mocs_compilation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/erstelle-core_autogen/mocs_compilation.cpp.o
-.PHONY : erstelle-core_autogen/mocs_compilation.cpp.o
+grfx-core_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/grfx-core_autogen/mocs_compilation.cpp.o
+.PHONY : grfx-core_autogen/mocs_compilation.cpp.o
 
-erstelle-core_autogen/mocs_compilation.i: erstelle-core_autogen/mocs_compilation.cpp.i
-.PHONY : erstelle-core_autogen/mocs_compilation.i
+grfx-core_autogen/mocs_compilation.i: grfx-core_autogen/mocs_compilation.cpp.i
+.PHONY : grfx-core_autogen/mocs_compilation.i
 
 # target to preprocess a source file
-erstelle-core_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/erstelle-core_autogen/mocs_compilation.cpp.i
-.PHONY : erstelle-core_autogen/mocs_compilation.cpp.i
+grfx-core_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/grfx-core_autogen/mocs_compilation.cpp.i
+.PHONY : grfx-core_autogen/mocs_compilation.cpp.i
 
-erstelle-core_autogen/mocs_compilation.s: erstelle-core_autogen/mocs_compilation.cpp.s
-.PHONY : erstelle-core_autogen/mocs_compilation.s
+grfx-core_autogen/mocs_compilation.s: grfx-core_autogen/mocs_compilation.cpp.s
+.PHONY : grfx-core_autogen/mocs_compilation.s
 
 # target to generate assembly for a file
-erstelle-core_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/erstelle-core_autogen/mocs_compilation.cpp.s
-.PHONY : erstelle-core_autogen/mocs_compilation.cpp.s
+grfx-core_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/grfx-core_autogen/mocs_compilation.cpp.s
+.PHONY : grfx-core_autogen/mocs_compilation.cpp.s
 
-erstelle-ui_autogen/mocs_compilation.o: erstelle-ui_autogen/mocs_compilation.cpp.o
-.PHONY : erstelle-ui_autogen/mocs_compilation.o
+grfx-ui_autogen/mocs_compilation.o: grfx-ui_autogen/mocs_compilation.cpp.o
+.PHONY : grfx-ui_autogen/mocs_compilation.o
 
 # target to build an object file
-erstelle-ui_autogen/mocs_compilation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/erstelle-ui_autogen/mocs_compilation.cpp.o
-.PHONY : erstelle-ui_autogen/mocs_compilation.cpp.o
+grfx-ui_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/grfx-ui_autogen/mocs_compilation.cpp.o
+.PHONY : grfx-ui_autogen/mocs_compilation.cpp.o
 
-erstelle-ui_autogen/mocs_compilation.i: erstelle-ui_autogen/mocs_compilation.cpp.i
-.PHONY : erstelle-ui_autogen/mocs_compilation.i
+grfx-ui_autogen/mocs_compilation.i: grfx-ui_autogen/mocs_compilation.cpp.i
+.PHONY : grfx-ui_autogen/mocs_compilation.i
 
 # target to preprocess a source file
-erstelle-ui_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/erstelle-ui_autogen/mocs_compilation.cpp.i
-.PHONY : erstelle-ui_autogen/mocs_compilation.cpp.i
+grfx-ui_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/grfx-ui_autogen/mocs_compilation.cpp.i
+.PHONY : grfx-ui_autogen/mocs_compilation.cpp.i
 
-erstelle-ui_autogen/mocs_compilation.s: erstelle-ui_autogen/mocs_compilation.cpp.s
-.PHONY : erstelle-ui_autogen/mocs_compilation.s
+grfx-ui_autogen/mocs_compilation.s: grfx-ui_autogen/mocs_compilation.cpp.s
+.PHONY : grfx-ui_autogen/mocs_compilation.s
 
 # target to generate assembly for a file
-erstelle-ui_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/erstelle-ui_autogen/mocs_compilation.cpp.s
-.PHONY : erstelle-ui_autogen/mocs_compilation.cpp.s
+grfx-ui_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/grfx-ui_autogen/mocs_compilation.cpp.s
+.PHONY : grfx-ui_autogen/mocs_compilation.cpp.s
 
-erstelle_autogen/mocs_compilation.o: erstelle_autogen/mocs_compilation.cpp.o
-.PHONY : erstelle_autogen/mocs_compilation.o
+grfx_autogen/mocs_compilation.o: grfx_autogen/mocs_compilation.cpp.o
+.PHONY : grfx_autogen/mocs_compilation.o
 
 # target to build an object file
-erstelle_autogen/mocs_compilation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle.dir/build.make CMakeFiles/erstelle.dir/erstelle_autogen/mocs_compilation.cpp.o
-.PHONY : erstelle_autogen/mocs_compilation.cpp.o
+grfx_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx.dir/build.make CMakeFiles/grfx.dir/grfx_autogen/mocs_compilation.cpp.o
+.PHONY : grfx_autogen/mocs_compilation.cpp.o
 
-erstelle_autogen/mocs_compilation.i: erstelle_autogen/mocs_compilation.cpp.i
-.PHONY : erstelle_autogen/mocs_compilation.i
+grfx_autogen/mocs_compilation.i: grfx_autogen/mocs_compilation.cpp.i
+.PHONY : grfx_autogen/mocs_compilation.i
 
 # target to preprocess a source file
-erstelle_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle.dir/build.make CMakeFiles/erstelle.dir/erstelle_autogen/mocs_compilation.cpp.i
-.PHONY : erstelle_autogen/mocs_compilation.cpp.i
+grfx_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx.dir/build.make CMakeFiles/grfx.dir/grfx_autogen/mocs_compilation.cpp.i
+.PHONY : grfx_autogen/mocs_compilation.cpp.i
 
-erstelle_autogen/mocs_compilation.s: erstelle_autogen/mocs_compilation.cpp.s
-.PHONY : erstelle_autogen/mocs_compilation.s
+grfx_autogen/mocs_compilation.s: grfx_autogen/mocs_compilation.cpp.s
+.PHONY : grfx_autogen/mocs_compilation.s
 
 # target to generate assembly for a file
-erstelle_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle.dir/build.make CMakeFiles/erstelle.dir/erstelle_autogen/mocs_compilation.cpp.s
-.PHONY : erstelle_autogen/mocs_compilation.cpp.s
+grfx_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx.dir/build.make CMakeFiles/grfx.dir/grfx_autogen/mocs_compilation.cpp.s
+.PHONY : grfx_autogen/mocs_compilation.cpp.s
 
 src/canvas.o: src/canvas.cpp.o
 .PHONY : src/canvas.o
 
 # target to build an object file
 src/canvas.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/canvas.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/canvas.cpp.o
 .PHONY : src/canvas.cpp.o
 
 src/canvas.i: src/canvas.cpp.i
@@ -363,7 +363,7 @@ src/canvas.i: src/canvas.cpp.i
 
 # target to preprocess a source file
 src/canvas.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/canvas.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/canvas.cpp.i
 .PHONY : src/canvas.cpp.i
 
 src/canvas.s: src/canvas.cpp.s
@@ -371,7 +371,7 @@ src/canvas.s: src/canvas.cpp.s
 
 # target to generate assembly for a file
 src/canvas.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/canvas.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/canvas.cpp.s
 .PHONY : src/canvas.cpp.s
 
 src/colorbar.o: src/colorbar.cpp.o
@@ -379,7 +379,7 @@ src/colorbar.o: src/colorbar.cpp.o
 
 # target to build an object file
 src/colorbar.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/colorbar.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/colorbar.cpp.o
 .PHONY : src/colorbar.cpp.o
 
 src/colorbar.i: src/colorbar.cpp.i
@@ -387,7 +387,7 @@ src/colorbar.i: src/colorbar.cpp.i
 
 # target to preprocess a source file
 src/colorbar.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/colorbar.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/colorbar.cpp.i
 .PHONY : src/colorbar.cpp.i
 
 src/colorbar.s: src/colorbar.cpp.s
@@ -395,7 +395,7 @@ src/colorbar.s: src/colorbar.cpp.s
 
 # target to generate assembly for a file
 src/colorbar.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/colorbar.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/colorbar.cpp.s
 .PHONY : src/colorbar.cpp.s
 
 src/core/Document.o: src/core/Document.cpp.o
@@ -403,7 +403,7 @@ src/core/Document.o: src/core/Document.cpp.o
 
 # target to build an object file
 src/core/Document.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Document.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/src/core/Document.cpp.o
 .PHONY : src/core/Document.cpp.o
 
 src/core/Document.i: src/core/Document.cpp.i
@@ -411,7 +411,7 @@ src/core/Document.i: src/core/Document.cpp.i
 
 # target to preprocess a source file
 src/core/Document.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Document.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/src/core/Document.cpp.i
 .PHONY : src/core/Document.cpp.i
 
 src/core/Document.s: src/core/Document.cpp.s
@@ -419,7 +419,7 @@ src/core/Document.s: src/core/Document.cpp.s
 
 # target to generate assembly for a file
 src/core/Document.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Document.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/src/core/Document.cpp.s
 .PHONY : src/core/Document.cpp.s
 
 src/core/Layer.o: src/core/Layer.cpp.o
@@ -427,7 +427,7 @@ src/core/Layer.o: src/core/Layer.cpp.o
 
 # target to build an object file
 src/core/Layer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Layer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/src/core/Layer.cpp.o
 .PHONY : src/core/Layer.cpp.o
 
 src/core/Layer.i: src/core/Layer.cpp.i
@@ -435,7 +435,7 @@ src/core/Layer.i: src/core/Layer.cpp.i
 
 # target to preprocess a source file
 src/core/Layer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Layer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/src/core/Layer.cpp.i
 .PHONY : src/core/Layer.cpp.i
 
 src/core/Layer.s: src/core/Layer.cpp.s
@@ -443,7 +443,7 @@ src/core/Layer.s: src/core/Layer.cpp.s
 
 # target to generate assembly for a file
 src/core/Layer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Layer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/src/core/Layer.cpp.s
 .PHONY : src/core/Layer.cpp.s
 
 src/core/Page.o: src/core/Page.cpp.o
@@ -451,7 +451,7 @@ src/core/Page.o: src/core/Page.cpp.o
 
 # target to build an object file
 src/core/Page.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Page.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/src/core/Page.cpp.o
 .PHONY : src/core/Page.cpp.o
 
 src/core/Page.i: src/core/Page.cpp.i
@@ -459,7 +459,7 @@ src/core/Page.i: src/core/Page.cpp.i
 
 # target to preprocess a source file
 src/core/Page.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Page.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/src/core/Page.cpp.i
 .PHONY : src/core/Page.cpp.i
 
 src/core/Page.s: src/core/Page.cpp.s
@@ -467,7 +467,7 @@ src/core/Page.s: src/core/Page.cpp.s
 
 # target to generate assembly for a file
 src/core/Page.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/Page.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/src/core/Page.cpp.s
 .PHONY : src/core/Page.cpp.s
 
 src/core/UndoCommands.o: src/core/UndoCommands.cpp.o
@@ -475,7 +475,7 @@ src/core/UndoCommands.o: src/core/UndoCommands.cpp.o
 
 # target to build an object file
 src/core/UndoCommands.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/UndoCommands.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/src/core/UndoCommands.cpp.o
 .PHONY : src/core/UndoCommands.cpp.o
 
 src/core/UndoCommands.i: src/core/UndoCommands.cpp.i
@@ -483,7 +483,7 @@ src/core/UndoCommands.i: src/core/UndoCommands.cpp.i
 
 # target to preprocess a source file
 src/core/UndoCommands.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/UndoCommands.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/src/core/UndoCommands.cpp.i
 .PHONY : src/core/UndoCommands.cpp.i
 
 src/core/UndoCommands.s: src/core/UndoCommands.cpp.s
@@ -491,7 +491,7 @@ src/core/UndoCommands.s: src/core/UndoCommands.cpp.s
 
 # target to generate assembly for a file
 src/core/UndoCommands.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-core.dir/build.make CMakeFiles/erstelle-core.dir/src/core/UndoCommands.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-core.dir/build.make CMakeFiles/grfx-core.dir/src/core/UndoCommands.cpp.s
 .PHONY : src/core/UndoCommands.cpp.s
 
 src/layerpanel.o: src/layerpanel.cpp.o
@@ -499,7 +499,7 @@ src/layerpanel.o: src/layerpanel.cpp.o
 
 # target to build an object file
 src/layerpanel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/layerpanel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/layerpanel.cpp.o
 .PHONY : src/layerpanel.cpp.o
 
 src/layerpanel.i: src/layerpanel.cpp.i
@@ -507,7 +507,7 @@ src/layerpanel.i: src/layerpanel.cpp.i
 
 # target to preprocess a source file
 src/layerpanel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/layerpanel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/layerpanel.cpp.i
 .PHONY : src/layerpanel.cpp.i
 
 src/layerpanel.s: src/layerpanel.cpp.s
@@ -515,7 +515,7 @@ src/layerpanel.s: src/layerpanel.cpp.s
 
 # target to generate assembly for a file
 src/layerpanel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/layerpanel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/layerpanel.cpp.s
 .PHONY : src/layerpanel.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -523,7 +523,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle.dir/build.make CMakeFiles/erstelle.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx.dir/build.make CMakeFiles/grfx.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -531,7 +531,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle.dir/build.make CMakeFiles/erstelle.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx.dir/build.make CMakeFiles/grfx.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -539,7 +539,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle.dir/build.make CMakeFiles/erstelle.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx.dir/build.make CMakeFiles/grfx.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/mainwindow.o: src/mainwindow.cpp.o
@@ -547,7 +547,7 @@ src/mainwindow.o: src/mainwindow.cpp.o
 
 # target to build an object file
 src/mainwindow.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/mainwindow.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/mainwindow.cpp.o
 .PHONY : src/mainwindow.cpp.o
 
 src/mainwindow.i: src/mainwindow.cpp.i
@@ -555,7 +555,7 @@ src/mainwindow.i: src/mainwindow.cpp.i
 
 # target to preprocess a source file
 src/mainwindow.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/mainwindow.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/mainwindow.cpp.i
 .PHONY : src/mainwindow.cpp.i
 
 src/mainwindow.s: src/mainwindow.cpp.s
@@ -563,7 +563,7 @@ src/mainwindow.s: src/mainwindow.cpp.s
 
 # target to generate assembly for a file
 src/mainwindow.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/mainwindow.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/mainwindow.cpp.s
 .PHONY : src/mainwindow.cpp.s
 
 src/patternbar.o: src/patternbar.cpp.o
@@ -571,7 +571,7 @@ src/patternbar.o: src/patternbar.cpp.o
 
 # target to build an object file
 src/patternbar.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/patternbar.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/patternbar.cpp.o
 .PHONY : src/patternbar.cpp.o
 
 src/patternbar.i: src/patternbar.cpp.i
@@ -579,7 +579,7 @@ src/patternbar.i: src/patternbar.cpp.i
 
 # target to preprocess a source file
 src/patternbar.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/patternbar.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/patternbar.cpp.i
 .PHONY : src/patternbar.cpp.i
 
 src/patternbar.s: src/patternbar.cpp.s
@@ -587,7 +587,7 @@ src/patternbar.s: src/patternbar.cpp.s
 
 # target to generate assembly for a file
 src/patternbar.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/patternbar.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/patternbar.cpp.s
 .PHONY : src/patternbar.cpp.s
 
 src/tabwidget.o: src/tabwidget.cpp.o
@@ -595,7 +595,7 @@ src/tabwidget.o: src/tabwidget.cpp.o
 
 # target to build an object file
 src/tabwidget.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/tabwidget.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/tabwidget.cpp.o
 .PHONY : src/tabwidget.cpp.o
 
 src/tabwidget.i: src/tabwidget.cpp.i
@@ -603,7 +603,7 @@ src/tabwidget.i: src/tabwidget.cpp.i
 
 # target to preprocess a source file
 src/tabwidget.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/tabwidget.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/tabwidget.cpp.i
 .PHONY : src/tabwidget.cpp.i
 
 src/tabwidget.s: src/tabwidget.cpp.s
@@ -611,7 +611,7 @@ src/tabwidget.s: src/tabwidget.cpp.s
 
 # target to generate assembly for a file
 src/tabwidget.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/tabwidget.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/tabwidget.cpp.s
 .PHONY : src/tabwidget.cpp.s
 
 src/thicknessbar.o: src/thicknessbar.cpp.o
@@ -619,7 +619,7 @@ src/thicknessbar.o: src/thicknessbar.cpp.o
 
 # target to build an object file
 src/thicknessbar.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/thicknessbar.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/thicknessbar.cpp.o
 .PHONY : src/thicknessbar.cpp.o
 
 src/thicknessbar.i: src/thicknessbar.cpp.i
@@ -627,7 +627,7 @@ src/thicknessbar.i: src/thicknessbar.cpp.i
 
 # target to preprocess a source file
 src/thicknessbar.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/thicknessbar.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/thicknessbar.cpp.i
 .PHONY : src/thicknessbar.cpp.i
 
 src/thicknessbar.s: src/thicknessbar.cpp.s
@@ -635,7 +635,7 @@ src/thicknessbar.s: src/thicknessbar.cpp.s
 
 # target to generate assembly for a file
 src/thicknessbar.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/thicknessbar.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/thicknessbar.cpp.s
 .PHONY : src/thicknessbar.cpp.s
 
 src/toolbar.o: src/toolbar.cpp.o
@@ -643,7 +643,7 @@ src/toolbar.o: src/toolbar.cpp.o
 
 # target to build an object file
 src/toolbar.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/toolbar.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/toolbar.cpp.o
 .PHONY : src/toolbar.cpp.o
 
 src/toolbar.i: src/toolbar.cpp.i
@@ -651,7 +651,7 @@ src/toolbar.i: src/toolbar.cpp.i
 
 # target to preprocess a source file
 src/toolbar.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/toolbar.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/toolbar.cpp.i
 .PHONY : src/toolbar.cpp.i
 
 src/toolbar.s: src/toolbar.cpp.s
@@ -659,7 +659,7 @@ src/toolbar.s: src/toolbar.cpp.s
 
 # target to generate assembly for a file
 src/toolbar.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/toolbar.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/toolbar.cpp.s
 .PHONY : src/toolbar.cpp.s
 
 src/ui/UpdateDialog.o: src/ui/UpdateDialog.cpp.o
@@ -667,7 +667,7 @@ src/ui/UpdateDialog.o: src/ui/UpdateDialog.cpp.o
 
 # target to build an object file
 src/ui/UpdateDialog.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/ui/UpdateDialog.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/ui/UpdateDialog.cpp.o
 .PHONY : src/ui/UpdateDialog.cpp.o
 
 src/ui/UpdateDialog.i: src/ui/UpdateDialog.cpp.i
@@ -675,7 +675,7 @@ src/ui/UpdateDialog.i: src/ui/UpdateDialog.cpp.i
 
 # target to preprocess a source file
 src/ui/UpdateDialog.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/ui/UpdateDialog.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/ui/UpdateDialog.cpp.i
 .PHONY : src/ui/UpdateDialog.cpp.i
 
 src/ui/UpdateDialog.s: src/ui/UpdateDialog.cpp.s
@@ -683,7 +683,7 @@ src/ui/UpdateDialog.s: src/ui/UpdateDialog.cpp.s
 
 # target to generate assembly for a file
 src/ui/UpdateDialog.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/erstelle-ui.dir/build.make CMakeFiles/erstelle-ui.dir/src/ui/UpdateDialog.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grfx-ui.dir/build.make CMakeFiles/grfx-ui.dir/src/ui/UpdateDialog.cpp.s
 .PHONY : src/ui/UpdateDialog.cpp.s
 
 # Help Target
@@ -698,24 +698,24 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... erstelle-core_autogen"
-	@echo "... erstelle-core_autogen_timestamp_deps"
-	@echo "... erstelle-ui_autogen"
-	@echo "... erstelle-ui_autogen_timestamp_deps"
-	@echo "... erstelle_autogen"
-	@echo "... erstelle_autogen_timestamp_deps"
-	@echo "... erstelle"
-	@echo "... erstelle-core"
-	@echo "... erstelle-ui"
-	@echo "... erstelle-core_autogen/mocs_compilation.o"
-	@echo "... erstelle-core_autogen/mocs_compilation.i"
-	@echo "... erstelle-core_autogen/mocs_compilation.s"
-	@echo "... erstelle-ui_autogen/mocs_compilation.o"
-	@echo "... erstelle-ui_autogen/mocs_compilation.i"
-	@echo "... erstelle-ui_autogen/mocs_compilation.s"
-	@echo "... erstelle_autogen/mocs_compilation.o"
-	@echo "... erstelle_autogen/mocs_compilation.i"
-	@echo "... erstelle_autogen/mocs_compilation.s"
+	@echo "... grfx-core_autogen"
+	@echo "... grfx-core_autogen_timestamp_deps"
+	@echo "... grfx-ui_autogen"
+	@echo "... grfx-ui_autogen_timestamp_deps"
+	@echo "... grfx_autogen"
+	@echo "... grfx_autogen_timestamp_deps"
+	@echo "... grfx"
+	@echo "... grfx-core"
+	@echo "... grfx-ui"
+	@echo "... grfx-core_autogen/mocs_compilation.o"
+	@echo "... grfx-core_autogen/mocs_compilation.i"
+	@echo "... grfx-core_autogen/mocs_compilation.s"
+	@echo "... grfx-ui_autogen/mocs_compilation.o"
+	@echo "... grfx-ui_autogen/mocs_compilation.i"
+	@echo "... grfx-ui_autogen/mocs_compilation.s"
+	@echo "... grfx_autogen/mocs_compilation.o"
+	@echo "... grfx_autogen/mocs_compilation.i"
+	@echo "... grfx_autogen/mocs_compilation.s"
 	@echo "... src/canvas.o"
 	@echo "... src/canvas.i"
 	@echo "... src/canvas.s"

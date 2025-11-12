@@ -1,1 +1,0 @@
-/usr/lib64/ccache/c++ -Wl,--dependency-file=CMakeFiles/erstelle.dir/link.d CMakeFiles/erstelle.dir/erstelle_autogen/mocs_compilation.cpp.o CMakeFiles/erstelle.dir/src/main.cpp.o -o erstelle  liberstelle-ui.a liberstelle-core.a /usr/lib64/libQt6Widgets.so.6.9.3 /usr/lib64/libQt6Gui.so.6.9.3 /usr/lib64/libGLX.so /usr/lib64/libOpenGL.so /usr/lib64/libQt6Core.so.6.9.3
